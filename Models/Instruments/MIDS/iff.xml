@@ -1,0 +1,139 @@
+<PropertyList>
+	<path>mids-panel.ac</path>
+	<background>Aircraft/eurofighter/Models/Instruments/MIDS/mids-screen.png</background>
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>20</max-m>
+	</animation>
+	<animation>
+		<object-name>iffinfo</object-name>
+		<object-name>iffmode1</object-name>
+		<object-name>iffmode11</object-name>
+		<object-name>iffmode3</object-name>
+		<object-name>iffmode31</object-name>
+		<object-name>iffstatus</object-name>
+		<object-name>iffstatus1</object-name>
+		<type>material</type>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+ 
+<!-- Display -->
+	<text>
+		<name>iffinfo</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0060</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0</y-m>
+			<z-m>1.1170</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">IFF INFO</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>iffmode1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.005</y-m>
+			<z-m>1.1085</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">MODE 1 :</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>iffmode11</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.00</y-m>
+			<z-m>1.1085</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<property type="string">/instrumentation/transponder/modes/mode-1/code</property>
+		<format type="string">%1.0f</format> 
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>iffmode3</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.005</y-m>
+			<z-m>1.1010</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">MODE 3/A :</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>iffmode31</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.00</y-m>
+			<z-m>1.1010</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<property type="string">/instrumentation/transponder/id-code</property>
+		<format type="string">%1.0f</format> 
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>iffstatus</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.005</y-m>
+			<z-m>1.093</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">STATUS :</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>iffstatus1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.00</y-m>
+			<z-m>1.093</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/sim/gui/dialogs/radios/transponder-mode</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+</PropertyList>

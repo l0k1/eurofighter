@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+
+ <path>mfd-buttons.ac</path>
+ 
+  <animation>
+  <type>select</type>
+  <object-name>MFDButtonTopbar.000</object-name>
+  <object-name>MFDButtonLowbar.000</object-name>
+  <object-name>MFDButtonTopbar.001</object-name>
+  <object-name>MFDButtonLowbar.001</object-name>
+  <object-name>MFDButtonTopbar.002</object-name>
+  <object-name>MFDButtonLowbar.002</object-name>
+  <object-name>MFDButtonTopbar.003</object-name>
+  <object-name>MFDButtonLowbar.003</object-name>
+  <object-name>MFDButtonTopbar.004</object-name>
+  <object-name>MFDButtonLowbar.004</object-name>
+  <object-name>MFDButtonTopbar.005</object-name>
+  <object-name>MFDButtonLowbar.005</object-name>
+  <object-name>MFDButtonTopbar.006</object-name>
+  <object-name>MFDButtonLowbar.006</object-name>
+  <object-name>MFDButtonTopbar.007</object-name>
+  <object-name>MFDButtonLowbar.007</object-name>
+  <object-name>MFDButtonTopbar.008</object-name>
+  <object-name>MFDButtonLowbar.008</object-name>
+  <object-name>MFDButtonTopbar.009</object-name>
+  <object-name>MFDButtonLowbar.009</object-name>
+  <object-name>MFDButtonTopbar.010</object-name>
+  <object-name>MFDButtonLowbar.010</object-name>
+  <object-name>MFDButtonTopbar.011</object-name>
+  <object-name>MFDButtonLowbar.011</object-name>
+  <object-name>MFDButtonTopbar.012</object-name>
+  <object-name>MFDButtonLowbar.012</object-name>
+  <object-name>MFDButtonTopbar.013</object-name>
+  <object-name>MFDButtonLowbar.013</object-name> 
+  <object-name>MFDButtonTopbar.014</object-name>
+  <object-name>MFDButtonLowbar.014</object-name>
+  <object-name>MFDButtonTopbar.015</object-name>
+  <object-name>MFDButtonLowbar.015</object-name>
+  <object-name>MFDButtonTopbar.016</object-name>
+  <object-name>MFDButtonLowbar.016</object-name>
+  <!--object-name>MFDButtonMidbar.000</object-name-->
+  <!--object-name>MFDButtonMidbar.001</object-name-->
+  <!--object-name>MFDButtonMidbar.002</object-name-->
+  <!--object-name>MFDButtonMidbar.003</object-name-->
+  <!--object-name>MFDButtonMidbar.004</object-name-->
+  <!--object-name>MFDButtonMidbar.005</object-name-->
+  <!--object-name>MFDButtonMidbar.006</object-name-->
+  <!--object-name>MFDButtonMidbar.007</object-name-->
+  <!--object-name>MFDButtonMidbar.008</object-name-->
+  <!--object-name>MFDButtonMidbar.009</object-name-->
+  <!--object-name>MFDButtonMidbar.010</object-name-->
+  <!--object-name>MFDButtonMidbar.011</object-name-->
+  <!--object-name>MFDButtonMidbar.012</object-name-->
+  <!--object-name>MFDButtonMidbar.013</object-name-->
+  <!--object-name>MFDButtonMidbar.014</object-name-->
+  <!--object-name>MFDButtonMidbar.015</object-name-->
+  <!--object-name>MFDButtonMidbar.016</object-name-->
+  <condition>
+   <not-equals>
+    <property>/sim/signals/fdm-initialized</property>
+    <value>true</value>
+   </not-equals>
+  </condition>
+ </animation>
+
+</PropertyList>

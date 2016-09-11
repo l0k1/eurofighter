@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+	<path>softkeys.ac</path>
+	<animation>
+		<object-name>chan-m11</object-name>
+		<object-name>chan-m12</object-name>
+		<object-name>chan-m21</object-name>
+		<object-name>chan-m22</object-name>
+		<object-name>chan-11</object-name>
+		<object-name>chan-12</object-name>
+		<object-name>chan-21</object-name>
+		<object-name>chan-22</object-name>
+		<object-name>chan-31</object-name>
+		<object-name>chan-32</object-name>
+		<object-name>chan-41</object-name>
+		<object-name>chan-42</object-name>
+		<object-name>chan-51</object-name>
+		<object-name>chan-52</object-name>
+		<object-name>chan-61</object-name>
+		<object-name>chan-62</object-name>
+		<object-name>chan-71</object-name>
+		<object-name>chan-72</object-name>
+		<object-name>chan-81</object-name>
+		<object-name>chan-82</object-name>
+		<type>material</type>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.03.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>9</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.03.on</object-name>
+		<object-name>softkeys.03.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>9</value>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.04.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>10</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.04.on</object-name>
+		<object-name>softkeys.04.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>10</value>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.05.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>1</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.05.on</object-name>
+		<object-name>softkeys.05.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>1</value>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.06.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>2</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.06.on</object-name>
+		<object-name>softkeys.06.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>2</value>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.07.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>3</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.07.on</object-name>
+		<object-name>softkeys.07.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>3</value>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.08.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>4</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.08.on</object-name>
+		<object-name>softkeys.08.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>4</value>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.09.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>5</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.09.on</object-name>
+		<object-name>softkeys.09.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>5</value>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.10.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>6</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.10.on</object-name>
+		<object-name>softkeys.10.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>6</value>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.11.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>7</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.11.on</object-name>
+		<object-name>softkeys.11.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>7</value>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.12.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>8</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.12.on</object-name>
+		<object-name>softkeys.12.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/systems/CAMU/radio/selected-channel-n</property>
+				<value>8</value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>chan-m11</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CH</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-m12</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">M1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-m21</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CH</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-m22</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">M2</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-11</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CH</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-12</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-21</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CH</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-22</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">2</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-31</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CH</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-32</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">3</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-41</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CH</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-42</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">4</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-51</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0421</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CH</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-52</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0366</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">5</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-61</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0421</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CH</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-62</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0366</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">6</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-71</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0421</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CH</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-72</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0366</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">7</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-81</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0421</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CH</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>chan-82</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0366</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">8</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+</PropertyList>

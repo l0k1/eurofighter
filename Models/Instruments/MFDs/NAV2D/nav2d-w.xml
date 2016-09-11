@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PropertyList>
+ 
+<!-- Buttons -->
+	<text>
+		<name>fuel</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>-0.056</y-m>
+			<z-m>-0.085</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FUEL</text>
+	</text>
+	<text>
+		<name>engine</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>-0.030</y-m>
+			<z-m>-0.085</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ENG</text>
+	</text>
+	<text>
+		<name>hydraulic</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>-0.006</y-m>
+			<z-m>-0.085</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">HYD</text>
+	</text>
+	<text>
+		<name>waypoint</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>0.018</y-m>
+			<z-m>-0.085</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">WPT</text>
+	</text>
+	<text>
+		<name>mapmode</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.091</y-m>
+			<z-m>-0.024</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">SIT</text>
+	</text>
+	<text>
+		<name>frequency</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>.039</y-m>
+			<z-m>-0.085</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FREQ</text>
+	</text>
+	<text>
+		<name>map</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>0.059</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">MAP</text>
+	</text>
+	<text>
+		<name>arpt</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>-0.095</y-m>
+			<z-m>0.036</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ARPT</text>
+	</text>
+	<text>
+		<name>navaid1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>-0.095</y-m>
+			<z-m>0.018</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>navaid2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>-0.095</y-m>
+			<z-m>0.011</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">AIDS</text>
+	</text>
+	<text>
+		<name>eadi</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>-0.0955</y-m>
+			<z-m>-0.0555</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">EADI</text>
+	</text>
+	<text>
+		<name>navpos1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>0.079</y-m>
+			<z-m>0.068</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>navpos2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>0.078</y-m>
+			<z-m>0.061</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">DISP</text>
+	</text>
+	<text>
+		<name>tcas</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>0.078</y-m>
+			<z-m>0.042</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">TCAS</text>
+	</text>
+	<text>
+		<name>rangeplus</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>0.084</y-m>
+			<z-m>-0.033</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">R+</text>
+	</text>
+	<text>
+		<name>rangeminus</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>0.084</y-m>
+			<z-m>-0.055</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">R-</text>
+	</text>
+	<text>
+		<name>prev-wpt1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>0.080</y-m>
+			<z-m>0.018</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">PREV</text>
+	</text>
+	<text>
+		<name>prev-wpt2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>0.080</y-m>
+			<z-m>0.011</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">WPT</text>
+	</text>
+	<text>
+		<name>next-wpt1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>0.080</y-m>
+			<z-m>-0.005</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NEXT</text>
+	</text>
+	<text>
+		<name>next-wpt2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.003</x-m>
+			<y-m>0.080</y-m>
+			<z-m>-0.012</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">WPT</text>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>next-wpt1</object-name>
+		<condition>
+			<equals>
+				<property>/autopilot/route-manager/active</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>next-wpt2</object-name>
+		<condition>
+			<equals>
+				<property>/autopilot/route-manager/active</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>prev-wpt1</object-name>
+		<condition>
+			<equals>
+				<property>/autopilot/route-manager/active</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>prev-wpt2</object-name>
+		<condition>
+			<equals>
+				<property>/autopilot/route-manager/active</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>rangeminus</object-name>
+		<object-name>rangeplus</object-name>
+		<object-name>mapmode</object-name>
+		<object-name>map</object-name>
+		<object-name>navpos1</object-name>
+		<object-name>navpos2</object-name>
+		<object-name>tcas</object-name>
+		<object-name>eadi</object-name>
+		<object-name>fuel</object-name>
+		<object-name>engine</object-name>
+		<object-name>hydraulic</object-name>
+		<object-name>waypoint</object-name>
+		<object-name>frequency</object-name>
+		<object-name>arpt</object-name>
+		<object-name>navaid1</object-name>
+		<object-name>navaid2</object-name>
+		<object-name>next-wpt1</object-name>
+		<object-name>next-wpt2</object-name>
+		<object-name>prev-wpt1</object-name>
+		<object-name>prev-wpt2</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+</PropertyList>
+
+

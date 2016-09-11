@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Manual Data Entry Facility -  Subsystem Keys -->
+<PropertyList>
+	<path>softkeys.ac</path>
+	<animation>
+		<object-name>taca-set1</object-name>
+		<object-name>taca-set2</object-name>
+		<object-name>tacsby1</object-name>
+		<object-name>tacsby2</object-name>
+		<object-name>adfa1</object-name>
+		<object-name>adfa2</object-name>
+		<object-name>adfs1</object-name>
+		<object-name>adfs2</object-name>
+		<object-name>nav1a1</object-name>
+		<object-name>nav1a2</object-name>
+		<object-name>nav1s1</object-name>
+		<object-name>nav1s2</object-name>
+		<object-name>com1a1</object-name>
+		<object-name>com1a2</object-name>
+		<object-name>com1s1</object-name>
+		<object-name>com1s2</object-name>
+		<object-name>nav2a1</object-name>
+		<object-name>nav2a2</object-name>
+		<object-name>nav2s1</object-name>
+		<object-name>nav2s2</object-name>
+		<object-name>com2a1</object-name>
+		<object-name>com2a2</object-name>
+		<object-name>com2s1</object-name>
+		<object-name>com2s2</object-name>
+		<type>material</type>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.01.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>tacan</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.01.on</object-name>
+		<object-name>softkeys.01.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>tacan</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>taca-set1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">TAC</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>taca-set2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ACT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.02.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>tacsby</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.02.on</object-name>
+		<object-name>softkeys.02.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>tacsby</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>tacsby1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">TAC</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>tacsby2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">SBY</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.03.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<or>
+				<not-equals>
+					<property>/instrumentation/MDEF/keypad-page-selected</property>
+					<value>adfact</value>
+				</not-equals>
+				<not-equals>
+					<property>/instrumentation/MDEF/keypad-page-selected</property>
+					<value>adf2act</value>
+				</not-equals>
+			</or>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.03.on</object-name>
+		<object-name>softkeys.03.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>adfact</value>
+				<value></value>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>adf2act</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>adfa1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ADF</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>adfa2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ACT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.04.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<or>
+				<not-equals>
+					<property>/instrumentation/MDEF/keypad-page-selected</property>
+					<value>adfsby</value>
+				</not-equals>
+				<not-equals>
+					<property>/instrumentation/MDEF/keypad-page-selected</property>
+					<value>adf2sby</value>
+				</not-equals>
+			</or>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.04.on</object-name>
+		<object-name>softkeys.04.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>adfsby</value>
+				<value></value>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>adf2sby</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>adfs1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ADF</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>adfs2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">SBY</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.05.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>nav1a</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.05.on</object-name>
+		<object-name>softkeys.05.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>nav1a</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>nav1a1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">VOR1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>nav1a2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ACT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.06.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>nav1s</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.06.on</object-name>
+		<object-name>softkeys.06.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>nav1s</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>nav1s1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">VOR1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>nav1s2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">SBY</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.07.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>chan-m1</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.07.on</object-name>
+		<object-name>softkeys.07.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>chan-m1</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>com1a1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">MAN</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>com1a2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.08.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>com1s</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.08.on</object-name>
+		<object-name>softkeys.08.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>com1s</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>com1s1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">RAD</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>com1s2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">1SB</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.09.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>nav2a</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.09.on</object-name>
+		<object-name>softkeys.09.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>nav2a</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>nav2a1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0421</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">VOR2</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>nav2a2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0366</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ACT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.10.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>nav2s</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.10.on</object-name>
+		<object-name>softkeys.10.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>nav2s</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>nav2s1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0421</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">VOR2</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>nav2s2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0366</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">SBY</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.11.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>chan-m2</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.11.on</object-name>
+		<object-name>softkeys.11.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>chan-m2</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>com2a1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0421</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">MAN</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>com2a2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0366</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">2</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.12.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>com2s</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.12.on</object-name>
+		<object-name>softkeys.12.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>com2s</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>com2s1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0421</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">RAD</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>com2s2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0366</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">2SB</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+</PropertyList>

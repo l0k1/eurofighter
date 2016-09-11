@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Manual Data Entry Facility - AIDS (Navigation Aids) Subsystem Keys -->
+
+<!-- Button 1:  Heading Bug (HDG BUG)
+     Button 4:  Bug Off (BUG OFF)
+	 Button 6:  Nav Comp Mode (NAV MODE)
+	 Button 7:  Tacan Mode (TACN MODE)
+	 Button 11: Tacan Power (TACN PWR)  -->
+<PropertyList>
+	<path>softkeys.ac</path>
+	<animation>
+		<type>noshadow</type>
+		<object-name>softkeys.off</object-name>
+		<object-name>softkeys.on</object-name>
+		<object-name>hdg-bug1</object-name>
+		<object-name>hdg-bug2</object-name>
+		<object-name>bug-off1</object-name>
+		<object-name>bug-off2</object-name>
+		<object-name>navcomp-mode1</object-name>
+		<object-name>navcomp-mode2</object-name>
+		<object-name>tacan-mode1</object-name>
+		<object-name>tacan-mode2</object-name>
+		<object-name>vor1-mode1</object-name>
+		<object-name>vor1-mode2</object-name>
+		<object-name>vor2-mode1</object-name>
+		<object-name>vor2-mode2</object-name>
+		<object-name>ap-set1</object-name>
+		<object-name>ap-set2</object-name>
+		<object-name>tacan-pwr1</object-name>
+		<object-name>tacan-pwr2</object-name>
+	</animation>
+	<animation>
+		<object-name>softkeys.off</object-name>
+		<type>material</type>
+		<diffuse>
+			<red>0.0</red>
+			<green>0.3</green>
+			<blue>0.0</blue>
+		</diffuse>
+		<emission>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+			<red>0.0</red>
+			<green>0.35</green>
+			<blue>0.0</blue>
+		</emission>
+	</animation>
+	<animation>
+		<object-name>softkeys.on</object-name>
+		<object-name>hdg-bug1</object-name>
+		<object-name>hdg-bug2</object-name>
+		<object-name>curr-hdg1</object-name>
+		<object-name>curr-hdg2</object-name>
+		<object-name>bug-off1</object-name>
+		<object-name>bug-off2</object-name>
+		<object-name>navcomp-mode1</object-name>
+		<object-name>navcomp-mode2</object-name>
+		<object-name>tacan-mode1</object-name>
+		<object-name>tacan-mode2</object-name>
+		<object-name>vor1-mode1</object-name>
+		<object-name>vor1-mode2</object-name>
+		<object-name>vor2-mode1</object-name>
+		<object-name>vor2-mode2</object-name>
+		<object-name>ap-set1</object-name>
+		<object-name>ap-set2</object-name>
+		<object-name>tacan-pwr1</object-name>
+		<object-name>tacan-pwr2</object-name>
+		<type>material</type>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.4</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.5</red>
+			<green>1.0</green>
+			<blue>0.5</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+
+
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.01.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not>
+				<equals>
+					<property>/instrumentation/HUD/steering-bug</property>
+					<value>hdg-bug</value>
+				</equals>
+			</not>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.01.on</object-name>
+		<object-name>softkeys.01.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/instrumentation/HUD/steering-bug</property>
+				<value>hdg-bug</value>
+			</binding>
+		</action>
+	</animation>
+
+	<text>
+		<name>hdg-bug1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">HDG</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>hdg-bug2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">BUG</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+
+
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.02.on</object-name>
+		<object-name>softkeys.02.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/systems/autopilot/settings/target-heading-deg</property>
+				<property>/orientation/heading-magnetic-deg</property>
+			</binding>
+		</action>
+	</animation>
+
+	<text>
+		<name>curr-hdg1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CURR</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>curr-hdg2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">HDG</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.04.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not>
+				<equals>
+					<property>/instrumentation/HUD/steering-bug</property>
+					<value>off</value>
+				</equals>
+			</not>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.04.on</object-name>
+		<object-name>softkeys.04.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/instrumentation/HUD/steering-bug</property>
+				<value>off</value>
+			</binding>
+		</action>
+	</animation>
+
+	<text>
+		<name>bug-off1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">BUG</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>bug-off2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">OFF</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+ 
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.05.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<or>
+				<not>
+					<equals>
+						<property>/computers/navigation/mode</property>
+						<value>vor1</value>
+					</equals>
+				</not>
+			</or>
+			<or>
+				<not>
+					<equals>
+						<property>/computers/navigation/mode</property>
+						<value>vor1s</value>
+					</equals>
+				</not>
+			</or>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.05.on</object-name>
+		<object-name>softkeys.05.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/computers/navigation/mode</property>
+				<value>vor1</value>
+			</binding>
+			<binding>
+				<command>property-assign</command>
+				<property>/instrumentation/HUD/steering-bug</property>
+				<value>nav</value>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/computers/navigation/mode</property>
+				<value>vor1s</value>
+			</binding>
+			<binding>
+				<command>property-assign</command>
+				<property>/instrumentation/HUD/steering-bug</property>
+				<value>nav</value>
+			</binding>
+		</action>
+	</animation>
+
+		<text>
+			<name>vor1-mode1</name>
+			<font>lcd.txf</font>
+			<character-size type="double">0.005</character-size>
+			<offsets>
+				<x-m>3.525</x-m>
+				<y-m>-0.1675</y-m>
+				<z-m>1.059</z-m>
+			</offsets>
+			<axis-alignment>yz-plane</axis-alignment>
+			<type type="string">literal</type>
+			<text type="string">VOR1</text>
+			<draw-text type="bool">true</draw-text>
+			<alignment>center-center</alignment>
+		</text>
+		<text>
+			<name>vor1-mode2</name>
+			<font>lcd.txf</font>
+			<character-size type="double">0.005</character-size>
+			<offsets>
+				<x-m>3.525</x-m>
+				<y-m>-0.1675</y-m>
+				<z-m>1.0535</z-m>
+			</offsets>
+			<axis-alignment>yz-plane</axis-alignment>
+			<type type="string">literal</type>
+			<text type="string">MODE</text>
+			<draw-text type="bool">true</draw-text>
+			<alignment>center-center</alignment>
+		</text>
+
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.06.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not>
+				<equals>
+					<property>/computers/navigation/mode</property>
+					<value>nav</value>
+				</equals>
+			</not>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.06.on</object-name>
+		<object-name>softkeys.06.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/computers/navigation/mode</property>
+				<value>nav</value>
+			</binding>
+			<binding>
+				<command>property-assign</command>
+				<property>/instrumentation/HUD/steering-bug</property>
+				<value>nav</value>
+			</binding>
+		</action>
+	</animation>
+
+		<text>
+			<name>navcomp-mode1</name>
+			<font>lcd.txf</font>
+			<character-size type="double">0.005</character-size>
+			<offsets>
+				<x-m>3.525</x-m>
+				<y-m>-0.144</y-m>
+				<z-m>1.059</z-m>
+			</offsets>
+			<axis-alignment>yz-plane</axis-alignment>
+			<type type="string">literal</type>
+			<text type="string">NAV</text>
+			<draw-text type="bool">true</draw-text>
+			<alignment>center-center</alignment>
+		</text>
+		<text>
+			<name>navcomp-mode2</name>
+			<font>lcd.txf</font>
+			<character-size type="double">0.005</character-size>
+			<offsets>
+				<x-m>3.525</x-m>
+				<y-m>-0.144</y-m>
+				<z-m>1.0535</z-m>
+			</offsets>
+			<axis-alignment>yz-plane</axis-alignment>
+			<type type="string">literal</type>
+			<text type="string">MODE</text>
+			<draw-text type="bool">true</draw-text>
+			<alignment>center-center</alignment>
+		</text>
+
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.07.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<or>
+				<not>
+					<equals>
+						<property>/computers/navigation/mode</property>
+						<value>tacan</value>
+					</equals>
+				</not>
+			</or>
+			<or>
+				<not>
+					<equals>
+						<property>/computers/navigation/mode</property>
+						<value>tacans</value>
+					</equals>
+				</not>
+			</or>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.07.on</object-name>
+		<object-name>softkeys.07.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/computers/navigation/mode</property>
+				<value>tacans</value>
+			</binding>
+			<binding>
+				<command>property-assign</command>
+				<property>/instrumentation/HUD/steering-bug</property>
+				<value>nav</value>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/computers/navigation/mode</property>
+				<value>tacan</value>
+			</binding>
+			<binding>
+				<command>property-assign</command>
+				<property>/instrumentation/HUD/steering-bug</property>
+				<value>nav</value>
+			</binding>
+		</action>
+	</animation>
+
+		<text>
+			<name>tacan-mode1</name>
+			<font>lcd.txf</font>
+			<character-size type="double">0.005</character-size>
+			<offsets>
+				<x-m>3.525</x-m>
+				<y-m>-0.1215</y-m>
+				<z-m>1.059</z-m>
+			</offsets>
+			<axis-alignment>yz-plane</axis-alignment>
+			<type type="string">literal</type>
+			<text type="string">TACN</text>
+			<draw-text type="bool">true</draw-text>
+			<alignment>center-center</alignment>
+		</text>
+		<text>
+			<name>tacan-mode2</name>
+			<font>lcd.txf</font>
+			<character-size type="double">0.005</character-size>
+			<offsets>
+				<x-m>3.525</x-m>
+				<y-m>-0.1215</y-m>
+				<z-m>1.0535</z-m>
+			</offsets>
+			<axis-alignment>yz-plane</axis-alignment>
+			<type type="string">literal</type>
+			<text type="string">MODE</text>
+			<draw-text type="bool">true</draw-text>
+			<alignment>center-center</alignment>
+		</text>
+
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.08.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not>
+				<equals>
+					<property>/computers/navigation/mode</property>
+					<value>vor2</value>
+				</equals>
+			</not>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.08.on</object-name>
+		<object-name>softkeys.08.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/computers/navigation/mode</property>
+				<value>vor2</value>
+			</binding>
+			<binding>
+				<command>property-assign</command>
+				<property>/instrumentation/HUD/steering-bug</property>
+				<value>nav</value>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<binding>
+				<command>property-assign</command>
+				<property>/computers/navigation/mode</property>
+				<value>vor2s</value>
+			</binding>
+			<binding>
+				<command>property-assign</command>
+				<property>/instrumentation/HUD/steering-bug</property>
+				<value>nav</value>
+			</binding>
+		</action>
+	</animation>
+ 
+		<text>
+			<name>vor2-mode1</name>
+			<font>lcd.txf</font>
+			<character-size type="double">0.005</character-size>
+			<offsets>
+				<x-m>3.525</x-m>
+				<y-m>-0.098</y-m>
+				<z-m>1.059</z-m>
+			</offsets>
+			<axis-alignment>yz-plane</axis-alignment>
+			<type type="string">literal</type>
+			<text type="string">VOR2</text>
+			<draw-text type="bool">true</draw-text>
+			<alignment>center-center</alignment>
+		</text>
+		<text>
+			<name>vor2-mode2</name>
+			<font>lcd.txf</font>
+			<character-size type="double">0.005</character-size>
+			<offsets>
+				<x-m>3.525</x-m>
+				<y-m>-0.098</y-m>
+				<z-m>1.0535</z-m>
+			</offsets>
+			<axis-alignment>yz-plane</axis-alignment>
+			<type type="string">literal</type>
+			<text type="string">MODE</text>
+			<draw-text type="bool">true</draw-text>
+			<alignment>center-center</alignment>
+		</text>
+
+
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.11.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<less-than>
+				<property>/systems/electrical/outputs/tacan</property>
+				<value>27</value>
+			</less-than>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.11.on</object-name>
+		<object-name>softkeys.11.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>/instrumentation/tacan/power</property>
+			</binding>
+		</action>
+	</animation>
+
+		<text>
+			<name>tacan-pwr1</name>
+			<font>lcd.txf</font>
+			<character-size type="double">0.005</character-size>
+			<offsets>
+				<x-m>3.525</x-m>
+				<y-m>-0.1215</y-m>
+				<z-m>1.0421</z-m>
+			</offsets>
+			<axis-alignment>yz-plane</axis-alignment>
+			<type type="string">literal</type>
+			<text type="string">TACN</text>
+			<draw-text type="bool">true</draw-text>
+			<alignment>center-center</alignment>
+		</text>
+		<text>
+			<name>tacan-pwr2</name>
+			<font>lcd.txf</font>
+			<character-size type="double">0.005</character-size>
+			<offsets>
+				<x-m>3.525</x-m>
+				<y-m>-0.1215</y-m>
+				<z-m>1.0366</z-m>
+			</offsets>
+			<axis-alignment>yz-plane</axis-alignment>
+			<type type="string">literal</type>
+			<text type="string">PWR</text>
+			<draw-text type="bool">true</draw-text>
+			<alignment>center-center</alignment>
+		</text>
+ 
+
+</PropertyList>

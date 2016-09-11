@@ -1,0 +1,39 @@
+<PropertyList>
+	<path>mids-panel.ac</path>
+	<background>Aircraft/eurofighter/Models/Instruments/MIDS/mids-screen.png</background>
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>20</max-m>
+	</animation>
+	<panel>
+		<path>Aircraft/eurofighter/Models/Instruments/MIDS/mids-screen.xml</path>
+		<bottom-left>
+			<x-m>-0.452</x-m>
+			<y-m>-0.315</y-m>
+			<z-m>-0.37</z-m>
+		</bottom-left>
+		<bottom-right>
+			<x-m>-0.452</x-m>
+			<y-m>0.315</y-m>
+			<z-m>-0.37</z-m>
+		</bottom-right>
+		<top-left>
+			<x-m>-0.155</x-m>
+			<y-m>-0.312</y-m>
+			<z-m>0.05</z-m>
+		</top-left>
+	</panel>
+  
+    <!-- this thing popped up in extra views. Not anymore. -->
+	<animation>
+		<type>select</type>
+		<object-name>MIDS Screen</object-name>
+		<condition>
+			<equals>
+				<property>sim/current-view/name</property>
+				<value>Cockpit View</value>
+			</equals>
+		</condition>
+	</animation>
+</PropertyList>

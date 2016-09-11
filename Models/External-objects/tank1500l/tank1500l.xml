@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<PropertyList>
+	<path>Aircraft/eurofighter/Models/External-objects/tank1500l/tank1500.ac</path>
+
+	<animation>
+    <!-- Objets opaques -->
+		<object-name>tank</object-name>
+    <!-- Objets transparents -->
+	</animation>
+
+	<effect>
+		<inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
+		<object-name>tank</object-name>
+		<condition>
+			<not><property>sim/rendering/rembrandt/enabled</property></not>
+		</condition>
+	</effect>
+</PropertyList>
+

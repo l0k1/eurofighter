@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PropertyList>
+	<path>keys.ac</path>
+	<text>
+		<name>label.clr</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.069</y-m>
+			<z-m>0.049</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CLR</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>label.ent</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.023</y-m>
+			<z-m>0.049</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ENT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.069</y-m>
+			<z-m>0.097</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.053</y-m>
+			<z-m>0.097</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">2</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.3</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.037</y-m>
+			<z-m>0.097</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">3</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.4</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.069</y-m>
+			<z-m>0.081</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">4</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.5</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.053</y-m>
+			<z-m>0.081</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">5</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.6</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.037</y-m>
+			<z-m>0.081</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">6</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.7</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.069</y-m>
+			<z-m>0.065</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">7</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.8</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.053</y-m>
+			<z-m>0.065</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">8</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.9</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.037</y-m>
+			<z-m>0.065</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">9</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.0</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.053</y-m>
+			<z-m>0.049</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">0</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.decimal</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.037</y-m>
+			<z-m>0.049</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">.</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>material</type>
+		<object-name>keypad.1</object-name>
+		<object-name>keypad.2</object-name>
+		<object-name>keypad.3</object-name>
+		<object-name>keypad.4</object-name>
+		<object-name>keypad.5</object-name>
+		<object-name>keypad.6</object-name>
+		<object-name>keypad.7</object-name>
+		<object-name>keypad.8</object-name>
+		<object-name>keypad.9</object-name>
+		<object-name>keypad.0</object-name>
+		<object-name>keypad.decimal</object-name>
+		<diffuse>
+			<red>0.05</red>
+			<green>0.2</green>
+			<blue>0.05</blue>
+		</diffuse>
+		<emission>
+			<red>0.05</red>
+			<green>0.2</green>
+			<blue>0.05</blue>
+			<factor-prop>/instrumentation/illumination/led-brightness</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>label.clr</object-name>
+		<object-name>label.ent</object-name>
+		<diffuse>
+			<red>0.05</red>
+			<green>0.9</green>
+			<blue>0.05</blue>
+		</diffuse>
+		<emission>
+			<red>0.05</red>
+			<green>0.9</green>
+			<blue>0.05</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+</PropertyList>

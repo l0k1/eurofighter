@@ -1,0 +1,177 @@
+<PropertyList>
+	<ACS><!-- Armament Control System -->
+		<serviceable type="bool">true</serviceable>
+	</ACS>
+	<GPWS><!-- Ground Proximity Warning System -->
+		<serviceable type="bool">true</serviceable>
+	</GPWS>
+	<DRF><!-- Disorientation Recovery Facility (panic button) -->
+		<command type="bool">false</command>
+	</DRF>
+	<CAMU include="Systems/typhoon-camu.xml">
+		<channel-list include="Data/channel-list.xml">
+			<channel n="8">
+				<channel-number type="string">M1</channel-number>
+				<identifier type="string">MANUAL 1</identifier>
+				<frequency type="double">
+					<property>/instrumentation/comm/frequencies/selected-mhz</property>
+				</frequency>
+				<status type="string">CLR</status>
+			</channel>
+			<channel n="9">
+				<channel-number type="string">M2</channel-number>
+				<identifier type="string">MANUAL 2</identifier>
+				<frequency type="double">
+					<property>/instrumentation/comm[1]/frequencies/selected-mhz</property>
+				</frequency>
+				<status type="string">CLR</status>
+			</channel>
+		</channel-list>
+		<voice-alerts>
+			<supply-voltage alias="/systems/electrical/outputs/avionics/warnings" />
+			<voice-active type="bool" alias="/controls/switches/voice" />
+			<volume type="double">0.25</volume>
+		</voice-alerts>
+	</CAMU>
+	<DECMU>
+		<settings>
+			<reheat-gate-norm type="double">0.975</reheat-gate-norm>
+			<APU-throttle type="double">0.86</APU-throttle>
+			<air-drive type="bool" alias="/controls/switches/air-drive" />
+			<thrust-vectoring type="bool">false</thrust-vectoring>
+			<APU-air-left type="bool">false</APU-air-left>
+			<APU-air-right type="bool">false</APU-air-right>
+		</settings>
+		<command-outputs>
+			<engine n="0">
+				<air-start type="bool">false</air-start>
+			</engine>
+			<engine n="1">
+				<air-start type="bool">false</air-start>
+			</engine>
+				<!--left-OSR type="int">1</left-OSR>
+				<right-OSR type="int">1</right-OSR-->
+		</command-outputs>
+	</DECMU>
+	<FCS>
+		<override type="bool">false</override>
+		<control-inputs>
+			<elevator type="double">0</elevator>
+			<elevator-trim type="double">0</elevator-trim>
+			<aileron type="double">0</aileron>
+		</control-inputs>
+		<command-outputs>
+			<canard type="double">0</canard>
+			<canard-trim type="double">0</canard-trim>
+			<thrust-vector type="double">0.25</thrust-vector>
+			<flaperon-flap type="double">-0.075</flaperon-flap>
+			<flaperon-roll-trim type="double">0</flaperon-roll-trim>
+		</command-outputs>
+		<settings>
+    <!-- Control Input Settings -->
+			<stick-scale-pitch>0.8</stick-scale-pitch>
+			<stick-scale-trim>0.3</stick-scale-trim>
+			<stick-scale-roll>0.8</stick-scale-roll>
+			<pedal-scale>1.0</pedal-scale>
+			<stick-deadzone-pitch-forward>0.0002</stick-deadzone-pitch-forward>
+			<stick-deadzone-pitch-back>-0.002</stick-deadzone-pitch-back>
+			<stick-deadzone-roll-left>-0.0002</stick-deadzone-roll-left>
+			<stick-deadzone-roll-right>0.0002</stick-deadzone-roll-right>
+	
+	<!-- Automated Control Surface Thresholds -->
+			<flaperon-threshold>220</flaperon-threshold>
+			<slat-threshold>220</slat-threshold>
+		</settings>
+		<internal>
+			<attitude>
+				<pitch-deg type="float">0</pitch-deg>
+				<roll-deg type="float">0</roll-deg>
+				<yaw-deg type="float">0</yaw-deg>
+				<pitch-adjust type="float">0</pitch-adjust>
+				<roll-adjust type="float">0</roll-adjust>
+				<yaw-adjust type="float">0</yaw-adjust>
+				<inverted type="bool">false</inverted>
+			</attitude>
+			<velocities>
+				<vert-speed-fpm type="float">0</vert-speed-fpm>
+			</velocities>
+			<canard-park type="bool">true</canard-park>
+			<canard-parked type="bool">true</canard-parked>
+			<canard-park-angle type="double">0.75</canard-park-angle>
+		</internal>
+	</FCS>
+	<refuel>
+		<type>probe</type>
+		<serviceable type="bool">true</serviceable>
+	</refuel>
+	<weapons>
+		<display-smoke type="bool">false</display-smoke>
+		<cannon>
+			<serviceable type="bool">true</serviceable>
+			<rounds type="int">150</rounds>
+			<firing type="bool">false</firing>
+		</cannon>
+	</weapons>
+	<warnings>
+		<alerts>
+				 <!--mass-not-live>
+					  <alert type="bool">false</alert>
+					  <acknowledged type="bool">false</acknowledged>
+					  <category type="int">1</category>
+					  <voice-trigger type="bool">false</voice-trigger>
+				 </mass-not-live-->
+			<pull-up>
+				<alert type="bool">false</alert>
+				<acknowledged type="bool">false</acknowledged>
+				<category type="int">1</category>
+				<voice-trigger type="bool">false</voice-trigger>
+			</pull-up>
+			<gear-limit>
+				<alert type="bool">false</alert>
+				<acknowledged type="bool">false</acknowledged>
+				<category type="int">1</category>
+				<voice-trigger type="bool">false</voice-trigger>
+			</gear-limit>
+			<landing-gear>
+				<alert type="bool">false</alert>
+				<acknowledged type="bool">false</acknowledged>
+				<category type="int">1</category>
+				<voice-trigger type="bool">false</voice-trigger>
+			</landing-gear>
+			<low-height>
+				<alert type="bool">false</alert>
+				<acknowledged type="bool">false</acknowledged>
+				<category type="int">1</category>
+				<voice-trigger type="bool">false</voice-trigger>
+			</low-height>
+			<speed-low>
+				<alert type="bool">false</alert>
+				<acknowledged type="bool">false</acknowledged>
+				<category type="int">1</category>
+				<voice-trigger type="bool">false</voice-trigger>
+			</speed-low>
+			<fuel-low>
+				<alert type="bool">false</alert>
+				<acknowledged type="bool">false</acknowledged>
+				<category type="int">1</category>
+				<voice-trigger type="bool">false</voice-trigger>
+			</fuel-low>
+			<bingo-fuel>
+				<alert type="bool">false</alert>
+				<acknowledged type="bool">false</acknowledged>
+				<category type="int">1</category>
+				<voice-trigger type="bool">false</voice-trigger>
+			</bingo-fuel>
+			<park-brake>
+				<alert type="bool">false</alert>
+				<acknowledged type="bool">false</acknowledged>
+				<category type="int">1</category>
+				<voice-trigger type="bool">false</voice-trigger>
+			</park-brake>
+		</alerts>
+		<nogos>
+			<test-nogo-1 type="bool">false</test-nogo-1>
+			<test-nogo-2 type="bool">false</test-nogo-2>
+		</nogos>
+	</warnings>
+</PropertyList>

@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+ <!--  APU smoke  -->
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/apu-smoke.xml</path>
+		<offsets>
+			<x-m>  8.0 </x-m>
+			<y-m>  -0.73 </y-m>
+			<z-m>   0.0 </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/smoketrail-light0.xml</path>
+		<offsets>
+			<x-m>20</x-m>
+			<y-m>-0.6</y-m>
+			<z-m>0</z-m>
+			<pitch-deg>2</pitch-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/smoketrail-light1.xml</path>
+		<offsets>
+			<x-m>20</x-m>
+			<y-m>0.6</y-m>
+			<z-m>0</z-m>
+			<pitch-deg>2</pitch-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/wingtip-vortex.xml</path>
+		<name>WT-vortex</name>
+		<offsets>
+			<x-m>12.3</x-m>
+			<y-m>-5.34</y-m>
+			<z-m>-0.24</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/wingtip-vortex.xml</path>
+		<name>WT-vortex</name>
+		<offsets>
+			<x-m>12.3</x-m>
+			<y-m>5.34</y-m>
+			<z-m>-0.24</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+ 
+ <!--  Contrails  -->
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/contrail.xml</path>
+		<offsets>
+			<x-m>  20.0 </x-m>
+			<y-m>  -0.53 </y-m>
+			<z-m>   0.0 </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/contrail.xml</path>
+		<offsets>
+			<x-m>  20.0 </x-m>
+			<y-m>   0.53 </y-m>
+			<z-m>   0.0 </z-m>
+		</offsets>
+	</model>
+
+<!-- tiresmoke -->
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/tire-impact-nose.xml</path>
+		<offsets>
+			<x-m> 5.45 </x-m>
+			<y-m>  0     </y-m>
+			<z-m>  -2.05  </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/tire-rain-nose.xml</path>
+		<offsets>
+			<x-m> 5.45 </x-m>
+			<y-m>  0     </y-m>
+			<z-m>  -2.05  </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/tire-dust-nose.xml</path>
+		<offsets>
+			<x-m> 5.45 </x-m>
+			<y-m>  0     </y-m>
+			<z-m>  -2.05  </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/tire-impact-stbd.xml</path>
+		<offsets>
+			<x-m> 9.64 </x-m>
+			<y-m> 2.06 </y-m>
+			<z-m> -2.05  </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/tire-rain-stbd.xml</path>
+		<offsets>
+			<x-m> 9.64 </x-m>
+			<y-m> 2.06 </y-m>
+			<z-m> -2.05  </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/tire-dust-stbd.xml</path>
+		<offsets>
+			<x-m> 9.64 </x-m>
+			<y-m> 2.06 </y-m>
+			<z-m> -2.05  </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/tire-impact-port.xml</path>
+		<offsets>
+			<x-m> 9.64 </x-m>
+			<y-m> -2.06  </y-m>
+			<z-m> -2.05 </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/tire-rain-port.xml</path>
+		<offsets>
+			<x-m> 9.64 </x-m>
+			<y-m> -2.06  </y-m>
+			<z-m> -2.05 </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/tire-dust-port.xml</path>
+		<offsets>
+			<x-m> 9.64 </x-m>
+			<y-m> -2.06  </y-m>
+			<z-m> -2.05 </z-m>
+		</offsets>
+	</model>
+    
+ <!-- Smoke leftwingtip -->
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/smokeW.xml</path>
+		<offsets>
+			<x-m>12.6</x-m>
+			<y-m>-5.45</y-m>
+			<z-m>-0.24</z-m>
+			<pitch-deg> -2.0 </pitch-deg>
+		</offsets>
+	</model>
+
+  <!-- Smoke rightwingtip -->
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/smokeW.xml</path>
+		<offsets>
+			<x-m>12.6</x-m>
+			<y-m>5.45</y-m>
+			<z-m>-0.24</z-m>
+			<pitch-deg> -2.0 </pitch-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/eurofighter/Models/Effects/fuel-vapour.xml</path>
+		<offsets>
+			<x-m>17.04</x-m>
+			<y-m>0</y-m>
+			<z-m>3.33</z-m>
+		</offsets>
+	</model>
+</PropertyList>

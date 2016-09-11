@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <!-- OSG Particles -->
+	<particlesystem>
+		<name>smoke-light2</name>
+		<texture>exhaust.png</texture>
+		<emissive>false</emissive>
+		<lighting>true</lighting>
+		<align>billboard</align> <!-- billboard / fixed -->
+		<attach>world</attach> <!-- world / local-->
+		<offsets>
+			<x-m>  0 </x-m>
+			<y-m>  0 </y-m>
+			<z-m> 0 </z-m>
+			<roll-deg>    0 </roll-deg>
+			<pitch-deg>  90 </pitch-deg>
+			<heading-deg> 0 </heading-deg>
+		</offsets>
+		<condition>
+			<greater-than>
+				<property>/velocities/airspeed-kt</property>
+				<value>25</value>
+			</greater-than>
+			<less-than>
+				<property>/position/altitude-ft</property>
+				<value>3000</value>
+			</less-than>
+			<not>
+				<property>/engines/engine[0]/augmentation</property>
+			</not>
+			<not>
+				<property>/controls/engines/engine[0]/reheat</property>
+				<value>1</value>
+			</not>
+			<not>
+				<property>/engines/engine[0]/afterburner</property>
+				<value>1</value>
+			</not>
+		</condition>
+		<placer>point</placer> 
+
+<!--
+  <placer>
+    <type>sector</type>
+    <radius-min-m>0.1</radius-min-m>
+    <radius-max-m>0.25</radius-max-m>
+  </placer> -->
+		<shooter>
+			<theta-min-deg>0</theta-min-deg>
+			<theta-max-deg>0</theta-max-deg>
+			<phi-min-deg>0</phi-min-deg>
+			<phi-max-deg>0</phi-max-deg>
+			<speed>
+				<property>/engines/engine[0]/thrust_lb</property>
+				<factor>0.15</factor>
+				<spread>10</spread>
+			</speed>
+			<rotation-speed>
+				<x-min-deg-sec>30</x-min-deg-sec>
+				<y-min-deg-sec>30</y-min-deg-sec>
+				<z-min-deg-sec>30</z-min-deg-sec>
+				<x-max-deg-sec>90</x-max-deg-sec>
+				<y-max-deg-sec>90</y-max-deg-sec>
+				<z-max-deg-sec>90</z-max-deg-sec>
+			</rotation-speed>
+		</shooter>
+		<counter>
+			<particles-per-sec>
+				<property>/velocities/airspeed-kt</property>
+				<factor>0.12</factor>
+				<spread>1</spread>
+			</particles-per-sec>
+		</counter>
+		<align>billboard</align>
+		<particle>
+			<start>
+				<color>
+					<red>
+						<value>0.7</value>
+					</red>
+					<green>
+						<value>0.65</value>
+					</green>
+					<blue>
+						<value>0.65</value>
+					</blue>
+					<alpha>
+						<property>/engines/engine[0]/n2</property>
+						<factor>0.00123</factor>
+						<offset>0.0006</offset>
+					</alpha>
+				</color>
+				<size>
+					<value>0.4</value>
+				</size>
+			</start>
+			<end>
+				<color>
+					<red>
+						<value>0.88</value>
+					</red>
+					<green>
+						<value>0.83</value>
+					</green>
+					<blue>
+						<value>0.78</value>
+					</blue>
+					<alpha>
+						<alpha>
+							<property>/engines/engine[0]/n2</property>
+							<factor>0.000001</factor>
+						</alpha>
+					</alpha>
+				</color>
+				<size>
+					<value>2</value>
+				</size>
+			</end>
+			<life-sec>
+				<value>1</value>
+			</life-sec>
+			<mass-kg>0.5</mass-kg>
+			<radius-m>0.5</radius-m>
+		</particle>
+		<program>
+			<fluid>air</fluid>         <!-- air / water -->
+			<gravity type="bool">true</gravity>
+			<wind type="bool">false</wind>
+		</program>
+	</particlesystem>
+</PropertyList>

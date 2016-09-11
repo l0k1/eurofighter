@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PropertyList>
+	<path>keys.ac</path>
+	<text>
+		<name>label.clr</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.069</y-m>
+			<z-m>0.049</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CLR</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>label.ent</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.023</y-m>
+			<z-m>0.049</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ENT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>page.line1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.047</y-m>
+			<z-m>0.195</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ALT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>page.line1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.047</y-m>
+			<z-m>0.189</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">HOLD</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>screen.line1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.063</y-m>
+			<z-m>0.1580</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">CURRENT:</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>screen.line2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.058</y-m>
+			<z-m>0.1490</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%5.0f</format>
+		<property>/systems/autopilot/settings/target-altitude-ft</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>screen.line3</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.063</y-m>
+			<z-m>0.1400</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">NEW:</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>screen.line4</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.058</y-m>
+			<z-m>0.1311</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property>/instrumentation/MDEF/keypad/entry[0]</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>screen.line4</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.054</y-m>
+			<z-m>0.1311</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property>/instrumentation/MDEF/keypad/entry[1]</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>screen.line4</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.050</y-m>
+			<z-m>0.1311</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property>/instrumentation/MDEF/keypad/entry[2]</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>screen.line4</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.046</y-m>
+			<z-m>0.1311</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property>/instrumentation/MDEF/keypad/entry[3]</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>screen.line4</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.042</y-m>
+			<z-m>0.1311</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property>/instrumentation/MDEF/keypad/entry[4]</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>keypad.1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.069</y-m>
+			<z-m>0.097</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.053</y-m>
+			<z-m>0.097</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">2</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.3</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.037</y-m>
+			<z-m>0.097</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">3</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.4</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.069</y-m>
+			<z-m>0.081</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">4</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.5</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.053</y-m>
+			<z-m>0.081</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">5</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.6</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.037</y-m>
+			<z-m>0.081</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">6</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.7</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.069</y-m>
+			<z-m>0.065</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">7</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.8</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.053</y-m>
+			<z-m>0.065</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">8</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.9</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.037</y-m>
+			<z-m>0.065</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">9</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>keypad.0</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>0.10</x-m>
+			<y-m>-0.053</y-m>
+			<z-m>0.049</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">0</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.004</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.key("1");</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.005</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.key("2");</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.006</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.key("3");</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.008</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.key("4");</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.009</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.key("5");</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.010</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.key("6");</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.012</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.key("7");</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.013</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.key("8");</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.014</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.key("9");</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.017</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.key("0");</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.016</object-name>
+		<object-name>label.clr</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.clear();</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>MDEFEntryKey.019</object-name>
+		<object-name>label.ent</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>MDEF.alt_enter();</script>
+			</binding>
+		</action>
+	</animation>
+ 
+  <!--effect>
+   <inherits-from>Effects/model-transparent</inherits-from>
+   <condition>
+    <property>/sim/rendering/rembrandt/enabled</property>
+   </condition>
+   <object-name>label.clr</object-name>
+   <object-name>label.ent</object-name>
+  </effect-->
+	<animation>
+		<type>material</type>
+		<object-name>page.line1</object-name>
+		<object-name>page.line2</object-name>
+		<object-name>screen.line1</object-name>
+		<object-name>screen.line2</object-name>
+		<object-name>screen.line3</object-name>
+		<object-name>screen.line4</object-name>
+		<object-name>keypad.1</object-name>
+		<object-name>keypad.2</object-name>
+		<object-name>keypad.3</object-name>
+		<object-name>keypad.4</object-name>
+		<object-name>keypad.5</object-name>
+		<object-name>keypad.6</object-name>
+		<object-name>keypad.7</object-name>
+		<object-name>keypad.8</object-name>
+		<object-name>keypad.9</object-name>
+		<object-name>keypad.0</object-name>
+		<object-name>keypad.m</object-name>
+		<object-name>keypad.t</object-name>
+		<object-name>keypad.decimal</object-name>
+		<object-name>label.clr</object-name>
+		<object-name>label.ent</object-name>
+		<diffuse>
+			<red>0.3</red>
+			<green>0.9</green>
+			<blue>0.3</blue>
+		</diffuse>
+		<emission>
+			<red>0.3</red>
+			<green>0.9</green>
+			<blue>0.3</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+</PropertyList>

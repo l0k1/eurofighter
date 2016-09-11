@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>Aircraft/eurofighter/Stores/StormShadow/Storm.ac</path>
+  <animation>
+    <object-name>Avant</object-name>
+    <object-name>aileronC</object-name>
+    <object-name>aileronsH</object-name>
+    <object-name>aileronsB</object-name>
+    <object-name>Scalp</object-name>
+    <object-name>aileG</object-name>
+    <object-name>aileD</object-name>
+  </animation>
+   <animation>
+    <enable-hot type="bool">false</enable-hot>
+  </animation>
+
+
+</PropertyList>
+

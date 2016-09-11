@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PropertyList>
+	<path>mids-panel.ac</path>
+
+	<background>Aircraft/eurofighter/Models/Instruments/MIDS/mids-screen.png</background>
+
+	<model>
+		<name>home</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MIDS/home.xml</path>
+	</model>
+
+  <!-- this thing pops up in extra views. Again. -->
+	<name>MIDS Screen</name>
+	<background>Aircraft/eurofighter/Models/Instruments/MIDS/mids-screen.png</background>
+	<w>1100</w>
+	<h>600</h>
+	<animation>
+		<type>select</type>
+		<object-name>MIDS Screen</object-name>
+		<condition>
+			<equals>
+				<property>sim/current-view/name</property>
+				<value>Cockpit View</value>
+			</equals>
+		</condition>
+	</animation>
+</PropertyList>

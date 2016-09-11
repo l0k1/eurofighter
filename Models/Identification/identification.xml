@@ -1,0 +1,113 @@
+<PropertyList>
+
+ <!-- Pilot's Display String -->
+	<path>identification.ac</path>
+
+	<text>
+		<name>pilotlabel-left</name>
+		<font>condensed.txf</font>
+		<character-size type="double">0.045</character-size>
+		<offsets>
+			<x-m>4.05</x-m>
+			<y-m>-0.504</y-m>
+			<z-m>0.83</z-m>
+			<roll-deg>-35</roll-deg>
+			<heading-deg>-2.4</heading-deg>
+			<pitch-deg>-3</pitch-deg>
+		</offsets>
+		<axis-alignment>xz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property>sim/multiplay/generic/string[0]</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+
+	<text>
+		<name>pilotlabel-right</name>
+		<font>condensed.txf</font>
+		<character-size type="double">0.045</character-size>
+		<offsets>
+			<x-m>4.05</x-m>
+			<y-m>0.504</y-m>
+			<z-m>0.83</z-m>
+			<roll-deg>35</roll-deg>
+			<heading-deg>2.4</heading-deg>
+			<pitch-deg>-3</pitch-deg>
+		</offsets>
+		<axis-alignment>reversed-xz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property>sim/multiplay/generic/string[0]</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+
+	<text>
+		<name>acserial-left</name>
+		<font>lucida.txf</font>
+		<character-size type="double">0.17</character-size>
+		<offsets>
+			<x-m>12.05</x-m>
+			<y-m>-1.02</y-m>
+			<z-m>0.37</z-m>
+			<roll-deg>-18</roll-deg>
+			<heading-deg>0</heading-deg>
+			<pitch-deg>1</pitch-deg>
+		</offsets>
+		<axis-alignment>xz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property>sim/multiplay/generic/string[1]</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+
+	<text>
+		<name>acserial-right</name>
+		<font>lucida.txf</font>
+		<character-size type="double">0.17</character-size>
+		<offsets>
+			<x-m>12.05</x-m>
+			<y-m>1.02</y-m>
+			<z-m>0.37</z-m>
+			<roll-deg>18</roll-deg>
+			<heading-deg>0</heading-deg>
+			<pitch-deg>1</pitch-deg>
+		</offsets>
+		<axis-alignment>reversed-xz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property>sim/multiplay/generic/string[1]</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+
+	<animation>
+		<type>material</type>
+		<object-name>pilotlabel-left</object-name>
+		<object-name>pilotlabel-right</object-name>
+		<ambient>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+		</ambient>
+		<specular>
+			<red>0.1</red>
+			<green>0.1</green>
+			<blue>0.1</blue>
+		</specular>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>acserial-left</object-name>
+		<object-name>acserial-right</object-name>
+		<ambient>
+			<red>0.5</red>
+			<green>0.5</green>
+			<blue>0.5</blue>
+		</ambient>
+		<diffuse>
+			<red>0.4</red>
+			<green>0.4</green>
+			<blue>0.4</blue>
+		</diffuse>
+	</animation>
+</PropertyList>

@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>hydraulic.ac</path>
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<condition>
+			<property>/sim/rendering/rembrandt/enabled</property>
+		</condition>
+		<object-name>hyd1</object-name>
+	</effect>
+	<animation>
+		<type>material</type>
+		<object-name>hyd1</object-name>
+		<diffuse>
+			<red>0.8</red>
+			<green>0.8</green>
+			<blue>0.8</blue>
+		</diffuse>
+		<emission>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>valve.L</object-name>
+		<diffuse>
+			<red>0.0</red>
+			<green>0.9</green>
+			<blue>0.0</blue>
+		</diffuse>
+		<emission>
+			<red>0.0</red>
+			<green>0.5</green>
+			<blue>0.0</blue>
+		</emission>
+	</animation>
+
+
+	<!-- Buttons -->
+	<text>
+		<name>fuel</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.054</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FUEL</text>
+	</text>
+	<text>
+		<name>engine</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.028</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ENG</text>
+	</text>
+	<text>
+		<name>hydraulic</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.004</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">HYD</text>
+	</text>
+	<text>
+		<name>waypoint</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.020</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>frequency</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>.041</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FREQ</text>
+	</text>
+	<text>
+		<name>atck</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.081</y-m>
+			<z-m>-0.054</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ATCK</text>
+	</text>
+	<text>
+		<name>eadi</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>-0.054</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">EADI</text>
+	</text>
+	<text>
+		<name>proc</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>-0.033</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ACUE</text>
+	</text>
+	<text>
+		<name>navpos1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>0.082</y-m>
+			<z-m>0.062</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>navpos2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>0.081</y-m>
+			<z-m>0.055</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">DISP</text>
+	</text>
+	<animation>
+		<type>material</type>
+		<object-name>fuel</object-name>
+		<object-name>engine</object-name>
+		<object-name>hydraulic</object-name>
+		<object-name>waypoint</object-name>
+		<object-name>frequency</object-name>
+		<object-name>norm</object-name>
+		<object-name>proc</object-name>
+		<object-name>atck</object-name>
+		<object-name>eadi</object-name>
+		<object-name>navpos1</object-name>
+		<object-name>navpos2</object-name>
+		<object-name>tcas</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+</PropertyList>

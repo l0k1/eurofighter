@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+
+ <path>keys.ac</path>
+ 
+ <text>
+  <name>page.line1</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>0.0025</y-m>
+   <z-m>0.0965</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">CRS</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>center-center</alignment>
+ </text>
+ 
+  <text>
+  <name>page.line1</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>0.0025</y-m>
+   <z-m>0.09</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">GO</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>center-center</alignment>
+ </text>
+ 
+ <text>
+  <name>screen.line1</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>-0.0255</y-m>
+   <z-m>0.071</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">H:</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+ <text>
+  <name>screen.line1</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>-0.018</y-m>
+   <z-m>0.071</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">number-value</type>
+  <format type="string">%3.1f</format>
+  <property>/instrumentation/MDEF/keypad/course-mode/target-heading-deg</property>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+ <text>
+  <name>screen.line1.mag</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>0.005</y-m>
+   <z-m>0.071</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">MAG</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+ <text>
+  <name>screen.line1.true</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>0.005</y-m>
+   <z-m>0.071</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">TRUE</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+  <text>
+  <name>screen.line2</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>-0.0255</y-m>
+   <z-m>0.0625</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">A:</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+ <text>
+  <name>screen.line2</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>-0.018</y-m>
+   <z-m>0.0625</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">number-value</type>
+  <format type="string">%5.0f</format>
+  <property>/instrumentation/MDEF/keypad/course-mode/target-altitude-ft</property>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+  <text>
+  <name>screen.line2</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>0.0025</y-m>
+   <z-m>0.0625</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">FT</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+ <text>
+  <name>screen.line3</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>-0.0255</y-m>
+   <z-m>0.053</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">S:</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+
+ <text>
+  <name>screen.line3.kts</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>-0.018</y-m>
+   <z-m>0.053</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">number-value</type>
+  <format type="string">%3.0f</format>
+  <property>/instrumentation/MDEF/keypad/course-mode/target-speed-kt</property>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+ <text>
+  <name>screen.line3.mach</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>-0.018</y-m>
+   <z-m>0.053</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">number-value</type>
+  <format type="string">%1.2f</format>
+  <property>/instrumentation/MDEF/keypad/course-mode/target-speed-mach</property>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+  <text>
+  <name>screen.line3.kts</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>-0.0025</y-m>
+   <z-m>0.053</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">KT</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+ <text>
+  <name>screen.line3.mach</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>-0.0025</y-m>
+   <z-m>0.053</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">M</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+  <text>
+  <name>screen.line3</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>0.0255</y-m>
+   <z-m>0.045</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">GO?</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>right-center</alignment>
+ </text>
+ 
+ <text>
+  <name>keypad.decimal</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.0045</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>0.011</y-m>
+   <z-m>-0.052</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">literal</type>
+  <text type="string">SAVE</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>center-center</alignment>
+ </text>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>screen.line1.true</object-name>
+  <condition> 
+   <equals>
+    <property>/instrumentation/MDEF/keypad/course-mode/heading-mode</property>
+	<value>true</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>screen.line1.mag</object-name>
+  <condition>
+   <equals>
+    <property>/instrumentation/MDEF/keypad/course-mode/heading-mode</property>
+	<value>mag</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>screen.line3.kts</object-name>
+  <condition> 
+   <equals>
+    <property>/instrumentation/MDEF/keypad/course-mode/kts-mach</property>
+	<value>kts</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>screen.line3.mach</object-name>
+  <condition>
+   <equals>
+    <property>/instrumentation/MDEF/keypad/course-mode/kts-mach</property>
+	<value>mach</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>pick</type>
+  <object-name>MDEFEntryKey.018</object-name>
+  <action>
+   <button>0</button>
+	<binding>
+		<command>nasal</command>
+		 <script>MDEF.key("save");</script>
+	</binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MDEFEntryKey.016</object-name>
+  <object-name>label.clr</object-name>
+  <action>
+   <button>0</button>
+	<binding>
+		<command>nasal</command>
+		 <script>MDEF.clear();</script>
+	</binding>
+  </action>
+ </animation>
+ 
+ <animation>
+  <type>pick</type>
+  <object-name>MDEFEntryKey.019</object-name>
+  <object-name>label.ent</object-name>
+  <action>
+   <button>0</button>
+	<binding>
+		<command>nasal</command>
+		 <script>MDEF.crs_enter();</script>
+	</binding>
+  </action>
+ </animation>
+ 
+  <effect>
+   <inherits-from>Effects/model-transparent</inherits-from>
+   <condition>
+    <property>/sim/rendering/rembrandt/enabled</property>
+   </condition>
+   <object-name>label.clr</object-name>
+   <object-name>label.ent</object-name>
+  </effect>
+ 
+ <animation>
+  <type>material</type>
+  <object-name>page.line1</object-name>
+  <object-name>page.line2</object-name>
+  <object-name>screen.line1</object-name>
+  <object-name>screen.line1.mag</object-name>
+  <object-name>screen.line1.true</object-name>
+  <object-name>screen.line2</object-name>
+  <object-name>screen.line3</object-name>
+  <object-name>screen.line4</object-name>
+  <object-name>screen.line3.kts</object-name>
+  <object-name>screen.line3.mach</object-name>
+  <object-name>keypad.1</object-name>
+  <object-name>keypad.2</object-name>
+  <object-name>keypad.3</object-name>
+  <object-name>keypad.4</object-name>
+  <object-name>keypad.5</object-name>
+  <object-name>keypad.6</object-name>
+  <object-name>keypad.7</object-name>
+  <object-name>keypad.8</object-name>
+  <object-name>keypad.9</object-name>
+  <object-name>keypad.0</object-name>
+  <object-name>keypad.decimal</object-name>
+  <object-name>keypad.kt</object-name>
+  <object-name>keypad.m</object-name>
+  <object-name>label.clr</object-name>
+  <object-name>label.ent</object-name>  
+  <diffuse>
+    <red>0.2</red>
+    <green>0.7</green>
+    <blue>0.2</blue>
+  </diffuse>
+  <emission>
+    <red>0.2</red>
+    <green>0.7</green>
+    <blue>0.2</blue>
+    <factor-prop>/instrumentation/illumination/softkeys</factor-prop>
+  </emission>
+ </animation>
+
+</PropertyList>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--?xml version="1.0" encoding="ISO-8859-1"?-->
+
+<PropertyList>
+
+  <!-- MFD Center border-->
+	<model>
+		<name>MFD-Screen</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MFDs/NAV2D/MFD3d.xml</path>
+		<offsets>
+			<x-m>  0.008 </x-m>
+			<y-m>  0.000 </y-m>
+			<z-m> -0.010 </z-m>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>scale</type>
+		<object-name>MFD-Screen</object-name>
+		<x-offset> 1.00 </x-offset>
+		<y-offset> 0.90 </y-offset>
+		<z-offset> 0.87 </z-offset>
+	</animation>
+
+</PropertyList>

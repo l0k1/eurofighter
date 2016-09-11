@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+<sim>
+    <model>
+        <livery>
+            <name type="string">FGUK</name>
+            <index type="int">6</index>
+            <texture>Liveries/FGUK.png</texture>
+            <rudder>
+	  		<texture>Liveries/FGUK.png</texture>
+            </rudder>
+	    <RAFlights type="bool">true</RAFlights> <!-- RAF alternate beacon -->
+	    <beacon type="bool">true</beacon> <!-- red -->
+	    <strobe type="bool">true</strobe> <!-- white -->
+        </livery>
+    </model>
+</sim>
+</PropertyList>

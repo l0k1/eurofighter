@@ -1,0 +1,49 @@
+AC3Db
+MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
+MATERIAL "instr-lights.001" rgb 1 1 1 amb 0.2 0.2 0.2 emis 0 0 0 spec 0 0 0 shi 32 trans 0
+OBJECT world
+kids 1
+OBJECT group
+name "UpperCockpit"
+kids 1
+OBJECT group
+name "ASI"
+kids 2
+OBJECT poly
+name "indalti.001"
+data 11
+indalti.001
+texture "vii.png"
+texrep 1 1
+crease 30.000000
+numvert 4
+3.526442 1.098386 -0.105224
+3.526443 1.047861 -0.105224
+3.526443 1.047861 -0.097206
+3.526442 1.098386 -0.097206
+numsurf 1
+SURF 0x00
+mat 1
+refs 4
+1 0.868213951588 0.036086242646
+0 0.831055045128 0.991739690304
+3 0.131786122918 0.990460693836
+2 0.168944835663 0.0348075702786
+kids 0
+OBJECT poly
+name "indaltlmob.001"
+data 14
+indaltlmob.001
+crease 30.000000
+numvert 3
+3.526733 1.070861 -0.105425
+3.526738 1.074762 -0.105425
+3.526736 1.072805 -0.103256
+numsurf 1
+SURF 0x00
+mat 1
+refs 3
+0 0.726433634758 0.915748417377
+1 0.726436793804 0.936475098133
+2 0.714912712574 0.92607831955
+kids 0

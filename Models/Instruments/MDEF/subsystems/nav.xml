@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PropertyList>
+	<path>softkeys.ac</path>
+	<animation>
+		<object-name>next-wpt1</object-name>
+		<object-name>next-wpt2</object-name>
+		<object-name>prev-wpt1</object-name>
+		<object-name>prev-wpt2</object-name>
+		<object-name>rte-mgr1</object-name>
+		<object-name>rte-mgr2</object-name>
+		<type>material</type>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.01.on</object-name>
+		<object-name>softkeys.01.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>route-manager</dialog-name>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.06.on</object-name>
+		<object-name>softkeys.06.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/autopilot/route-manager/input", "@previous")</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.07.on</object-name>
+		<object-name>softkeys.07.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/autopilot/route-manager/input", "@next")</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>rte-mgr1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">RTE</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>rte-mgr2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">MGR</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>prev-wpt1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">PREV</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>prev-wpt2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">WPT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>next-wpt1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">NEXT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>next-wpt2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">WPT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+</PropertyList>

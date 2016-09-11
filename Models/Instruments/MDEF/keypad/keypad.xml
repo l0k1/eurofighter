@@ -1,0 +1,722 @@
+<PropertyList>
+
+ <path>keys.ac</path>
+ 
+ <model>
+  <name>keypad-off</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/off.xml</path>
+ </model>
+ 
+  <model>
+  <name>keypad-sby</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/sby.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-tacan</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/tacan.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-tacsby</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/tacsby.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-hdg</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/hdg.xml</path>
+ </model>
+
+ <model>
+  <name>keypad-truhdg</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/truhdg.xml</path>
+ </model>
+
+ <model>
+  <name>keypad-cditac</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/cditac.xml</path>
+ </model>
+
+ <model>
+  <name>keypad-alt</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/alt.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-agl</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/agl.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-cdi1</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/cdi1.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-cdi2</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/cdi2.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-vsi</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/vsi.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-spdkt</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/spd-kts.xml</path>
+ </model>
+ 
+  <model>
+  <name>keypad-spdm</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/spd-mach.xml</path>
+ </model>
+ 
+ <!--model>
+  <name>keypad-crs-step1</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/crs-step1.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-crs-step2</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/crs-step2.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-crs-step3</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/crs-step3.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-crs-step4</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/crs-step4.xml</path>
+ </model-->
+ 
+ <model>
+  <name>keypad-chan-m1</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/chan-m1.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-chan-m2</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/chan-m2.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-adfact</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/adfact.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-adfsby</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/adfsby.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-adf2act</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/adf2act.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-adf2sby</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/adf2sby.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-nav1a</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/nav1a.xml</path>
+ </model>
+ 
+  <model>
+  <name>keypad-nav1s</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/nav1s.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-nav2a</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/nav2a.xml</path>
+ </model>
+ 
+ <model>
+  <name>keypad-nav2s</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/nav2s.xml</path>
+ </model>
+ 
+ <!--model>
+  <name>keypad-com1a</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/com1a.xml</path>
+ </model-->
+ 
+ <model>
+  <name>keypad-com1s</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/com1s.xml</path>
+ </model>
+ 
+ <!--model>
+  <name>keypad-com2a</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/com2a.xml</path>
+ </model-->
+ 
+ <model>
+  <name>keypad-com2s</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/com2s.xml</path>
+ </model>
+
+ <model>
+  <name>keypad-xpdrmod1</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/xpdrmod1.xml</path>
+ </model>
+
+ <model>
+  <name>keypad-xpdrmod3</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/xpdrmod3.xml</path>
+ </model>
+
+ <model>
+  <name>keypad-bingofuel</name>
+  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/bingofuel.xml</path>
+ </model>
+
+
+
+ <animation>
+  <type>select</type>
+  <object-name>keypad-off</object-name>
+  <condition>
+   <less-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>26</value>
+   </less-than>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-sby</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value></value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>keypad-bingofuel</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>bingofuel</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-tacan</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>tacan</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-tacsby</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>tacsby</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-cditac</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>cditac</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-hdg</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>hdg</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>keypad-truhdg</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>truhdg</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>keypad-alt</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>alt</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-agl</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>agl</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-cdi1</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>cdi1</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-cdi2</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>cdi2</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-vsi</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>vsi</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-spdkt</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>spd-kts</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-spdm</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>spd-mach</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-crs-step1</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>crs</value>
+   </equals>
+    <equals>
+    <property>/instrumentation/MDEF/keypad/step</property>
+	<value>1</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-crs-step2</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>crs</value>
+   </equals>
+    <equals>
+    <property>/instrumentation/MDEF/keypad/step</property>
+	<value>2</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-crs-step3</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>crs</value>
+   </equals>
+    <equals>
+    <property>/instrumentation/MDEF/keypad/step</property>
+	<value>3</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-crs-step4</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>crs</value>
+   </equals>
+    <equals>
+    <property>/instrumentation/MDEF/keypad/step</property>
+	<value>4</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-chan-m1</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>chan-m1</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-chan-m2</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>chan-m2</value>
+   </equals>
+  </condition>
+ </animation>
+
+
+ <animation>
+  <type>select</type>
+  <object-name>keypad-adfact</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>adfact</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-adfsby</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>adfsby</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-adf2act</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>adf2act</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-adf2sby</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>adf2sby</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-nav1a</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>nav1a</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-nav1s</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>nav1s</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-nav2a</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>nav2a</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-nav2s</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>nav2s</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-com1a</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>com1a</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-com1s</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>com1s</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-com2a</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>com2a</value>
+   </equals>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>keypad-com2s</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>com2s</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>keypad-xpdrmod1</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>xpdrmod1</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>keypad-xpdrmod3</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/electrical/outputs/avionics/MDEF</property>
+    <value>21</value>
+   </greater-than>
+   <equals>
+    <property>/instrumentation/MDEF/keypad-page-selected</property>
+	<value>xpdrmod3</value>
+   </equals>
+  </condition>
+ </animation>
+
+
+</PropertyList>

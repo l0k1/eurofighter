@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>Aircraft/eurofighter/Models/Instruments/MFDs/mfd-buttons.ac</path>
+
+	<text>
+		<name>norm</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>0.082</y-m>
+			<z-m>0.036</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ON</text>
+	</text>
+	<animation>
+		<type>pick</type>
+		<object-name>R2</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>instrumentation/MFD[2]/page-selected</property>
+				<value>radar</value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>store</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>0.016</y-m>
+			<z-m>-0.085</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">STOR</text>
+	</text>
+	<animation>
+		<type>pick</type>
+		<object-name>C4</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>instrumentation/MFD[2]/page-selected</property>
+				<value>stor</value>
+			</binding>
+		</action>
+	</animation>
+
+	<!-- lighting -->
+	<animation>
+		<type>material</type>
+		<object-name>norm</object-name>
+		<object-name>store</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+</PropertyList>

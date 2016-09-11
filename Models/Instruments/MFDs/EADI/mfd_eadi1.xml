@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<PropertyList>
+	<path>mfd_eadi.ac</path>
+
+  <!-- *************Text*************** -->
+	<model>
+		<name>text3dEADI</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MFDs/EADI//mfd_3dtextEADI1.xml</path>
+		<offsets>
+			<x-m>  0.000 </x-m>
+			<y-m>  0.000 </y-m>
+			<z-m>  0.000 </z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+		<condition>
+			<equals>
+				<property>/instrumentation/MFD[1]/page-selected</property>
+				<value>eadi</value>
+			</equals>
+		</condition>
+	</model>
+
+	<animation>
+    <!-- EADI -->
+		<object-name>EADI-Imarker</object-name>
+		<object-name>EADI-Mmarker</object-name>
+		<object-name>EADI-Omarker</object-name>
+		<object-name>EADI-center</object-name>
+		<object-name>EADI-att</object-name>
+		<object-name>EADI-gs.needle</object-name>
+		<object-name>EADI-gs.scale</object-name>
+		<object-name>EADI-yaw-line</object-name>
+		<object-name>EADI-index</object-name>
+		<object-name>EADI-rep</object-name>
+		<object-name>EADI-alt-marker+</object-name>
+		<object-name>EADI-alt-marker---</object-name>
+		<object-name>EADI-ais-marker</object-name>
+		<object-name>EADI-ecran</object-name>
+		<object-name>text3dEADI</object-name>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>EADI-ecran</object-name>
+		<object-name>EADI-Imarker</object-name>
+		<object-name>EADI-Mmarker</object-name>
+		<object-name>EADI-Omarker</object-name>
+		<object-name>EADI-center</object-name>
+		<object-name>EADI-att</object-name>
+		<object-name>EADI-gs.needle</object-name>
+		<object-name>EADI-gs.scale</object-name>
+		<object-name>EADI-yaw-line</object-name>
+		<object-name>EADI-index</object-name>
+		<object-name>EADI-rep</object-name>
+		<object-name>EADI-alt-marker+</object-name>
+		<object-name>EADI-alt-marker---</object-name>
+		<object-name>EADI-ais-marker</object-name>
+		<emission>
+			<factor-prop>instrumentation/illumination/LCD</factor-prop>
+			<red>   1 </red>
+			<green> 1 </green>
+			<blue>  1 </blue>
+		</emission>
+	</animation>    
+ 
+  <!-- ***************EADI************* -->
+	<animation>
+		<type>texmultiple</type>
+		<object-name>EADI-att</object-name>
+		<transform>
+			<property>orientation/pitch-deg</property>
+			<subtype>textranslate</subtype>
+			<factor> 0.0055 </factor>
+			<axis>
+				<x> 0 </x>
+				<y> 1 </y>
+				<z> 0 </z>
+			</axis>
+		</transform>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>EADI-att</object-name>
+		<property>orientation/roll-deg</property>
+		<factor>1</factor>
+		<axis>
+			<x> 1 </x>
+			<y> 0 </y>
+			<z> 0 </z>
+		</axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>EADI-index</object-name>
+		<property>orientation/roll-deg</property>
+		<center>
+			<x-m>0</x-m>
+			<y-m>-0</y-m>
+			<z-m>-0</z-m>
+		</center>
+		<axis>
+			<x> -1 </x>
+			<y>  0 </y>
+			<z>  0 </z>
+		</axis>
+	</animation>
+ 
+ <!-- GS -->
+	<animation>
+		<type>select</type>
+		<object-name>EADI-gs.needle</object-name>
+		<condition>
+			<property>autopilot/internal/gs-valid</property>
+		</condition>
+	</animation>
+	<animation>
+		<type>translate</type>
+		<object-name>EADI-gs.needle</object-name>
+		<property>autopilot/internal/gs-deflection</property>
+		<interpolation>
+			<entry><ind>-1.0</ind><dep>-0.0162</dep></entry>
+			<entry><ind> 0  </ind><dep> 0     </dep></entry>
+			<entry><ind> 1.0</ind><dep> 0.0162</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+ 
+ <!-- ILS -->
+	<animation>
+		<type>select</type>
+		<object-name>EADI-yaw-line</object-name>
+		<condition>
+			<property>autopilot/internal/gs-valid</property>
+		</condition>
+	</animation>
+	<animation>
+		<type>translate</type>
+		<object-name>EADI-yaw-line</object-name>
+		<property>autopilot/internal/heading-needle-deflection</property>
+		<interpolation>
+			<entry><ind>-999</ind><dep>-0.02</dep></entry>
+			<entry><ind> -10</ind><dep>-0.02</dep></entry>
+			<entry><ind>   0</ind><dep> 0.00</dep></entry>
+			<entry><ind>  10</ind><dep> 0.02</dep></entry>
+			<entry><ind> 999</ind><dep> 0.02</dep></entry>
+		</interpolation>
+		<axis>
+			<x> 0 </x>
+			<y> 1 </y>
+			<z> 0 </z>
+		</axis>
+	</animation>
+ 
+ <!-- ILS Markers -->
+	<animation>
+		<type>select</type>
+		<object-name>EADI-Omarker</object-name>
+		<condition>
+			<property>instrumentation/marker-beacon/outer</property>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>EADI-Mmarker</object-name>
+		<condition>
+			<property>instrumentation/marker-beacon/middle</property>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>EADI-Imarker</object-name>
+		<condition>
+			<property>instrumentation/marker-beacon/inner</property>
+		</condition>
+	</animation>
+
+
+ <!--Vertical speed-->
+ <!--montee-->
+	<animation>
+		<type>select</type>
+		<object-name>EADI-alt-marker+</object-name>
+		<condition>
+			<greater-than>
+				<property>velocities/vertical-speed-fps</property>
+				<value>5</value>
+			</greater-than>
+		</condition>
+	</animation>
+	<animation>
+		<type>translate</type>
+		<object-name>EADI-alt-marker+</object-name>
+		<property>velocities/vertical-speed-fps</property>
+		<scale>60</scale>
+		<interpolation>
+			<entry><ind>    0</ind><dep>0    </dep></entry>
+			<entry><ind>     500 </ind><dep>  0.021573 </dep></entry>
+			<entry><ind>    1000 </ind><dep>  0.021595 </dep></entry>
+			<entry><ind>    1500 </ind><dep>  0.021656 </dep></entry>
+			<entry><ind>    2000 </ind><dep>  0.021667 </dep></entry>
+			<entry><ind>   10000 </ind><dep>  0.021689 </dep></entry>
+			<entry><ind>15000</ind><dep>0.0217</dep></entry>
+		</interpolation>
+		<axis>
+			<x> 0 </x>
+			<y> 0 </y>
+			<z> 1 </z>
+		</axis>
+	</animation>
+	<animation>
+		<type>translate</type>
+		<object-name>EADI-alt-marker+</object-name>
+		<property>velocities/vertical-speed-fps</property>
+		<scale>60</scale>
+		<interpolation>
+			<entry><ind>    0</ind><dep>0     </dep></entry>
+			<entry><ind>15000</ind><dep>0.0029</dep></entry>
+		</interpolation>
+		<axis>
+			<x> 1 </x>
+			<y> 0 </y>
+			<z> 0 </z>
+		</axis>
+	</animation>
+ 
+  <!--descente-->
+	<animation>
+		<type>select</type>
+		<object-name>EADI-alt-marker---</object-name>
+		<condition>
+			<less-than>
+				<property>velocities/vertical-speed-fps</property>
+				<value>-5</value>
+			</less-than>
+		</condition>
+	</animation>
+	<animation>
+		<type>translate</type>
+		<object-name>EADI-alt-marker---</object-name>
+		<property>velocities/vertical-speed-fps</property>
+		<scale>60</scale>
+		<interpolation>
+			<entry><ind>-15000</ind><dep>-0.0259</dep></entry>
+			<entry><ind>  -10000 </ind><dep> -0.025899 </dep></entry>
+			<entry><ind>   -2000 </ind><dep> -0.025897 </dep></entry>
+			<entry><ind>   -1500 </ind><dep> -0.025896 </dep></entry>
+			<entry><ind>   -1000 </ind><dep> -0.025895 </dep></entry>
+			<entry><ind>    -500 </ind><dep> -0.025893 </dep></entry>
+			<entry><ind>     0</ind><dep> 0    </dep></entry>
+		</interpolation>
+		<axis>
+			<x> 0 </x>
+			<y> 0 </y>
+			<z> 1 </z>
+		</axis>
+	</animation>
+	<animation>
+		<type>translate</type>
+		<object-name>EADI-alt-marker---</object-name>
+		<property>velocities/vertical-speed-fps</property>
+		<scale>60</scale>
+		<interpolation>
+			<entry><ind> 0     </ind><dep>0     </dep></entry>
+			<entry><ind>-15000 </ind><dep>0.0029 </dep></entry>
+		</interpolation>
+		<axis>
+			<x> 1 </x>
+			<y> 0 </y>
+			<z> 0 </z>
+		</axis>
+	</animation>   
+
+  <!--Altimeter-setting-->
+	<animation>
+		<type>pick</type>
+		<object-name>HpaPlus</object-name>
+		<action>
+			<button>0</button> <!--  scroll up -->
+			<repeatable>true</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/model/click</property>
+			</binding>
+			<binding>
+				<command>property-adjust</command>
+				<property>instrumentation/altimeter/setting-inhg</property>
+				<step>0.01</step>
+				<min>25</min>
+				<max>36</max>
+				<wrap>true</wrap>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>HpaMin</object-name>
+		<action>
+			<button>0</button> <!--  scroll down -->
+			<repeatable>true</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/model/click</property>
+			</binding>
+			<binding>
+				<command>property-adjust</command>
+				<property>instrumentation/altimeter/setting-inhg</property>
+				<step>-0.01</step>
+				<min>25</min>
+				<max>36</max>
+				<wrap>true</wrap>
+			</binding>
+		</action>
+	</animation>
+</PropertyList>

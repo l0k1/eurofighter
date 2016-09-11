@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <!-- OSG Particles  <pass>true</pass>-->
+	<particlesystem>
+		<name>vortex</name>
+		<type>trail</type>
+		<pass>true</pass>
+		<offsets>
+			<x-m>  0.000 </x-m>
+			<y-m>  0.000 </y-m>
+			<z-m> -0.000 </z-m>
+			<roll-deg>    0 </roll-deg>
+			<pitch-deg>   0.000 </pitch-deg>
+			<heading-deg> 0.000 </heading-deg>
+		</offsets>
+		<texture>trail_smoke.png</texture>
+		<condition>
+			<property>sim/multiplay/generic/int[19]</property>
+		</condition>
+		<emissive>false</emissive>
+		<lighting>false</lighting>
+		<attach>world</attach> <!-- world / local-->
+		<placer>
+			<type>point</type> <!-- sector / segments / point -->
+		</placer>
+		<shooter>
+			<theta-min-deg>89</theta-min-deg>
+			<theta-max-deg>91</theta-max-deg>
+			<phi-min-deg>-1</phi-min-deg>
+			<phi-max-deg>1</phi-max-deg>
+			<speed-mps>
+				<value>0</value>
+				<spread>0</spread>
+			</speed-mps>
+			<rotation-speed>
+				<x-min-deg-sec>0</x-min-deg-sec>
+				<y-min-deg-sec>0</y-min-deg-sec>
+				<z-min-deg-sec>0</z-min-deg-sec>
+				<x-max-deg-sec>0</x-max-deg-sec>
+				<y-max-deg-sec>0</y-max-deg-sec>
+				<z-max-deg-sec>0</z-max-deg-sec>
+			</rotation-speed>
+		</shooter>
+		<counter>
+			<particles-per-sec>
+				<value>120</value>
+				<spread>1</spread>
+			</particles-per-sec>
+		</counter>
+		<align>billboard</align>
+		<particle>
+			<start>
+				<color>
+					<red><value>1</value></red>
+					<green><value>1</value></green>
+					<blue><value>1</value></blue>
+					<alpha><value>0.4</value></alpha>
+				</color>
+				<size>
+					<value>0.1</value>
+				</size>
+			</start>
+			<end>
+				<color>
+					<red><value>1</value></red>
+					<green><value>1</value></green>
+					<blue><value>1</value></blue>
+					<alpha><value>0.005</value></alpha>
+				</color>
+				<size>
+					<value>1</value>
+				</size>
+			</end>
+			<life-sec>
+				<value>0.8</value>
+			</life-sec>
+			<mass-kg>0.01</mass-kg>
+			<radius-m>0.1</radius-m>
+		</particle>
+		<program>
+			<fluid>air</fluid>         <!-- air / water -->
+			<gravity>false</gravity>
+			<wind>true</wind>
+		</program>
+	</particlesystem>
+</PropertyList>

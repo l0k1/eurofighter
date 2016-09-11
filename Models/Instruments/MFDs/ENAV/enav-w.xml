@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<model>
+		<name>enav</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MFDs/ENAV/enav.xml</path>
+		<offsets>
+			<x-m>0.022</x-m>
+			<y-m>0.001</y-m>
+			<z-m>0.005</z-m>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>scale</type>
+		<object-name>enav</object-name>
+		<x-factor>1.0</x-factor>
+		<x-offset>1.0</x-offset>
+		<y-factor>1.0</y-factor>
+		<y-offset>1.4</y-offset>
+		<z-factor>1.0</z-factor>
+		<z-offset>1.4</z-offset>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+	</animation>
+
+<!-- Buttons -->
+	<text>
+		<name>fuel</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.054</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FUEL</text>
+	</text>
+	<text>
+		<name>engine</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.028</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ENG</text>
+	</text>
+	<text>
+		<name>hydraulic</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.004</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">HYD</text>
+	</text>
+	<text>
+		<name>waypoint</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.020</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>frequency</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>.041</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FREQ</text>
+	</text>
+	<text>
+		<name>wind</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.081</y-m>
+			<z-m>0.037</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">WIND</text>
+	</text>
+
+<!-- text nav -->
+
+	<!--text>
+	 <name>tacan</name>
+	  <font>lcd.txf</font>
+    <character-size type="double">0.0065</character-size>
+    <offsets>
+      <pitch-deg>90</pitch-deg>
+      <heading-deg>0</heading-deg>
+      <roll-deg>90</roll-deg>
+      <x-m>0.018</x-m>
+      <y-m>-0.098</y-m>
+      <z-m>0.061</z-m>
+    </offsets>
+	  <type type="string">literal</type>
+	  <text type="string">TACAN</text>
+	</text-->
+	<text>
+		<name>navsrc1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.092</y-m>
+			<z-m>0.062</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>navsrc2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.092</y-m>
+			<z-m>0.055</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">SRC</text>
+	</text>
+	<text>
+		<name>nav1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.094</y-m>
+			<z-m> 0.037</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV1</text>
+	</text>
+	<text>
+		<name>nav2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.094</y-m>
+			<z-m> 0.014</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV2</text>
+	</text>
+	<text>
+		<name>nav3</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>-0.009</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV3</text>
+	</text>
+	<text>
+		<name>navpos1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.082</y-m>
+			<z-m>0.062</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>navpos2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.081</y-m>
+			<z-m>0.055</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">DISP</text>
+	</text>
+	<text>
+		<name>atck</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.081</y-m>
+			<z-m>-0.054</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ATCK</text>
+	</text>
+	<text>
+		<name>eadi</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>-0.054</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">EADI</text>
+	</text>
+	<text>
+		<name>proc</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>-0.033</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ACUE</text>
+	</text>
+
+	<animation>
+		<type>material</type>
+		<object-name>wind</object-name>
+		<object-name>fuel</object-name>
+		<object-name>engine</object-name>
+		<object-name>hydraulic</object-name>
+		<object-name>waypoint</object-name>
+		<object-name>frequency</object-name>
+		<object-name>proc</object-name>
+		<object-name>atck</object-name>
+		<object-name>eadi</object-name>
+		<object-name>tacan</object-name>
+		<object-name>nav1</object-name>
+		<object-name>nav2</object-name>
+		<object-name>nav3</object-name>
+		<object-name>navsrc1</object-name>
+		<object-name>navsrc2</object-name>
+		<object-name>navpos1</object-name>
+		<object-name>navpos2</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<object-name>enav</object-name>
+		<type>material</type>
+		<emission>
+			<factor-prop>instrumentation/illumination/LCD</factor-prop>
+			<red>0.5</red>
+			<green>0.5</green>
+			<blue>0.5</blue>
+		</emission>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.1</green>
+			<blue>0.1</blue>
+		</diffuse>
+	</animation>
+</PropertyList>
+
+

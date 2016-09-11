@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Manual Data Entry Facility -  Page -->
+<PropertyList>
+	<path>Aircraft/eurofighter/Models/Instruments/MDEF/softkeys.ac</path>
+	<animation>
+		<object-name>nav1</object-name>
+		<object-name>vs1</object-name>
+		<object-name>alt1</object-name>
+		<object-name>app1</object-name>
+		<object-name>apil1</object-name>
+		<object-name>spd1</object-name>
+		<object-name>hdg1</object-name>
+		<object-name>sby1</object-name>
+		<object-name>nav2</object-name>
+		<object-name>vs2</object-name>
+		<object-name>alt2</object-name>
+		<object-name>app2</object-name>
+		<object-name>apil2</object-name>
+		<object-name>spd2</object-name>
+		<object-name>hdg2</object-name>
+		<object-name>sby2</object-name>
+		<type>material</type>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.01.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<or>
+				<not-equals>
+					<property>/systems/autopilot/locks/AP-status</property>
+					<value>AP1</value>
+				</not-equals>
+				<and>
+					<not-equals>
+						<property>/systems/autopilot/locks/AP-status</property>
+						<value>TEMP DISENGAGE</value>
+					</not-equals>
+					<not-equals>
+						<property>sim/model/lights/pa-blink/state</property>
+						<value>true</value>
+					</not-equals>
+				</and>
+			</or>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.01.on</object-name>
+		<object-name>softkeys.01.off</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/model/click</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>typhoon.FD_set_mode("ap");</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>apil1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">AP</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>apil2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ON</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.02.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<and>
+				<not-equals>
+					<property>/systems/autopilot/locks/heading</property>
+					<value>ROLL</value>
+				</not-equals>
+				<not-equals>
+					<property>/systems/autopilot/locks/altitude</property>
+					<value>PTCH</value>
+				</not-equals>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.02.on</object-name>
+		<object-name>softkeys.02.off</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/model/click</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>typhoon.FD_set_mode("stby")</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>sby1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">STBY</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>sby2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ON</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.03.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/autopilot/locks/altitude</property>
+				<value>VS</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.03.on</object-name>
+		<object-name>softkeys.03.off</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/model/click</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>typhoon.FD_set_mode("vs")</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>vs1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">VS</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>vs2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ON</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.04.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/autopilot/locks/altitude</property>
+				<value>ALT</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.04.on</object-name>
+		<object-name>softkeys.04.off</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/model/click</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>typhoon.FD_set_mode("alt")</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>alt1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ALT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>alt2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ON</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.05.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/autopilot/locks/heading</property>
+				<value>HDG</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.05.on</object-name>
+		<object-name>softkeys.05.off</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/model/click</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>typhoon.FD_set_mode("hdg")</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>hdg1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">HDG</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>hdg2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ON</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.06.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<or>
+				<not-equals>
+					<property>/systems/autopilot/locks/heading</property>
+					<value>LNAV</value>
+				</not-equals>
+				<not-equals>
+					<property>/systems/autopilot/locks/heading</property>
+					<value>VOR</value>
+				</not-equals>
+				<not-equals>
+					<property>/systems/autopilot/locks/heading</property>
+					<value>LOC</value>
+				</not-equals>
+				<not-equals>
+					<property>/systems/autopilot/locks/heading-arm</property>
+					<value>VOR</value>
+				</not-equals>
+				<not-equals>
+					<property>/systems/autopilot/locks/heading-arm</property>
+					<value>LOC</value>
+				</not-equals>
+			</or>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.06.on</object-name>
+		<object-name>softkeys.06.off</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/model/click</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>typhoon.FD_set_mode("nav")</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>nav1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">NAV1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>nav2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ON</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.07.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<or>
+				<not-equals>
+					<property>/systems/autopilot/locks/altitude-arm</property>
+					<value>GS</value>
+				</not-equals>
+				<not-equals>
+					<property>/systems/autopilot/locks/altitude</property>
+					<value>GS</value>
+				</not-equals>
+			</or>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.07.on</object-name>
+		<object-name>softkeys.07.off</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/model/click</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>typhoon.FD_set_mode("app")</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>app1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">APP</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>app2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ON</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.08.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/systems/autopilot/locks/speed</property>
+				<value>SPD</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.08.on</object-name>
+		<object-name>softkeys.08.off</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/model/click</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>typhoon.FD_set_mode("spd");</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>spd1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">SPD</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>spd2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ON</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+</PropertyList>

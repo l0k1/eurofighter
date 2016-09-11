@@ -1,0 +1,273 @@
+<PropertyList>
+	<path>mids-panel.ac</path>
+	<background>Aircraft/eurofighter/Models/Instruments/MIDS/mids-screen.png</background>
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>20</max-m>
+	</animation>
+	<animation>
+		<object-name>ac-number</object-name>
+		<object-name>ac-callsign</object-name>
+		<object-name>ac-model</object-name>
+		<object-name>ac-bearing</object-name>
+		<object-name>ac-distance</object-name>
+		<object-name>ac-altitude</object-name>
+		<object-name>ac-bearing1</object-name>
+		<object-name>ac-distance1</object-name>
+		<object-name>ac-altitude1</object-name>
+		<object-name>zulu</object-name>
+		<object-name>zulu-label</object-name>
+		<object-name>localtime</object-name>
+		<object-name>localtime-label</object-name>
+		<object-name>localtime1</object-name>
+		<object-name>localtime-label1</object-name>
+		<object-name>localtime2</object-name>
+		<object-name>localtime-label2</object-name>
+		<type>material</type>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+ 
+ <!-- Buttons -->
+ 
+ 
+<!-- Display -->
+	<!--text>
+		<name>ac-callsign</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0</y-m>
+			<z-m>1.118</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/ai/closest/callsign</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>ac-bearing1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.020</y-m>
+			<z-m>1.1125</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">Brg:</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>ac-bearing</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0</y-m>
+			<z-m>1.1125</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<property type="string">/ai/closest/bearing</property>
+		<format type="string">%1.0f</format> 
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>ac-distance1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.020</y-m>
+			<z-m>1.1070</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">Dist:</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>ac-distance</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0</y-m>
+			<z-m>1.1070</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<property type="string">/ai/closest/range</property>
+		<format type="string">%5.2lf</format> 
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>ac-altitude1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.020</y-m>
+			<z-m>1.1015</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">Alt:</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>ac-altitude</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0</y-m>
+			<z-m>1.1015</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<property type="string">/ai/closest/altitude</property>
+		<format type="string">%1.0f</format> 
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text-->
+	<text>
+		<name>zulu-label</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.009</y-m>
+			<z-m> 1.1070 </z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">Z</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>zulu</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.0125</y-m>
+			<z-m> 1.1070 </z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/sim/time/gmt-string</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>localtime-label</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.009</y-m>
+			<z-m>1.1015</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">L</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>localtime</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.018</y-m>
+			<z-m>1.1015</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/sim/time/real/hour</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>localtime-label1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.018</y-m>
+			<z-m>1.1015</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">:</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>localtime1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.025</y-m>
+			<z-m>1.1015</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/sim/time/real/minute</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>localtime-label2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.025</y-m>
+			<z-m>1.1015</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">:</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>localtime2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.0325</y-m>
+			<z-m>1.1015</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/sim/time/real/second</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+</PropertyList>

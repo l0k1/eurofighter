@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>Aircraft/eurofighter/Stores/StormShadow/Storm2.ac</path>
+  <animation>
+    <object-name>Avant</object-name>
+    <object-name>aileronC</object-name>
+    <object-name>aileronsH</object-name>
+    <object-name>aileronsB</object-name>
+    <object-name>Scalp</object-name>
+    <object-name>aileG</object-name>
+    <object-name>aileD</object-name>
+  </animation>
+
+
+  <model>
+    <path>Aircraft/eurofighter/Stores/StormShadow/smoke.xml</path>
+    <offsets>
+      <x-m> 3 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </offsets>
+  </model>
+
+</PropertyList>
+

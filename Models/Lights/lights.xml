@@ -1,0 +1,576 @@
+<PropertyList>
+	<path>lights.ac</path>
+	<nopreview/>
+
+	<animation>
+		<name>rembrandt-lights</name>
+		<object-name>landing.beam.left</object-name>
+		<object-name>landing.beam.right</object-name>
+		<object-name>taxi.beam.left</object-name>
+		<object-name>taxi.beam.right</object-name>
+		<object-name>LeftLight</object-name>
+		<object-name>RightLight</object-name>
+		<object-name>TailLight</object-name>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>rembrandt-lights</object-name>
+		<condition>
+			<property>/sim/rendering/rembrandt/enabled</property>
+		</condition>
+	</animation>
+
+	<animation>
+		<object-name>landing.beam.left</object-name>
+		<object-name>landing.beam.right</object-name>
+		<object-name>taxi.beam.left</object-name>
+		<object-name>taxi.beam.right</object-name>
+		<enable-hot>false</enable-hot>
+	</animation>
+
+	<animation>
+		<type>dist-scale</type>
+		<object-name>gearaura.L</object-name>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>1</dep>
+			</entry>
+			<entry>
+				<ind>150</ind>
+				<dep>1</dep>
+			</entry>
+			<entry>
+				<ind>500</ind>
+				<dep>2</dep>
+			</entry>
+			<entry>
+				<ind>1500</ind>
+				<dep>4.5</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m>9.386</x-m>
+			<y-m>-2.057</y-m>
+			<z-m>-0.829</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>dist-scale</type>
+		<object-name>gearaura.R</object-name>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>1</dep>
+			</entry>
+			<entry>
+				<ind>150</ind>
+				<dep>1</dep>
+			</entry>
+			<entry>
+				<ind>500</ind>
+				<dep>2</dep>
+			</entry>
+			<entry>
+				<ind>1500</ind>
+				<dep>4.5</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m>9.386</x-m>
+			<y-m>2.057</y-m>
+			<z-m>-0.829</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>flash</type>
+		<object-name>gearaura.L</object-name>
+		<offset>-0.35</offset>
+		<center>
+			<x-m>9.386</x-m>
+			<y-m>-2.057</y-m>
+			<z-m>-0.829</z-m>
+		</center>
+		<axis>
+			<x>-1.0</x>
+			<y>-0.1</y>
+			<z>0.2</z>
+		</axis>
+		<power>1</power>
+	</animation>
+
+	<animation>
+		<type>flash</type>
+		<object-name>gearaura.R</object-name>
+		<offset>-0.35</offset>
+		<center>
+			<x-m>9.386</x-m>
+			<y-m>2.057</y-m>
+			<z-m>-0.829</z-m>
+		</center>
+		<axis>
+			<x>-1.0</x>
+			<y>0.1</y>
+			<z>0.2</z>
+		</axis>
+		<power>1</power>
+	</animation>
+
+	<animation>
+		<type>blend</type>
+		<object-name>gearaura.L</object-name>
+		<object-name>gearaura.R</object-name>
+		<property>/sim/time/aura-dimming</property>
+		<factor>1.2</factor>
+		<min>0.0</min>
+		<max>1.0</max>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>gearaura.L</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>gear/gear[1]/position-norm</property>
+					<value> 1 </value>
+				</equals>
+				<or>
+					<greater-than>
+						<property>sim/multiplay/generic/float[19]</property>
+						<value>100</value>
+					</greater-than>
+					<greater-than>
+						<property>sim/multiplay/generic/float[8]</property>
+						<value>100</value>
+					</greater-than>
+				</or>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>gearaura.R</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>gear/gear[2]/position-norm</property>
+					<value> 1 </value>
+				</equals>
+				<or>
+					<greater-than>
+						<property>sim/multiplay/generic/float[19]</property>
+						<value>100</value>
+					</greater-than>
+					<greater-than>
+						<property>sim/multiplay/generic/float[8]</property>
+						<value>100</value>
+					</greater-than>
+				</or>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>dist-scale</type>
+		<object-name>LeftLight</object-name>
+		<interpolation>
+			<entry><ind>    0 </ind><dep> 0.25 </dep></entry>
+			<entry><ind>   20 </ind><dep> 0.50 </dep></entry>
+			<entry><ind> 1500 </ind><dep> 5.00 </dep></entry>
+		</interpolation>
+		<center>
+			<x-m>11.9765</x-m>
+			<y-m>-5.6702</y-m>
+			<z-m>-0.2887</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>dist-scale</type>
+		<object-name>RightLight</object-name>
+		<interpolation>
+			<entry><ind>    0 </ind><dep> 0.25 </dep></entry>
+			<entry><ind>   20 </ind><dep> 0.50 </dep></entry>
+			<entry><ind> 1500 </ind><dep> 5.00 </dep></entry>
+		</interpolation>
+		<center>
+			<x-m>11.9765</x-m>
+			<y-m>5.6702</y-m>
+			<z-m>-0.2887</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>dist-scale</type>
+		<object-name>TailLight</object-name>
+		<interpolation>
+			<entry><ind>    0 </ind><dep> 0.25 </dep></entry>
+			<entry><ind>   20 </ind><dep> 0.50 </dep></entry>
+			<entry><ind> 1500 </ind><dep> 5.00 </dep></entry>
+		</interpolation>
+		<center>
+			<x-m>15.9292</x-m>
+			<y-m>0</y-m>
+			<z-m>3.2800</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>RightLight</object-name>
+		<emission>
+			<red>   0 </red>
+			<green> 1 </green>
+			<blue>  0 </blue>
+			<factor-prop>/systems/electrical/outputs/external-lights/nav-lights</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>LeftLight</object-name>
+		<emission>
+			<red>   1 </red>
+			<green> 0 </green>
+			<blue>  0 </blue>
+			<factor-prop>/systems/electrical/outputs/external-lights/nav-lights</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>TailLight</object-name>
+		<emission>
+			<red>   1 </red>
+			<green> 1 </green>
+			<blue>  1 </blue>
+			<factor-prop>/systems/electrical/outputs/external-lights/nav-lights</factor-prop>
+		</emission>
+	</animation>
+
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<object-name>TailLight</object-name>
+		<object-name>LeftLight</object-name>
+		<object-name>RightLight</object-name>
+		<object-name>UpperStrobe</object-name>
+		<object-name>LowerStrobe</object-name>
+		<object-name>UpperStrobe.red</object-name>
+		<object-name>LowerStrobe.red</object-name>
+		<object-name>gearaura.L</object-name>
+		<object-name>gearaura.R</object-name>
+	</effect>
+
+	<animation>
+		<type>select</type>
+		<object-name>TailLight</object-name>
+		<object-name>LeftLight</object-name>
+		<object-name>RightLight</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>/controls/switches/nav-lights</property>
+					<value>2</value>
+				</equals>
+			<greater-than>
+				<property>sim/multiplay/generic/float[7]</property>
+				<value>27</value>
+			</greater-than>
+			<!--greater-than>
+				<property>sim/time/sun-angle-rad</property>
+				<value>1.32</value>
+			</greater-than-->
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>UpperStrobe.red</object-name>
+		<object-name>LowerStrobe.red</object-name>
+		<condition>
+			<greater-than>
+				<property>systems/electrical/outputs/avionics/cockpit-lighting</property>
+				<value>24</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>UpperStrobe</object-name>
+		<condition>
+			<and>
+				<property>sim/multiplay/generic/float[5]</property>
+				<property>sim/model/lights/strobe-upper/state</property>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>strobe-upper-point</object-name>
+		<condition>
+			<and>
+				<property>sim/multiplay/generic/float[5]</property>
+				<property>sim/model/lights/strobe-upper/state</property>
+				<property>/sim/rendering/rembrandt/enabled</property>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>LowerStrobe</object-name>
+		<condition>
+			<property>sim/multiplay/generic/float[5]</property>
+			<property>sim/model/lights/strobe-lower/state</property>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>UpperStrobe.red</object-name>
+		<condition>
+			<and>
+				<property>sim/multiplay/generic/float[4]</property>
+				<property>sim/model/lights/beacon-upper/state</property>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>LowerStrobe.red</object-name>
+		<condition>
+			<and>
+				<property>sim/multiplay/generic/float[4]</property>
+				<property>sim/model/lights/beacon-lower/state</property>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>landing.beam.left</object-name>
+		<condition>
+			<equals>
+				<property>gear/gear[1]/position-norm</property>
+				<value>1</value>
+			</equals>
+			<greater-than>
+				<property>sim/multiplay/generic/float[8]</property>
+				<value>100</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>landing.beam.right</object-name>
+		<condition>
+			<equals>
+				<property>gear/gear[2]/position-norm</property>
+				<value> 1 </value>
+			</equals>
+			<greater-than>
+				<property>sim/multiplay/generic/float[8]</property>
+				<value>100</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>taxi.beam.left</object-name>
+		<condition>
+			<equals>
+				<property>gear/gear[2]/position-norm</property>
+				<value> 1 </value>
+			</equals>
+			<greater-than>
+				<property>sim/multiplay/generic/float[19]</property>
+				<value>100</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>taxi.beam.right</object-name>
+		<condition>
+			<equals>
+				<property>gear/gear[2]/position-norm</property>
+				<value> 1 </value>
+			</equals>
+			<greater-than>
+				<property>sim/multiplay/generic/float[19]</property>
+				<value>100</value>
+			</greater-than>
+		</condition>
+	</animation>
+  
+  <!-- If you need to change scale of the light source, use and adapt : -->
+	<animation>
+		<type>light</type>
+		<light-type>spot</light-type>
+		<object-name>landing.beam.left</object-name>
+		<nopreview/>
+		<direction><x>-1</x><y>0</y><z>-0.024</z></direction>
+		<position><x>6.2</x><y>-1.9</y><z>-1.6</z></position>
+		<ambient><r>0.95</r><g>0.9</g><b>0.9</b><a>1</a></ambient>
+		<diffuse><r>0.95</r><g>0.9</g><b>0.9</b><a>1</a></diffuse>
+		<specular><r>0.95</r><g>0.9</g><b>0.9</b><a>1</a></specular>
+		<attenuation><c>0.5</c><l>0.07</l><q>0</q></attenuation>
+		<exponent>18.0</exponent>
+		<cutoff>100</cutoff>
+		<near-m>0.5</near-m>
+		<far-m>300</far-m>
+		<dim-factor>
+			<property>/sim/time/aura-dimming</property>
+			<factor>-1.1</factor>
+			<offset>1</offset>
+			<min>0</min>
+			<max>1.0</max>
+		</dim-factor>
+	</animation>
+
+	<animation>
+		<type>light</type>
+		<light-type>spot</light-type>
+		<object-name>taxi.beam.left</object-name>
+		<nopreview/>
+		<direction><x>-1</x><y>-0.125</y><z>-0.024</z></direction>
+		<position><x>6.2</x><y>-1.9</y><z>-1.6</z></position>
+		<ambient><r>0.95</r><g>0.95</g><b>1.0</b><a>1</a></ambient>
+		<diffuse><r>0.95</r><g>0.9</g><b>0.9</b><a>1</a></diffuse>
+		<specular><r>0.95</r><g>0.9</g><b>0.9</b><a>1</a></specular>
+		<attenuation><c>0.5</c><l>0.07</l><q>0</q></attenuation>
+		<exponent>10.0</exponent>
+		<cutoff>100</cutoff>
+		<near-m>0.01</near-m>
+		<far-m>300</far-m>
+		<dim-factor>
+			<property>/sim/time/aura-dimming</property>
+			<factor>-1.1</factor>
+			<offset>1</offset>
+			<min>0</min>
+			<max>1.0</max>
+		</dim-factor>
+	</animation>
+
+	<animation>
+		<type>light</type>
+		<light-type>spot</light-type>
+		<object-name>landing.beam.right</object-name>
+		<nopreview/>
+		<direction><x>-1</x><y>0</y><z>-0.024</z></direction>
+		<position><x>6.2</x><y>1.9</y><z>-1.6</z></position>
+		<ambient><r>0.95</r><g>0.95</g><b>1.0</b><a>1</a></ambient>
+		<diffuse><r>0.95</r><g>0.9</g><b>0.9</b><a>1</a></diffuse>
+		<specular><r>0.95</r><g>0.9</g><b>0.9</b><a>1</a></specular>
+		<attenuation><c>0.5</c><l>0.07</l><q>0</q></attenuation>
+		<exponent>18.0</exponent>
+		<cutoff>100</cutoff>
+		<near-m>0.01</near-m>
+		<far-m>300</far-m>
+		<dim-factor>
+			<property>/sim/time/aura-dimming</property>
+			<factor>-1.1</factor>
+			<offset>1</offset>
+			<min>0</min>
+			<max>1.0</max>
+		</dim-factor>
+	</animation>
+
+	<animation>
+		<type>light</type>
+		<light-type>spot</light-type>
+		<object-name>taxi.beam.right</object-name>
+		<nopreview/>
+		<direction><x>-1</x><y>0.125</y><z>-0.024</z></direction>
+		<position><x>6.2</x><y>1.9</y><z>-1.6</z></position>
+		<ambient><r>0.95</r><g>0.95</g><b>1.0</b><a>1</a></ambient>
+		<diffuse><r>0.95</r><g>0.9</g><b>0.9</b><a>1</a></diffuse>
+		<specular><r>0.95</r><g>0.9</g><b>0.9</b><a>1</a></specular>
+		<attenuation><c>0.5</c><l>0.07</l><q>0</q></attenuation>
+		<exponent>10.0</exponent>
+		<cutoff>100</cutoff>
+		<near-m>0.01</near-m>
+		<far-m>300</far-m>
+		<dim-factor>
+			<property>/sim/time/aura-dimming</property>
+			<factor>-1.1</factor>
+			<offset>1</offset>
+			<min>0</min>
+			<max>1.0</max>
+		</dim-factor>
+	</animation>
+
+	<animation> <!-- Strobe Point -->
+		<type>light</type>
+		<light-type>point</light-type>
+		<object-name>strobe-upper-point</object-name>
+		<nopreview/>
+		<position>
+			<x>9.4304</x>
+			<y>0</y>
+			<z>1.34</z>
+		</position>
+		<ambient>
+			<r>0.0</r>
+			<g>0.0</g>
+			<b>0.0</b>
+			<a>1.0</a>
+		</ambient>
+		<diffuse>
+			<r>1.0</r>
+			<g>1.0</g>
+			<b>1.0</b>
+			<a>1.0</a>
+		</diffuse>
+		<specular>
+			<r>0.7</r>
+			<g>0.7</g>
+			<b>0.7</b>
+			<a>1.0</a>
+		</specular>
+		<attenuation>
+			<c>2.5</c>
+			<l>0.0002</l>
+			<q>0.00005</q>
+		</attenuation>
+		<near-m>0.001</near-m>
+		<far-m>15</far-m>
+		<cutoff>30</cutoff>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>UpperStrobe</object-name>
+		<object-name>LowerStrobe</object-name>
+		<object-name>gearaura.L</object-name>
+		<object-name>gearaura.R</object-name>
+		<emission>
+			<red>0.9</red>
+			<green>0.9</green>
+			<blue>0.9</blue>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>UpperStrobe.red</object-name>
+		<object-name>LowerStrobe.red</object-name>
+		<emission>
+			<red>0.9</red>
+			<green>0.1</green>
+			<blue>0.1</blue>
+		</emission>
+	</animation>
+</PropertyList>

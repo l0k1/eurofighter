@@ -1,0 +1,25 @@
+AC3Db
+MATERIAL "DefaultWhite" rgb 1.0000 1.0000 1.0000  amb 0.2000 0.2000 0.2000  emis 0.0000 0.0000 0.0000  spec 0.5000 0.5000 0.5000  shi 10 trans 0.0000
+MATERIAL "ac3dmat1.010" rgb 1.0000 1.0000 1.0000  amb 1.0000 1.0000 1.0000  emis 0.0000 0.0000 0.0000  spec 0.0000 0.0000 0.0000  shi 50 trans 0.0000
+OBJECT world
+name "Blender_export__shadow.ac"
+kids 1
+OBJECT poly
+name "shadow_fuselage"
+loc 8.4815578 -2.2116799 0.0162892
+texture "shadow_fuselage.png"
+texrep 1 1
+numvert 4
+-8.2376595 -0.0850343 6.1855712
+8.4086599 -0.0098838 6.1847854
+8.4076443 0.0858017 -6.1855788
+-8.2386751 0.0106512 -6.1847930
+numsurf 1
+SURF 0X30
+mat 1
+refs 4
+0 0.001320 0.002607
+1 1.001018 0.002607
+2 1.001018 0.998393
+3 0.001320 0.998393
+kids 0

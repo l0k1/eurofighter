@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<model>
+		<name>comm</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MIDS/comm.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</offsets>
+	</model>
+
+</PropertyList>
+
+

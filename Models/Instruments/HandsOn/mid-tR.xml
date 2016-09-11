@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>mid-t2.ac</path>
+
+	<animation>
+		<type>select</type>
+		<object-name>throttle</object-name>
+		<object-name>RPMtext</object-name>
+		<condition>
+			<greater-than>
+				<property>engines/engine[1]/rpm</property>
+				<value>1</value>
+			</greater-than>
+			<equals>
+				<property>/controls/switches/lp-cock-right</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>texrotate</type>
+		<object-name>throttle</object-name>
+		<property>engines/engine[1]/rpm</property>
+		<factor>2.25</factor>
+		<step>0.1</step>
+		<center>
+			<x>0.5</x>
+			<y>0.5</y>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>LedAB2</object-name>
+		<condition>
+			<greater-than>
+				<property>engines/engine[1]/rpm</property>
+				<value>90</value>
+			</greater-than>
+			<equals>
+				<property>controls/engines/engine[1]/reheat</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>throttle</object-name>
+		<diffuse>
+			<red>0.0</red>
+			<green>0.1</green>
+			<blue>0.0</blue>
+		</diffuse>
+		<emission>
+			<red>0.0</red>
+			<green>0.8</green>
+			<blue>0.0</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>LedAB2</object-name>
+		<diffuse>
+			<red>0.8</red>
+			<green>0.0</green>
+			<blue>0.0</blue>
+		</diffuse>
+		<emission>
+			<red>0.8</red>
+			<green>0.0</green>
+			<blue>0.0</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+
+	<text>
+		<name>RPMtext</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>0.0475</x-m>
+			<y-m>-0.009</y-m>
+			<z-m>0.056</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<property>/engines/engine[1]/rpm</property>
+		<format>%3.0f</format>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-left</alignment>
+	</text>
+
+	<animation>
+		<type>material</type>
+		<object-name>RPMtext</object-name>
+		<emission>
+			<red>0.1</red>
+			<green>1.0</green>
+			<blue>0.1</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+
+</PropertyList>
+
+

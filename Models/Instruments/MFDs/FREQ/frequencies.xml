@@ -1,0 +1,1065 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>frequencies.ac</path>
+	<text>
+		<name>ch1-chnum</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.065</y-m>
+			<z-m>0.05</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[0]/channel-number</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch1-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.035</y-m>
+			<z-m>0.05</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property>/systems/CAMU/channel-list/channel[0]/frequency</property>
+		<format>%3.3f</format>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch1-status</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.000</y-m>
+			<z-m>0.05</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[0]/status</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch1-key</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0225</y-m>
+			<z-m>0.05</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[0]/secure-key</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch1-ident</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0325</y-m>
+			<z-m>0.05</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[0]/identifier</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch2-chnum</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.065</y-m>
+			<z-m>0.038</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[1]/channel-number</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch2-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.035</y-m>
+			<z-m>0.038</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property>/systems/CAMU/channel-list/channel[1]/frequency</property>
+		<format>%3.3f</format>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch2-status</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.000</y-m>
+			<z-m>0.038</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[1]/status</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch2-key</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0225</y-m>
+			<z-m>0.038</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[1]/secure-key</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch2-ident</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0325</y-m>
+			<z-m>0.038</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[1]/identifier</property>
+		<align>left-center</align>
+		<shininess>0</shininess>
+	</text>
+	<text>
+		<name>ch3-chnum</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.065</y-m>
+			<z-m>0.026</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[2]/channel-number</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch3-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.035</y-m>
+			<z-m>0.026</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property>/systems/CAMU/channel-list/channel[2]/frequency</property>
+		<format>%3.3f</format>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch3-status</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.000</y-m>
+			<z-m>0.026</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[2]/status</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch3-key</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0225</y-m>
+			<z-m>0.026</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[2]/secure-key</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch3-ident</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0325</y-m>
+			<z-m>0.026</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[2]/identifier</property>
+		<align>left-center</align>
+		<shininess>0</shininess>
+	</text>
+	<text>
+		<name>ch4-chnum</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.065</y-m>
+			<z-m>0.014</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[3]/channel-number</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch4-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.035</y-m>
+			<z-m>0.014</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property>/systems/CAMU/channel-list/channel[3]/frequency</property>
+		<format>%3.3f</format>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch4-status</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.000</y-m>
+			<z-m>0.014</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[3]/status</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch4-key</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0225</y-m>
+			<z-m>0.014</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[3]/secure-key</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch4-ident</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0325</y-m>
+			<z-m>0.014</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[3]/identifier</property>
+		<align>left-center</align>
+		<shininess>0</shininess>
+	</text>
+	<text>
+		<name>ch5-chnum</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.065</y-m>
+			<z-m>0.002</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[4]/channel-number</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch5-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.035</y-m>
+			<z-m>0.002</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property>/systems/CAMU/channel-list/channel[4]/frequency</property>
+		<format>%3.3f</format>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch5-status</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.000</y-m>
+			<z-m>0.002</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[4]/status</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch5-key</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0225</y-m>
+			<z-m>0.002</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[4]/secure-key</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch5-ident</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0325</y-m>
+			<z-m>0.002</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[4]/identifier</property>
+		<align>left-center</align>
+		<shininess>0</shininess>
+	</text>
+	<text>
+		<name>ch6-chnum</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.065</y-m>
+			<z-m>-0.010</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[5]/channel-number</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch6-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.035</y-m>
+			<z-m>-0.010</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property>/systems/CAMU/channel-list/channel[5]/frequency</property>
+		<format>%3.3f</format>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch6-status</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.000</y-m>
+			<z-m>-0.010</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[5]/status</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch6-key</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0225</y-m>
+			<z-m>-0.010</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[5]/secure-key</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch6-ident</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0325</y-m>
+			<z-m>-0.010</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[5]/identifier</property>
+		<align>left-center</align>
+		<shininess>0</shininess>
+	</text>
+	<text>
+		<name>ch7-chnum</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.065</y-m>
+			<z-m>-0.022</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[6]/channel-number</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch7-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.035</y-m>
+			<z-m>-0.022</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property>/systems/CAMU/channel-list/channel[6]/frequency</property>
+		<format>%3.3f</format>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch7-status</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.000</y-m>
+			<z-m>-0.022</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[6]/status</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch7-key</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0225</y-m>
+			<z-m>-0.022</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[6]/secure-key</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch7-ident</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0325</y-m>
+			<z-m>-0.022</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[6]/identifier</property>
+		<align>left-center</align>
+		<shininess>0</shininess>
+	</text>
+	<text>
+		<name>ch8-chnum</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.065</y-m>
+			<z-m>-0.034</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[7]/channel-number</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch8-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.035</y-m>
+			<z-m>-0.034</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property>/systems/CAMU/channel-list/channel[7]/frequency</property>
+		<format>%3.3f</format>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch8-status</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.000</y-m>
+			<z-m>-0.034</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[7]/status</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch8-key</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0225</y-m>
+			<z-m>-0.034</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[7]/secure-key</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch8-ident</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0325</y-m>
+			<z-m>-0.034</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[7]/identifier</property>
+		<align>left-center</align>
+		<shininess>0</shininess>
+	</text>
+	<text>
+		<name>ch9-chnum</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.065</y-m>
+			<z-m>-0.049</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[8]/channel-number</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch9-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.035</y-m>
+			<z-m>-0.049</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property>/systems/CAMU/channel-list/channel[8]/frequency</property>
+		<format>%3.3f</format>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch9-status</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.000</y-m>
+			<z-m>-0.049</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[8]/status</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch9-key</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0225</y-m>
+			<z-m>-0.049</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[8]/secure-key</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch9-ident</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0325</y-m>
+			<z-m>-0.049</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[8]/identifier</property>
+		<align>left-center</align>
+		<shininess>0</shininess>
+	</text>
+	<text>
+		<name>ch10-chnum</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.065</y-m>
+			<z-m>-0.061</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[9]/channel-number</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch10-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.035</y-m>
+			<z-m>-0.061</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property>/systems/CAMU/channel-list/channel[9]/frequency</property>
+		<format>%3.3f</format>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch10-status</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.000</y-m>
+			<z-m>-0.061</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[9]/status</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch10-key</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0225</y-m>
+			<z-m>-0.061</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[9]/secure-key</property>
+		<align>left-center</align>
+	</text>
+	<text>
+		<name>ch10-ident</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0055</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0325</y-m>
+			<z-m>-0.061</z-m>
+		</offsets>
+		<type type="string">text-value</type>
+		<property type="string">/systems/CAMU/channel-list/channel[9]/identifier</property>
+		<align>left-center</align>
+		<shininess>0</shininess>
+	</text>
+   
+   <!-- Buttons -->
+	<text>
+		<name>fuel</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.054</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FUEL</text>
+	</text>
+	<text>
+		<name>engine</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.028</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ENG</text>
+	</text>
+	<text>
+		<name>hydraulic</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.004</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">HYD</text>
+	</text>
+	<text>
+		<name>waypoint</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.020</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>frequency</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>.041</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FREQ</text>
+	</text>
+	<text>
+		<name>atck</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.081</y-m>
+			<z-m>-0.054</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ATCK</text>
+	</text>
+	<text>
+		<name>eadi</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>-0.054</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">EADI</text>
+	</text>
+	<text>
+		<name>proc</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>-0.033</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ACUE</text>
+	</text>
+	<text>
+		<name>navpos1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>0.082</y-m>
+			<z-m>0.062</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>navpos2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>0.081</y-m>
+			<z-m>0.055</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">DISP</text>
+	</text>
+	<animation>
+		<type>material</type>
+		<object-name>fuel</object-name>
+		<object-name>engine</object-name>
+		<object-name>hydraulic</object-name>
+		<object-name>waypoint</object-name>
+		<object-name>frequency</object-name>
+		<object-name>proc</object-name>
+		<object-name>atck</object-name>
+		<object-name>eadi</object-name>
+		<object-name>navpos1</object-name>
+		<object-name>navpos2</object-name>
+		<object-name>tcas</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>ch1-chnum</object-name>
+		<object-name>ch1-freq</object-name>
+		<object-name>ch1-status</object-name>
+		<object-name>ch1-key</object-name>
+		<object-name>ch1-ident</object-name>
+		<object-name>ch2-chnum</object-name>
+		<object-name>ch2-freq</object-name>
+		<object-name>ch2-status</object-name>
+		<object-name>ch2-key</object-name>
+		<object-name>ch2-ident</object-name>
+		<object-name>ch3-chnum</object-name>
+		<object-name>ch3-freq</object-name>
+		<object-name>ch3-status</object-name>
+		<object-name>ch3-key</object-name>
+		<object-name>ch3-ident</object-name>
+		<object-name>ch4-chnum</object-name>
+		<object-name>ch4-freq</object-name>
+		<object-name>ch4-status</object-name>
+		<object-name>ch4-key</object-name>
+		<object-name>ch4-ident</object-name>
+		<object-name>ch5-chnum</object-name>
+		<object-name>ch5-freq</object-name>
+		<object-name>ch5-status</object-name>
+		<object-name>ch5-key</object-name>
+		<object-name>ch5-ident</object-name>
+		<object-name>ch6-chnum</object-name>
+		<object-name>ch6-freq</object-name>
+		<object-name>ch6-status</object-name>
+		<object-name>ch6-key</object-name>
+		<object-name>ch6-ident</object-name>
+		<object-name>ch7-chnum</object-name>
+		<object-name>ch7-freq</object-name>
+		<object-name>ch7-status</object-name>
+		<object-name>ch7-key</object-name>
+		<object-name>ch7-ident</object-name>
+		<object-name>ch8-chnum</object-name>
+		<object-name>ch8-freq</object-name>
+		<object-name>ch8-status</object-name>
+		<object-name>ch8-key</object-name>
+		<object-name>ch8-ident</object-name>
+		<object-name>ch9-chnum</object-name>
+		<object-name>ch9-freq</object-name>
+		<object-name>ch9-status</object-name>
+		<object-name>ch9-key</object-name>
+		<object-name>ch9-ident</object-name>
+		<object-name>ch10-chnum</object-name>
+		<object-name>ch10-freq</object-name>
+		<object-name>ch10-status</object-name>
+		<object-name>ch10-key</object-name>
+		<object-name>ch10-ident</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.1</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.9</red>
+			<green>0.9</green>
+			<blue>0.9</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+		<shininess>0</shininess>
+	</animation>
+</PropertyList>

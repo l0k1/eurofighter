@@ -1,0 +1,651 @@
+<?xml version="1.0"?>
+<!--
+** Modified for personal preference by Algernon **
+
+Only a few stick controls have been mapped here:
+ + "Rocker" switch:     Rudder
+ + Top rotary dial:     Mixture
+ + Bottom rotary dial:  Prop Advance
+ + Top stick hat:       Elevator & Aileron trim
+ + Bottom stick hat:    View direction
+ + Top throttle hat:    Flaps & Rudder trim
+ + Stick button "A":    Gear toggle
+ + Stick button "C":    Push To Talk
+ + 
+
+Linux/Windows/Mac Axis Numbers:
+  0   	Roll (positive == right) 
+  1  	Pitch (positive == down/back/nose-up)
+  2/5/5 top "rotary dial" on the throttle (positive == CCW)
+  3   	Rocker switch ("rudder" control) on the throttle (positive == right)
+  4/2/2 Throttle (positive == back/down/idle)
+  5/4/4 Bottom "rotary dial" on the throttle (positive == CW)
+  	Strange this axis doesn't seem to exist on Mac OS X!
+  6/6/6 Lower right hat horizontal axis (positive == right)
+  7/7/7 Lower right hat vertical axis (positive == down (Mac positive is UP))
+
+Button Numbers (Identical b/w Linux/Windows/Mac):
+ 0  Trigger
+ 1  Stick top "A" switch
+ 2  Stick top "B" switch
+ 3  Stick top "launch/fire" switch
+ 4  Throttle "D" switch
+ 5  Throttle "mouse" switch (tiny black thumb button)
+ 6  Stick "pinkie" switch
+ 7  Stick front "C" switch
+ 8  -+                                left position   ("M1")
+ 9   +- Throttle "mode" 3-way switch: middle position ("M2")
+10  -+                                right position  ("M3")
+11  -+                                left position
+12   +- Throttle "Aux" 3-way switch:  middle position
+13  -+                                right position
+14  Upper left hat in "up" position
+15  Upper left hat in "right" position
+16  Upper left hat in "down" position
+17  Upper left hat in "left" position
+18  Throttle forefinger hat in "up/back" position
+19  Throttle forefinger hat in "right" position
+20  Throttle forefinger hat in "down/forward" position
+21  Throttle forefinger hat in "left" position
+22  Throttle thumb hat in "up" position
+23  Throttle thumb hat in "right" position
+24  Throttle thumb hat in "down" position
+25  Throttle thumb hat in "left" position
+
+$Id: X45.xml,v 1.18 2006-03-01 18:17:26 mfranz Exp $
+-->
+<PropertyList>
+ <name>Saitek X45</name>
+ <name>Saitek Saitek X45</name>
+ <name>Saitek X45 Flight Controller USB</name>
+ <name>Saitek X45 Flight Control Stick </name>
+ <name>Saitek Saitek X45 Flight Control Stick </name>
+ <name>Algernon Stick for Typhoon</name>
+
+ <axis n="0">
+  <desc>Aileron</desc>
+  <binding>
+   <command>property-scale</command>
+   <property>/controls/flight/aileron</property>
+   <squared type="bool">true</squared>
+  </binding>
+ </axis>
+
+ <axis n="1">
+  <desc>Elevator</desc>
+  <binding>
+   <command>property-scale</command>
+   <property>/controls/flight/elevator</property>
+   <factor type="double">-1.0</factor>
+   <squared type="bool">true</squared>
+  </binding>
+ </axis>
+
+ <axis n="3">
+  <desc>Rudder</desc>
+  <binding>
+   <command>property-scale</command>
+   <property>/controls/flight/rudder</property>
+  </binding>
+  <binding>
+   <command>nasal</command>
+   <script><![CDATA[
+    # In mode 1 (taxiing), map the wheelbrakes
+    if(getprop("/input/joysticks/js[0]/saitek-x45-mode") == 1) {
+        val = cmdarg().getNode("setting").getValue();
+        setprop("/controls/gear/brake-left", 0);
+        setprop("/controls/gear/brake-right", 0);
+        if(val > 0) { setprop("/controls/gear/brake-right", val); }
+        else        { setprop("/controls/gear/brake-left", -val); }
+    }
+   ]]></script>
+  </binding>
+ </axis>
+ 
+ 
+ <!-- View Direction Hat (Throttle Thumb) -->
+
+ <!-- Old one><axis n="6">
+  <number>
+   <unix>6</unix>
+   <mac>6</mac>
+   <windows>6</windows>
+  </number>
+  <desc>View Direction</desc>
+  <low>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>nasal</command>
+    <script>view.panViewDir(1)</script>
+   </binding>
+  </low>
+  <high>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>nasal</command>
+    <script>view.panViewDir(-1)</script>
+   </binding>
+  </high>
+ </axis>
+
+ <axis>
+  <desc>View Elevation</desc>
+  <number>
+   <unix>7</unix>
+   <mac>7</mac>
+   <windows>7</windows>
+  </number>
+  <low>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>nasal</command>
+    <script>view.panViewPitch(1)</script>
+   </binding>
+  </low>
+  <high>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>nasal</command>
+    <script>view.panViewPitch(-1)</script>
+   </binding>
+  </high>
+ </axis>
+ 
+ <-->
+ 
+ <button n="22">
+  <desc>View Elevation Up</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>view.panViewPitch(1)</script>
+  </binding>
+ </button>
+
+<button n="23">
+  <desc>View Direction Right</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>view.panViewDir(-1)</script>
+  </binding>
+ </button>
+ 
+ <button n="24">
+  <desc>View Elevation Down</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>view.panViewPitch(-1)</script>
+  </binding>
+ </button>
+ 
+ <button n="25">
+  <desc>View Direction Left </desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>view.panViewDir(1)</script>
+  </binding>
+ </button>
+ 
+  <button n="2">
+  <desc>Autopilot Cancel</desc>
+  <repeatable type="bool">false</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>autopilot.apCancel()</script>
+  </binding>
+ </button>
+ 
+ <button n="5">
+  <desc>Reset View</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>view.resetView()</script>
+  </binding>
+ </button>
+ 
+
+ <axis>
+  <desc>Throttle</desc>
+  <number>
+   <unix>4</unix>
+   <mac>2</mac>
+   <windows>2</windows>
+  </number>
+  <binding>
+   <command>nasal</command>
+   <script>controls.throttleAxis()</script>
+  </binding>
+ </axis>
+
+
+
+ <axis>
+  <desc>Speedbrake</desc>
+  <number>
+   <unix>5</unix>
+   <mac>4</mac>
+   <windows>4</windows>
+  </number>
+  <binding>
+   <command>property-scale</command>
+   <property>/controls/flight/speedbrake</property>
+   <factor type="double">1.0</factor>
+  </binding>
+ </axis>
+
+
+ <!-- Gear toggle on button A -->
+
+ <button n="1">
+  <desc>Landing Gear Up/Down Toggle</desc>
+  <binding>
+   <command>nasal</command>
+   <script>controls.gearToggle()</script>
+  </binding>
+ </button>
+ 
+ <!-- button n="5">
+ <desc> Apply/Release Parking Brake </desc>
+ <binding>
+  <command>nasal</command>
+ <script>brake = !getprop("/controls/gear/brake-parking");
+						setprop("/controls/gear/brake-parking", brake);
+						if (brake) {
+							gui.popupTip("Parking Brake ON");
+						} else {
+							gui.popupTip("Parking Brake OFF");
+						}
+						setprop("/controls/gear/brake-left", 0);
+						setprop("/controls/gear/brake-right", 0);
+   </script>
+ </binding>
+ </button -->
+ 
+<button n="4">
+<desc>Apply Speedbrake and Wheelbrakes</desc>
+<binding>
+ <command>nasal</command>
+ <script>controls.applyBrakes(1)</script>
+</binding>
+<mod-up>
+  <binding>
+    <command>nasal</command>
+    <script>controls.applyBrakes(0);</script>
+  </binding>
+ </mod-up>
+</button>
+
+<!-- mode switch (buttons 8-10) -->
+
+ <button n="7">
+   <desc>PTT - Push To Talk</desc>
+   <binding>
+<command>nasal</command>
+<script>fgcom.radio.ptt(1)</script>
+</binding>
+<mod-up>
+<binding>
+<command>nasal</command>
+<script>fgcom.radio.ptt(0)</script>
+</binding>
+</mod-up>
+</button>
+
+ <button n="8">
+  <desc>Mode 1</desc>
+  <binding>
+   <command>nasal</command>
+   <script>setprop("/input/joysticks/js[0]/saitek-x45-mode", 1);
+           gui.popupTip("Mode 1: Ground");
+   </script>
+  </binding>
+ </button>
+ 
+ 
+ <button n="9">
+  <desc>Mode 2</desc>
+  <binding>
+   <command>nasal</command>
+   <script>setprop("/input/joysticks/js[0]/saitek-x45-mode", 2);
+           gui.popupTip("Mode 2: Air");
+   </script>
+  </binding>
+ </button>
+
+ <button n="10">
+  <desc>Mode 3</desc>
+  <binding>
+   <command>nasal</command>
+   <script>setprop("/input/joysticks/js[0]/saitek-x45-mode", 3);
+           gui.popupTip("Mode 3: Combat");
+   </script>
+  </binding>
+ </button>
+ 
+ <button n="11"> <!-- Aux Switch - Position 1 - Autotaxi -->
+  <desc>Autothrottle Off</desc>
+  <binding>
+   <command>property-assign</command>
+   <property>/systems/autopilot/locks/speed</property>
+   <value>autotaxi</value>
+  </binding>
+ </button>
+ 
+  <button n="12"> <!-- Aux Switch - Position 2 - Autothrottle Off -->
+  <desc>Autothrottle</desc>
+  <binding>
+   <command>property-assign</command>
+   <property>/systems/autopilot/locks/speed</property>
+   <value></value>
+  </binding>
+ </button>
+ 
+  <button n="13"> <!-- Aux Switch - Position 3 - Autothrottle On -->
+  <desc>Decrease flaps</desc>
+  <binding>
+   <command>property-assign</command>
+   <property>/systems/autopilot/locks/speed</property>
+   <value>speed-with-throttle</value>
+  </binding>
+ </button>
+ 
+  
+ <!-- Trim (upper) hat on the stick 
+
+ <button n="14">
+  <desc>Elevator trim down</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>controls.elevatorTrim(1)</script>
+  </binding>
+ </button>
+
+ <button n="15">
+  <desc>Aileron trim right</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>controls.aileronTrim(1)</script>
+  </binding>
+ </button>
+
+ <button n="16">
+  <desc>Elevator trim up</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>controls.elevatorTrim(-1)</script>
+  </binding>
+ </button>
+
+ <button n="17">
+  <desc>Aileron trim left</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>controls.aileronTrim(-1)</script>
+  </binding>
+ </button> -->
+
+ <button n="14">
+  <desc>Autopilot Altitude decrease</desc>
+ <repeatable type="bool">true</repeatable>
+ <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/altitude</property>
+    <value>altitude-hold</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/ind-target-altitude-ft</property>
+   <step type="double">-50</step>
+   <min>500</min>
+   <max>60000</max>
+   <squared type="bool">false</squared>
+  </binding>
+  <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/altitude</property>
+    <value>agl-hold</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/target-agl-ft</property>
+   <step type="double">-10</step>
+   <min>50</min>
+   <max>1000</max>
+   <squared type="bool">false</squared>
+  </binding>
+ </button>
+ 
+ <button n="15">
+  <desc>Autopilot Heading increase</desc>
+ <repeatable type="bool">true</repeatable>
+ <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/heading</property>
+    <value>dg-heading-hold</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/heading-bug-deg</property>
+   <step type="double">1</step>
+   <min>0</min>
+   <max>360</max>
+   <wrap type="bool">true</wrap>
+   <squared type="bool">false</squared>
+  </binding>
+  <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/heading</property>
+    <value>roll-hold</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/target-roll-deg</property>
+   <step type="double">1</step>
+   <min>-60</min>
+   <max>60</max>
+   <wrap type="bool">false</wrap>
+   <squared type="bool">false</squared>
+  </binding>
+ </button>
+ 
+ <button n="16">
+  <desc>Autopilot Altitude increase</desc>
+ <repeatable type="bool">true</repeatable>
+ <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/altitude</property>
+    <value>altitude-hold</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/ind-target-altitude-ft</property>
+   <step type="double">50</step>
+   <min>500</min>
+   <max>60000</max>
+   <squared type="bool">false</squared>
+  </binding>
+  <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/altitude</property>
+    <value>agl-hold</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/target-agl-ft</property>
+   <step type="double">10</step>
+   <min>50</min>
+   <max>1000</max>
+   <squared type="bool">false</squared>
+  </binding>
+ </button>
+ 
+ <button n="17">
+  <desc>Autopilot Heading decrease</desc>
+ <repeatable type="bool">true</repeatable>
+ <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/heading</property>
+    <value>dg-heading-hold</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/heading-bug-deg</property>
+   <step type="double">-1</step>
+   <min>0</min>
+   <max>360</max>
+   <wrap type="bool">true</wrap>
+   <squared type="bool">false</squared>
+  </binding>
+  <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/heading</property>
+    <value>roll-hold</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/target-roll-deg</property>
+   <step type="double">-1</step>
+   <min>-60</min>
+   <max>60</max>
+   <wrap type="bool">false</wrap>
+   <squared type="bool">false</squared>
+  </binding>
+ </button>
+ 
+ <!-- Autothrottle and Roll Hold control on the throttle upper hat -->
+
+ <button n="18">
+  <desc>Autothrottle decrease</desc>
+ <repeatable type="bool">true</repeatable>
+ <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/speed</property>
+    <value>speed-with-throttle</value>
+   </equals>
+   <equals>
+    <property>/systems/autopilot/settings/kts-mach-select</property>
+    <value>kts</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/target-speed-kt</property>
+   <step type="double">-1</step>
+   <min>150</min>
+   <max>1000</max>
+   <squared type="bool">false</squared>
+  </binding>
+  <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/speed</property>
+    <value>speed-with-throttle</value>
+   </equals>
+   <equals>
+    <property>/systems/autopilot/settings/kts-mach-select</property>
+    <value>mach</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/target-speed-mach</property>
+   <step type="double">-0.01</step>
+   <min>0.2</min>
+   <max>2</max>
+   <squared type="bool">false</squared>
+  </binding>
+ </button>
+ 
+ <button n="19">
+  <desc>Autopilot mach select</desc>
+ <binding>
+   <condition>
+   <equals>
+    <property>/systems/autopilot/locks/speed</property>
+    <value>speed-with-throttle</value>
+   </equals>
+  </condition>
+   <command>property-assign</command>
+   <property>/systems/autopilot/settings/kts-mach-select</property>
+   <value>mach</value>
+  </binding>
+ </button>
+
+ <button n="20">
+  <desc>Autothrottle increase</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/speed</property>
+    <value>speed-with-throttle</value>
+   </equals>
+   <equals>
+    <property>/systems/autopilot/settings/kts-mach-select</property>
+    <value>kts</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/target-speed-kt</property>
+   <step type="double">1</step>
+   <min>150</min>
+   <max>1000</max>
+   <squared type="bool">false</squared>
+  </binding>
+  <binding>
+  <condition>
+   <equals>
+    <property>/systems/autopilot/locks/speed</property>
+    <value>speed-with-throttle</value>
+   </equals>
+   <equals>
+    <property>/systems/autopilot/settings/kts-mach-select</property>
+    <value>mach</value>
+   </equals>
+  </condition>
+   <command>property-adjust</command>
+   <property>/systems/autopilot/settings/target-speed-mach</property>
+   <step type="double">0.01</step>
+   <min>0.2</min>
+   <max>2</max>
+   <squared type="bool">false</squared>
+  </binding>
+ </button>
+ 
+ <button n="21">
+  <desc>Autopilot Roll Hold left</desc>
+  <binding>
+   <condition>
+   <equals>
+    <property>/systems/autopilot/locks/speed</property>
+    <value>speed-with-throttle</value>
+   </equals>
+  </condition>
+   <command>property-assign</command>
+   <property>/systems/autopilot/settings/kts-mach-select</property>
+   <value>kts</value>
+  </binding>
+ </button>
+
+ <!-- Rudder trim on the flap hat -->
+
+
+ 
+ 
+
+</PropertyList>

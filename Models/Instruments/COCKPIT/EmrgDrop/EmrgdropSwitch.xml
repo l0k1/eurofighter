@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>EmrgDropSwitch.ac</path>
+
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<condition>
+			<property>sim/rendering/rembrandt/enabled</property>
+		</condition>
+		<object-name>Labels</object-name>
+		<object-name>Labels.Lit</object-name>
+		<!--object-name>Button.EmrgDrop</object-name-->
+	</effect>
+
+	<animation>
+		<type>select</type>
+		<object-name>Labels</object-name>
+		<condition>
+			<less-than>
+				<property>systems/electrical/outputs/avionics/cockpit-lighting</property>
+				<value>24</value>
+			</less-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>Labels.Lit</object-name>
+		<condition>
+			<greater-than>
+				<property>systems/electrical/outputs/avionics/cockpit-lighting</property>
+				<value>24</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>Button.EmrgDrop</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>load.emergencydrop()</script>
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>Labels.Lit</object-name>
+		<emission>
+			<red>0.5</red>
+			<green>0.5</green>
+			<blue>0.5</blue>
+			<factor-prop>/instrumentation/illumination/console-backlight</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>Button.EmrgDrop</object-name>
+		<ambient>
+			<red>0.6</red>
+			<green>0.0</green>
+			<blue>0.0</blue>
+		</ambient>
+		<diffuse>
+			<red>0.6</red>
+			<green>0.0</green>
+			<blue>0.0</blue>
+		</diffuse>
+		<emission>
+			<red>1</red>
+			<green>1</green>
+			<blue>1</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+ 
+</PropertyList>

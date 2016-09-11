@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+
+ <electrical>
+
+  <path></path> <!-- Important: clearing the path disables the default Flightgear system -->
+
+  <!-- Components -->
+
+  <component>
+    <kind type="string">battery</kind>
+    <name type="string">Battery</name>
+    <volts type="float">28</volts>
+    <prop type="string">/systems/electrical/suppliers/battery[0]</prop>
+  </component>
+
+  <component>
+    <kind type="string">alternator</kind>
+    <name type="string">APU Generator</name>
+    <volts type="float">220</volts>
+    <prop type="string">/systems/electrical/suppliers/APU-generator</prop>
+    <source-prop type="string">/engines/engine[2]/rpm</source-prop>
+    <source-min type="float">65</source-min>
+  </component>
+  
+   <component>
+    <kind type="string">alternator</kind>
+    <name type="string">Engine 1 Generator</name>
+    <volts type="float">220</volts>
+    <prop type="string">/systems/electrical/suppliers/engine-1-generator</prop>
+    <source-prop type="string">/engines/engine[0]/rpm</source-prop>
+    <source-min type="float">18</source-min>
+  </component>
+  
+   <component>
+    <kind type="string">alternator</kind>
+    <name type="string">Engine 2 Generator</name>
+    <volts type="float">220</volts>
+    <prop type="string">/systems/electrical/suppliers/engine-2-generator</prop>
+    <source-prop type="string">/engines/engine[1]/rpm</source-prop>
+    <source-min type="float">18</source-min>
+  </component>
+  
+  <!--component>
+    <kind type="string">external</kind>
+    <name type="string">Ground Power</name>
+    <volts type="float">200</volts>
+    <prop type="string">/systems/electrical/suppliers/ground-power</prop>
+  </component-->
+
+  <component>
+    <kind type="string">external</kind>
+    <name type="string">Ground Power 28V</name>
+    <volts type="float">28</volts>
+    <prop type="string">/systems/electrical/suppliers/ground-power-28v</prop>
+  </component>
+  
+    <component>
+    <kind type="string">external</kind>
+    <name type="string">Ground Power 110V</name>
+    <volts type="float">110</volts>
+    <prop type="string">/systems/electrical/suppliers/ground-power-110v</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">Avionics Bus</name>
+    <prop type="string">/systems/electrical/outputs/turn-coordinator</prop>
+    <prop type="string">/systems/electrical/outputs/avionics/CAMU-28v</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/CSG</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/MFHDD[0]</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/MFHDD[1]</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/MFHDD[2]</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/ASI</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/MDEF</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/HUP</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/HUD</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/MIDS</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/warnings</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/fan</prop>
+	<prop type="string">/systems/electrical/outputs/avionics/cockpit-lighting</prop>
+	<prop type="string">/systems/electrical/outputs/bus</prop>
+	
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">APU Starter</name>
+	<prop type="string">/systems/electrical/outputs/avionics/APU-starter</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">Primary Bus</name>
+    <prop type="string">/systems/electrical/outputs/FCS</prop>
+	<prop type="string">/systems/electrical/outputs/CAMU-200v</prop>
+	<prop type="string">/systems/electrical/outputs/autopilot</prop>
+	<prop type="string">/systems/electrical/outputs/nav[0]</prop>
+	<prop type="string">/systems/electrical/outputs/nav[1]</prop>
+	<prop type="string">/systems/electrical/outputs/nav[2]</prop>
+	<prop type="string">/systems/electrical/outputs/tacan</prop>
+	<prop type="string">/systems/electrical/outputs/adf</prop>
+	<prop type="string">/systems/electrical/outputs/dme</prop>
+    <prop type="string">/systems/electrical/outputs/transponder</prop>
+    <prop type="string">/systems/electrical/outputs/armament/cannon</prop>
+	<prop type="string">/systems/electrical/outputs/armament/hardpoints-left</prop>
+	<prop type="string">/systems/electrical/outputs/armament/hardpoints-center</prop>
+	<prop type="string">/systems/electrical/outputs/armament/hardpoints-right</prop>
+	<prop type="string">/systems/electrical/outputs/acs</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">External Lights</name>
+	<prop type="string">/systems/electrical/outputs/external-lights/external-lights-bus</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">Gear Lights</name>
+	<prop type="string">/systems/electrical/outputs/external-lights/gear-lights</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">Landing Lights</name>
+	<prop type="string">/systems/electrical/outputs/external-lights/landing-lights</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">Taxi Lights</name>
+	<prop type="string">/systems/electrical/outputs/external-lights/taxi-lights</prop>
+  </component>
+  
+   <component>
+    <kind type="string">output</kind>
+	<name type="string">Navigation Lights</name>
+	<prop type="string">/systems/electrical/outputs/external-lights/nav-lights</prop>
+  </component>
+  
+   <component>
+    <kind type="string">output</kind>
+	<name type="string">Beacons</name>
+	<prop type="string">/systems/electrical/outputs/external-lights/beacons</prop>
+  </component>
+  
+   <component>
+    <kind type="string">output</kind>
+	<name type="string">Strobes2</name>
+	<prop type="string">/systems/electrical/outputs/external-lights/strobes</prop>
+  </component>
+  
+   <component>
+    <kind type="string">output</kind>
+	<name type="string">Strobes</name>
+	<prop type="string">/systems/electrical/outputs/external-lights/strobe-lights</prop>
+  </component>
+  
+   <component>
+    <kind type="string">output</kind>
+	<name type="string">Formation Lights</name>
+	<prop type="string">/systems/electrical/outputs/external-lights/formation-lights</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">Cockpit Lighting</name>
+	<prop type="string">/systems/electrical/outputs/cockpit-lighting</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">NavCom 1 Power</name>
+	<prop type="string">/systems/electrical/outputs/nav[0]</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">Tacan Power</name>
+	<prop type="string">/systems/electrical/outputs/tacan</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">ADF Power</name>
+	<prop type="string">/systems/electrical/outputs/adf</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">NavCom 2 Power</name>
+	<prop type="string">/systems/electrical/outputs/nav[1]</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">NavCom 3 Power</name>
+	<prop type="string">/systems/electrical/outputs/nav[2]</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">DME Power</name>
+	<prop type="string">/systems/electrical/outputs/dme</prop>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+	<name type="string">MIDS</name>
+	<prop type="string">/systems/electrical/outputs/avionics/MIDS</prop>
+  </component>
+  
+  <connector>
+    <input type="string">Primary Bus</input>
+    <output type="string">Avionics Bus</output>
+  </connector>
+  
+  <connector>
+    <input type="string">Battery</input>
+    <output type="string">Primary Bus</output>
+    <switch type="string">/controls/electric/battery-switch</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">APU Generator</input>
+    <output type="string">Primary Bus</output>
+    <switch type="string">/controls/relays/APU-generator</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">Engine 1 Generator</input>
+    <output type="string">Primary Bus</output>
+    <!--switch type="string">/controls/relays/Eng1-generator</switch-->
+  </connector>
+  
+  <connector>
+    <input type="string">Engine 2 Generator</input>
+    <output type="string">Primary Bus</output>
+    <!--switch type="string">/controls/relays/Eng2-generator</switch-->
+  </connector>
+  
+  <connector>
+    <input type="string">Primary Bus</input>
+    <output type="string">APU Starter</output>
+  </connector>
+  
+  <connector>
+    <input type="string">Avionics Bus</input>
+    <output type="string">Tacan Power</output>
+    <switch type="string">/instrumentation/tacan/power</switch>
+  </connector>
+
+  <connector>
+    <input type="string">Avionics Bus</input>
+    <output type="string">MIDS</output>
+	<switch type="string">/controls/switches/MIDS-power</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">Avionics Bus</input>
+    <output type="string">Cockpit Lighting</output>
+	<switch type="string">/controls/rotary/cockpit-lighting</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">Primary Bus</input>
+    <output type="string">External Lights</output>
+	<switch type="string">/controls/buttons/external-lights-master</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">External Lights</input>
+    <output type="string">Navigation Lights</output>
+	<switch type="string">/controls/switches/nav-lights</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">External Lights</input>
+    <output type="string">Beacons</output>
+	<switch type="string">/controls/switches/beacons</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">External Lights</input>
+    <output type="string">Gear Lights</output>
+	<switch type="string">/controls/switches/gear-lights</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">External Lights</input>
+    <output type="string">Strobes</output>
+	<switch type="string">/controls/switches/strobe-lights</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">External Lights</input>
+    <output type="string">Strobes2</output>
+	<switch type="string">/controls/switches/strobes</switch>
+  </connector>
+  
+   <connector>
+    <scheme>switch-volts</scheme>
+    <input type="string">External Lights</input>
+    <output type="string">Navigation Lights</output>
+	<switch type="string">/controls/switches/navigation-lights</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">External Lights</input>
+    <output type="string">Landing Lights</output>
+	<switch type="string">/controls/switches/landing-lights</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">External Lights</input>
+    <output type="string">Taxi Lights</output>
+	<switch type="string">/controls/switches/taxi-lights</switch>
+  </connector>
+  
+  <connector>
+    <input type="string">External Lights</input>
+    <output type="string">Formation Lights</output>
+	<switch type="string">/controls/rotary/formation-lights</switch>
+  </connector>
+  
+ 
+ </electrical>
+  
+ </PropertyList>

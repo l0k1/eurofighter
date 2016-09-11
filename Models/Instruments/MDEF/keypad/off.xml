@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PropertyList>
+	<path>keys.ac</path>
+ 
+	<animation>
+		<type>material</type>
+		<object-name>label.clr</object-name>
+		<object-name>label.ent</object-name>
+		<diffuse>
+			<red>0.3</red>
+			<green>0.9</green>
+			<blue>0.3</blue>
+		</diffuse>
+		<emission>
+			<red>0.3</red>
+			<green>0.9</green>
+			<blue>0.3</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+</PropertyList>

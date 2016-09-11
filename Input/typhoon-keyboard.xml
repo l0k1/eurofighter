@@ -1,0 +1,252 @@
+<PropertyList>
+	<key n="78">
+		<name>N</name>
+		<desc>Drop Tanks</desc>
+		<binding>
+			<command>nasal</command>
+			<script>load.dropTanks()</script>
+		</binding>
+	</key>
+	<key n="76">
+		<name>L</name>
+		<desc>Launch-bar engage.</desc>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/gear/launchbar</property>
+		</binding>
+	</key>
+	<key n="79">
+		<name>O</name>
+		<desc>Hook down.</desc>
+		<binding>
+			<command>nasal</command>
+			<script>typhoon.setHook();</script>
+		</binding>
+	</key>
+	<key n="67">
+		<name>C</name>
+		<desc>Catapult Launch Command.</desc>
+		<binding>
+  			<condition>
+   				<equals>
+   	 				<property>sim/current-view/name</property>
+  			 	 	<value>Cockpit View</value>
+   				</equals>
+ 			 </condition>
+			<command>property-toggle</command>
+			<property>/controls/gear/catapult-launch-cmd</property>
+		</binding>
+	</key>
+	<key n="4">
+		<name>Ctrl-d</name>
+		<desc>Toggle Canopy</desc>
+		<binding>
+			<command>nasal</command>
+			<script>typhoon.canopy.toggle();</script>
+		</binding>
+	</key>
+	<key n="70">
+		<name>F</name>
+		<desc>Toggle smoke</desc>
+		<binding>
+  			<condition>
+   				<equals>
+   	 				<property>sim/current-view/name</property>
+  			 	 	<value>Cockpit View</value>
+   				</equals>
+ 			 </condition>
+			<command>property-toggle</command>
+			<property>sim/multiplay/generic/int[11]</property>
+		</binding>
+	</key>
+	<key n="107">
+		<name>k</name>
+		<desc>Extend Speedbrakes</desc>
+		<binding>
+			<command>property-adjust</command>
+			<property>/controls/flight/speedbrake</property>
+			<step type="double">0.1</step>
+			<min type="double">0</min>
+			<max type="double">1</max>
+		</binding>
+	</key>
+	<key n="106">
+		<name>j</name>
+		<desc>Retract Speedbrakes</desc>
+		<binding>
+  			<condition>
+   				<equals>
+   	 				<property>sim/current-view/name</property>
+  			 	 	<value>Cockpit View</value>
+   				</equals>
+ 			 </condition>
+			<command>property-adjust</command>
+			<property>/controls/flight/speedbrake</property>
+			<step type="double">-0.1</step><!-- with +.33 and -.2 do QNAN -->
+			<min type="double">0</min>
+			<max type="double">1</max>
+		</binding>
+	</key>
+	<key n="108">
+		<name>l</name>
+		<desc>Flare release</desc>
+		<binding>
+  			<condition>
+					<and>
+   					<not-equals>
+   	 					<property>sim/current-view/name</property>
+  			 	 		<value>Walk View</value>
+   					</not-equals>
+  			 		<not-equals>
+   				 		<property>sim/current-view/name</property>
+   				 		<value>Walker Orbit View</value>
+   					</not-equals>
+					</and>
+ 			 </condition>
+			<command>property-assign</command>
+			<property>/controls/armament/flares-release</property>
+			<value>1</value>
+		</binding>
+		<mod-up>
+			<binding>
+  			<condition>
+					<and>
+   					<not-equals>
+   	 					<property>sim/current-view/name</property>
+  			 	 		<value>Walk View</value>
+   					</not-equals>
+  			 		<not-equals>
+   				 		<property>sim/current-view/name</property>
+   				 		<value>Walker Orbit View</value>
+   					</not-equals>
+					</and>
+ 			 </condition>
+				<command>property-assign</command>
+				<property>/controls/armament/flares-release</property>
+				<value>0</value>
+			</binding>
+		</mod-up>
+	</key>
+	<key n="109">
+		<name>m</name>
+		<desc>Chaff release</desc>
+		<binding>
+			<command>property-assign</command>
+			<property>/controls/armament/chaff-release</property>
+			<value>1</value>
+		</binding>
+		<mod-up>
+			<binding>
+				<command>property-assign</command>
+				<property>/controls/armament/chaff-release</property>
+				<value>0</value>
+			</binding>
+		</mod-up>
+	</key>
+	<key n="69">
+		<name>E</name>
+		<desc>Toggle braking chute</desc>
+		<binding>
+			<command>nasal</command>
+			<script>typhoon.toggle_chute();</script>
+		</binding>
+	</key>
+	<key n="14">
+		<name>Ctrl-n</name>
+		<desc>Toggle Radar PULSE SRCH / TWS AUTO Modes</desc>
+		<binding>
+			<command>nasal</command>
+			<script>radar.radar_mode_toggle();</script>
+		</binding>
+	</key>
+	<key n="15">
+		<name>Ctrl-o</name>
+		<desc>Select all engines</desc>
+		<binding>
+			<command>nasal</command>
+			<script>controls.selectAllEngines();</script>
+		</binding>
+	</key>
+	<key n="101">
+		<name>e</name>
+		<desc>Gun Trigger</desc>
+		<binding>
+			<condition>
+				<equals>
+					<property>gear/gear[1]/position-norm</property>
+					<value> 0 </value>
+				</equals>
+				<equals>
+					<property>controls/armament/master-arm-standby</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/armament/stick-selector</property>
+					<value>1</value>
+				</equals>
+			</condition>
+			<command>nasal</command>
+			<script>guns.fire_MG()</script>
+		</binding>
+		<binding>
+			<condition>
+				<equals>
+					<property>gear/gear[1]/position-norm</property>
+					<value> 0 </value>
+				</equals>
+				<equals>
+					<property>controls/armament/master-arm-standby</property>
+					<value>0</value>
+				</equals>
+				<greater-than>
+					<property>controls/armament/stick-selector</property>
+					<value>1</value>
+				</greater-than>
+			</condition>
+			<command>nasal</command>
+			<script>
+				var pylon = getprop("controls/armament/missile/current-pylon");
+				load.dropLoad(pylon);
+			</script>
+		</binding>
+		<mod-up>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/armament/stick-selector</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>nasal</command>
+				<script>guns.stop_MG()</script>
+			</binding>
+		</mod-up>
+	</key>
+	<key n="119">
+		<name>w</name>
+		<desc>Cycle Stick Weapon Mode Selector</desc>
+		<binding>
+  			<condition>
+   				<equals>
+   	 				<property>sim/current-view/name</property>
+  			 	 	<value>Cockpit View</value>
+   				</equals>
+ 			 </condition>
+			<command>property-adjust</command>
+			<property>controls/armament/stick-selector</property>
+			<step>1</step>
+			<min>0</min>
+			<max>4</max>
+			<repeat>false</repeat>
+			<wrap>true</wrap>
+		</binding>
+	</key>
+	<key n="117">
+		<name>u</name>
+		<desc>Cycle through the refuelling probe switch positions</desc>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/switches/fuel-probe</property>
+		</binding>
+	</key>
+</PropertyList>

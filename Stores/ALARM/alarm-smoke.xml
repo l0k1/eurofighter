@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>baeAlarm.ac</path>
+
+  <animation>
+    <object-name>Alarm</object-name>
+  </animation>
+
+  <model>
+    <path>Aircraft/eurofighter/Stores/ALARM/smoke.xml</path>
+    <offsets>
+      <x-m> 3 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </offsets>
+  </model>
+
+</PropertyList>

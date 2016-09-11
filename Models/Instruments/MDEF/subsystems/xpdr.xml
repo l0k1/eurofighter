@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Manual Data Entry Facility - XPDR (Transponder) Subsystem Keys -->
+<PropertyList>
+	<path>softkeys.ac</path>
+
+	<animation>
+		<object-name>mode-11</object-name>
+		<object-name>mode-12</object-name>
+		<object-name>mode-21</object-name>
+		<object-name>mode-22</object-name>
+		<object-name>mode-31</object-name>
+		<object-name>mode-32</object-name>
+		<object-name>mode-c1</object-name>
+		<object-name>mode-c2</object-name>
+		<object-name>selmod11</object-name>
+		<object-name>selmod12</object-name>
+		<object-name>selmod31</object-name>
+		<object-name>selmod32</object-name>
+		<object-name>ident</object-name>
+		<object-name>off</object-name>
+		<object-name>stby</object-name>
+		<object-name>on</object-name>
+		<object-name>emer</object-name>
+		<type>material</type>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.01.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not>
+				<equals>
+					<property>/instrumentation/transponder/modes/mode-1/standby</property>
+					<value>false</value>
+				</equals>
+			</not>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.01.on</object-name>
+		<object-name>softkeys.01.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>/instrumentation/transponder/modes/mode-1/standby</property>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>mode-11</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">MODE</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>mode-12</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.02.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not>
+				<equals>
+					<property>/instrumentation/transponder/modes/mode-2/standby</property>
+					<value>false</value>
+				</equals>
+			</not>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.02.on</object-name>
+		<object-name>softkeys.02.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>/instrumentation/transponder/modes/mode-2/standby</property>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>mode-21</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">MODE</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>mode-22</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">2</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.03.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not>
+				<equals>
+					<property>/instrumentation/transponder/modes/mode-3A/standby</property>
+					<value>false</value>
+				</equals>
+			</not>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.03.on</object-name>
+		<object-name>softkeys.03.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>/instrumentation/transponder/modes/mode-3A/standby</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+		        <script>typhoon.mode3A();</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>mode-31</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">MODE</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>mode-32</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">3/A</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.04.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not>
+				<equals>
+					<property>/instrumentation/transponder/modes/mode-C/standby</property>
+					<value>false</value>
+				</equals>
+			</not>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.04.on</object-name>
+		<object-name>softkeys.04.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>/instrumentation/transponder/modes/mode-C/standby</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+		        <script>typhoon.modeC();</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>mode-c1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.076</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">MODE</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>mode-c2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0705</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">C</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.05.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>xpdrmod1</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.05.on</object-name>
+		<object-name>softkeys.05.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>xpdrmod1</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>selmod11</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">MOD1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>selmod12</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">SEL</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<!--animation>
+		<type>select</type>
+		<object-name>softkeys.06.off</object-name>
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>nav1s</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.06.on</object-name>
+		<object-name>softkeys.06.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>nav1s</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>nav1s1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">VOR1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>nav1s2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">SBY</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text-->
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.07.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>xpdrmod3</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.07.on</object-name>
+		<object-name>softkeys.07.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>xpdrmod3</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>selmod31</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.059</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">M0D3</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>selmod32</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0535</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">SEL</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.08.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+				<equals>
+					<property>/instrumentation/transponder/ident</property>
+					<value>false</value>
+				</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.08.on</object-name>
+		<object-name>softkeys.08.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>/instrumentation/transponder/ident</property>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>ident</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0562</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">IDENT</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+
+
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.09.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+				<equals>
+					<property>/instrumentation/transponder/switch/off</property>
+					<value>false</value>
+				</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.09.on</object-name>
+		<object-name>softkeys.09.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>/instrumentation/transponder/switch/off</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+		        <script>typhoon.xponderoff();</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>off</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1675</y-m>
+			<z-m>1.0393</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">OFF</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.10.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+				<equals>
+					<property>/instrumentation/transponder/switch/stby</property>
+					<value>false</value>
+				</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.10.on</object-name>
+		<object-name>softkeys.10.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>/instrumentation/transponder/switch/stby</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+		        <script>typhoon.xponderstby();</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>stby</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.144</y-m>
+			<z-m>1.0393</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">STBY</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>softkeys.11.off</object-name>
+  <!-- out when FALSE -->
+		<condition>
+				<equals>
+					<property>/instrumentation/transponder/switch/on</property>
+					<value>false</value>
+				</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.11.on</object-name>
+		<object-name>softkeys.11.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>/instrumentation/transponder/switch/on</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+		        <script>typhoon.xponderon();</script>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>on</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.1215</y-m>
+			<z-m>1.0393</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ON</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<!--animation>
+		<type>select</type>
+		<object-name>softkeys.12.off</object-name>
+		<condition>
+			<not-equals>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>com2s</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>softkeys.12.on</object-name>
+		<object-name>softkeys.12.off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-cycle</command>
+				<property>/instrumentation/MDEF/keypad-page-selected</property>
+				<value>com2s</value>
+				<value></value>
+			</binding>
+		</action>
+	</animation>
+	<text>
+		<name>com2s1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<x-m>3.525</x-m>
+			<y-m>-0.098</y-m>
+			<z-m>1.0421</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">RAD</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text-->
+</PropertyList>

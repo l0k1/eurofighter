@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <!-- OSG Particles -->
+	<particlesystem>
+		<name>contrail</name>
+		<offsets>
+			<x-m>  0.000 </x-m>
+			<y-m>  0.000 </y-m>
+			<z-m>  0.000 </z-m>
+			<roll-deg>    0.000 </roll-deg>
+			<pitch-deg>   90.000 </pitch-deg>
+			<heading-deg> 0.000 </heading-deg>
+		</offsets>
+		<texture>contrail.png</texture>
+		<condition>
+			<property>sim/multiplay/generic/int[9]</property>
+		</condition>
+		<emissive>false</emissive>
+		<lighting>false</lighting>
+		<align>billboard</align> <!-- billboard / fixed -->
+		<attach>world</attach> <!-- world / local-->
+		<placer>
+			<type>point</type>
+		</placer>
+		<shooter>
+			<theta-min-deg>0</theta-min-deg>
+			<theta-max-deg>0</theta-max-deg>
+			<phi-min-deg>0</phi-min-deg>
+			<phi-max-deg>0</phi-max-deg>
+<!-- <speed>
+      	<property>engines/engine[0]/thrust-lbs</property>
+      	<factor>0.15</factor>
+      	<spread>0</spread>
+      </speed> -->
+			<speed-mps>
+				<value>10</value>
+				<spread>2</spread>
+			</speed-mps>
+			<rotation-speed>
+				<x-min-deg-sec>5</x-min-deg-sec>
+				<y-min-deg-sec>5</y-min-deg-sec>
+				<z-min-deg-sec>5</z-min-deg-sec>
+				<x-max-deg-sec>30</x-max-deg-sec>
+				<y-max-deg-sec>30</y-max-deg-sec>
+				<z-max-deg-sec>30</z-max-deg-sec>
+			</rotation-speed>
+		</shooter>
+		<counter>
+			<particles-per-sec>
+				<value>40</value>
+				<spread>10</spread>
+			</particles-per-sec>
+		</counter>
+		<particle>
+			<start>
+				<color>
+					<red><value>0.9</value></red>
+					<green><value>0.9</value></green>
+					<blue><value>0.9</value></blue>
+					<alpha><value>0.15</value></alpha>
+				</color>
+				<size>
+					<value>0.6</value>
+				</size>
+			</start>
+			<end>
+				<color>
+					<red><value>0.9</value></red>
+					<green><value>0.9</value></green>
+					<blue><value>0.9</value></blue>
+					<alpha><value>0.0001</value></alpha>
+				</color>
+				<size>
+					<value>14</value>
+				</size>
+			</end>
+			<life-sec>
+				<value>12</value>
+			</life-sec>
+			<mass-kg>0.5</mass-kg>
+			<radius-m>0.5</radius-m>
+		</particle>
+		<program>
+			<fluid>air</fluid>         <!-- air / water -->
+			<gravity>true</gravity>
+			<wind>false</wind>
+		</program>
+	</particlesystem>
+</PropertyList>

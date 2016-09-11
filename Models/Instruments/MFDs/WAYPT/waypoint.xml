@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PropertyList>
+	<path>hsi.ac</path>
+	<text>
+		<name>airspeed</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.065</y-m>
+			<z-m>0.065</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/velocities/airspeed-kt</property>
+		<factor type="double">1</factor>
+		<format>%3.0f</format>
+		<truncate>true</truncate>
+		<align>right-top</align>
+	</text>
+	<text>
+		<name>airspeed-app</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.008</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.045</y-m>
+			<z-m>0.065</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">KT</text>
+		<align>left-top</align>
+	</text>
+	<text>
+		<name>heading</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.015</y-m>
+			<z-m>0.065</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/orientation/heading-magnetic-deg</property>
+		<factor type="double">1</factor>
+		<format>%3.0f</format>
+		<truncate>true</truncate>
+		<align>centre-top</align>
+	</text>
+	<text>
+		<name>heading-app</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.008</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0085</y-m>
+			<z-m>0.067</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">o</text>
+		<align>left-top</align>
+	</text>
+	<text>
+		<name>altitude</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.025</y-m>
+			<z-m>0.065</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/position/altitude-ft</property>
+		<factor type="double">1</factor>
+		<format>%4.0f</format>
+		<align>right-top</align>
+	</text>
+	<text>
+		<name>altitude-app</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.008</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.063</y-m>
+			<z-m>0.065</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FT</text>
+		<align>left-top</align>
+	</text>
+	<text>
+		<name>waypoint-number-app</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.008</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.0675</y-m>
+			<z-m>0.044</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">WPT</text>
+		<align>left-top</align>
+	</text>
+	<text>
+		<name>waypoint-number</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<draw-boundingbox>true</draw-boundingbox>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.0675</y-m>
+			<z-m>0.030</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/autopilot/route-manager/current-wp</property>
+		<factor type="double">1</factor>
+		<format>%3.0f</format>
+		<align>right-top</align>
+	</text>
+	<text>
+		<name>bearing-app</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.008</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.025</y-m>
+			<z-m>0.044</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">BRG</text>
+		<align>center-top</align>
+	</text>
+	<text>
+		<name>bearing-nav</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<draw-boundingbox>true</draw-boundingbox>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.025</y-m>
+			<z-m>0.030</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/instrumentation/gps/wp/wp[1]/bearing-mag-deg</property>
+		<factor type="double">1</factor>
+		<format>%3.0f</format>
+		<align>center-top</align>
+	</text>
+	<text>
+		<name>range-app</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.008</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.025</y-m>
+			<z-m>0.044</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">RNG</text>
+		<align>center-top</align>
+	</text>
+	<text>
+		<name>range-nav</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<draw-boundingbox>true</draw-boundingbox>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>0.0225</y-m>
+			<z-m>0.030</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/instrumentation/gps/wp/wp[1]/distance-nm</property>
+		<factor type="double">1</factor>
+		<format>%4.1f</format>
+		<align>center-top</align>
+	</text>
+   
+<!-- Wind -->
+	<text>
+		<name>Wind direction</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.0675</y-m>
+			<z-m>-0.035</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">Wind</text>
+		<halign>left</halign>
+	</text>
+	<text>
+		<name>Wind direction</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.045</y-m>
+			<z-m>-0.035</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/environment/wind-from-heading-deg</property>
+		<factor>1</factor>
+		<damp>0.0</damp>
+		<format>%5.0f</format>
+		<halign>left</halign>
+	</text>
+	<text>
+		<name>Wind speed</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.014</y-m>
+			<z-m>-0.035</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">at</text>
+		<halign>left</halign>
+	</text>
+	<text>
+		<name>Wind speed</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.004</y-m>
+			<z-m>-0.035</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/environment/wind-speed-kt</property>
+		<factor>1</factor>
+		<damp>0.0</damp>
+		<format>%3.0f kt</format>
+		<halign>right</halign>
+	</text>
+	<text>
+		<name>latitude</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.008</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.0675</y-m>
+			<z-m>0.004</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">LAT</text>
+		<align>left-top</align>
+	</text>
+	<text>
+		<name>latitude-number</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.025</y-m>
+			<z-m>0.004</z-m>
+		</offsets>
+		<type type="string">number</type>
+		<property type="string">/position/latitude-string</property>
+	</text>
+	<text>
+		<name>longitude</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.008</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.0675</y-m>
+			<z-m>-0.010</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">LONG</text>
+		<align>left-top</align>
+	</text>
+	<text>
+		<name>longitude-number</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.010</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.018</x-m>
+			<y-m>-0.019</y-m>
+			<z-m>-0.010</z-m>
+		</offsets>
+		<type type="string">number</type>
+		<property type="string">/position/longitude-string</property>
+	</text>
+	<text>
+		<name>fuel</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.056</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FUEL</text>
+	</text>
+	<text>
+		<name>engine</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.030</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ENG</text>
+	</text>
+	<text>
+		<name>hydraulic</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.006</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">HYD</text>
+	</text>
+	<text>
+		<name>waypoint</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.018</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">WPT</text>
+	</text>
+	<text>
+		<name>frequency</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>.039</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FREQ</text>
+	</text>
+	<text>
+		<name>eadi</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.095</y-m>
+			<z-m>-0.054</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">EADI</text>
+	</text>
+	<text>
+		<name>mapmode</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>-0.033</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">SIT</text>
+	</text>
+	<text>
+		<name>navpos1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.081</y-m>
+			<z-m>0.063</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>navpos2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.080</y-m>
+			<z-m>0.056</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">DISP</text>
+	</text>
+	<animation>
+		<type>material</type>
+		<object-name>mapmode</object-name>
+		<object-name>fuel</object-name>
+		<object-name>engine</object-name>
+		<object-name>hydraulic</object-name>
+		<object-name>waypoint</object-name>
+		<object-name>frequency</object-name>
+		<object-name>eadi</object-name>
+		<object-name>navpos1</object-name>
+		<object-name>navpos2</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>Rose</object-name>
+		<object-name>altitude</object-name>
+		<object-name>altitude-app</object-name>
+		<object-name>heading</object-name>
+		<object-name>heading-app</object-name>
+		<object-name>airspeed</object-name>
+		<object-name>airspeed-app</object-name>
+		<object-name>bearing-app</object-name>
+		<object-name>bearing-nav</object-name>
+		<object-name>range-app</object-name>
+		<object-name>range-nav</object-name>
+		<object-name>waypoint-number</object-name>
+		<object-name>waypoint-number-app</object-name>
+		<object-name>Wind direction</object-name>
+		<object-name>Wind speed</object-name>
+		<object-name>latitude</object-name>
+		<object-name>latitude-number</object-name>
+		<object-name>longitude</object-name>
+		<object-name>longitude-number</object-name>
+		<emission>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+</PropertyList>

@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<model>
+		<name>radar Buttons</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MFDs/RAD2/radar-btn.xml</path>
+	</model>
+
+	<model>
+		<name>radar</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MFDs/RAD2/hsd-radar.xml</path>
+		<offsets>
+			<x-m>-0.048</x-m>
+			<y-m>0</y-m>
+			<z-m>0.01</z-m>
+		</offsets>
+	</model>  
+	<!-- scale down vert to fit the screen -->
+
+	<animation>
+		<type>scale</type>
+		<object-name>radar</object-name>
+		<x-factor>1.0</x-factor>
+		<x-offset>1.0</x-offset>
+		<y-factor>1.0</y-factor>
+		<y-offset>1.0</y-offset>
+		<z-factor>1.0</z-factor>
+		<z-offset>0.9</z-offset>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>radar</object-name>
+		<object-name>radar Buttons</object-name>
+		<condition>
+			<equals>
+				<property>instrumentation/MFD[2]/page-selected</property>
+				<value>radar</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<text>
+		<name>fuel</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>-0.057</y-m>
+			<z-m>-0.085</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FUEL</text>
+	</text>
+	<text>
+		<name>engine</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>-0.032</y-m>
+			<z-m>-0.085</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ENG</text>
+	</text>
+	<text>
+		<name>hydraulic</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>-0.007</y-m>
+			<z-m>-0.085</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">HYD</text>
+	</text>
+	<text>
+		<name>nav2d1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>0.080</y-m>
+			<z-m>0.062</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>nav2d2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>0.080</y-m>
+			<z-m>0.055</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">DISP</text>
+	</text>
+	<text>
+		<name>norm</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>-0.095</y-m>
+			<z-m>0.014</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">STB</text>
+	</text>
+	<text>
+		<name>norm</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>0.080</y-m>
+			<z-m>0.036</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">OFF</text>
+	</text>
+	<text>
+		<name>rangeminus</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>0.082</y-m>
+			<z-m>-0.033</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">R-</text>
+	</text>
+	<text>
+		<name>rangeplus</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>0.082</y-m>
+			<z-m>-0.009</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">R+</text>
+	</text>
+	<text>
+		<name>mode</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>0.079</y-m>
+			<z-m>0.014</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">MODE</text>
+	</text>
+	<text>
+		<name>radar2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>0.039</y-m>
+			<z-m>-0.085</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">RADAR</text>
+	</text>
+	<text>
+		<name>store</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.024</x-m>
+			<y-m>0.016</y-m>
+			<z-m>-0.085</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">STOR</text>
+	</text>
+	<text>
+		<name>next-tgt</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>-0.096</y-m>
+			<z-m>-0.006</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NEXT</text>
+	</text>
+	<text>
+		<name>next-tgt2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>-0.096</y-m>
+			<z-m>-0.014</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">TGT</text>
+	</text>
+	<text>
+		<name>prev-tgt</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>-0.096</y-m>
+			<z-m>-0.031</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">PREV</text>
+	</text>
+	<text>
+		<name>prev-tgt2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>-0.096</y-m>
+			<z-m>-0.038</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">TGT</text>
+	</text>
+	<text>
+		<name>eadi</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.022</x-m>
+			<y-m>-0.096</y-m>
+			<z-m>-0.0565</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">EADI</text>
+	</text>
+
+
+	<!-- lighting -->
+	<animation>
+		<type>material</type>
+		<object-name>rangeminus</object-name>
+		<object-name>rangeplus</object-name>
+		<object-name>mode</object-name>
+		<object-name>norm</object-name>
+		<object-name>radar2</object-name>
+		<object-name>store</object-name>
+		<object-name>eadi</object-name>
+		<object-name>next-tgt</object-name>
+		<object-name>next-tgt2</object-name>
+		<object-name>prev-tgt</object-name>
+		<object-name>prev-tgt2</object-name>
+		<object-name>nav2d1</object-name>
+		<object-name>nav2d2</object-name>
+		<object-name>fuel</object-name>
+		<object-name>engine</object-name>
+		<object-name>hydraulic</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<object-name>radar</object-name>
+		<type>material</type>
+			<diffuse>
+				<red>0.1</red>
+				<green>0.1</green>
+				<blue>0.1</blue>
+			</diffuse>
+		<emission>
+			<factor-prop>instrumentation/illumination/LCD</factor-prop>
+			<red>0.8</red>
+			<green>0.8</green>
+			<blue>0.8</blue>
+		</emission>
+	</animation>
+</PropertyList>

@@ -1,0 +1,55 @@
+<?xml version = '1.0' ?>
+<PropertyList>
+
+<!-- Braking Chute -->
+	<path>chute.ac</path>
+	<animation>
+		<name>chute</name>
+		<object-name>line.007</object-name>
+		<object-name>line.008</object-name>
+		<object-name>line.009</object-name>
+		<object-name>line.010</object-name>
+		<object-name>line.011</object-name>
+		<object-name>line.012</object-name>
+		<object-name>line.013</object-name>
+		<object-name>panel.008</object-name>
+		<object-name>strop-closed</object-name>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>chute</object-name>
+		<condition>
+			<equals>
+				<property>controls/chute</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>scale</type>
+		<object-name>chute</object-name>
+		<property>controls/chute-pos-norm</property>
+		<x-min>1</x-min>
+		<y-min>1</y-min>
+		<z-min>1</z-min>
+		<x-factor>1.5</x-factor>
+		<y-factor>5</y-factor>
+		<z-factor>5</z-factor>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>chute</object-name>
+		<property>orientation/pitch-deg</property>
+		<factor>-0.17</factor>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+</PropertyList>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<PropertyList>
+	<path>pylons.ac</path>
+
+	<animation>
+		<object-name>pylon1.L</object-name>
+		<object-name>pylon2.L</object-name>
+		<object-name>pylon3.L</object-name>
+		<object-name>pylon13.L</object-name>
+		<object-name>pylon4.L</object-name>
+		<object-name>pylon.C</object-name>
+		<object-name>pylon.C2</object-name>
+		<object-name>pylon4.R</object-name>
+		<object-name>pylon13.R</object-name>
+		<object-name>pylon3.R</object-name>
+		<object-name>pylon2.R</object-name>
+		<object-name>pylon1.R</object-name>
+		<object-name>pylonFront.L</object-name>
+		<object-name>pylonRear.L</object-name>
+		<object-name>pylonFront.R</object-name>
+		<object-name>pylonRear.R</object-name>
+	</animation>
+ 
+  <!-- pylon options
+      _________________|_________|_________________
+      \                |         |                /
+       \               |         |               /
+        \4.R           |         |           4.L/
+         (12)          |RR    RL |          (11)
+          \  3.R       |(10)  (8)|       3.L  /
+           \ (5)       |         |       (2) /   
+            \          |         |          /    
+             \         |         |         /
+       2fuel.R\  2.R   |RF    LF |   2.L  /2fuel.L
+          (15) \ (4)   |(9)   (7)|   (1) / (13)
+                \      |         |      /
+                 \     |         |     /
+                  \ 1.R|    C2   |1.L /
+                   \(3)|   C14)  |(0)/
+                    \  |    C    |  /
+                     \ |   (6)   | /
+                      \|_________|/
+  -->
+	<animation>
+		<type>select</type>
+		<object-name>pylon1.L</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[0]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylon2.L</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[1]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylon2fuel.L</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[13]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylon3.L</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[2]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylon4.L</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[11]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylon.C</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[6]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylon.C2</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[14]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylon1.R</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[3]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylon2.R</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[4]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylon2fuel.R</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[15]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylon3.R</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[5]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylon4.R</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[12]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylonFront.L</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[7]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylonRear.L</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[8]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylonFront.R</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[9]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>pylonRear.R</object-name>
+		<condition>
+			<not-equals>
+				<property>sim/weight[10]/selected</property>
+				<value>none</value>
+			</not-equals>
+		</condition>
+	</animation>
+</PropertyList>

@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<title>EFA Typhoon</title>
+	<key>
+		<name>e</name>
+		<desc>Fire Missiles/Gun</desc>
+	</key>
+	<key>
+		<name>j</name>
+		<desc>Retract Speedbrake</desc>
+	</key>
+	<key>
+		<name>k</name>
+		<desc>Extend Speedbrake</desc>
+	</key>
+	<key>
+		<name>l</name>
+		<desc>Release Flares</desc>
+	</key>
+	<key>
+		<name>m</name>
+		<desc>Release Chaff</desc>
+	</key>
+	<key>
+		<name>u</name>
+		<desc>Toggle refuel probe</desc>
+	</key>
+	<key>
+		<name>w</name>
+		<desc>Weapon Mode Select</desc>
+	</key>
+	<key>
+		<name>C</name>
+		<desc>Release catapult</desc>
+	</key>
+	<key>
+		<name>E</name>
+		<desc>Open - Release Brake Chute</desc>
+	</key>
+	<key>
+		<name>F</name>
+		<desc>Toggle demo smoke</desc>
+	</key>
+	<key>
+		<name>L</name>
+		<desc>Engage launchbar</desc>
+	</key>
+	<key>
+		<name>N</name>
+		<desc>Jettison Tanks</desc>
+	</key>
+	<key>
+		<name>O</name>
+		<desc>Extend/retract hook</desc>
+	</key>
+	<key>
+		<name>Ctrl + d</name>
+		<desc>Toggle canopy</desc>
+	</key>
+	<key>
+		<name>Ctrl + n</name>
+		<desc>Toggle Radar (Pulse/TWS)</desc>
+	</key>
+	<key>
+		<name>Ctrl + o</name>
+		<desc>Select both engines</desc>
+	</key>
+
+	<text>
+    U L P (Upper Left Panel) Autopilot and functions :
+    *** Please refer to the Readme file in the eurofighter folder ***
+
+    Full Auto Start (Typhoon Menu)
+        or
+    Manual Start Procedure :
+    Down Right Panel --> Battery switch, APU red button
+    (wait a few seconds for the APU to spool up... "ON" showing)
+    L and R Boost switches on
+    Left LP cock on (under red cover), behind Throttles (Left Panel)
+    Right LP cock on (under red cover), (down Right Panel)
+    Start switch on and release
+    MFDs as required, then lights and radios
+    After start-up: APU off (red button again), canopy down (Red Button below right MFD)
+                                          -----
+                            End of your ride (and if you wish)
+                            Full Auto Shut down (Typhoon Menu)
+
+    Weapons Menu :
+     Select your load (fuel and weapons) according to the mission you plan, AFTER startup and BEFORE Take-off
+     You can check the result with "external view"
+     or on the right MFD, STOR button
+
+    To fire a guided Missile,
+     Rotate Master Arm Switch from "Safe" to "Live" (down Right Panel),
+     Select "A/A :" on the HUD with "w" or right MFD, STOR, "A/A"
+     Select the desired Air to Air missile (STOR page: Sel + or Sel -),
+     Activate "lock" (right MFD, RADAR, hit "Mode" button : you switch to TWS-Auto),
+     Aim with the HUD (Target indications showing on HUD),
+     Fire with "e" when in range and locked (HUD black diamond steady)
+
+    Same procedure for Air to Ground missile, but select "A/G :" 
+    on the HUD (hit "w" again) or right MFD, STOR page, "A/G"
+
+     Note that "A/A :" will only display Air to Air armament
+               "A/G :" will only display Air to Ground armament
+
+    The "N" key operates only if the jettison switch (close to the gear lever) is down
+    (Tanks position, green light "ON" showing) - you can also push the "ON" button
+
+    Afterburners engage when throttles past 95%
+
+     *  Max speed:   Mach 2.0+ reheat 
+                     Mach 1.2 without reheat
+     *  Min speed:   130 Kt (clean)
+                     stable with 9 AoA
+     *  Take off:    120 Kts (clean) - up to 190 Kts (with loads)
+     *  Stall:       near 90 Kts (clean)
+	</text>
+</PropertyList>

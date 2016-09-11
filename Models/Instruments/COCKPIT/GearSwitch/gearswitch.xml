@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>gearswitch.ac</path>
+
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<condition>
+			<property>sim/rendering/rembrandt/enabled</property>
+		</condition>
+		<object-name>Labels</object-name>
+		<object-name>Labels.Lit</object-name>
+	</effect>
+
+	<animation>
+		<type>select</type>
+		<object-name>Labels</object-name>
+		<condition>
+			<less-than>
+				<property>systems/electrical/outputs/avionics/cockpit-lighting</property>
+				<value>24</value>
+			</less-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>Labels.Lit</object-name>
+		<condition>
+			<greater-than>
+				<property>systems/electrical/outputs/avionics/cockpit-lighting</property>
+				<value>24</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>GearLightSwitch</object-name>
+		<property>/controls/switches/gear-lights</property>
+		<factor>-25</factor>
+		<offset-deg>25</offset-deg>
+		<axis>
+			<y>-1</y>
+		</axis>
+		<center>
+			<x-m>0.002</x-m>
+			<y-m>0</y-m>
+			<z-m>0.008</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>Spot.gearlight-dec</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>
+					avionics.controls.gearLights(1);
+					setprop("sim/multiplay/generic/int[7]", 1);
+				</script>
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>Spot.gearlight-off</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>
+					avionics.controls.gearLights(2);
+					setprop("sim/multiplay/generic/int[7]", 2);
+				</script>
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>Spot.gearlight-inc</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>
+					avionics.controls.gearLights(3);
+					setprop("sim/multiplay/generic/int[7]", 3);
+				</script>
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>Labels.Lit</object-name>
+		<emission>
+			<red>0.6</red>
+			<green>0.6</green>
+			<blue>0.6</blue>
+			<factor-prop>/instrumentation/illumination/console-backlight</factor-prop>
+		</emission>
+	</animation>
+ 
+	<animation>
+		<type>material</type>
+		<object-name>GearLightSwitch</object-name>
+		<condition>
+			<greater-than>
+				<property>/systems/electrical/outputs/avionics/cockpit-lighting</property>
+				<value>24</value>
+			</greater-than>
+			<not><property>sim/rendering/rembrandt/enabled</property></not>
+			<property>/controls/switches/lighting-day-night</property>
+		</condition>
+		<emission>
+			<red>0.5</red>
+			<green>0.4</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/cockpit-floods-forward</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>GearLightSwitch</object-name>
+		<condition>
+			<greater-than>
+				<property>/systems/electrical/outputs/avionics/cockpit-lighting</property>
+				<value>24</value>
+			</greater-than>
+			<not><property>sim/rendering/rembrandt/enabled</property></not>
+			<property>/controls/switches/lighting-day-night</property>
+		</condition>
+		<emission>
+			<red>0.5</red>
+			<green>0.5</green>
+			<blue>0.5</blue>
+			<factor-prop>/instrumentation/illumination/cockpit-floods-forward</factor-prop>
+		</emission>
+	</animation>
+
+</PropertyList>

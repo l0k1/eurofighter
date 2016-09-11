@@ -1,0 +1,459 @@
+<PropertyList>
+	<path>mids-panel.ac</path>
+
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>20</max-m>
+	</animation>
+
+	<animation>
+		<object-name>button-1</object-name>
+		<object-name>button-2</object-name>
+		<object-name>button-4</object-name>
+		<object-name>button-5</object-name>
+		<object-name>rad1-label</object-name>
+		<object-name>rad2-label</object-name>
+		<object-name>rad1-chan</object-name>
+		<object-name>rad2-chan</object-name>
+		<object-name>rad1-freq</object-name>
+		<object-name>rad2-freq</object-name>
+		<object-name>rad1s-label</object-name>
+		<object-name>rad2s-label</object-name>
+		<object-name>rad1s-chan</object-name>
+		<object-name>rad2s-chan</object-name>
+		<object-name>rad1s-freq</object-name>
+		<object-name>rad2s-freq</object-name>
+		<object-name>zulu</object-name>
+		<object-name>zulu-label</object-name>
+		<object-name>localtime</object-name>
+		<object-name>localtime-label</object-name>
+		<object-name>localtime1</object-name>
+		<object-name>localtime-label1</object-name>
+		<object-name>localtime2</object-name>
+		<object-name>localtime-label2</object-name>
+		<type>material</type>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>button-1</object-name>
+		<object-name>button-2</object-name>
+		<object-name>button-4</object-name>
+		<object-name>button-5</object-name>
+		<object-name>rad1-label</object-name>
+		<object-name>rad2-label</object-name>
+		<object-name>rad1-chan</object-name>
+		<object-name>rad2-chan</object-name>
+		<object-name>rad1-freq</object-name>
+		<object-name>rad2-freq</object-name>
+		<object-name>rad1s-label</object-name>
+		<object-name>rad2s-label</object-name>
+		<object-name>rad1s-chan</object-name>
+		<object-name>rad2s-chan</object-name>
+		<object-name>rad1s-freq</object-name>
+		<object-name>rad2s-freq</object-name>
+		<object-name>zulu</object-name>
+		<object-name>zulu-label</object-name>
+		<object-name>localtime</object-name>
+		<object-name>localtime-label</object-name>
+		<object-name>localtime1</object-name>
+		<object-name>localtime-label1</object-name>
+		<object-name>localtime2</object-name>
+		<object-name>localtime-label2</object-name>
+		<condition>
+			<greater-than>
+				<property>/systems/electrical/outputs/bus</property>
+				<value>26</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<object-name>rad1-tx</object-name>
+		<object-name>rad2-tx</object-name>
+		<type>material</type>
+		<diffuse>
+			<red>0.4</red>
+			<green>0.1</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+			<red>0.9</red>
+			<green>0.3</green>
+			<blue>0.3</blue>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>rad1-tx</object-name>
+		<condition>
+				<equals>
+				<property>/instrumentation/comm[0]/ptt</property>
+					<value>1</value>
+				</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>rad2-tx</object-name>
+		<condition>
+				<equals>
+				<property>/instrumentation/comm[1]/ptt</property>
+					<value>1</value>
+				</equals>
+		</condition>
+	</animation>
+ 
+ <!-- Buttons -->
+	<text>
+		<name>button-1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.0465</y-m>
+			<z-m>1.117</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">RAD 1</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>button-2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0044</character-size>
+		<offsets>
+			<x-m>3.67</x-m>
+			<y-m>-0.047</y-m>
+			<z-m>1.100</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">RAD 2</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>button-4</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0045</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.0465</y-m>
+			<z-m>1.117</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">Swap</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+	<text>
+		<name>button-5</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.67</x-m>
+			<y-m>0.047</y-m>
+			<z-m>1.100</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">Swap</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>center-center</alignment>
+	</text>
+ 
+<!-- Display -->
+	<text>
+		<name>rad1-label</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.031</y-m>
+			<z-m>1.12</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">R1 active</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+ 
+	<text>
+		<name>rad1-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.031</y-m>
+			<z-m>1.114</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/instrumentation/comm/frequencies/selected-mhz</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>rad1s-label</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.010</y-m>
+			<z-m>1.12</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">R1 stby</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+ 
+	<text>
+		<name>rad1s-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.010</y-m>
+			<z-m>1.114</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/instrumentation/comm/frequencies/standby-mhz</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>rad2-label</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.031</y-m>
+			<z-m>1.105</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">R2 active</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+ 
+	<text>
+		<name>rad2-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.031</y-m>
+			<z-m>1.099</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/instrumentation/comm[1]/frequencies/selected-mhz</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>rad2s-label</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.010</y-m>
+			<z-m>1.105</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">R2 stby</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+ 
+	<text>
+		<name>rad2s-freq</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.010</y-m>
+			<z-m>1.099</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/instrumentation/comm[1]/frequencies/standby-mhz</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>rad1-tx</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.008</y-m>
+			<z-m>1.114</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">TX</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>rad2-tx</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.008</y-m>
+			<z-m>1.099</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">TX</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>zulu-label</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.028</y-m>
+			<z-m>1.093</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">Z</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>zulu</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>-0.025</y-m>
+			<z-m>1.093</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/sim/time/gmt-string</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>localtime-label</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.003</y-m>
+			<z-m>1.093</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">L</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>localtime</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.016</y-m>
+			<z-m>1.093</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/sim/time/real/hour</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>localtime-label1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.016</y-m>
+			<z-m>1.093</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">:</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>localtime1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.024</y-m>
+			<z-m>1.093</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/sim/time/real/minute</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+	<text>
+		<name>localtime-label2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.024</y-m>
+			<z-m>1.093</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">:</text>
+		<draw-text type="bool">true</draw-text>
+		<alignment>left-center</alignment>
+	</text>
+	<text>
+		<name>localtime2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.004</character-size>
+		<offsets>
+			<x-m>3.68</x-m>
+			<y-m>0.032</y-m>
+			<z-m>1.093</z-m>
+		</offsets>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<property type="string">/sim/time/real/second</property>
+		<draw-text type="bool">true</draw-text>
+		<alignment>right-center</alignment>
+	</text>
+</PropertyList>

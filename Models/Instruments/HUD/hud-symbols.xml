@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PropertyList>
+	<path>hud-symbols.ac</path>
+
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<condition>
+			<property>/sim/rendering/rembrandt/enabled</property>
+		</condition>
+		<object-name>Datum</object-name>
+		<object-name>Ladder</object-name>
+		<object-name>ClimbDive.lock</object-name>
+	</effect>
+
+	<animation>
+		<type>select</type>
+		<object-name>Datum</object-name>
+		<object-name>Ladder</object-name>
+		<object-name>ClimbDive.lock</object-name>
+		<condition>
+			<and>
+				<greater-than>
+					<property>/systems/electrical/outputs/avionics/HUD</property>
+					<value>27</value>
+				</greater-than>
+				<not-equals>
+					<property>/sim/hud/ladder</property>
+					<value>true</value>
+				</not-equals>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>texmultiple</type>
+		<object-name>Ladder</object-name>
+		<transform>
+			<property>/orientation/pitch-deg</property>
+			<subtype>textranslate</subtype>
+			<factor>0.0054</factor>
+			<axis>
+				<x>0</x>
+				<y>1</y>
+				<z>0</z>
+			</axis>
+		</transform>
+	</animation>
+
+	<animation>
+		<object-name>Ladder</object-name>
+		<type>rotate</type>
+		<property>/orientation/roll-deg</property>
+		<factor>1</factor>
+		<offset-deg>0</offset-deg>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+ 
+ <!-- Illumination -->
+	<animation>
+		<type>material</type>
+		<object-name>Datum</object-name>
+		<object-name>Ladder</object-name>
+		<object-name>ClimbDive.lock</object-name>
+		<!--diffuse>
+			<red>0.1</red>
+			<green>0.2</green>
+			<blue>0.1</blue>
+		</diffuse-->
+		<emission>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+	</animation>
+</PropertyList>

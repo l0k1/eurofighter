@@ -1,0 +1,1005 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>situana.ac</path>
+
+	<model>
+		<name>maplayer</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MFDs/SITUA/MovingMap/terrain-map-pixel.xml</path>
+		<offsets>
+			<x-m>0.02</x-m>
+			<y-m>0.00</y-m>
+			<z-m>0.003</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>select</type>
+		<object-name>maplayer</object-name>
+		<object-name>ownac</object-name>
+		<object-name>ownacfix</object-name>
+		<condition>
+			<equals>
+				<property>instrumentation/MFD[0]/situana/map-selected</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>blacklayer</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>instrumentation/MFD[0]/situana/map-selected</property>
+					<value>false</value>
+				</equals>
+				<equals>
+					<property>instrumentation/MFD[0]/situana/map2-selected</property>
+					<value>false</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ownac2</object-name>
+		<object-name>ownacfix2</object-name>
+		<object-name>radarrange</object-name>
+		<object-name>radarrangefix</object-name>
+		<condition>
+			<equals>
+				<property>instrumentation/MFD[0]/situana/map2-selected</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>maplayer2</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>instrumentation/MFD[0]/situana/map2-selected</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>instrumentation/MFD[0]/situana/tracking</property>
+					<value>true</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>texmultiple</type>
+		<object-name>maplayerfix2</object-name>
+		<transform>
+			<property>position/latitude-deg</property>
+			<subtype>textranslate</subtype>
+			<factor>1</factor>
+			<axis>
+				<x>0</x>
+				<y>1</y>
+				<z>0</z>
+			</axis>
+		</transform>
+		<transform>
+			<property>position/longitude-deg</property>
+			<subtype>textranslate</subtype>
+			<factor>1</factor>
+			<axis>
+				<x>1</x>
+				<y>0</y>
+				<z>0</z>
+			</axis>
+		</transform>
+		<transform>
+			<property>orientation/heading-deg</property>
+			<subtype>texrotate</subtype>
+			<center>
+				<x>0.5</x>
+				<y>0.5</y>
+			</center>
+			<axis>
+				<x>0</x>
+				<y>0</y>
+				<z>-1</z>
+			</axis>
+		</transform>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>maplayerfix2</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>instrumentation/MFD[0]/situana/map2-selected</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>instrumentation/MFD[0]/situana/tracking</property>
+					<value>false</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<type>texmultiple</type>
+		<object-name>maplayer2</object-name>
+		<transform>
+			<property>position/latitude-deg</property>
+			<subtype>textranslate</subtype>
+			<factor>1</factor>
+			<axis>
+				<x>0</x>
+				<y>1</y>
+				<z>0</z>
+			</axis>
+		</transform>
+		<transform>
+			<property>position/longitude-deg</property>
+			<subtype>textranslate</subtype>
+			<factor>1</factor>
+			<axis>
+				<x>1</x>
+				<y>0</y>
+				<z>0</z>
+			</axis>
+		</transform>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>ownacfix</object-name>
+		<condition>
+			<equals>
+				<property>instrumentation/MFD[0]/PA/orientation-north</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>ownac</object-name>
+		<condition>
+			<equals>
+				<property>instrumentation/MFD[0]/PA/orientation-north</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>ownacfix2</object-name>
+		<condition>
+			<equals>
+				<property>instrumentation/MFD[0]/situana/tracking</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>ownac2</object-name>
+		<condition>
+			<equals>
+				<property>instrumentation/MFD[0]/situana/tracking</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>radarrangefix</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>instrumentation/MFD[0]/situana/tracking</property>
+					<value>false</value>
+				</equals>
+				<equals>
+					<property>/instrumentation/radar/radar-standby</property>
+					<value>false</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>radarrange</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>instrumentation/MFD[0]/situana/tracking</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>/instrumentation/radar/radar-standby</property>
+					<value>false</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>radarrange</object-name>
+		<object-name>ownac</object-name>
+		<object-name>ownac2</object-name>
+		<property>orientation/heading-deg</property>
+		<factor>1</factor>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>scale</type>
+		<object-name>radarrange</object-name>
+		<property>/instrumentation/radar/range</property>
+		<x-min>1.0</x-min>
+		<y-min>0.5</y-min>
+		<z-min>0.5</z-min>
+		<y-max>1.25</y-max>
+		<z-max>1.25></z-max>
+		<x-factor>0</x-factor>
+		<y-factor>0.0125</y-factor>
+		<z-factor>0.0125</z-factor>
+	</animation>
+ 
+	<model>
+		<name>MP1</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MFDs/contacts/contact-a.xml</path>
+		<offsets>
+			<x-m>0.03</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.06</z-m>
+			<pitch-deg>-10</pitch-deg>
+		</offsets>
+	</model>
+	<animation>
+		<type>select</type>
+		<object-name>MP1</object-name>
+		<condition>
+			<equals>
+				<property>instrumentation/radar2/targets/multiplayer[0]/display</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP1</object-name>
+		<property>instrumentation/radar2/targets/multiplayer[0]/bearing-deg</property>
+		<condition>
+			<not><property>instrumentation/radar/radar-standby</property></not>
+		</condition>
+		<axis><x>-1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP1</object-name>
+		<property>orientation/heading-deg</property>
+		<axis><x>1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<animation>
+		<type>translate</type>
+		<object-name>MP1</object-name>
+		<property>instrumentation/radar2/targets/multiplayer[0]/tid-draw-range-nm</property>
+		<condition>
+			<not><property>instrumentation/radar/radar-standby</property></not>
+		</condition>
+		<factor>1</factor>
+		<axis><z>1</z></axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP1</object-name>
+		<property>orientation/heading-deg</property>
+		<axis><x>-1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP1</object-name>
+		<property>instrumentation/radar2/targets/multiplayer[0]/bearing-deg</property>
+		<condition>
+			<not><property>instrumentation/radar/radar-standby</property></not>
+		</condition>
+		<axis><x>1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<model>
+		<name>MP2</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MFDs/contacts/contact-b.xml</path>
+		<offsets>
+			<x-m>0.03</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.06</z-m>
+			<pitch-deg>-10</pitch-deg>
+		</offsets>
+	</model>
+	<animation>
+		<type>select</type>
+		<object-name>MP2</object-name>
+		<condition>
+			<equals>
+				<property>instrumentation/radar2/targets/multiplayer[1]/display</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP2</object-name>
+		<property>instrumentation/radar2/targets/multiplayer[1]/bearing-deg</property>
+		<condition>
+			<not><property>instrumentation/radar/radar-standby</property></not>
+		</condition>
+		<axis><x>-1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP2</object-name>
+		<property>orientation/heading-deg</property>
+		<axis><x>1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<animation>
+		<type>translate</type>
+		<object-name>MP2</object-name>
+		<property>instrumentation/radar2/targets/multiplayer[1]/tid-draw-range-nm</property>
+		<condition>
+			<not><property>instrumentation/radar/radar-standby</property></not>
+		</condition>
+		<factor>1</factor>
+		<axis><z>1</z></axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP2</object-name>
+		<property>orientation/heading-deg</property>
+		<axis><x>-1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP2</object-name>
+		<property>instrumentation/radar2/targets/multiplayer[1]/bearing-deg</property>
+		<condition>
+			<not><property>instrumentation/radar/radar-standby</property></not>
+		</condition>
+		<axis><x>1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<model>
+		<name>MP3</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MFDs/contacts/contact-c.xml</path>
+		<offsets>
+			<x-m>0.03</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.06</z-m>
+			<pitch-deg>-10</pitch-deg>
+		</offsets>
+	</model>
+	<animation>
+		<type>select</type>
+		<object-name>MP3</object-name>
+		<condition>
+			<equals>
+				<property>instrumentation/radar2/targets/multiplayer[2]/display</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP3</object-name>
+		<property>instrumentation/radar2/targets/multiplayer[2]/bearing-deg</property>
+		<condition>
+			<not><property>instrumentation/radar/radar-standby</property></not>
+		</condition>
+		<axis><x>-1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP3</object-name>
+		<property>orientation/heading-deg</property>
+		<axis><x>1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<animation>
+		<type>translate</type>
+		<object-name>MP3</object-name>
+		<property>instrumentation/radar2/targets/multiplayer[2]/tid-draw-range-nm</property>
+		<condition>
+			<not><property>instrumentation/radar/radar-standby</property></not>
+		</condition>
+		<factor>1</factor>
+		<axis><z>1</z></axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP3</object-name>
+		<property>orientation/heading-deg</property>
+		<axis><x>-1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>MP3</object-name>
+		<property>instrumentation/radar2/targets/multiplayer[2]/bearing-deg</property>
+		<condition>
+			<not><property>instrumentation/radar/radar-standby</property></not>
+		</condition>
+		<axis><x>1</x></axis>
+		<center><z-m>-0.0400</z-m></center>
+	</animation>
+	<text>
+		<name>airspeed</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>0.044</y-m>
+			<z-m>0.069</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/velocities/airspeed-kt</property>
+		<factor type="double">1</factor>
+		<format>%3.0f</format>
+		<truncate>true</truncate>
+		<align>right-top</align>
+	</text>
+	<text>
+		<name>airspeed-app</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>0.063</y-m>
+			<z-m>0.069</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">KT</text>
+		<align>left-top</align>
+	</text>
+	<text>
+		<name>groundspeed</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>0.044</y-m>
+			<z-m>0.063</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/velocities/groundspeed-kt</property>
+		<factor type="double">1</factor>
+		<format>%3.0f</format>
+		<truncate>true</truncate>
+		<align>right-top</align>
+	</text>
+	<text>
+		<name>groundspeed-app</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>0.063</y-m>
+			<z-m>0.063</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">GS</text>
+		<align>left-top</align>
+	</text>
+	<text>
+		<name>heading-mag</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>-0.005</y-m>
+			<z-m>0.075</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/orientation/heading-magnetic-deg</property>
+		<factor type="double">1</factor>
+		<format>%3.0f</format>
+		<truncate>true</truncate>
+		<align>centre-top</align>
+	</text>
+	<text>
+		<name>heading-true</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>-0.005</y-m>
+			<z-m>0.075</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/orientation/heading-deg</property>
+		<factor type="double">1</factor>
+		<format>%3.0f</format>
+		<truncate>true</truncate>
+		<align>centre-top</align>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>heading-mag</object-name>
+		<condition>
+			<equals>
+				<property>/instrumentation/MFD[1]/PA/true-heading</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>heading-true</object-name>
+		<condition>
+			<equals>
+				<property>/instrumentation/MFD[1]/PA/true-heading</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+	<text>
+		<name>heading-app</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>0.009</y-m>
+			<z-m>0.077</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">o</text>
+		<align>left-top</align>
+	</text>
+	<text>
+		<name>altitude</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>0.04</y-m>
+			<z-m>0.075</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/position/altitude-angels</property>
+		<factor type="double">1</factor>
+		<format>%1.3f</format>
+		<align>right-top</align>
+	</text>
+	<text>
+		<name>altitude-app</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>0.063</y-m>
+			<z-m>0.075</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FT</text>
+		<align>left-top</align>
+	</text>
+	<text>
+		<name>zoom-quarter</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>-0.07</y-m>
+			<z-m>-0.031</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/instrumentation/MFD[0]/PA/zoom-nm</property>
+		<scale type="double">0.25</scale>
+		<format>%3.0f</format>
+		<truncate>true</truncate>
+		<align>right-center</align>
+	</text>
+	<text>
+		<name>zoom-half</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>-0.07</y-m>
+			<z-m>0.005</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/instrumentation/MFD[0]/PA/zoom-nm</property>
+		<scale type="double">0.5</scale>
+		<format>%3.0f</format>
+		<truncate>true</truncate>
+		<align>right-center</align>
+	</text>
+	<text>
+		<name>zoom-3quarter</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>-0.07</y-m>
+			<z-m>0.042</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/instrumentation/MFD[0]/PA/zoom-nm</property>
+		<scale type="double">0.75</scale>
+		<format>%3.0f</format>
+		<truncate>true</truncate>
+		<align>right-center</align>
+	</text>
+	<text>
+		<name>zoom-full</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.005</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>-0.07</y-m>
+			<z-m>0.075</z-m>
+		</offsets>
+		<type type="string">number-value</type>
+		<property type="string">/instrumentation/MFD[0]/PA/zoom-nm</property>
+		<scale type="double">1.0</scale>
+		<format>%3.0f</format>
+		<truncate>true</truncate>
+		<align>right-center</align>
+	</text>
+	<text>
+		<name>trackmode</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>0.038</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">TRK</text>
+	</text>
+	<text>
+		<name>mapmode</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.03</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>-0.007</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">MAP</text>
+	</text>
+	<!--text>
+	 <name>norm</name>
+	  <font>lcd.txf</font>
+    <character-size type="double">0.0065</character-size>
+    <offsets>
+      <pitch-deg>90</pitch-deg>
+      <heading-deg>0</heading-deg>
+      <roll-deg>90</roll-deg>
+      <x-m>0.025</x-m>
+      <y-m>0.079</y-m>
+      <z-m>0.061</z-m>
+    </offsets>
+	  <type type="string">literal</type>
+	  <text type="string">NORM</text>
+	</text-->
+	<text>
+		<name>eadi</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.095</y-m>
+			<z-m>-0.054</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">EADI</text>
+	</text>
+	<text>
+		<name>fuel</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.056</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FUEL</text>
+	</text>
+	<text>
+		<name>engine</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.030</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">ENG</text>
+	</text>
+	<text>
+		<name>hydraulic</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.006</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">HYD</text>
+	</text>
+	<text>
+		<name>waypoint</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.018</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">WPT</text>
+	</text>
+	<text>
+		<name>mapmode</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>-0.094</y-m>
+			<z-m>-0.033</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">SIT</text>
+	</text>
+	<text>
+		<name>frequency</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>.039</y-m>
+			<z-m>-0.083</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">FREQ</text>
+	</text>
+	<text>
+		<name>navpos1</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.081</y-m>
+			<z-m>0.063</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">NAV</text>
+	</text>
+	<text>
+		<name>navpos2</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.006</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.080</y-m>
+			<z-m>0.056</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">DISP</text>
+	</text>
+	<text>
+		<name>rangeminus</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.082</y-m>
+			<z-m>-0.032</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">R-</text>
+	</text>
+	<text>
+		<name>rangeplus</name>
+		<font>lcd.txf</font>
+		<character-size type="double">0.0065</character-size>
+		<offsets>
+			<pitch-deg>90</pitch-deg>
+			<heading-deg>0</heading-deg>
+			<roll-deg>90</roll-deg>
+			<x-m>0.025</x-m>
+			<y-m>0.082</y-m>
+			<z-m>-0.008</z-m>
+		</offsets>
+		<type type="string">literal</type>
+		<text type="string">R+</text>
+	</text>
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<condition>
+			<property>/sim/rendering/rembrandt/enabled</property>
+		</condition>
+		<object-name>gridlayer</object-name>
+		<object-name>maplayer</object-name>
+		<object-name>maplayer2</object-name>
+		<object-name>maplayerfix2</object-name>
+	</effect>
+	<animation>
+		<type>material</type>
+		<object-name>navpos1</object-name>
+		<object-name>navpos2</object-name>
+		<object-name>eadi</object-name>
+		<object-name>fuel</object-name>
+		<object-name>engine</object-name>
+		<object-name>hydraulic</object-name>
+		<object-name>waypoint</object-name>
+		<object-name>frequency</object-name>
+		<object-name>norm</object-name>
+		<object-name>headmode</object-name>
+		<object-name>trackmode</object-name>
+		<object-name>mapmode</object-name>
+		<object-name>rangeminus</object-name>
+		<object-name>rangeplus</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>gridlayer</object-name>
+		<object-name>maplayerfix2</object-name>
+		<object-name>radarrange</object-name>
+		<object-name>radarrangefix</object-name>
+		<object-name>ownac</object-name>
+		<object-name>ownacfix</object-name>
+		<object-name>ownac2</object-name>
+		<object-name>ownacfix2</object-name>
+		<object-name>altitude</object-name>
+		<object-name>altitude-app</object-name>
+		<object-name>heading-mag</object-name>
+		<object-name>heading-true</object-name>
+		<object-name>heading-app</object-name>
+		<object-name>airspeed</object-name>
+		<object-name>airspeed-app</object-name>
+		<object-name>groundspeed</object-name>
+		<object-name>groundspeed-app</object-name>
+		<object-name>zoom-quarter</object-name>
+		<object-name>zoom-half</object-name>
+		<object-name>zoom-3quarter</object-name>
+		<object-name>zoom-full</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.1</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>maplayer</object-name>
+		<object-name>maplayer2</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.1</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+			<factor-prop>/instrumentation/illumination/MFDmap</factor-prop>
+		</emission>
+	</animation>
+
+</PropertyList>

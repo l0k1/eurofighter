@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+<path>pilot.ac</path>
+
+ <!-- Not quite ready yet -->
+ <!--model>
+  	<name>helmet-display</name>
+	<path>Aircraft/EF2000/Models/Instruments/HMD/hmd.xml</path>
+	<offsets>
+	   <x-m>0.0</x-m>
+	   <y-m>0</y-m>
+       <z-m>0.38525</z-m>
+	   <pitch-deg>0</pitch-deg>
+	</offsets>
+ </model-->
+ 
+  <animation>
+  <type>rotate</type>
+  <object-name>ArmingHandle</object-name>
+  <property>/controls/seat/arming-handle</property>
+  <factor>90</factor>
+  <center>
+   <x-m>-0.21492</x-m>
+   <y-m>0.24247</y-m>
+   <z-m>-0.16616</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>pick</type>
+  <object-name>ArmingHandle</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>nasal</command>
+    <script>avionics.controls.armSeat();</script>    
+   </binding>
+  </action>
+ </animation>
+ 
+ <animation>
+  <type>range</type>
+  <object-name>Pilot</object-name>
+  <object-name>PilotHelmet</object-name>
+  <min-m>1</min-m>
+ </animation>
+
+  <animation>
+  <type>material</type>
+  <object-name>ArmingHandle</object-name>
+  <emission>
+    <red>0.5</red>
+    <green>0.5</green>
+    <blue>0.5</blue>
+    <factor-prop>/instrumentation/illumination/console-backlight</factor-prop>
+  </emission>
+ </animation>
+ 
+</PropertyList>
+

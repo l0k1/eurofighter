@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>aim-9.ac</path>
+
+  <animation>
+    <object-name>tail</object-name>
+    <object-name>body</object-name>
+    <object-name>canard</object-name>
+  </animation>
+
+</PropertyList>

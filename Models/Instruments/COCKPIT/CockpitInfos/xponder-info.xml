@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>xponderInfo.ac</path>
+ 
+ <effect>
+   <inherits-from>Effects/model-transparent</inherits-from>
+   <condition>
+    <property>sim/rendering/rembrandt/enabled</property>
+   </condition>
+  <object-name>Labels</object-name>
+  <object-name>Labels.lit</object-name>
+ </effect>
+ 
+ <animation>
+  <type>select</type>
+		<object-name>iffmode1</object-name>
+		<object-name>iffmode2</object-name>
+		<object-name>iffmode3</object-name>
+		<object-name>iffmodeC</object-name>
+		<object-name>iffstatus</object-name>
+		<object-name>iffstatus1</object-name>
+		<object-name>iffstatus2</object-name>
+		<object-name>iffstatus3</object-name>
+  <object-name>tacan-channel-1</object-name>
+  <object-name>tacan-channel-2</object-name>
+  <object-name>Labels.lit</object-name>
+  <condition>
+   <greater-than>
+    <property>systems/electrical/outputs/avionics/cockpit-lighting</property>
+	<value>26</value>
+   </greater-than>
+  </condition>
+ </animation>
+ 
+ <animation>
+  <type>select</type>
+  <object-name>Labels</object-name>
+  <condition>
+   <less-than>
+    <property>systems/electrical/outputs/avionics/cockpit-lighting</property>
+	<value>26</value>
+   </less-than>
+  </condition>
+ </animation>
+ 
+  <text>
+  <name>tacan-channel-1</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.005</x-m>
+   <y-m>-0.025</y-m>
+   <z-m>0.085</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">number-value</type>
+  <format>%03.0f</format>
+  <property>/instrumentation/tacan/frequencies/selected-channel</property>
+  <draw-text type="bool">true</draw-text>
+  <alignment>right-center</alignment>
+ </text>
+ 
+ <text>
+  <name>tacan-channel-2</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.005</x-m>
+   <y-m>-0.025</y-m>
+   <z-m>0.085</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">text-value</type>
+  <property>/instrumentation/tacan/frequencies/selected-channel[4]</property>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+	<animation>
+		<type>select</type>
+		<object-name>iffmode1</object-name>
+		<condition>
+				<equals>
+				<property>/instrumentation/transponder/modes/mode-1/standby</property>
+					<value>0</value>
+				</equals>
+		</condition>
+	</animation>
+
+  <text>
+  <name>iffmode1</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.005</x-m>
+   <y-m>-0.002</y-m>
+   <z-m>0.034</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">1</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+	<animation>
+		<type>select</type>
+		<object-name>iffmode2</object-name>
+		<condition>
+				<equals>
+				<property>/instrumentation/transponder/modes/mode-2/standby</property>
+					<value>0</value>
+				</equals>
+		</condition>
+	</animation>
+
+  <text>
+  <name>iffmode2</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.005</x-m>
+   <y-m>-0.003</y-m>
+   <z-m>0.022</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">2</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+	<animation>
+		<type>select</type>
+		<object-name>iffmode3</object-name>
+		<condition>
+				<equals>
+				<property>/instrumentation/transponder/modes/mode-3A/standby</property>
+					<value>0</value>
+				</equals>
+		</condition>
+	</animation>
+
+  <text>
+  <name>iffmode3</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.005</x-m>
+   <y-m>-0.0030</y-m>
+   <z-m>0.008</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">3A</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+	<animation>
+		<type>select</type>
+		<object-name>iffmodeC</object-name>
+		<condition>
+				<equals>
+				<property>/instrumentation/transponder/modes/mode-C/standby</property>
+					<value>0</value>
+				</equals>
+		</condition>
+	</animation>
+
+  <text>
+  <name>iffmodeC</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.005</character-size>
+  <offsets>
+   <x-m>0.005</x-m>
+   <y-m>-0.003</y-m>
+   <z-m>-0.005</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">C</text>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+	<animation>
+		<type>select</type>
+		<object-name>iffstatus</object-name>
+		<condition>
+				<equals>
+				<property>/sim/gui/dialogs/radios/transponder-mode</property>
+					<value>ON</value>
+				</equals>
+		</condition>
+	</animation>
+
+  <text>
+  <name>iffstatus</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.0045</character-size>
+  <offsets>
+   <x-m>0.005</x-m>
+   <y-m>-0.003</y-m>
+   <z-m>-0.031</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ON</text>
+		<draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+	<animation>
+		<type>select</type>
+		<object-name>iffstatus1</object-name>
+		<condition>
+				<equals>
+				<property>/sim/gui/dialogs/radios/transponder-mode</property>
+					<value>OFF</value>
+				</equals>
+		</condition>
+	</animation>
+
+  <text>
+  <name>iffstatus1</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.0045</character-size>
+  <offsets>
+   <x-m>0.005</x-m>
+   <y-m>-0.003</y-m>
+   <z-m>-0.031</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">OFF</text>
+		<draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+	<animation>
+		<type>select</type>
+		<object-name>iffstatus2</object-name>
+		<condition>
+				<equals>
+				<property>/sim/gui/dialogs/radios/transponder-mode</property>
+					<value>STANDBY</value>
+				</equals>
+		</condition>
+	</animation>
+
+  <text>
+  <name>iffstatus2</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.0045</character-size>
+  <offsets>
+   <x-m>0.005</x-m>
+   <y-m>-0.003</y-m>
+   <z-m>-0.031</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">SBY</text>
+		<draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+	<animation>
+		<type>select</type>
+		<object-name>iffstatus3</object-name>
+		<condition>
+				<equals>
+				<property>/sim/gui/dialogs/radios/transponder-mode</property>
+					<value>ALTITUDE</value>
+				</equals>
+		</condition>
+	</animation>
+
+  <text>
+  <name>iffstatus3</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.0045</character-size>
+  <offsets>
+   <x-m>0.005</x-m>
+   <y-m>-0.003</y-m>
+   <z-m>-0.031</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+		<type type="string">literal</type>
+		<text type="string">ALT</text>
+		<draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+ <animation>
+  <type>material</type>
+  <object-name>Labels.lit</object-name>
+  <emission>
+    <red>0.6</red>
+    <green>0.6</green>
+    <blue>0.6</blue>
+    <factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+  </emission>
+ </animation>
+ 
+ <animation>
+  <type>material</type>
+  <object-name>tacan-channel-1</object-name>
+  <object-name>tacan-channel-2</object-name>
+		<object-name>iffmode1</object-name>
+		<object-name>iffmode2</object-name>
+		<object-name>iffmode3</object-name>
+		<object-name>iffmodeC</object-name>
+		<object-name>iffstatus</object-name>
+		<object-name>iffstatus1</object-name>
+		<object-name>iffstatus2</object-name>
+		<object-name>iffstatus3</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+</animation>
+
+</PropertyList>

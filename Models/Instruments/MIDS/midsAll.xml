@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>mids-panel.ac</path>
+
+<!-- Navigation page -->
+
+<!-- home page -->
+	<!--model>
+		<name>home</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MIDS/home.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</offsets>
+	</model-->
+	<model>
+		<name>Home Buttons</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MIDS/home-btn.xml</path>
+		<offsets>
+			<x-m>-0.17</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</offsets>
+	</model>
+	<animation>
+		<type>select</type>
+		<object-name>home</object-name>
+		<object-name>Home Buttons</object-name>
+		<condition>
+			<equals>
+				<property>/instrumentation/MIDS/serviceable</property>
+				<value>true</value>
+			</equals>
+			<equals>
+				<property>/instrumentation/MIDS/page-selected</property>
+				<value>home</value>
+			</equals>
+			<greater-than>
+				<property>/systems/electrical/outputs/avionics/MIDS</property>
+				<value>21</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+<!-- comm page -->
+	<!--model>
+		<name>comm</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MIDS/comm.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</offsets>
+	</model-->
+	<model>
+		<name>Comm Buttons</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MIDS/comm-btn.xml</path>
+		<offsets>
+			<x-m>-0.17</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</offsets>
+	</model>
+	<animation>
+		<type>select</type>
+		<object-name>comm</object-name>
+		<object-name>Comm Buttons</object-name>
+		<condition>
+			<and>
+			<equals>
+				<property>/instrumentation/MIDS/serviceable</property>
+				<value>true</value>
+			</equals>
+			<equals>
+				<property>instrumentation/MIDS/page-selected</property>
+				<value>comm</value>
+			</equals>
+			<greater-than>
+				<property>/systems/electrical/outputs/avionics/MIDS</property>
+				<value>21</value>
+			</greater-than>
+			<or>
+				<equals>
+					<property>/instrumentation/comm[0]/power-btn</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>/instrumentation/comm[1]/power-btn</property>
+					<value>true</value>
+				</equals>
+			</or>
+			</and>
+		</condition>
+	</animation>
+
+<!-- atk page -->
+	<!--model>
+		<name>atk</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MIDS/atk.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</offsets>
+	</model-->
+	<model>
+		<name>Atk Buttons</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MIDS/atk-btn.xml</path>
+		<offsets>
+			<x-m>-0.17</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</offsets>
+	</model>
+	<animation>
+		<type>select</type>
+		<object-name>atk</object-name>
+		<object-name>Atk Buttons</object-name>
+		<condition>
+			<equals>
+				<property>/instrumentation/MIDS/serviceable</property>
+				<value>true</value>
+			</equals>
+			<equals>
+				<property>/instrumentation/MIDS/page-selected</property>
+				<value>atk</value>
+			</equals>
+			<greater-than>
+				<property>/systems/electrical/outputs/avionics/MIDS</property>
+				<value>21</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+<!-- IFF page -->
+	<model>
+		<name>iff</name>
+		<path>Aircraft/eurofighter/Models/Instruments/MIDS/iff.xml</path>
+		<offsets>
+			<x-m>-0.17</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.002</z-m>
+		</offsets>
+	</model>
+	<animation>
+		<type>select</type>
+		<object-name>iff</object-name>
+		<condition>
+			<equals>
+				<property>/instrumentation/MIDS/serviceable</property>
+				<value>true</value>
+			</equals>
+			<equals>
+				<property>/instrumentation/MIDS/page-selected</property>
+				<value>iff</value>
+			</equals>
+			<greater-than>
+				<property>/systems/electrical/outputs/avionics/MIDS</property>
+				<value>21</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+<!-- Radios -->
+
+ <model>
+ 	<name>radio1-off</name>
+ 	<path>Aircraft/eurofighter/Models/Instruments/MIDS/radio1-off.xml</path>
+ 	<offsets> 
+		<x-m>3.409</x-m>
+	    <y-m>-0.057</y-m>
+	    <z-m>1.003</z-m>
+		<pitch-deg>20</pitch-deg>
+    </offsets>
+ </model>
+ 
+ <model>
+ 	<name>radio1-on</name>
+ 	<path>Aircraft/eurofighter/Models/Instruments/MIDS/radio1-on.xml</path>
+ 	<offsets> 
+		<x-m>3.409</x-m>
+	    <y-m>-0.057</y-m>
+	    <z-m>1.003</z-m>
+		<pitch-deg>20</pitch-deg>
+    </offsets>
+ </model>
+ 
+	<animation>
+		<type>select</type>
+		<object-name>radio1-on</object-name>
+		<condition>
+			<and>
+			<greater-than>
+				<property>/systems/electrical/outputs/avionics/MIDS</property>
+				<value>21</value>
+			</greater-than>
+				<equals>
+					<property>/instrumentation/comm[0]/power-btn</property>
+					<value>true</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+
+ <model>
+ 	<name>radio2-off</name>
+ 	<path>Aircraft/eurofighter/Models/Instruments/MIDS/radio2-off.xml</path>
+ 	<offsets> 
+		<x-m>3.409</x-m>
+	    <y-m>0.01</y-m>
+	    <z-m>1.003</z-m>
+		<pitch-deg>20</pitch-deg>
+    </offsets>
+ </model>
+ 
+ <model>
+ 	<name>radio2-on</name>
+ 	<path>Aircraft/eurofighter/Models/Instruments/MIDS/radio2-on.xml</path>
+ 	<offsets> 
+		<x-m>3.409</x-m>
+	    <y-m>0.01</y-m>
+	    <z-m>1.003</z-m>
+		<pitch-deg>20</pitch-deg>
+    </offsets>
+ </model>
+
+	<animation>
+		<type>select</type>
+		<object-name>radio2-on</object-name>
+		<condition>
+			<greater-than>
+				<property>/systems/electrical/outputs/avionics/MIDS</property>
+				<value>21</value>
+			</greater-than>
+				<equals>
+					<property>/instrumentation/comm[1]/power-btn</property>
+					<value>true</value>
+				</equals>
+		</condition>
+	</animation>
+
+</PropertyList>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<PropertyList>
+	<default>
+		<menu n="12">
+			<label>Typhoon</label>
+			<enabled type="bool">true</enabled>
+			<item>
+				<label>Autostart</label>
+				<binding>
+					<command>nasal</command>
+					<script>checklists.autostart()</script>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>load.NoLoad()</script>
+				</binding>
+			</item>
+			<item>
+				<label>Shutdown</label>
+				<binding>
+					<command>nasal</command>
+					<script>checklists.shutdown()</script>
+				</binding>
+			</item>
+			<item>
+				<label>------------------</label>
+				<enabled>false</enabled>
+			</item>
+			<item>
+				<label>Select Livery</label>
+				<binding>
+					<command>nasal</command>
+					<script>aircraft.livery.dialog.toggle()</script>
+				</binding>
+			</item>
+			<item>
+				<label>Refuel on Ground</label>
+				<binding>
+					<command>nasal</command>
+					<script>typhoon.fillup()</script>
+				</binding>
+			</item>
+		</menu>
+		<menu n="13">
+			<label>Typhoon Weapons</label>
+			<enabled type="bool">true</enabled>
+			<item>
+				<label>MP Shot Report</label>
+				<binding>
+					<command>nasal</command>
+					<script>missile.MPReport()</script>
+				</binding>
+			</item>
+			<item>
+				<label>Reload Gun</label>
+				<binding>
+					<command>nasal</command>
+					<script>guns.reload_Cannon()</script>
+				</binding>
+			</item>
+			<item>
+				<label>------------------</label>
+				<enabled>false</enabled>
+			</item>
+			<item>
+				<label>No load</label>
+				<binding>
+					<command>nasal</command>
+					<script>load.NoLoad()</script>
+				</binding>
+			</item>
+			<item>
+				<label>Config Fox</label>
+				<binding>
+					<command>nasal</command>
+					<script>load.NoLoad()</script>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>load.Fox()</script>
+				</binding>
+			</item>
+			<item>
+				<label>Config Bravo</label>
+				<binding>
+					<command>nasal</command>
+					<script>load.NoLoad()</script>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>load.Bravo()</script>
+				</binding>
+			</item>
+			<item>
+				<label>Air Ground</label>
+				<binding>
+					<command>nasal</command>
+					<script>load.NoLoad()</script>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>load.Air_Ground()</script>
+				</binding>
+			</item>
+			<item>
+				<label>Air Ground 2</label>
+				<binding>
+					<command>nasal</command>
+					<script>load.NoLoad()</script>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>load.Air_Ground_2()</script>
+				</binding>
+			</item>
+			<item>
+				<label>Air Ground 3</label>
+				<binding>
+					<command>nasal</command>
+					<script>load.NoLoad()</script>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>load.Air_Ground_3()</script>
+				</binding>
+			</item>
+			<item>
+				<label>------------------</label>
+				<enabled>false</enabled>
+			</item>
+			<item>
+				<label>Navigation</label>
+				<binding>
+					<command>nasal</command>
+					<script>load.NoLoad()</script>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>load.Navigation()</script>
+				</binding>
+			</item>
+			<item>
+				<label>Nav Mid Range</label>
+				<binding>
+					<command>nasal</command>
+					<script>load.NoLoad()</script>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>load.Nav_MidRange()</script>
+				</binding>
+			</item>
+			<item>
+				<label>Nav Long Range</label>
+				<binding>
+					<command>nasal</command>
+					<script>load.NoLoad()</script>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>load.Nav_LongRange()</script>
+				</binding>
+			</item>
+			<item>
+				<label>Normal</label>
+				<binding>
+					<command>nasal</command>
+					<script>load.NoLoad()</script>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>load.Normal()</script>
+				</binding>
+			</item>
+		</menu>
+	</default>
+</PropertyList>

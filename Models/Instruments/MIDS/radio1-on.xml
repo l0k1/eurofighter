@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+
+ <path>radio.ac</path>
+ 
+ <text>
+  <name>rad1-channel</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.0055</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>0.047</y-m>
+   <z-m>0.012</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">text-value</type>
+  <property>/systems/CAMU/radio[0]/channel-number</property>
+  <draw-text type="bool">true</draw-text>
+  <alignment>center-center</alignment>
+ </text>
+ 
+ <text>
+  <name>rad1-ident</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.00475</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>0.0135</y-m>
+   <z-m>0.012</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">text-value</type>
+  <property>/systems/CAMU/radio[0]/identifier</property>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+ <text>
+  <name>rad1-freq</name>
+  <font>lcd.txf</font>
+  <character-size type="double">0.00475</character-size>
+  <offsets>
+   <x-m>0.01</x-m>
+   <y-m>0.0135</y-m>
+   <z-m>0.005</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+  <type type="string">number-value</type>
+  <property>/systems/CAMU/radio[0]/frequency</property>
+  <format>%3.2f</format>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-center</alignment>
+ </text>
+ 
+ <!--animation> 
+  <type>rotate</type>
+  <object-name>radknob.chan</object-name>
+  <property>/systems/CAMU/radio/selected-channel-n</property>
+  <factor>18</factor>
+   <axis>
+    <x>1</x>
+   </axis>
+   <center>
+	<x-m>0</x-m>
+	<y-m>0</y-m>
+	<z-m>0</z-m>
+  </center>
+ </animation>
+  
+  <animation>
+   <type>knob</type>
+   <object-name>radknob.chan</object-name>
+   <property>/systems/CAMU/radio/selected-channel-n</property>
+   <center>
+	<x-m>0</x-m>
+	<y-m>0</y-m>
+	<z-m>0</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+  </axis>
+  <action>
+   <binding>
+   <command>property-adjust</command>
+    <property>/systems/CAMU/radio[0]/selected-channel-n</property>
+     <factor>1</factor>
+     <min>1</min>
+     <max>11</max>                
+     <wrap>true</wrap>
+    </binding>
+  </action>
+  </animation>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>radknob.vol</object-name>
+  <property>/instrumentation/comm/volume</property>
+  <factor>260</factor>
+   <axis>
+    <x>-1</x>
+   </axis>
+   <center>
+	<x-m>0</x-m>
+	<y-m>0</y-m>
+	<z-m>0</z-m>
+  </center>
+ </animation>
+ 
+  <animation>
+   <type>knob</type>
+   <object-name>radknob.vol</object-name>
+   <property>/instrumentation/comm/volume</property>
+   <center>
+	<x-m>0</x-m>
+	<y-m>0</y-m>
+	<z-m>0</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+  </axis>
+  <action>
+   <binding>
+   <command>property-adjust</command>
+    <property>/instrumentation/comm/volume</property>
+     <factor>0.05</factor>
+     <min>0</min>
+     <max>1</max>                
+     <wrap>false</wrap>
+    </binding>
+   </action>
+  </animation-->
+
+ <animation>
+  <type>material</type>
+  <object-name>rad1-channel</object-name>
+  <object-name>rad1-ident</object-name>
+  <object-name>rad1-freq</object-name>
+		<diffuse>
+			<red>0.1</red>
+			<green>0.3</green>
+			<blue>0.1</blue>
+		</diffuse>
+		<emission>
+			<red>0.4</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+		</emission>
+</animation>
+
+
+ 
+</PropertyList>
