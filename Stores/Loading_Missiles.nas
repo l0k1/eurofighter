@@ -28,6 +28,7 @@ var address           = "test";
     var guidance          = "radar";
     var railLength        = 2.667;
     var railForward       = 1;
+	var weightwarheadlbs  = 10;
 
 	if(name =="Matra MICA"){
 		#MICA max range 80 km for actual version. ->43 nm.. at mach 4 it's about 59 sec. I put a life of 120, and thurst duration to 3/4 the travel time, and have vectorial thurst (So 27 G more than a similar missile wich have not vectorial thrust)
@@ -42,6 +43,7 @@ var address           = "test";
         detectionfovdeg = 180;                       # Search pattern diameter (rosette scan)
         trackmaxdeg = 135;                           # Seeker max total angular rotation
         maxg = 50;                                   # In turn
+		arming_time_sec = 1.6;
         thrustlbs1 = 4500;
         thrustlbs2 = 1500;
         thrust1durationsec = 8;
@@ -251,7 +253,6 @@ var address           = "test";
 	setprop("controls/armament/missile/track-max-deg",trackmaxdeg);
 	setprop("controls/armament/missile/max-g",maxg);
 	setprop("controls/armament/missile/weight-launch-lbs",weightlaunchlbs);
-	setprop("controls/armament/missile/thrust-duration-sec",thrustdurationsec);
 	setprop("controls/armament/missile/weight-warhead-lbs",weightwarheadlbs);
 	setprop("controls/armament/missile/drag-coeff",dragcoeff);
 	setprop("controls/armament/missile/drag-area",dragarea);
@@ -267,8 +268,8 @@ var address           = "test";
 	setprop("controls/armament/missile/thrust-2-duration-sec",thrust2durationsec);
 	setprop("controls/armament/missile/min-guiding-speed-mach",min_guiding_speed_mach); #chec this one
 	setprop("controls/armament/missile/seeker-angular-speed-dps",seeker_angular_speed_dps); #this'n too
-	setprop("controls/armamnet/missile/arming-time-sec",arming_time_sec);
+	setprop("controls/armament/missile/arming-time-sec",arming_time_sec);
 	setprop("controls/armament/missile/guidance",guidance);
-	setprop("controls/armament/missile/railLength",railLength);
+	setprop("controls/armament/missile/rail-length-m",railLength);
 	setprop("controls/armament/missile/railForward",railForward);
 }

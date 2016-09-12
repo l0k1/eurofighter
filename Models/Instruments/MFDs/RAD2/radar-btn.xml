@@ -36,7 +36,7 @@
 			<repeatable>false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>hud.activate_Telemeter()</script>
+				<script>setprop("instrumentation/radar/az-field",typhoon.myRadar3.radar_mode_toggle());</script>
 			</binding>
 		</action>
 	</animation>

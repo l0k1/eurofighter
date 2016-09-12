@@ -1878,7 +1878,7 @@
 				<or>
 					<equals>
 						<property>controls/armament/name</property>
-						<value>AIM-9 Sidewinder</value>
+						<value>AIM9</value>
 					</equals>
 					<equals>
 						<property>controls/armament/name</property>
@@ -1886,7 +1886,7 @@
 					</equals>
 					<equals>
 						<property>controls/armament/name</property>
-						<value>AMRAAM</value>
+						<value>AIM120</value>
 					</equals>
 				</or>
 			</and>
@@ -1966,7 +1966,7 @@
 					</equals>
 					<equals>
 						<property>controls/armament/name</property>
-						<value>GBU-16</value>
+						<value>GBU16</value>
 					</equals>
 					<equals>
 						<property>controls/armament/name</property>

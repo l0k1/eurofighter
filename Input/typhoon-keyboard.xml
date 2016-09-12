@@ -156,9 +156,27 @@
 		<desc>Toggle Radar PULSE SRCH / TWS AUTO Modes</desc>
 		<binding>
 			<command>nasal</command>
-			<script>radar.radar_mode_toggle();</script>
+			<script>setprop("instrumentation/radar/az-field",typhoon.myRadar3.radar_mode_toggle());</script>
 		</binding>
 	</key>
+	
+	 <key n="110">
+      <name>n</name>
+      <desc>Changes Target</desc>
+      <binding>
+        <command>nasal</command>
+        <script>mirage2000.myRadar3.next_Target_Index()</script>
+      </binding>
+    </key>
+    
+    <key n="78">
+      <name>N</name>
+      <desc>Changes Target</desc>
+      <binding>
+        <command>nasal</command>
+        <script>mirage2000.myRadar3.previous_Target_Index()</script>
+      </binding>
+    </key>
 	<key n="15">
 		<name>Ctrl-o</name>
 		<desc>Select all engines</desc>
@@ -168,60 +186,19 @@
 		</binding>
 	</key>
 	<key n="101">
-		<name>e</name>
-		<desc>Gun Trigger</desc>
-		<binding>
-			<condition>
-				<equals>
-					<property>gear/gear[1]/position-norm</property>
-					<value> 0 </value>
-				</equals>
-				<equals>
-					<property>controls/armament/master-arm-standby</property>
-					<value>0</value>
-				</equals>
-				<equals>
-					<property>controls/armament/stick-selector</property>
-					<value>1</value>
-				</equals>
-			</condition>
-			<command>nasal</command>
-			<script>guns.fire_MG()</script>
-		</binding>
-		<binding>
-			<condition>
-				<equals>
-					<property>gear/gear[1]/position-norm</property>
-					<value> 0 </value>
-				</equals>
-				<equals>
-					<property>controls/armament/master-arm-standby</property>
-					<value>0</value>
-				</equals>
-				<greater-than>
-					<property>controls/armament/stick-selector</property>
-					<value>1</value>
-				</greater-than>
-			</condition>
-			<command>nasal</command>
-			<script>
-				var pylon = getprop("controls/armament/missile/current-pylon");
-				load.dropLoad(pylon);
-			</script>
-		</binding>
-		<mod-up>
-			<binding>
-				<condition>
-					<equals>
-						<property>controls/armament/stick-selector</property>
-						<value>1</value>
-					</equals>
-				</condition>
-				<command>nasal</command>
-				<script>guns.stop_MG()</script>
-			</binding>
-		</mod-up>
-	</key>
+      <name>e</name>
+      <desc>Guns</desc>
+      <binding>
+        <command>nasal</command>
+        <script>guns.trigger(1)</script>
+      </binding>
+      <mod-up>
+        <binding>
+          <command>nasal</command>
+          <script>guns.trigger(0)</script>
+        </binding>
+      </mod-up>
+    </key>
 	<key n="119">
 		<name>w</name>
 		<desc>Cycle Stick Weapon Mode Selector</desc>

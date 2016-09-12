@@ -5,7 +5,7 @@ OBJECT world
 name "Blender_export__aim132.ac"
 kids 1
 OBJECT poly
-name "AIM-132_ASRAAM"
+name "aim132"
 crease 45.0
 texture "weapons.png"
 texrep 1 1

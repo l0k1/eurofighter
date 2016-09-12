@@ -1,7 +1,7 @@
 #### Typhonn systems	
 #### from many sources...
 #### and also, almursi and algernon work
-
+var myRadar3 = radar.Radar.new(NewRangeTab:[5, 10, 20, 50, 100, 150],NewRangeIndex:1,forcePath:"instrumentation/radar2/targets",NewAutoUpdate:1);
 # need be read again every test
 var WOW = getprop ("/gear/gear[1]/wow") or getprop ("/gear/gear[2]/wow");
 var ReverseStatus0 = 0;
@@ -327,7 +327,7 @@ var InitListener = setlistener("/sim/signals/fdm-initialized", func {
 var main_Init_Loop = func(){    
             
     print("Radar ...Check");
-    settimer(radar.init, 5.0);
+    myRadar3.init();
     
     print("Flight Director ...Check");
     settimer(typhoon.init_set, 5.0);

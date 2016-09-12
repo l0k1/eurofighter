@@ -32,24 +32,31 @@ var switch_distance = func(n) {
 #The real distance selector is : 5,10,20,50,100,200
 
          var range = RangeSelected.getValue();
+		 var idx = 0;
 	if ( n == 1 ) {				
          if(range == 5){
             range = 10;
+			idx = 1;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",3);}
          }elsif(range == 10){
             range = 20;
+			idx = 2;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
          }elsif(range == 20){
             range = 50;
+			idx = 3;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
          }elsif(range == 50){
             range = 100;
+			idx = 4;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
          }elsif(range == 100){
             range = 150;
+			idx = 5;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
          }elsif(range == 150){
             range = 5;
+			idx = 0;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",3);}
          }
          
@@ -57,26 +64,33 @@ var switch_distance = func(n) {
 	} else {
          if(range == 150){
             range = 100;
+			idx = 4;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",3);}
          }elsif(range == 100){
             range = 50;
+			idx = 3;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
          }elsif(range == 50){
             range = 20;
+			idx = 2;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
          }elsif(range == 20){
             range = 10;
+			idx = 1;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
          }elsif(range == 10){
             range = 5;
+			idx = 0;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
          }elsif(range == 5){
             range = 150;
+			idx = 5;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",3);}
 		}
 			RangeSelected.setValue(range);
 		}
        setprop("instrumentation/radar/range-selected",range);
+	   typhoon.myRadar3.rangeIndex = idx;
 }
 
 var remove_target = func(){

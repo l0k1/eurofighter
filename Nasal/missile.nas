@@ -1238,7 +1238,7 @@ var MISSILE = {
                 me.tpsApproch = props.globals.getNode("/sim/time/elapsed-sec", 1).getValue();
                 #print(me.vApproch);
             }
-            
+			
             if(cur_dir_dist_m > me.direct_dist_m and me.direct_dist_m < me.maxExplosionRange * 2 and me.life_time > me.arm_time)
             {
                 if(me.direct_dist_m < me.maxExplosionRange)

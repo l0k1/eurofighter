@@ -730,7 +730,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[0]/selected</property>
-					<value>AIM-9 Sidewinder</value>
+					<value>AIM9</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[0]/weight-lb</property>
@@ -746,7 +746,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[1]/selected</property>
-					<value>AIM-9 Sidewinder</value>
+					<value>AIM9</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[1]/weight-lb</property>
@@ -762,7 +762,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[2]/selected</property>
-					<value>AIM-9 Sidewinder</value>
+					<value>AIM9</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[2]/weight-lb</property>
@@ -778,7 +778,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[11]/selected</property>
-					<value>AIM-9 Sidewinder</value>
+					<value>AIM9</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[11]/weight-lb</property>
@@ -794,7 +794,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[12]/selected</property>
-					<value>AIM-9 Sidewinder</value>
+					<value>AIM9</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[12]/weight-lb</property>
@@ -810,7 +810,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[5]/selected</property>
-					<value>AIM-9 Sidewinder</value>
+					<value>AIM9</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[5]/weight-lb</property>
@@ -826,7 +826,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[4]/selected</property>
-					<value>AIM-9 Sidewinder</value>
+					<value>AIM9</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[4]/weight-lb</property>
@@ -842,7 +842,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[3]/selected</property>
-					<value>AIM-9 Sidewinder</value>
+					<value>AIM9</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[3]/weight-lb</property>
@@ -858,7 +858,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[0]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[0]/weight-lb</property>
@@ -874,7 +874,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[1]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[1]/weight-lb</property>
@@ -890,7 +890,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[2]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[2]/weight-lb</property>
@@ -906,7 +906,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[11]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[11]/weight-lb</property>
@@ -922,7 +922,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[7]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[7]/weight-lb</property>
@@ -938,7 +938,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[8]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[8]/weight-lb</property>
@@ -954,7 +954,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[9]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[9]/weight-lb</property>
@@ -970,7 +970,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[10]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[10]/weight-lb</property>
@@ -986,7 +986,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[12]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[12]/weight-lb</property>
@@ -1002,7 +1002,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[5]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[5]/weight-lb</property>
@@ -1018,7 +1018,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[4]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[4]/weight-lb</property>
@@ -1034,7 +1034,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[3]/selected</property>
-					<value>AMRAAM</value>
+					<value>AIM120</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[3]/weight-lb</property>
@@ -1050,7 +1050,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[0]/selected</property>
-					<value>GBU-16</value>
+					<value>GBU16</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[0]/weight-lb</property>
@@ -1066,7 +1066,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[1]/selected</property>
-					<value>GBU-16</value>
+					<value>GBU16</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[1]/weight-lb</property>
@@ -1082,7 +1082,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[2]/selected</property>
-					<value>GBU-16</value>
+					<value>GBU16</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[2]/weight-lb</property>
@@ -1098,7 +1098,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[5]/selected</property>
-					<value>GBU-16</value>
+					<value>GBU16</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[5]/weight-lb</property>
@@ -1114,7 +1114,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[4]/selected</property>
-					<value>GBU-16</value>
+					<value>GBU16</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[4]/weight-lb</property>
@@ -1130,7 +1130,7 @@
 			<and>
 				<equals>
 					<property>sim/weight[3]/selected</property>
-					<value>GBU-16</value>
+					<value>GBU16</value>
 				</equals>
 				<greater-than>
 					<property>sim/weight[3]/weight-lb</property>

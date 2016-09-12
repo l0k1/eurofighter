@@ -108,6 +108,7 @@
 	<prop type="string">/systems/electrical/outputs/armament/hardpoints-center</prop>
 	<prop type="string">/systems/electrical/outputs/armament/hardpoints-right</prop>
 	<prop type="string">/systems/electrical/outputs/acs</prop>
+	<prop type="string">/systems/electrical/outputs/radar</prop>
   </component>
   
   <component>

@@ -5,7 +5,7 @@
   <path>Aircraft/eurofighter/Stores/aim132/aim132.ac</path>
 
   <animation>
-    <object-name>AIM132</object-name>
+    <object-name>aim132</object-name>
   </animation>
 
   <model>
