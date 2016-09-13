@@ -11,7 +11,7 @@ var dropTanks = func()
     for(var i = 2 ; i < 5 ; i += 1)
     {
         var select = getprop("/sim/weight["~ i ~"]/selected");
-        if(select == "1300 l Droptank" or select == "1700 l Droptank")
+        if(select == "1000 l Droptank" or select == "1500 l Droptank")
         {
             dropLoad(i);
         }
@@ -23,23 +23,16 @@ var Encode_Load = func()
 {
     var list = [
         "none",
-        "1300 l Droptank",
-        "1700 l Droptank",
-        "AGM65",
-        "AIM-54",
-        "aim-9",
+        "1000 l Droptank",
+        "1500 l Droptank",
+        "AIM132",
+        "AIM9",
         "AIM120",
-        "GBU12",
         "GBU16",
+        "ALARM",
+        "STORMSHADOW",
         "Matra MICA",
-        "MATRA-R530",
-        "Matra R550 Magic 2",
-        "Meteor",
-        "R74",
-        "R77",
-        "SCALP",
-        "Sea Eagle",
-        "SmokePod"
+        "Brimstone",
     ];
     var compiled = "";
     
@@ -80,23 +73,16 @@ var Decode_Load = {
         m.running = 1;
         m.loadList = [
             "none",
-            "1300 l Droptank",
-            "1700 l Droptank",
-            "AGM65",
-            "AIM-54",
-            "aim-9",
-            "AIM120",
-            "GBU12",
-            "GBU16",
-            "Matra MICA",
-            "MATRA-R530",
-            "Matra R550 Magic 2",
-            "Meteor",
-            "R74",
-            "R77",
-            "SCALP",
-            "Sea Eagle",
-            "SmokePod"
+			"1000 l Droptank",
+			"1500 l Droptank",
+			"AIM132",
+			"AIM9",
+			"AIM120",
+			"GBU16",
+			"ALARM",
+			"STORMSHADOW",
+			"Matra MICA",
+			"Brimstone",
         ];
         return m;
     },
@@ -607,7 +593,7 @@ dropLoad = func(number)
     var select = getprop("/sim/weight["~ number ~"]/selected");
     if(select != "none")
     {
-        if(select == "1300 l Droptank" or select == "1700 l Droptank")
+        if(select == "1000 l Droptank" or select == "1500 l Droptank")
         {
             tank_submodel(number, select);
             setprop("/consumables/fuel/tank["~ number ~"]/selected", 0);
