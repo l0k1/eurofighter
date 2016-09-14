@@ -69,9 +69,9 @@
 		</command-outputs>
 		<settings>
     <!-- Control Input Settings -->
-			<stick-scale-pitch>0.8</stick-scale-pitch>
+			<stick-scale-pitch>0.6</stick-scale-pitch>
 			<stick-scale-trim>0.3</stick-scale-trim>
-			<stick-scale-roll>0.8</stick-scale-roll>
+			<stick-scale-roll>0.6</stick-scale-roll>
 			<pedal-scale>1.0</pedal-scale>
 			<stick-deadzone-pitch-forward>0.0002</stick-deadzone-pitch-forward>
 			<stick-deadzone-pitch-back>-0.002</stick-deadzone-pitch-back>

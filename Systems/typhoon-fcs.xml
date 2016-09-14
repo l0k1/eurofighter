@@ -575,7 +575,7 @@
 		<gain>0.015</gain>
 	</filter>
 	<filter>
-		<name>Flaperon Pitch Command</name>
+		<name>Flaperon Pitch Command pre G-load scaling</name>
 		<type>gain</type>
 		<debug>false</debug>
 		<enable>
@@ -594,11 +594,33 @@
 			</offset>
 		</input>
 		<output>
-			<property>/systems/FCS/command-outputs/flaperon-pitch</property>
+			<property>/systems/FCS/command-outputs/flaperon-pitch-pre-g</property>
 		</output>
 		<gain>
 			<property>/systems/FCS/settings/flaperon-scale-pitch</property>
 			<value>0.6</value>
+		</gain>
+	</filter>
+	<filter>
+		<name>Flaperon Pitch Command</name>
+		<type>gain</type>
+		<debug>false</debug>
+		<enable>
+			<condition>
+				<greater-than>
+					<property>/systems/electrical/outputs/FCS</property>
+					<value>175</value>
+				</greater-than>
+			</condition>
+		</enable>
+		<input>
+			<property>/systems/FCS/command-outputs/flaperon-pitch-pre-g</property>
+		</input>
+		<output>
+			<property>/systems/FCS/command-outputs/flaperon-pitch</property>
+		</output>
+		<gain>
+			<property>/systems/FCS/internal/pitch/g-load-scale</property>
 		</gain>
 	</filter>
 	<filter>
@@ -732,7 +754,7 @@
    <gain>1.0</gain>
   </filter-->
 	<filter>
-		<name>Canard Command</name>
+		<name>Canard Command pre G</name>
 		<type>gain</type>
 		<debug>false</debug>
 		<enable>
@@ -751,11 +773,34 @@
 			</offset>
 		</input>
 		<output>
-			<property>/systems/FCS/command-outputs/canard</property>
+			<property>/systems/FCS/command-outputs/canard-pre-g</property>
 		</output>
 		<gain>
 			<property>/systems/FCS/settings/canard-scale</property>
 			<value>0.75</value>
+		</gain>
+	</filter>
+	
+	<filter>
+		<name>Canard Command</name>
+		<type>gain</type>
+		<debug>false</debug>
+		<enable>
+			<condition>
+				<greater-than>
+					<property>/systems/electrical/outputs/FCS</property>
+					<value>175</value>
+				</greater-than>
+			</condition>
+		</enable>
+		<input>
+			<property>/systems/FCS/command-outputs/canard-pre-g</property>
+		</input>
+		<output>
+			<property>/systems/FCS/command-outputs/canard</property>
+		</output>
+		<gain>
+			<property>/systems/FCS/internal/pitch/g-load-scale</property>
 		</gain>
 	</filter>
   
