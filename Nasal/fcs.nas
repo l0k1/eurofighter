@@ -64,13 +64,8 @@ var loop = func {
 	var g_load = getprop("/accelerations/pilot/z-accel-fps_sec") * -0.03108095;
 		#use a curve that goes roughly from (-3.8,0) to (0,1) to (6,1) to (9.8,0), with x being g-load and y being final-step elevator scaling.
 	var g_load_scale = (-1 * (math.pow((g_load-3),4)*0.0005))+1;
-	print("g-load: " ~ g_load);
-	print("g-load-scale-preclamp: " ~ g_load_scale);
 		#clamp the scale to 0 and 1.
-	
-	
 	g_load_scale = g_load_scale < 0 ? 0 : g_load_scale > 1 ? 1 : g_load_scale;
-	
 	setprop("/systems/FCS/internal/pitch/g-load-scale",g_load_scale);
        
      setprop("/systems/FCS/internal/attitude/pitch-deg", pout);
