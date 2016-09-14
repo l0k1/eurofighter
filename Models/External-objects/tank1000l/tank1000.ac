@@ -4,7 +4,7 @@ MATERIAL "pylons" rgb 0.524506 0.537029 0.574596 amb 0.524506 0.537029 0.574596 
 OBJECT world
 kids 1
 OBJECT poly
-name "Circle.005"
+name "tank"
 texture "gris.png"
 data 10
 Circle.003
