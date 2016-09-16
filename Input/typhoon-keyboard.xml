@@ -1,12 +1,4 @@
 <PropertyList>
-	<key n="78">
-		<name>N</name>
-		<desc>Drop Tanks</desc>
-		<binding>
-			<command>nasal</command>
-			<script>load.dropTanks()</script>
-		</binding>
-	</key>
 	<key n="76">
 		<name>L</name>
 		<desc>Launch-bar engage.</desc>

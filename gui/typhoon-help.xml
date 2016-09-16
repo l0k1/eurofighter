@@ -46,8 +46,12 @@
 		<desc>Engage launchbar</desc>
 	</key>
 	<key>
+		<name>n</name>
+		<desc>Next Target</desc>
+	</key>
+	<key>
 		<name>N</name>
-		<desc>Jettison Tanks</desc>
+		<desc>Previous Target</desc>
 	</key>
 	<key>
 		<name>O</name>
