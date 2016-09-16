@@ -145,5 +145,59 @@ var fuel_vent = func {
    settimer(fuel_vent, 1);
    }
 
-setlistener("/sim/signals/fdm-initialized", fuel_vent);   
+setlistener("/sim/signals/fdm-initialized", fuel_vent);
+
+# listeners to keep fuel and missiles from being loaded onto the same pylons
+#to prevent double-mounting, need listeners on pylon2[fuel].L/R and pylon.C(2)
+
+setlistener("/sim/weight[1]/selected", func { 
+											if ( getprop("/sim/weight[1]/selected") != "none" ) {
+												setprop("sim/weight[13]/selected","none");
+												setprop("sim/weight[13]/weight-lb","0");
+												setprop("consumables/fuel/tank[6]/level-gal_us",0);
+											}
+										}
+);
+
+setlistener("/sim/weight[13]/selected", func { 
+											if ( getprop("/sim/weight[13]/selected") != "none" ) {
+												setprop("sim/weight[1]/selected","none");
+												setprop("sim/weight[1]/weight-lb","0");
+											}
+										}
+);
+
+setlistener("/sim/weight[6]/selected", func { 
+											if ( getprop("/sim/weight[6]/selected") != "none" ) {
+												setprop("sim/weight[14]/selected","none");
+												setprop("sim/weight[14]/weight-lb","0");
+												setprop("consumables/fuel/tank[8]/level-gal_us",0);
+											}
+										}
+);
+
+setlistener("/sim/weight[14]/selected", func { 
+											if ( getprop("/sim/weight[14]/selected") != "none" ) {
+												setprop("sim/weight[6]/selected","none");
+												setprop("sim/weight[6]/weight-lb","0");
+											}
+										}
+);
+
+setlistener("/sim/weight[4]/selected", func { 
+											if ( getprop("/sim/weight[4]/selected") != "none" ) {
+												setprop("sim/weight[15]/selected","none");
+												setprop("sim/weight[15]/weight-lb","0");
+												setprop("consumables/fuel/tank[7]/level-gal_us",0);
+											}
+										}
+);
+
+setlistener("/sim/weight[15]/selected", func { 
+											if ( getprop("/sim/weight[15]/selected") != "none" ) {
+												setprop("sim/weight[4]/selected","none");
+												setprop("sim/weight[4]/weight-lb","0");
+											}
+										}
+);
 

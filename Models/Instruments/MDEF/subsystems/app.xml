@@ -2,7 +2,7 @@
 
 <!-- Manual Data Entry Facility -  Page -->
 <PropertyList>
-	<path>Aircraft/eurofighter/Models/Instruments/MDEF/softkeys.ac</path>
+	<path>Aircraft/eurofighter/Models/Instruments/MDEF/subsystems/softkeys.ac</path>
 	<animation>
 		<object-name>nav1</object-name>
 		<object-name>vs1</object-name>

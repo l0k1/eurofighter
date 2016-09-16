@@ -313,7 +313,7 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 	<logging>
       <log>
        <filename>C:/Users/soweli/Documents/eurofighter_testdata.csv</filename>
-       <enabled>true</enabled>
+       <enabled>false</enabled>
        <interval-ms>500</interval-ms>/accelerations/pilot/z-accel-fps_sec
        <delimiter>,</delimiter>
 	   <entry>

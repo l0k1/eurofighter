@@ -96,7 +96,7 @@
 		<property>/engines/engine[0]/rpm</property>
 		<format>%3.0f</format>
 		<draw-text type="bool">true</draw-text>
-		<alignment>center-left</alignment>
+		<alignment>left-center</alignment>
 	</text>
 
 	<animation>

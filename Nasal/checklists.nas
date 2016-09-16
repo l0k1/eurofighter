@@ -27,14 +27,14 @@ var light = props.globals.getNode("sim/time/sun-angle-rad");
 	     instruments.getNode("MFD[0]/stand-by").setBoolValue(0);
 	     instruments.getNode("MFD[1]/stand-by").setBoolValue(0);
 		 instruments.getNode("MFD[2]/stand-by").setBoolValue(0);
-		},3,0],
+		},4,0],
 	 [4,"APU Button on",func {
 	     buttons.getNode("APU").setBoolValue(1);
-		},4,0],
+		},7,0],
      [5,"Hud on",func {
  	     setprop("/sim/gui/dialogs/radios/transponder-mode", 'ON');
  	     setprop("/sim/hud/current-color", 0);
-		},9.5,0],
+		},12,0],
 	];
 
 var engineStart = [	
@@ -55,14 +55,14 @@ var engineStart = [
 		},4,0],	 
 	 [3,"Engine Start",func {
 	     avionics.controls.engineStart(1);
-		},5.5,0],
+		},15,0],
 	];
 	
 var taxi = [
      [0,"null",0,-1,"Null!"],
 	 [1,"APU Button off",func {
 	     buttons.getNode("APU").setBoolValue(0);
-		},1,0],
+		},10,0],
 	 [2,"Arm Ejection Seat", func {
 	     pos = controls.getNode("seat/arming-handle").getValue();
 		 if ( pos != 1 ) {

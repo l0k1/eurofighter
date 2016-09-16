@@ -746,7 +746,7 @@ var MISSILE = {
 #
 # Uncomment the following lines to check stats while flying:
 #
-#printf("Mach %02.1f , time %03.1f s , thrust %03.1f lbf , G-force %02.2f", me.speed_m, me.life_time, thrust_lbf, me.g);
+printf("Mach %02.1f , time %03.1f s , thrust %03.1f lbf , G-force %02.2f", me.speed_m, me.life_time, thrust_lbf, me.g);
 #printf("Alt %05.1f ft", alt_ft);
 
             var v = me.poximity_detection();

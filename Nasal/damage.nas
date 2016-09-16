@@ -362,7 +362,7 @@ var code_ct = func () {
     rf = 0;
   }
   lf = cf == nil?0:cf;
-  var dm = !getprop("/controls/armament/mp-messaging");
+  var dm = 0;
   if (dm == nil or dm != 1) {
     dm = 0;
   }
@@ -401,7 +401,7 @@ var not = func {
       if (size(spl) > 1) {
         var bits = spl[1];
         msg = "I ";
-        if (bits == "000000000000") {
+        if (bits == "000000000000" ) { 
           settimer(not, 60);
           return;
         }

@@ -43,7 +43,7 @@ fire_MG = func(b) {
                 dt = time;
                 var pylon = getprop("/controls/armament/missile/current-pylon");
                 load.dropLoad(pylon);
-                print("Should fire Missile");
+                #print("Should fire Missile");
             }
         }
     }
