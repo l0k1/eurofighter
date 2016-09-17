@@ -321,6 +321,10 @@ var InitListener = setlistener("/sim/signals/fdm-initialized", func {
         removelistener(InitListener);
 });
 
+setlistener("sim/crashed",func() {
+									if (getprop("sim/crashed") == 1) { setprop("sim/crashed",0) }
+								});
+
 ################################################ Main init loop################################################
 #####         Perhaps in the future, make an object for each subsystems, in the same way of "engine"   ########
 ################################################################################################################
