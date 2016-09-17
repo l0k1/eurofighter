@@ -40,7 +40,7 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 				<strobe type="bool"/>
 			</livery>
 			<typhoon>
-		        <shadow type="bool">true</shadow>
+		        <shadow type="bool">false</shadow>
 				<dragchute type="bool">false</dragchute>
 				<wingmounts type="bool">false</wingmounts>
 				<controls>
