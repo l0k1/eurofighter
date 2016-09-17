@@ -10,14 +10,22 @@ var isFiring = 0;
 var splashdt = 0;
 var MPMessaging = props.globals.getNode("/controls/armament/mp-messaging", 1);
 
-var trigger = func(b)
-{
-    setprop("/controls/armament/trigger", b);
-    if(getprop ("/gear/gear[2]/position-norm") == 0)
-    {
-        fire_MG(b);
-    }
-}
+#var trigger = func(b)
+#{
+#    setprop("/controls/armament/trigger", b);
+#    if(getprop ("/gear/gear[2]/position-norm") == 0)
+#    {
+#        fire_MG(b);
+#    }
+#}
+
+setlistener("/controls/armament/trigger", func() {
+												if(getprop ("/gear/gear[2]/position-norm") == 0)
+													{
+														fire_MG(getprop("/controls/armament/trigger"));
+													}
+												}
+);
 
 fire_MG = func(b) {
     var time = getprop("/sim/time/elapsed-sec");

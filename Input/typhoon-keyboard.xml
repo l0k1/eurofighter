@@ -177,7 +177,7 @@
 			<script>controls.selectAllEngines();</script>
 		</binding>
 	</key>
-	<key n="101">
+	<!--<key n="101">
       <name>e</name>
       <desc>Guns</desc>
       <binding>
@@ -188,6 +188,22 @@
         <binding>
           <command>nasal</command>
           <script>guns.trigger(0)</script>
+        </binding>
+      </mod-up>
+    </key>property-assign-->
+	<key n="101">
+      <name>e</name>
+      <desc>Guns</desc>
+      <binding>
+        <command>property-assign</command>
+		<property>/controls/armament/trigger</property>
+		<value>1</value>
+      </binding>
+      <mod-up>
+        <binding>
+          <command>property-assign</command>
+		  <property>/controls/armament/trigger</property>
+		  <value>0</value>
         </binding>
       </mod-up>
     </key>
