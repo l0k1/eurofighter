@@ -94,7 +94,7 @@
 			<repeatable>false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>hud.next_Target_Index()</script>
+				<script>typhoon.myRadar3.next_Target_Index()</script>
 			</binding>
 		</action>
 	</animation>
@@ -107,7 +107,7 @@
 			<repeatable>false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>hud.previous_Target_Index()</script>
+				<script>typhoon.myRadar3.previous_Target_Index()</script>
 			</binding>
 		</action>
 	</animation>
