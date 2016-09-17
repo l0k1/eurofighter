@@ -50,7 +50,7 @@
 		<desc>Next Target</desc>
 	</key>
 	<key>
-		<name>N</name>
+		<name>Ctrl-n</name>
 		<desc>Previous Target</desc>
 	</key>
 	<key>
@@ -58,18 +58,34 @@
 		<desc>Extend/retract hook</desc>
 	</key>
 	<key>
-		<name>Ctrl + d</name>
+		<name>d</name>
 		<desc>Toggle canopy</desc>
 	</key>
 	<key>
-		<name>Ctrl + n</name>
+		<name>R</name>
 		<desc>Toggle Radar (Pulse/TWS)</desc>
 	</key>
 	<key>
 		<name>Ctrl + o</name>
 		<desc>Select both engines</desc>
 	</key>
-
+	<key>
+		<name>t</name>
+		<desc>Increase radar distance</desc>
+	</key>
+	<key>
+		<name>T</name>
+		<desc>Decrease radar distance</desc>
+	</key>
+	<key>
+		<name>y</name>
+		<desc>Select next pylon</desc>
+	</key>
+	<key>
+		<name>Y</name>
+		<desc>Select previous pylon</desc>
+	</key>
+	
 	<text>
     U L P (Upper Left Panel) Autopilot and functions :
     *** Please refer to the Readme file in the eurofighter folder ***

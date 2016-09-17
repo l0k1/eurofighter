@@ -29,8 +29,8 @@
 			<property>/controls/gear/catapult-launch-cmd</property>
 		</binding>
 	</key>
-	<key n="4">
-		<name>Ctrl-d</name>
+	<key n="100">
+		<name>d</name>
 		<desc>Toggle Canopy</desc>
 		<binding>
 			<command>nasal</command>
@@ -143,8 +143,8 @@
 			<script>typhoon.toggle_chute();</script>
 		</binding>
 	</key>
-	<key n="14">
-		<name>Ctrl-n</name>
+	<key n="72">
+		<name>R</name>
 		<desc>Toggle Radar PULSE SRCH / TWS AUTO Modes</desc>
 		<binding>
 			<command>nasal</command>
@@ -161,8 +161,8 @@
       </binding>
     </key>
     
-    <key n="78">
-      <name>N</name>
+    <key n="14">
+      <name>Ctrl-n</name>
       <desc>Changes Target</desc>
       <binding>
         <command>nasal</command>
@@ -234,4 +234,58 @@
 			<property>/controls/switches/fuel-probe</property>
 		</binding>
 	</key>
+
+	<key n="116">
+      <name>t</name>
+      <desc>Increase Radar Distance</desc>
+      <binding>
+        <command>nasal</command>
+        <script>
+          typhoon.myRadar3.switch_distance_ics();
+          setprop("instrumentation/radar/range", typhoon.myRadar3.get_radar_distance());
+          setprop("/instrumentation/radar/range-selected",typhoon.myRadar3.get_radar_distance());
+        </script>
+        
+        <!--        <script>hud.switch_distance()</script>-->
+      </binding>
+    </key>
+    
+    <key n="84">
+      <name>T</name>
+      <desc>Decrease Radar Distance</desc>
+      <binding>
+        <command>nasal</command>
+        <script>
+          typhoon.myRadar3.switch_distance_dcs();
+          setprop("instrumentation/radar/range", typhoon.myRadar3.get_radar_distance());
+          setprop("/instrumentation/radar/range-selected",typhoon.myRadar3.get_radar_distance());
+        </script>
+        
+        <!--        <script>hud.switch_distance()</script>-->
+      </binding>
+    </key>
+	<key n="121">
+      <name>y</name>
+      <desc>Select Next Store</desc>
+      <binding>
+        <command>nasal</command>
+        <script>
+          load.increased_selected_pylon();
+        </script>
+        
+        <!--        <script>hud.switch_distance()</script>-->
+      </binding>
+    </key>
+	<key n="89">
+      <name>Y</name>
+      <desc>Select Previous Store</desc>
+      <binding>
+        <command>nasal</command>
+        <script>
+          load.decreased_selected_pylon();
+        </script>
+        
+        <!--        <script>hud.switch_distance()</script>-->
+      </binding>
+    </key>
 </PropertyList>
