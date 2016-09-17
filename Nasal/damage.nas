@@ -441,9 +441,10 @@ var not = func {
         if (substr(bits,11,1) == "1") {
           msg = msg~"Had i-fa"~"ilures open..";
         }
+		setprop("/sim/multiplay/chat", msg);
       }
     }
-    setprop("/sim/multiplay/chat", msg);
+    
   }
   settimer(not, 60);
 }
