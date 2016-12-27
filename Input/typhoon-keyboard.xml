@@ -66,12 +66,6 @@
 		<name>j</name>
 		<desc>Retract Speedbrakes</desc>
 		<binding>
-  			<condition>
-   				<equals>
-   	 				<property>sim/current-view/name</property>
-  			 	 	<value>Cockpit View</value>
-   				</equals>
- 			 </condition>
 			<command>property-adjust</command>
 			<property>/controls/flight/speedbrake</property>
 			<step type="double">-0.1</step><!-- with +.33 and -.2 do QNAN -->
