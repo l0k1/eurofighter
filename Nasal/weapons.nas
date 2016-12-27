@@ -129,10 +129,8 @@ var impact_listener = func {
 	#print(ballistic_name);
 	if (ballistic != nil) {
 		var typeNode = ballistic.getNode("impact/type");
-		var typeOrd = ballistic.getNode("name").getValue();
-		print(typeOrd ==  "BK27 round 1");
 		if ( typeNode != nil ) {
-			#impact position
+			var typeOrd = ballistic.getNode("name").getValue();
 			var lat = ballistic.getNode("impact/latitude-deg").getValue();
 			var lon = ballistic.getNode("impact/longitude-deg").getValue();
 			var alt = ballistic.getNode("impact/elevation-m").getValue();
