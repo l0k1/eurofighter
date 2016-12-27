@@ -37,6 +37,13 @@ var light = props.globals.getNode("sim/time/sun-angle-rad");
 		},12,0],
 	];
 
+var apu_listener = nil;
+var remove_apu_listener = func {
+	if ( apu_listener != nil ) {
+		removelistener(apu_listener);
+	}
+}
+
 var engineStart = [	
      [0,"null",0,-1,"Executing Engine Start checklist..."],
 	 [1,"LP Cocks open",func {
@@ -52,10 +59,17 @@ var engineStart = [
 	 [2,"Boost Pumps on",func {
 	     switches.getNode("boost-pump-left").setBoolValue(1);
 		 switches.getNode("boost-pump-right").setBoolValue(1);
-		},4,0],	 
+		},6,0],	 
 	 [3,"Engine Start",func {
-	     avionics.controls.engineStart(1);
-		},15,0],
+	 	 apu_listener = setlistener("/engines/engine[2]/rpm", func {
+	 	 		if ( getprop("engines/engine[2]/rpm") > 75 and getprop("/systems/electrical/outputs/FCS") > 105) {
+	 	 			#print("!!!!!!!!!!!!!!!!!ENGINES SHOULD BE STARTING!!!!!!!!!!!!!!!!!!!");
+	 	 			avionics.controls.engineStart(1);
+	 	 			#remove_apu_listener();
+	 	 			removelistener(apu_listener);
+	 	 		}
+	 	 	});
+		},0.5,0],
 	];
 	
 var taxi = [

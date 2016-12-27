@@ -259,6 +259,7 @@ var controls = {
 			 decmu.engstop();
 			}
 		 if ( b == 1 ) { 
+		 	#print("b is 1");
 		     engswitch.setValue(2);
 			 decmu.start.switch();
 				}

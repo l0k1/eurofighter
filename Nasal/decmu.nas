@@ -128,6 +128,7 @@ var start = {
      # Check Power
 	 
 	 var volts = props.globals.getNode("/systems/electrical/outputs/FCS").getValue();
+    #print("volts: " ~ volts);
 	 if ( volts > 105 ) {
 	 	  
 		 # Check Nogos
@@ -139,19 +140,24 @@ var start = {
 			     x = ( x + 1 );
 		    	}
 		    }
+       #print("nogo x: " ~ x);
 		 if ( x == 0 ) {
 		 # Make sure engines are off
-             var eng1run = props.globals.getNode("/engines/engine[0]/running").getBoolValue();
- 			 var eng2run = props.globals.getNode("/engines/engine[1]/running").getBoolValue();
-			 if ((!eng1run) and (!eng2run)) {
-			     settimer( func { decmu.start.engine(1);} ,0.5);
-			     settimer( func { decmu.start.engine(2);} ,15);
-				}
+          #   var eng1run = props.globals.getNode("/engines/engine[0]/running").getBoolValue();
+ 			 #var eng2run = props.globals.getNode("/engines/engine[1]/running").getBoolValue();
+          #print("eng1run: " ~ eng1run);
+          #print("eng2run: " ~ eng2run);
+			 #if ((!eng1run) and (!eng2run)) {
+              #print("please let these start");
+			     settimer( func { decmu.start.engine(1);} ,0.1);
+			     settimer( func { decmu.start.engine(2);} ,12);
+				#}
 		    }
 		}
 	 },
 	 engine: func(c) {
 	     var engindex = ( c - 1 );
+        #print("actually starting the damn engine now");
 		 var eng = props.globals.getNode("/controls/engines/engine["~engindex~"]");
 		 var cutoff = eng.getNode("cutoff");
 		 var starter = eng.getNode("starter");
