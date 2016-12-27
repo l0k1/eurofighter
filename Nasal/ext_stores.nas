@@ -636,7 +636,7 @@ dropMissile = func(number)
         setprop("/sim/weight["~ number ~"]/weight-lb", 0);
     }
     setprop("/controls/armament/station["~ number ~"]/release", 1);
-    after_fire_next();
+    after_fire_next(typeMissile);
 }
 
 dropInert = func (number) {
@@ -785,16 +785,39 @@ var all_submodel = func (pylone, select){
         if(pylone == 15 and select == "1500 l Droptank"){ setprop("controls/armament/station[15]/release-R1500", 1);}
 }
 
+# -1 is none
+#  0 is A/A
+#  1 is A/G
+# -2 is fuel
+
+var load_info = {
+    "AIM120": 0,
+    "AIM132": 0,
+    "AIM9": 0,
+    "ALARM": 1,
+    "STORMSHADOW": 1,
+    "Brimstone": 1,
+    "GBU16": 1,
+    "none": -1,
+    "1500 l Droptank": 2,
+    "1000 l Droptank": 2,
+};
+
 var increased_selected_pylon = func(){
      var SelectedPylon = getprop("controls/armament/missile/current-pylon");
+     var mode = getprop("controls/armament/stick-selector") - 2; # if this prop is 2, we're in A/A, if this prop is 3 we are in A/G
      
+     if ( mode < 0 ) {
+        return nil;
+     }
+
      var out = 0;
      var mini = loadsmini();
      var max = loadsmaxi();
      if(SelectedPylon==max){SelectedPylon=-1;}
      
      for(var i = SelectedPylon+1 ;i < 16 ; i = i + 1 ){
-            if(getprop("sim/weight["~ i ~"]/selected")){
+            if( load_info[getprop("sim/weight["~ i ~"]/selected")] == mode ){
                 if(getprop("sim/weight["~ i ~"]/weight-lb")>1){
                    if(mini==-1){mini = i;}
                    max = i;
@@ -813,6 +836,11 @@ var increased_selected_pylon = func(){
 
 var decreased_selected_pylon = func(){
      var SelectedPylon = getprop("controls/armament/missile/current-pylon");
+     var mode = getprop("controls/armament/stick-selector") - 2; # if this prop is 2, we're in A/A, if this prop is 3 we are in A/G
+     
+     if ( mode < 0 ) {
+        return nil;
+     }
      
      var out = 0;
      var mini = loadsmini();
@@ -820,7 +848,7 @@ var decreased_selected_pylon = func(){
      if(SelectedPylon==mini){SelectedPylon=16;}
      
      for(var i = SelectedPylon-1 ;i >-1 ; i = i - 1 ){
-            if(getprop("sim/weight["~ i ~"]/selected")){
+            if( load_info[getprop("sim/weight["~ i ~"]/selected")] == mode ){
                 if(getprop("sim/weight["~ i ~"]/weight-lb")>1){
                    if(max==16){max = i;}
                    mini = i;
@@ -871,33 +899,45 @@ var loadsmaxi = func(){
         
 
 #next missile after fire
-var after_fire_next = func(){
+var after_fire_next = func(typeMissile){
        var SelectedPylon = getprop("controls/armament/missile/current-pylon");
-       var out = 0;
     
-        if(SelectedPylon == 0){SelectedPylon =3;}elsif(SelectedPylon == 3){SelectedPylon =0;}
-        if(SelectedPylon == 1){SelectedPylon =4;}elsif(SelectedPylon == 4){SelectedPylon =1;}
-        if(SelectedPylon == 2){SelectedPylon =5;}elsif(SelectedPylon == 5){SelectedPylon =2;}
-        if(SelectedPylon == 7){SelectedPylon =9;}elsif(SelectedPylon == 9){SelectedPylon =7;}
-        if(SelectedPylon == 8){SelectedPylon =10;}elsif(SelectedPylon == 10){SelectedPylon =8;}
-        if(SelectedPylon == 11){SelectedPylon =12;}elsif(SelectedPylon == 12){SelectedPylon =11;}
-        if(SelectedPylon == 13){SelectedPylon =15;}elsif(SelectedPylon == 15){SelectedPylon =13;}
-                
+        #if(SelectedPylon == 0){SelectedPylon =3;}elsif(SelectedPylon == 3){SelectedPylon =0;}
+        #if(SelectedPylon == 1){SelectedPylon =4;}elsif(SelectedPylon == 4){SelectedPylon =1;}
+        #if(SelectedPylon == 2){SelectedPylon =5;}elsif(SelectedPylon == 5){SelectedPylon =2;}
+        #if(SelectedPylon == 7){SelectedPylon =9;}elsif(SelectedPylon == 9){SelectedPylon =7;}
+        #if(SelectedPylon == 8){SelectedPylon =10;}elsif(SelectedPylon == 10){SelectedPylon =8;}
+        #if(SelectedPylon == 11){SelectedPylon =12;}elsif(SelectedPylon == 12){SelectedPylon =11;}
+        #if(SelectedPylon == 13){SelectedPylon =15;}elsif(SelectedPylon == 15){SelectedPylon =13;}
+         
+        #find our next pylon
+        var nf = 0;
+
+        #see if there's another of the same type, and if so, select it.
+        for(var i = 0; i < 16; i = i + 1) {
+            if ( i != SelectedPylon and getprop("sim/weight["~i~"]/selected") == typeMissile ) {
+                SelectedPylon = i;
+                nf = 1;
+            }
+        }
+
+        #otherwise, lets just increase the pylon.
+        if ( nf == 0 ) {
+            increased_selected_pylon();
+        }
+
         if(getprop("sim/weight["~ SelectedPylon ~"]/weight-lb")<1){
             for(var i = 0 ;i < 16 ; i = i + 1 ){
                 if(getprop("sim/weight["~ i ~"]/weight-lb")>1){
-                   if(out == 0){
-                        #print("i:",i);
-                        SelectedPylon = i;
-                        out = 1;
-                   }
+                    #print("i:",i);
+                    SelectedPylon = i;
+                    setprop("controls/armament/name",getprop("sim/weight["~ SelectedPylon ~"]/selected"));
+                    setprop("controls/armament/missile/current-pylon",SelectedPylon);
+                    return;
                 }
-            }
-            setprop("controls/armament/name",getprop("sim/weight["~ SelectedPylon ~"]/selected"));
-            setprop("controls/armament/missile/current-pylon",SelectedPylon);            
-        }else{
-            setprop("controls/armament/name",getprop("sim/weight["~ SelectedPylon ~"]/selected"));
-            setprop("controls/armament/missile/current-pylon",SelectedPylon);
-            #print("Test1:",SelectedPylon);
+            }       
         }
+
+        
+        #print("Test1:",SelectedPylon);
 }
