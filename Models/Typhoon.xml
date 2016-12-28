@@ -116,6 +116,42 @@
 		<object-name>vertstab</object-name>
 		<object-name>canopyframe</object-name>
 		<object-name>canopyframe2</object-name>
+		<object-name>rudder</object-name>
+		<object-name>FairingRear</object-name>
+		<object-name>flaperon.R</object-name>
+		<object-name>flaperon.L</object-name>
+		<object-name>flaperon1.R</object-name>
+		<object-name>flaperon1.L</object-name>
+		<object-name>pod.L</object-name>
+		<object-name>fueldoor.001</object-name>
+		<object-name>fueldoor.002</object-name>
+		<object-name>speedbrake</object-name>
+		<object-name>speedbrake2</object-name>
+		<object-name>elevonL.2F</object-name>
+		<object-name>FlareDispL.1</object-name>
+		<object-name>FlareDispR.1</object-name>
+		<object-name>elevonR.2F</object-name>
+		<object-name>elevonL.2</object-name>
+		<object-name>elevonL.1</object-name>
+		<object-name>elevonR.1</object-name>
+		<object-name>elevonR.2</object-name>
+		<object-name>Slat.R_1</object-name>
+		<object-name>Slat.R_0</object-name>
+		<object-name>Slat.L_1</object-name>
+		<object-name>Slat.L_0</object-name>
+		<object-name>airint.L</object-name>
+		<object-name>airint.R</object-name>
+		<object-name>nosegeardoor</object-name>
+		<object-name>geardoor1.L</object-name>
+		<object-name>geardoor2.L</object-name>
+		<object-name>geardoor1.R</object-name>
+		<object-name>geardoor2.R</object-name>
+		<object-name>HookFairing_1.001	</object-name>
+		<object-name>Hook.001</object-name>
+		<object-name>elevator.L</object-name>
+		<object-name>elevator.R</object-name>
+		<object-name>Mesh206</object-name>
+		<object-name>Mesh156</object-name>
 		<property-base>sim/model/livery</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>typhoon-2.png</texture>
