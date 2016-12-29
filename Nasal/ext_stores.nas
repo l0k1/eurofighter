@@ -918,6 +918,8 @@ var after_fire_next = func(typeMissile){
             if ( i != SelectedPylon and getprop("sim/weight["~i~"]/selected") == typeMissile ) {
                 SelectedPylon = i;
                 nf = 1;
+                setprop("controls/armament/name",getprop("sim/weight["~ SelectedPylon ~"]/selected"));
+                setprop("controls/armament/missile/current-pylon",SelectedPylon);
             }
         }
 
@@ -926,16 +928,9 @@ var after_fire_next = func(typeMissile){
             increased_selected_pylon();
         }
 
+        var SelectedPylon = getprop("controls/armament/missile/current-pylon");
         if(getprop("sim/weight["~ SelectedPylon ~"]/weight-lb")<1){
-            for(var i = 0 ;i < 16 ; i = i + 1 ){
-                if(getprop("sim/weight["~ i ~"]/weight-lb")>1){
-                    #print("i:",i);
-                    SelectedPylon = i;
-                    setprop("controls/armament/name",getprop("sim/weight["~ SelectedPylon ~"]/selected"));
-                    setprop("controls/armament/missile/current-pylon",SelectedPylon);
-                    return;
-                }
-            }       
+            increased_selected_pylon();
         }
 
         
