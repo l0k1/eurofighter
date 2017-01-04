@@ -229,6 +229,16 @@
 		</config>
 	</view>
 
+	<!--need to add:
+		skyflash
+		bvraam
+		aspide
+		iris-t
+
+		multiple a/g
+	-->
+
+
 	<weight n="0">
 		<name>pylon1.L</name>
 		<weight-lb>0</weight-lb>
@@ -236,9 +246,8 @@
 		<label-nbr type="int">0</label-nbr>
 		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
 		<opt><name>none</name><lbs>0</lbs></opt>
-		<opt><name>AIM9</name><lbs>190.0</lbs></opt>
-		<opt><name>AIM132</name><lbs>176.0</lbs></opt>
 		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
 		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
 		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
 	</weight>
@@ -248,9 +257,6 @@
 		<selected>none</selected>
 		<offsets><x-m type="double">8.727</x-m><y-m type="double">-2.824</y-m><z-m type="double">-0.78</z-m></offsets>
 		<opt><name>none</name><lbs>0</lbs></opt>
-		<opt><name>AIM9</name><lbs>190.0</lbs></opt>
-		<opt><name>AIM132</name><lbs>176.0</lbs></opt>
-		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
 		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
 		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
 		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
@@ -284,7 +290,6 @@
 		<offsets><x-m type="double">10.362</x-m><y-m type="double">-4.661</y-m><z-m type="double">-0.641</z-m></offsets>
 		<opt><name>none</name><lbs>0</lbs></opt>
 		<opt><name>AIM9</name><lbs>190.0</lbs></opt>
-		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
 		<opt><name>AIM132</name><lbs>176.0</lbs></opt>
 	</weight>
 	<weight n="6">
@@ -312,10 +317,9 @@
 		<selected>none</selected>
 		<offsets><x-m type="double">7.376</x-m><y-m type="double">1.739</y-m><z-m type="double">-0.641</z-m></offsets>
 		<opt><name>none</name><lbs>0</lbs></opt>
-		<opt><name>AIM9</name><lbs>190.0</lbs></opt>
-		<opt><name>AIM132</name><lbs>176.0</lbs></opt>
 		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
 		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
 		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
 	</weight>
 	<weight n="4">
@@ -324,9 +328,6 @@
 		<selected>none</selected>
 		<offsets><x-m type="double">8.727</x-m><y-m type="double">2.824</y-m><z-m type="double">-0.78</z-m></offsets>
 		<opt><name>none</name><lbs>0</lbs></opt>
-		<opt><name>AIM9</name><lbs>190.0</lbs></opt>
-		<opt><name>AIM132</name><lbs>176.0</lbs></opt>
-		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
 		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
 		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
 		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
@@ -360,7 +361,6 @@
 		<offsets><x-m type="double">10.362</x-m><y-m type="double">4.661</y-m><z-m type="double">-0.641</z-m></offsets>
 		<opt><name>none</name><lbs>0</lbs></opt>
 		<opt><name>AIM9</name><lbs>190.0</lbs></opt>
-		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
 		<opt><name>AIM132</name><lbs>176.0</lbs></opt>
 	</weight>
 	<weight n="7">

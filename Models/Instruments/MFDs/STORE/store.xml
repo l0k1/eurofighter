@@ -7,6 +7,8 @@
 		<object-name>STORScreen</object-name>
 		<object-name>cannon-rounds</object-name>
 		<object-name>STORM.C</object-name>
+		<object-name>STORM.WL1</object-name>
+		<object-name>STORM.WR1</object-name>
 		<object-name>STORM.WL2</object-name>
 		<object-name>STORM.WR2</object-name>
 		<object-name>ALARM.C</object-name>
@@ -1262,6 +1264,38 @@
 				</equals>
 				<greater-than>
 					<property>sim/weight[6]/weight-lb</property>
+					<value>1</value>
+				</greater-than>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>STORM.WL1</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>sim/weight[0]/selected</property>
+					<value>STORMSHADOW</value>
+				</equals>
+				<greater-than>
+					<property>sim/weight[0]/weight-lb</property>
+					<value>1</value>
+				</greater-than>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>STORM.WR1</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>sim/weight[3]/selected</property>
+					<value>STORMSHADOW</value>
+				</equals>
+				<greater-than>
+					<property>sim/weight[3]/weight-lb</property>
 					<value>1</value>
 				</greater-than>
 			</and>
