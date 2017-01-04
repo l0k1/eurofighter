@@ -21,9 +21,32 @@
                     \  |    C    |  /
                      \ |   (6)   | /
                       \|_________|/
-  -->                   
+  -->
+
+  <model>
+    <name>left-STORM-pos-1</name>
+    <path>Aircraft/eurofighter/Stores/StormShadow/StormShadow.xml</path>
+    <offsets>
+      <x-m>7.376</x-m>
+      <y-m>-1.739</y-m>
+      <z-m>-2.0</z-m>
+      <pitch-deg>-0.865</pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <name>right-STORM-pos-1</name>
+    <path>Aircraft/eurofighter/Stores/StormShadow/StormShadow.xml</path>
+    <offsets>
+      <x-m>7.376</x-m>
+      <y-m>1.739</y-m>
+      <z-m>-2.0</z-m>
+      <pitch-deg>-0.865</pitch-deg>
+    </offsets>
+  </model>
 
   <!-- station left 1 (Index 0) -->
+
   <model>
     <name>left-AIM-9-pos-1</name>
     <path>Aircraft/eurofighter/Stores/aim-9/aim-9.xml</path>

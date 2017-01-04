@@ -40,6 +40,22 @@
 		</condition>
 	</animation>
 	<animation>
+    <type>select</type>
+    <object-name>left-STORM-pos-1</object-name>
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[0]/selected</property>
+          <value>STORMSHADOW</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[0]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
+	<animation>
 		<type>select</type>
 		<object-name>left-AIM132-pos-1</object-name>
 		<condition>
@@ -453,6 +469,22 @@
 			</and>
 		</condition>
 	</animation>
+	<animation>
+    <type>select</type>
+    <object-name>right-STORM-pos-1</object-name>
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[3]/selected</property>
+          <value>STORMSHADOW</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[3]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
 	<animation>
 		<type>select</type>
 		<object-name>right-AIM132-pos-1</object-name>
