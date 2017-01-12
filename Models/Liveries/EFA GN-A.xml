@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+<sim>
+    <model>
+        <livery>
+            <name type="string">EFA GN-A</name>
+            <index type="int">1</index>
+            <texture>Liveries/EFA GN-A.png</texture>
+	    <RAFlights type="bool">false</RAFlights> <!-- RAF alternate beacon -->
+	    <beacon n="0" type="bool">true</beacon> <!-- red -->
+	    <strobe n="0" type="bool">false</strobe> <!-- white -->
+        </livery>
+    </model>
+</sim>
+</PropertyList>
