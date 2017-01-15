@@ -169,15 +169,17 @@ var defeatSpamFilter = func (str) {
   for (var i = 1; i <= spams; i+=1) {
     str = str~".";
   }
-  
-  if (getprop("/controls/armament/mp-messaging")) {
-	setprop("/sim/multiplay/chat", str);
-  } else {
-	setprop("/sim/messages/atc", str);
+  var myCallsign = getprop("sim/multiplay/callsign");
+  if (myCallsign != nil and find(myCallsign, str) != -1) {
+      str = myCallsign~": "~str;
   }
-  
-  return str;
+  var newList = [str];
+  for (var i = 0; i < size(spamList); i += 1) {
+    append(newList, spamList[i]);
+  }
+  spamList = newList;  
 }
+
 
 
 setlistener("/ai/models/model-impact", impact_listener, 0, 0);
