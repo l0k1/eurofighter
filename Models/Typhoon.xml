@@ -97,9 +97,9 @@
 	<model>
 		<path>Aircraft/eurofighter/Models/Chute/chute.xml</path>
 		<offsets>
-			<x-m>15.4</x-m>
+			<x-m>7.34583</x-m>
 			<y-m>0</y-m>
-			<z-m>0.4</z-m>
+			<z-m>0.31456</z-m>
 			<pitch-deg>-1</pitch-deg>
 		</offsets>
 	</model>
@@ -177,9 +177,9 @@
 		<property>surface-positions/flap-pos-norm</property>
 		<factor>30</factor>
 		<center>
-			<x-m>5.26</x-m>
+			<x-m>-2.79417</x-m>
 			<y-m>0.255</y-m>
-			<z-m>-0.653</z-m>
+			<z-m>-0.73844</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -199,9 +199,9 @@
 		<property>surface-positions/flap-pos-norm</property>
 		<factor>30</factor>
 		<center>
-			<x-m>5.26</x-m>
+			<x-m>-2.79417</x-m>
 			<y-m>-0.255</y-m>
-			<z-m>-0.653</z-m>
+			<z-m>-0.73844</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -214,9 +214,9 @@
 	<model>
 		<path>Aircraft/eurofighter/Models/Pilot/pilot.xml</path>
 		<offsets>
-			<x-m>3.83</x-m>
+			<x-m>-4.22417</x-m>
 			<y-m>-0.015</y-m>
-			<z-m>0.82</z-m>
+			<z-m>0.73456</z-m>
 			<pitch-deg>10</pitch-deg>
 		</offsets>
 	</model>
@@ -229,25 +229,25 @@
 	<model>
 		<path>Aircraft/eurofighter/Models/Effects/flammes/combustionL.xml</path>
 		<offsets>
-			<x-m>  14.88 </x-m>
+			<x-m>  6.82583 </x-m>
 			<y-m> -0.52 </y-m>
-			<z-m>  0.03 </z-m>
+			<z-m>  -0.05544 </z-m>
 		</offsets>
 	</model>
 	<model>
 		<path>Aircraft/eurofighter/Models/Effects/flammes/combustionR.xml</path>
 		<offsets>
-			<x-m>  14.88 </x-m>
+			<x-m>  6.82583 </x-m>
 			<y-m>  0.525 </y-m>
-			<z-m>  0.045 </z-m>
+			<z-m>  -0.04044 </z-m>
 		</offsets>
 	</model>
 	<model>
 		<path>Aircraft/eurofighter/Models/Engines/EJ200-L.xml</path>
 		<offsets>
-			<x-m>14.16</x-m>
+			<x-m>6.10583</x-m>
 			<y-m>-0.54</y-m>
-			<z-m>0.013</z-m>
+			<z-m>-0.07244</z-m>
 			<pitch-deg>0</pitch-deg>
 			<roll-deg>-60</roll-deg>
 		</offsets>
@@ -255,9 +255,9 @@
 	<model>
 		<path>Aircraft/eurofighter/Models/Engines/EJ200-R.xml</path>
 		<offsets>
-			<x-m>14.16</x-m>
+			<x-m>6.10583</x-m>
 			<y-m>0.52</y-m>
-			<z-m>0.025</z-m>
+			<z-m>-0.06044</z-m>
 			<pitch-deg>0</pitch-deg>
 			<roll-deg>0</roll-deg>
 		</offsets>
@@ -265,18 +265,18 @@
 	<model>
 		<path>Aircraft/eurofighter/Models/Lights/lights.xml</path>
 		<offsets>
-			<x-m>0</x-m>
+			<x-m>-8.05417</x-m>
 			<y-m>0</y-m>
-			<z-m>0</z-m>
+			<z-m>-0.08544</z-m>
 		</offsets>
 	</model>
 	<model>
 		<name>Cockpit</name>
 		<path>Aircraft/eurofighter/Models/Instruments/COCKPIT/cockpit.xml</path>
 		<offsets>
-			<x-m>0</x-m>
+			<x-m>-8.05417</x-m>
 			<y-m>0</y-m>
-			<z-m>0</z-m>
+			<z-m>-0.08544</z-m>
 			<pitch-deg>0.0</pitch-deg>
 		</offsets>
 	</model>
@@ -284,7 +284,7 @@
 		<name>HUD2</name>
 		<path>Aircraft/eurofighter/Models/Instruments/HUD2/hud2.xml</path>
 		<offsets>
-			<x-m>3.36</x-m>
+			<x-m>-4.69417</x-m>
 			<y-m>0</y-m>
 			<z-m>1.265</z-m>
 			<pitch-deg>0.0</pitch-deg>
@@ -294,53 +294,53 @@
 		<name>HUDSymb</name>
 		<path>Aircraft/eurofighter/Models/Instruments/HUD/hud-symbols.xml</path>
 		<offsets>
-			<x-m>3.62</x-m>
+			<x-m>-4.43417</x-m>
 			<y-m>0</y-m>
-			<z-m>1.273</z-m>
+			<z-m>1.18756</z-m>
 			<pitch-deg>0.0</pitch-deg>
 		</offsets>
 	</model>	
 	<model>
 		<path>Aircraft/eurofighter/Models/Instruments/MFDs/mfd1.xml</path>
 		<offsets>
-			<x-m>3.364</x-m>
+			<x-m>-4.69017</x-m>
 			<y-m>-0.0</y-m>
-			<z-m>0.85</z-m>
+			<z-m>0.76456</z-m>
 			<pitch-deg>-13</pitch-deg>
 		</offsets>
 	</model>
 	<model>
 		<path>Aircraft/eurofighter/Models/Instruments/MFDs/mfd2.xml</path>
 		<offsets>
-			<x-m>3.359</x-m>
+			<x-m>-4.69517</x-m>
 			<y-m>-0.21</y-m>
-			<z-m>0.91</z-m>
+			<z-m>0.82456</z-m>
 			<pitch-deg>-13</pitch-deg>
 		</offsets>
 	</model>
 	<model>
 		<path>Aircraft/eurofighter/Models/Instruments/MFDs/mfd3.xml</path>
 		<offsets>
-			<x-m>3.359</x-m>
+			<x-m>-4.69517</x-m>
 			<y-m>0.21</y-m>
-			<z-m>0.91</z-m>
+			<z-m>0.82456</z-m>
 			<pitch-deg>-13</pitch-deg>
 		</offsets>
 	</model>
 	<model>
 		<path>Aircraft/eurofighter/Models/Instruments/MIDS/midsAll.xml</path>
 		<offsets>
-			<x-m>0.0</x-m>
+			<x-m>-8.05417</x-m>
 			<y-m>-0.0</y-m>
-			<z-m>-0.0</z-m>
+			<z-m>-0.08544</z-m>
 		</offsets>
 	</model>
 	<model>
 		<path>Aircraft/eurofighter/Models/Instruments/HandsOn/pedals.xml</path>
 		<offsets>
-			<x-m>3.3042</x-m>
+			<x-m>-4.74997</x-m>
 			<y-m>0.0</y-m>
-			<z-m>0.5</z-m>
+			<z-m>0.41456</z-m>
 		</offsets>
 		<animation>
 			<type>noshadow</type>
@@ -349,9 +349,9 @@
 	<model>
 		<path>Aircraft/eurofighter/Models/Instruments/HandsOn/stick.xml</path>
 		<offsets>
-			<x-m>3.55</x-m>
+			<x-m>-4.50417</x-m>
 			<y-m>0.0</y-m>
-			<z-m>0.57</z-m>
+			<z-m>0.48456</z-m>
 			<pitch-deg>0</pitch-deg>
 		</offsets>
 	</model>
@@ -374,9 +374,9 @@
 			<entry><ind>1</ind><dep>0</dep></entry>
 		</interpolation>
 		<center>
-			<x-m>6.70021</x-m>
+			<x-m>-1.35396</x-m>
 			<y-m>0.0</y-m>
-			<z-m>-0.46114</z-m>
+			<z-m>-0.54658</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
@@ -448,9 +448,9 @@
 		<property>/gear/gear[0]/caster-angle-deg</property>
 		<factor>-1</factor>
 		<center>
-			<x-m>5.591</x-m>
+			<x-m>-2.46317</x-m>
 			<y-m>0.0</y-m>
-			<z-m>-0.614</z-m>
+			<z-m>-0.69944</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -477,9 +477,9 @@
 			</entry>
 		</interpolation>
 		<center>
-			<x-m>6.581</x-m>
+			<x-m>-1.47317</x-m>
 			<y-m>0.181</y-m>
-			<z-m>-0.755</z-m>
+			<z-m>-0.84044</z-m>
 		</center>
 		<axis>
 			<x>1.0</x>
@@ -506,9 +506,9 @@
 			</entry>
 		</interpolation>
 		<center>
-			<x-m>5.591</x-m>
+			<x-m>-2.46317</x-m>
 			<y-m>0.0</y-m>
-			<z-m>-0.614</z-m>
+			<z-m>-0.69944</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
@@ -560,9 +560,9 @@
         <property>gear/gear[0]/compression-norm</property>
         <factor>90</factor>
 	<center>
-		<x-m>5.37716</x-m>
+		<x-m>-2.67701</x-m>
 		<y-m>0.02018</y-m>
-		<z-m>-1.16996</z-m>
+		<z-m>-1.2554</z-m>
 	</center>
 	<axis>
 		<x>0</x>
@@ -577,9 +577,9 @@
         <property>gear/gear[0]/compression-norm</property>
         <factor>180</factor>
 	<center>
-		<x-m>5.17937</x-m>
+		<x-m>-2.8748</x-m>
 		<y-m>0.02018</y-m>
-		<z-m>-1.32655</z-m>
+		<z-m>-1.41199</z-m>
 	</center>
 	<axis>
 		<x>0</x>
@@ -601,9 +601,9 @@
 		<property>gear/gear[0]/rollspeed-ms</property>
 		<factor>9</factor>
 		<center>
-			<x-m>5.37700</x-m>
+			<x-m>-2.67717</x-m>
 			<y-m>-0.00675</y-m>
-			<z-m>-1.81251</z-m>
+			<z-m>-1.89795</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
@@ -634,9 +634,9 @@
 			</entry>
 		</interpolation>
 		<center>
-			<x-m>9.386</x-m>
+			<x-m>1.33183</x-m>
 			<y-m>-2.157</y-m>
-			<z-m>-0.329</z-m>
+			<z-m>-0.41444</z-m>
 		</center>
 		<axis>
 			<x>-1.0</x>
@@ -669,9 +669,9 @@
 			</entry>
 		</interpolation>
 		<center>
-			<x-m>9.295</x-m>
+			<x-m>1.24083</x-m>
 			<y-m>-0.458</y-m>
-			<z-m>-0.736</z-m>
+			<z-m>-0.82144</z-m>
 		</center>
 		<axis>
 			<x>1.0</x>
@@ -743,9 +743,9 @@
 			</entry>
 		</interpolation>
 		<center>
-			<x-m>9.356</x-m>
+			<x-m>1.30183</x-m>
 			<y-m>-1.99</y-m>
-			<z-m>-0.225</z-m>
+			<z-m>-0.31044</z-m>
 		</center>
 		<axis>
 			<x>1.0</x>
@@ -767,9 +767,9 @@
 			<entry><ind>1</ind><dep>0</dep></entry>
 		</interpolation>
 		<center>
-			<x-m>9.49</x-m>
+			<x-m>1.43583</x-m>
 			<y-m>-1.97693</y-m>
-			<z-m>-0.86981</z-m>
+			<z-m>-0.95525</z-m>
 		</center>
 		<axis>
 			<x>-1</x>
@@ -790,9 +790,9 @@
 			<entry><ind>1</ind><dep>0</dep></entry>
 		</interpolation>
 		<center>
-			<x-m>9.57117</x-m>
+			<x-m>1.517</x-m>
 			<y-m>-1.77701</y-m>
-			<z-m>-0.57558</z-m>
+			<z-m>-0.66102</z-m>
 		</center>
 		<axis>
 			<x>-1</x>
@@ -835,9 +835,9 @@
         <property>gear/gear[1]/compression-norm</property>
         <factor>60</factor>
 	<center>
-		<x-m>9.36398</x-m>
+		<x-m>1.30981</x-m>
 		<y-m>-1.86047</y-m>
-		<z-m>-1.12939</z-m>
+		<z-m>-1.21483</z-m>
 	</center>
 	<axis>
 		<x>0</x>
@@ -852,9 +852,9 @@
         <property>gear/gear[1]/compression-norm</property>
         <factor>90</factor>
 	<center>
-		<x-m>9.17534</x-m>
+		<x-m>1.12117</x-m>
 		<y-m>-1.86047</y-m>
-		<z-m>-1.29798</z-m>
+		<z-m>-1.38342</z-m>
 	</center>
 	<axis>
 		<x>0</x>
@@ -871,9 +871,9 @@
 		<property>gear/gear[1]/rollspeed-ms</property>
 		<factor>4</factor>
 		<center>
-			<x-m> 9.45291</x-m>
+			<x-m> 1.39874</x-m>
 			<y-m>-2.16168</y-m>
-			<z-m>-1.43650</z-m>
+			<z-m>-1.52194</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
@@ -903,9 +903,9 @@
 			</entry>
 		</interpolation>
 		<center>
-			<x-m>9.386</x-m>
+			<x-m>1.33183</x-m>
 			<y-m>2.157</y-m>
-			<z-m>-0.329</z-m>
+			<z-m>-0.41444</z-m>
 		</center>
 		<axis>
 			<x>1.0</x>
@@ -932,9 +932,9 @@
 			</entry>
 		</interpolation>
 		<center>
-			<x-m>9.295</x-m>
+			<x-m>1.24083</x-m>
 			<y-m>0.458</y-m>
-			<z-m>-0.736</z-m>
+			<z-m>-0.82144</z-m>
 		</center>
 		<axis>
 			<x>-1.0</x>
@@ -1007,9 +1007,9 @@
 			</entry>
 		</interpolation>
 		<center>
-			<x-m>9.356</x-m>
+			<x-m>1.30183</x-m>
 			<y-m>1.99</y-m>
-			<z-m>-0.23</z-m>
+			<z-m>-0.31544</z-m>
 		</center>
 		<axis>
 			<x>-1.0</x>
@@ -1031,9 +1031,9 @@
 			<entry><ind>1</ind><dep>0</dep></entry>
 		</interpolation>
 		<center>
-			<x-m>9.52829</x-m>
+			<x-m>1.47412</x-m>
 			<y-m>1.96454</y-m>
-			<z-m>-0.86419</z-m>
+			<z-m>-0.94963</z-m>
 		</center>
 		<axis>
 			<x>-1</x>
@@ -1054,9 +1054,9 @@
 			<entry><ind>1</ind><dep>0</dep></entry>
 		</interpolation>
 		<center>
-			<x-m>9.58200</x-m>
+			<x-m>1.52783</x-m>
 			<y-m>1.75218</y-m>
-			<z-m>-0.57298</z-m>
+			<z-m>-0.65842</z-m>
 		</center>
 		<axis>
 			<x>-1</x>
@@ -1097,9 +1097,9 @@
         <property>gear/gear[2]/compression-norm</property>
         <factor>60</factor>
 	<center>
-		<x-m>9.36827</x-m>
+		<x-m>1.3141</x-m>
 		<y-m>1.85925</y-m>
-		<z-m>-1.13708</z-m>
+		<z-m>-1.22252</z-m>
 	</center>
 	<axis>
 		<x>0</x>
@@ -1114,9 +1114,9 @@
         <property>gear/gear[2]/compression-norm</property>
         <factor>90</factor>
 	<center>
-		<x-m>9.17648</x-m>
+		<x-m>1.12231</x-m>
 		<y-m>1.85925</y-m>
-		<z-m>-1.30374</z-m>
+		<z-m>-1.38918</z-m>
 	</center>
 	<axis>
 		<x>0</x>
@@ -1133,9 +1133,9 @@
 		<property>gear/gear[2]/rollspeed-ms</property>
 		<factor>4</factor>
 		<center>
-			<x-m> 9.45213</x-m>
+			<x-m> 1.39796</x-m>
 			<y-m> 2.16140</y-m>
-			<z-m>-1.44500</z-m>
+			<z-m>-1.53044</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
@@ -1153,9 +1153,9 @@
 		<property>surface-positions/elevator-pos-norm</property>
 		<factor>-48</factor>
 		<center>
-			<x-m>2.954</x-m>
+			<x-m>-5.10017</x-m>
 			<y-m>0</y-m>
-			<z-m>0.222</z-m>
+			<z-m>0.13656</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -1177,9 +1177,9 @@
 		<property>surface-positions/right-aileron-pos-norm</property>
 		<factor>-15</factor>
 		<center>
-			<x-m>12.10965</x-m>
+			<x-m>4.05548</x-m>
 			<y-m>4.2300</y-m>
-			<z-m>-0.209975</z-m>
+			<z-m>-0.295415</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -1198,9 +1198,9 @@
 		<property>surface-positions/left-aileron-pos-norm</property>
 		<factor>15</factor>
 		<center>
-			<x-m>12.10965</x-m>
+			<x-m>4.05548</x-m>
 			<y-m>-4.2300</y-m>
-			<z-m>-0.209975</z-m>
+			<z-m>-0.295415</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -1219,9 +1219,9 @@
 		<property>surface-positions/right-aileron-pos-norm</property>
 		<factor>20</factor>
 		<center>
-			<x-m>12.0969</x-m>
+			<x-m>4.04273</x-m>
 			<y-m>2.3100</y-m>
-			<z-m>-0.2075</z-m>
+			<z-m>-0.29294</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -1240,9 +1240,9 @@
 		<property>surface-positions/left-aileron-pos-norm</property>
 		<factor>20</factor>
 		<center>
-			<x-m>12.0969</x-m>
+			<x-m>4.04273</x-m>
 			<y-m>-2.3100</y-m>
-			<z-m>-0.2075</z-m>
+			<z-m>-0.29294</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -1290,9 +1290,9 @@
 		<property>surface-positions/slats-pos-norm</property>
 		<factor>-10</factor>
 		<center>
-			<x-m>9.322848</x-m>
+			<x-m>1.268678</x-m>
 			<y-m>3.425586</y-m>
-			<z-m>-0.148521</z-m>
+			<z-m>-0.233961</z-m>
 		</center>
 		<axis>
 			<x>3.896444</x>
@@ -1306,9 +1306,9 @@
 		<property>surface-positions/slats-pos-norm</property>
 		<factor>10</factor>
 		<center>
-			<x-m>9.322848</x-m>
+			<x-m>1.268678</x-m>
 			<y-m>-3.425586</y-m>
-			<z-m>-0.148521</z-m>
+			<z-m>-0.233961</z-m>
 		</center>
 		<axis>
 			<x>3.896444</x>
@@ -1324,9 +1324,9 @@
 		<property>surface-positions/rudder-pos-norm</property>
 		<factor>60</factor>
 		<center>
-			<x-m>14.509</x-m>
+			<x-m>6.45483</x-m>
 			<y-m>0</y-m>
-			<z-m>2.097</z-m>
+			<z-m>2.01156</z-m>
 		</center>
 		<axis>
 			<x1-m>15.259</x1-m>
@@ -1352,9 +1352,9 @@
 		<property>surface-positions/speedbrake-pos-norm</property>
 		<factor>50</factor>
 		<center>
-			<x-m>6.415</x-m>
+			<x-m>-1.63917</x-m>
 			<y-m>0</y-m>
-			<z-m>0.999</z-m>
+			<z-m>0.91356</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -1376,9 +1376,9 @@
 		<property>surface-positions/speedbrake-pos-norm</property>
 		<factor>15</factor>
 		<center>
-			<x-m>7.7070</x-m>
+			<x-m>-0.34717</x-m>
 			<y-m>0</y-m>
-			<z-m>1.0023</z-m>
+			<z-m>0.91686</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -1398,9 +1398,9 @@
 		<property>surface-positions/speedbrake-pos-norm</property>
 		<factor>15</factor>
 		<center>
-			<x-m>7.6906</x-m>
+			<x-m>-0.36357</x-m>
 			<y-m>0</y-m>
-			<z-m>1.0418</z-m>
+			<z-m>0.95636</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -1420,9 +1420,9 @@
 		<property>surface-positions/speedbrake-pos-norm</property>
 		<factor>15</factor>
 		<center>
-			<x-m>7.9617</x-m>
+			<x-m>-0.09247</x-m>
 			<y-m>0</y-m>
-			<z-m>0.9369</z-m>
+			<z-m>0.85146</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -1455,9 +1455,9 @@
 		<property>gear/tailhook/position-norm</property>
 		<factor>60</factor>
 		<center>
-			<x-m>12.18</x-m>
+			<x-m>4.12583</x-m>
 			<y-m>0</y-m>
-			<z-m>-0.5</z-m>
+			<z-m>-0.58544</z-m>
 		</center>
 		<axis><y>10</y></axis>
 	</animation>
@@ -1482,9 +1482,9 @@
 		<property>/controls/canopy/position-norm</property>
 		<factor>35</factor>
 		<center>
-			<x-m>6.04</x-m>
+			<x-m>-2.01417</x-m>
 			<y-m>0.0</y-m>
-			<z-m>1.294</z-m>
+			<z-m>1.20856</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -1521,9 +1521,9 @@
 			</entry>
 		</interpolation>
 		<center>
-			<x-m>3.3022</x-m>
+			<x-m>-4.75197</x-m>
 			<y-m>0.4526</y-m>
-			<z-m>0.6648</z-m>
+			<z-m>0.57936</z-m>
 		</center>
 		<axis>
 			<x>-0.1</x>
@@ -1571,9 +1571,9 @@
 			<entry><ind>1.0</ind><dep>0.0</dep></entry>
 		</interpolation>
 		<center>
-			<x-m>2.4741</x-m>
+			<x-m>-5.58007</x-m>
 			<y-m>0.4414</y-m>
-			<z-m>0.5941</z-m>
+			<z-m>0.50866</z-m>
 		</center>
 		<axis>
 			<x>0.244</x>
@@ -1596,9 +1596,9 @@
 		<property>controls/chute/position-norm</property>
 		<factor>90</factor>
 		<center>
-			<x-m>14.8791</x-m>
+			<x-m>6.82493</x-m>
 			<y-m>0</y-m>
-			<z-m>0.2600</z-m>
+			<z-m>0.17456</z-m>
 		</center>
 		<axis>
 			<x>0</x>
@@ -2052,9 +2052,9 @@
 		<name>ConeLeft</name>
 		<path>Aircraft/eurofighter/Models/Lights/light-cone.xml</path>
 		<offsets>
-			<x-m>9.386</x-m>
+			<x-m>1.33183</x-m>
 			<y-m>-2.057</y-m>
-			<z-m>-0.829</z-m>
+			<z-m>-0.91444</z-m>
 			<heading-deg>  7.500 </heading-deg>
 			<pitch-deg>   -11.000 </pitch-deg>
 		</offsets>
@@ -2063,9 +2063,9 @@
 		<name>ConeRight</name>
 		<path>Aircraft/eurofighter/Models/Lights/light-cone.xml</path>
 		<offsets>
-			<x-m>9.386</x-m>
+			<x-m>1.33183</x-m>
 			<y-m>2.057</y-m>
-			<z-m>-0.829</z-m>
+			<z-m>-0.91444</z-m>
 			<heading-deg> -7.500 </heading-deg>
 			<pitch-deg>   -11.000 </pitch-deg>
 		</offsets>
@@ -2109,9 +2109,9 @@
 		<name>TaxiLeft</name>
 		<path>Aircraft/eurofighter/Models/Lights/taxi-cone.xml</path>
 		<offsets>
-			<x-m>9.386</x-m>
+			<x-m>1.33183</x-m>
 			<y-m>-2.057</y-m>
-			<z-m>-0.859</z-m>
+			<z-m>-0.94444</z-m>
 			<heading-deg>  7.500 </heading-deg>
 			<pitch-deg>   -14.000 </pitch-deg>
 		</offsets>
@@ -2120,9 +2120,9 @@
 		<name>TaxiRight</name>
 		<path>Aircraft/eurofighter/Models/Lights/taxi-cone.xml</path>
 		<offsets>
-			<x-m>9.386</x-m>
+			<x-m>1.33183</x-m>
 			<y-m>2.057</y-m>
-			<z-m>-0.859</z-m>
+			<z-m>-0.94444</z-m>
 			<heading-deg> -7.500 </heading-deg>
 			<pitch-deg>   -14.000 </pitch-deg>
 		</offsets>
@@ -2189,9 +2189,9 @@
 	<model>
 		<path>Aircraft/eurofighter/Models/shadow.xml</path>
 		<offsets>
-			<x-m>  0.000 </x-m>
+			<x-m>  -8.05417 </x-m>
 			<y-m>  0.000 </y-m>
-			<z-m>  0.000 </z-m>
+			<z-m>  -0.08544 </z-m>
 		</offsets>
 	</model>
   </PropertyList>

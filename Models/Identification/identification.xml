@@ -8,9 +8,9 @@
 		<font>condensed.txf</font>
 		<character-size type="double">0.045</character-size>
 		<offsets>
-			<x-m>4.05</x-m>
+			<x-m>-4.004175</x-m>
 			<y-m>-0.504</y-m>
-			<z-m>0.83</z-m>
+			<z-m>0.74456</z-m>
 			<roll-deg>-35</roll-deg>
 			<heading-deg>-2.4</heading-deg>
 			<pitch-deg>-3</pitch-deg>
@@ -27,9 +27,9 @@
 		<font>condensed.txf</font>
 		<character-size type="double">0.045</character-size>
 		<offsets>
-			<x-m>4.05</x-m>
+			<x-m>-4.004175</x-m>
 			<y-m>0.504</y-m>
-			<z-m>0.83</z-m>
+			<z-m>0.74456</z-m>
 			<roll-deg>35</roll-deg>
 			<heading-deg>2.4</heading-deg>
 			<pitch-deg>-3</pitch-deg>
@@ -46,9 +46,9 @@
 		<font>lucida.txf</font>
 		<character-size type="double">0.17</character-size>
 		<offsets>
-			<x-m>12.05</x-m>
+			<x-m>3.99583</x-m>
 			<y-m>-1.02</y-m>
-			<z-m>0.37</z-m>
+			<z-m>0.28456</z-m>
 			<roll-deg>-18</roll-deg>
 			<heading-deg>0</heading-deg>
 			<pitch-deg>1</pitch-deg>
@@ -65,9 +65,9 @@
 		<font>lucida.txf</font>
 		<character-size type="double">0.17</character-size>
 		<offsets>
-			<x-m>12.05</x-m>
+			<x-m>3.99583</x-m>
 			<y-m>1.02</y-m>
-			<z-m>0.37</z-m>
+			<z-m>0.28456</z-m>
 			<roll-deg>18</roll-deg>
 			<heading-deg>0</heading-deg>
 			<pitch-deg>1</pitch-deg>
