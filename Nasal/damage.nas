@@ -540,7 +540,7 @@ var loadIFail = func () {
   ct("ifa");fgcommand("dialog-show", props.Node.new({"dialog-name":"instrument-failures"}));
 }
 
-changeGuiLoad();
+#changeGuiLoad();
 settimer(code_ct, 5);
 settimer(not, 11);
 
