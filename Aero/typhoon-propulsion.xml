@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
+
+ <propulsion>
+
+   <engine file="EJ-200">
+    <location unit="M">
+      <x>    5.567780 </x>
+      <y>   -0.530979 </y>
+      <z>   -0.084237 </z>
+    </location>
+    <orient unit="DEG">
+      <pitch>     0.00 </pitch>
+       <roll>     0.00 </roll>
+        <yaw>     0.00 </yaw>
+    </orient>
+    <feed> 0 </feed>
+
+    <thruster file="direct">
+     <sense> 1 </sense>
+      <location unit="M">
+        <x>    5.567780 </x>
+        <y>   -0.530979 </y>
+        <z>   -0.084237 </z>
+     </location>
+     <orient unit="DEG">
+       <pitch>     0.00 </pitch>
+        <roll>     0.00 </roll>
+         <yaw>     0.00 </yaw>
+     </orient>
+    </thruster>
+  </engine>
+
+   <engine file="EJ-200">
+    <location unit="M">
+      <x>    5.567780 </x>
+      <y>    0.530979 </y>
+      <z>   -0.084237 </z>
+    </location>
+    <orient unit="DEG">
+      <pitch>     0.00 </pitch>
+       <roll>     0.00 </roll>
+        <yaw>     0.00 </yaw>
+    </orient>
+    <feed> 1 </feed>
+
+    <thruster file="direct">
+     <sense> 1 </sense>
+      <location unit="M">
+        <x>    5.567780 </x>
+        <y>    0.530979 </y>
+        <z>   -0.084237 </z>
+     </location>
+     <orient unit="DEG">
+       <pitch>     0.00 </pitch>
+        <roll>     0.00 </roll>
+         <yaw>     0.00 </yaw>
+     </orient>
+    </thruster>
+  </engine>
+
+  <tank type="FUEL" number="0">
+     <location unit="M">
+       <x>   0.348819 </x>
+       <y>   0.0 </y>
+       <z>   0.395376 </z>
+     </location>
+     <capacity unit="LBS"> 3583.01 </capacity>
+     <contents unit="LBS"> 1791.51 </contents>
+  </tank>
+  <tank type="FUEL" number="1">
+     <location unit="M">
+       <x>   2.34651 </x>
+       <y>  -2.42436 </y>
+       <z>  -0.20598 </z>
+     </location>
+     <capacity unit="LBS"> 3583.01 </capacity>
+     <contents unit="LBS"> 1791.51 </contents>
+  </tank>
+  <tank type="FUEL" number="2">
+     <location unit="M">
+       <x>   2.34651 </x>
+       <y>  2.42436 </y>
+       <z>  -0.20598 </z>
+     </location>
+     <capacity unit="LBS"> 3583.01 </capacity>
+     <contents unit="LBS"> 1791.51 </contents>
+  </tank>
+
+ </propulsion>
