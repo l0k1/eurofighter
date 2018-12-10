@@ -1,27 +1,13 @@
 <PropertyList>
-	<systems include="Systems/typhoon-electrical.xml">
+	<systems>
 		<autopilot>
-			<path>Aircraft/eurofighter/Systems/typhoon-fcs.xml</path>
-		</autopilot>
-		<autopilot>
-			<path>Aircraft/eurofighter/Systems/typhoon-2_autopilot.xml</path>
-		</autopilot>
-		<autopilot>
-			<path>Aircraft/eurofighter/Systems/typhoon-autopilot.xml</path>
-		</autopilot>
-		<autopilot>
-			<path>Aircraft/eurofighter/Systems/typhoon-fadec.xml</path>
 		</autopilot>
 	</systems>
-
 	<virtual-cockpit archive="y">true</virtual-cockpit>
 	<allow-toggle-cockpit archive="y">true</allow-toggle-cockpit>
 	<sound>
 		<path>Aircraft/eurofighter/Sounds/typhoon-sound.xml</path>
 	</sound>
-	<instrumentation>
-		<path>Aircraft/eurofighter/Systems/instrumentation.xml</path>
-	</instrumentation>
 	<multiplay>
 		<generic>
 			<string n="0" alias="/identification/pilot-name" /> <!-- Pilot's Display Label (Beneath Canopy) -->
@@ -60,54 +46,10 @@
 			<string  alias="/sim/multiplay/callsign"/>
 		</generic>
 	</multiplay>
-	<submodels>
+	<!--<submodels>
 		<serviceable type="bool">true</serviceable>
-		<path>Aircraft/eurofighter/submodels.xml</path>
-	</submodels>
-	<hud>
-		<path n="1">Aircraft/eurofighter/Hud/typhoon-HUD.xml</path>
-		<ladder type="bool">true</ladder>
-		<ladder n="1">
-			<enable-target-markers type="bool">false</enable-target-markers>
-		</ladder>
-		<visibility n="0" type="bool">false</visibility>
-		<visibility n="1">true</visibility>
-		<current-color>2</current-color>
-		<color>
-			<transparent type="bool">true</transparent>
-			<antialiased type="bool">true</antialiased>
-			<brightness type="float">0.45</brightness>
-			<alpha type="float">0.70</alpha>
-		</color>
-		<palette>
-			<color n="0">
-				<red type="float">0.0</red>
-				<green type="float">1.0</green>
-				<blue type="float">0.00</blue>
-			</color>
-			<color n="1">
-				<red type="float">1.0</red>
-				<green type="float">0.0</green>
-				<blue type="float">0.0</blue>
-			</color>
-			<color n="2">
-				<red type="float">0</red>
-				<green type="float">0</green>
-				<blue type="float">0</blue>
-			</color>
-		</palette>
-		<clipping>
-			<left type="double">-145</left>
-			<right type="double">145</right>
-			<top type="double">130</top>         <!--   20 -->
-			<bottom type="double">-145</bottom>  <!-- -102 -->
-		</clipping>
-	</hud>
-	<lighting>
-		<aura-opacity type="double">0.5</aura-opacity>
-		<daylight-dim type="double">0.5</daylight-dim>
-	</lighting>
-
+		<path>Aircraft/eurofighter/Models/submodels.xml</path>
+	</submodels>-->
 	<view n="0">
 		<internal archive="y">true</internal>
 		<config>
@@ -228,16 +170,6 @@
 			<pitch-offset-deg>-6</pitch-offset-deg>
 		</config>
 	</view>
-
-	<!--need to add:
-		skyflash
-		bvraam
-		aspide
-		iris-t
-
-		multiple a/g
-	-->
-
 
 	<weight n="0">
 		<name>pylon1.L</name>

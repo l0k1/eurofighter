@@ -7,14 +7,14 @@ Eurofighter Typhoon simulation config.
 By MaverickAlex, D. Faber, AlMurSi & Algernon
 ************************************************************************
 -->
-<PropertyList include="typhoon-cockpit.xml">
+<PropertyList>
 	<sim include="typhoon-config.xml">
 		<description>EFA (Eurofighter) Typhoon</description>
 		<author>Maverick Alex and others</author>
 		<status>Special Edition</status>
 		<aircraft-version>1.5X</aircraft-version>
-		<flight-model>yasim</flight-model>
-		<aero>typhoon-yasim</aero>
+		<flight-model>jsb</flight-model>
+		<aero>typhoon-jsbsim</aero>
 		<fuel-fraction>0.6</fuel-fraction>
 		<startup>
 			<splash-texture>Aircraft/eurofighter/Splash2.jpg</splash-texture>
@@ -39,38 +39,71 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 				<beacon type="bool"/>
 				<strobe type="bool"/>
 			</livery>
-			<typhoon>
-		        <shadow type="bool">false</shadow>
-				<dragchute type="bool">false</dragchute>
-				<wingmounts type="bool">false</wingmounts>
-				<controls>
-					<fuel>
-						<refuel-probe-switch type="int">0</refuel-probe-switch>
-					</fuel>
-				</controls>
-				<instrumentation>
-					<tacan>
-						<mode type="int">1</mode>
-					</tacan>
-					<enav n="0">
-						<needle-deflection type="double">0.00</needle-deflection>
-					</enav>
-				</instrumentation>
-			</typhoon>
-					<!--map>
-						<default_exit>
-							<x-offset-m type ="float">1</x-offset-m>
-							<y-offset-m type ="float">3</y-offset-m>
-						</default_exit>
-					</map-->
 		</model>
-
-		<autostart>
-			<started type="bool">false</started>
-		</autostart>
-		<help include="gui/typhoon-help.xml"></help>
-		<menubar include="Dialogs/typhoon-menu.xml"></menubar>
-		<stall-warning type="bool">true</stall-warning>
+		<!--<help include="gui/typhoon-help.xml"></help>
+		<menubar include="Dialogs/typhoon-menu.xml"></menubar>-->
+		<menubar>
+			<default>
+				<menu n="101">
+					<label>Dev</label>
+					<item>
+						<label>Tune Drag</label>
+						<binding>
+							<command>nasal</command>
+							<script>dialog.tuner_drag_dialog.open()</script>
+						</binding>
+					</item>
+					<item>
+						<label>Tune Lift</label>
+						<binding>
+							<command>nasal</command>
+							<script>dialog.tuner_lift_dialog.open()</script>
+						</binding>
+					</item>
+					<item>
+						<label>Tune Pitch</label>
+						<binding>
+							<command>nasal</command>
+							<script>dialog.tuner_pitch_dialog.open()</script>
+						</binding>
+					</item>
+					<item>
+						<label>Tune Roll</label>
+						<binding>
+							<command>nasal</command>
+							<script>dialog.tuner_roll_dialog.open()</script>
+						</binding>
+					</item>
+					<item>
+						<label>Tune Side</label>
+						<binding>
+							<command>nasal</command>
+							<script>dialog.tuner_side_dialog.open()</script>
+						</binding>
+					</item>
+					<item>
+						<label>Tune Yaw</label>
+						<binding>
+							<command>nasal</command>
+							<script>dialog.tuner_yaw_dialog.open()</script>
+						</binding>
+					</item>
+					<item>
+						<name>a-submenu</name>
+						<enabled>false</enabled>
+					</item>
+					<item>
+						<label>Dump Prop Tree</label>
+						<binding>
+							<command>nasal</command><![CDATA[some stuff]]>
+							<script>
+								io.write_properties( path: getprop("/sim/fg-home") ~ "/Export/MiG-21bis/prop_tree_dump.xml", prop: "/" );
+							</script>
+						</binding>
+					</item>
+				</menu>
+			</default>
+		</menubar>
 		<wildlife>
 			<birdsong type="bool">true</birdsong>
 			<birdsong-volume type="double">0.75</birdsong-volume>
@@ -85,7 +118,9 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 		</rendering>
 	</sim>
 
-	<systems include="typhoon-systems.xml" />
+	<controls><canopy><position-norm>0</position-norm></canopy></controls>
+
+	<!--<systems include="typhoon-systems.xml" />-->
 	<identification>
 		<aircraft-number type="string" archive="y">XP-210</aircraft-number>
 		<pilot-name type="string" archive="y"></pilot-name>
@@ -144,269 +179,68 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 			<dump-valve type="bool">false</dump-valve>
 		</fuel>
 	</consumables>
-	<yasim>
-		<weights>
-			<pilot-lb>210</pilot-lb>
-		</weights>
-	</yasim>
-	<ai>
-		<closest>
-			<callsign type="string">   0 </callsign>
-			<range type="double">     -2 </range>
-			<heading type="int">       0 </heading>
-			<bearing type="int">       0 </bearing>
-			<altitude type="int">      0 </altitude>
-			<speed type="int">         0 </speed>
-			<longitude type="double">  0 </longitude>
-			<latitude type="double">   0 </latitude>
-		</closest>
-	</ai>
+	<engines>
+		<engine n="0"><running>true</running></engine>
+		<engine n="1"><running>true</running></engine>
+	</engines>
 
-	<autopilot>
-		<settings>
-			<minimums type="int">10</minimums>
-			<target-roll-deg type="double">0</target-roll-deg>
-			<target-pitch-deg type="double">0</target-pitch-deg>
-			<vertical-speed-fpm type="int">0</vertical-speed-fpm>
-			<nav-source type="string">NAV1</nav-source>
-			<bank-limit type="int">47</bank-limit>
-			<target-speed-kt type="int">350</target-speed-kt>
-			<target-speed-mach type="double">0.40</target-speed-mach>
-			<changeover type="bool">0</changeover>
-			<heading-bug-deg type="int">0</heading-bug-deg>
-		</settings>
-		<locks>
-			<heading>ROLL</heading>
-			<heading-arm type="string"></heading-arm>
-			<altitude>PTCH</altitude>
-			<altitude-arm type="string"></altitude-arm>
-			<AP-status type="string"></AP-status>
-			<FD-status type="bool">1</FD-status>
-			<yaw-damper type="bool">0</yaw-damper>
-			<m-trim type="bool">0</m-trim>
-		</locks>
-		<internal>
-			<vert-speed-fpm type="int">0</vert-speed-fpm>
-			<selected-crs type="int">0</selected-crs>
-			<nav-distance type="double">0</nav-distance>
-			<nav-type type="string"></nav-type>
-			<nav-id type="string"></nav-id>
-			<course-deflection type="double">0.0</course-deflection>
-			<gs-valid type="bool">0</gs-valid>
-			<gs-deflection type="double">0.0</gs-deflection>
-			<in-range type="bool">0</in-range>
-			<gs-in-range type="bool">0</gs-in-range>
-		</internal>
-	</autopilot>
-	<instrumentation include="Systems/radardist.xml">
-		<nav n="2">
-			<frequencies>
-				<selected-freq type="double">115.8</selected-freq>
-				<standby-freq type="double">115.8</standby-freq>
-			</frequencies>
-			<radials>
-				<selected-deg type="double">0.0</selected-deg>
-			</radials>
-		</nav>
-	</instrumentation>
+	<fdm>
+		<jsbsim>
+			<!-- for in-flight FDM tuning -->
+			<tune>
+				<lift>
+					<alpha type="double">1</alpha>
+					<pitch_rate type="double">1</pitch_rate>
+					<alpha_rate type="double">1</alpha_rate>
+					<elevator type="double">1</elevator>
+				</lift>
+				<drag>
+					<minimum type="double">1</minimum>
+					<alpha type="double">1</alpha>
+					<induced type="double">1</induced>
+					<mach type="double">1</mach>
+					<beta type="double">1</beta>
+					<elevator type="double">1</elevator>
+					<gear type="double">1</gear>
+					<flap type="double">1</flap>
+					<speedbrake type="double">1</speedbrake>
+					<chute type="double">1</chute>
+				</drag>
+				<side>
+					<beta type="double">1</beta>
+					<roll_rate type="double">1</roll_rate>
+					<yaw_rate type="double">1</yaw_rate>
+					<rudder type="double">1</rudder>
+				</side>
+				<pitch>
+					<alpha type="double">1</alpha>
+					<elevator type="double">1</elevator>
+					<damp type="double">1</damp>
+					<alphadot type="double">1</alphadot>
+				</pitch>
+				<roll>
+					<beta type="double">1</beta>
+					<damp type="double">1</damp>
+					<yaw type="double">1</yaw>
+					<aileron type="double">1</aileron>
+					<rudder type="double">1</rudder>
+				</roll>
+				<yaw>
+					<alpha type="double">1</alpha>
+					<beta type="double">1</beta>
+					<roll_rate type="double">1</roll_rate>
+					<damp type="double">1</damp>
+					<rudder type="double">1</rudder>
+					<aileron type="double">1</aileron>
+				</yaw>
+			</tune>
+		</jsbsim>
+	</fdm>
 
 <!-- Nasal files/scripts -->
 	<nasal>
-		<radar>
-			<file>Aircraft/eurofighter/Nasal/radar2.nas</file>
-		</radar>
-		<radardist>
-			<file>Aircraft/eurofighter/Nasal/radardist.nas</file>
-		</radardist>
-		<typhoon>
-			<file>Aircraft/eurofighter/Nasal/typhoon.nas</file>
-			<file>Aircraft/eurofighter/Nasal/liveries.nas</file>
-			<file>Aircraft/eurofighter/Nasal/leftmfd.nas</file>
-			<file>Aircraft/eurofighter/Nasal/fuel.nas</file>
-			<file>Aircraft/eurofighter/Nasal/lights.nas</file>
-			<file>Aircraft/eurofighter/Nasal/typhoon_flightdirector.nas</file>
-			<file>Aircraft/eurofighter/Nasal/mfd1.nas</file>
-			<file>Aircraft/eurofighter/Nasal/SAS.nas</file>
-			<file>Aircraft/eurofighter/Nasal/xponder.nas</file>
-			<script>
-				if (getprop("/sim/rendering/rembrandt/enabled")) {
-				setprop("sim/model/typhoon/shadow",0);
-				}
-			</script>
-		</typhoon>
-		<avionics>
-			<file>Aircraft/eurofighter/Nasal/avionics.nas</file>
-		</avionics>
-		<computers>
-			<file>Aircraft/eurofighter/Nasal/computers.nas</file>
-		</computers>
-		<checklists>
-			<file>Aircraft/eurofighter/Nasal/checklists.nas</file>
-		</checklists>
-		<fcs>
-			<file>Aircraft/eurofighter/Nasal/fcs.nas</file>
-		</fcs>
-		<enav>
-			<file>Aircraft/eurofighter/Nasal/enav.nas</file>
-		</enav>
-		<engines>
-			<file>Aircraft/eurofighter/Nasal/generic-yasim-engine.nas</file>
-		</engines>
-		<decmu>
-			<file>Aircraft/eurofighter/Nasal/decmu.nas</file>
-		</decmu>
-		<autopilot>
-			<file>Aircraft/eurofighter/Nasal/autopilot.nas</file>
-		</autopilot>
-		<Electrical>
-			<file>Aircraft/eurofighter/Nasal/Electrical.nas</file>
-		</Electrical>
-		<gearbox>
-			<file>Aircraft/eurofighter/Nasal/gearbox.nas</file>
-		</gearbox>
-		<hydraulics>
-			<file>Aircraft/eurofighter/Nasal/typhoon-hydraulics.nas</file>
-		</hydraulics>
-		<cockpit>
-			<file>Aircraft/eurofighter/Nasal/cockpit.nas</file>
-		</cockpit>
-		<camu>
-			<file>Aircraft/eurofighter/Nasal/camu.nas</file>
-		</camu>
-		<terrain-map>
-			<file>Aircraft/eurofighter/Nasal/terrain-map.nas</file>
-		</terrain-map>
-		<environment>
-			<file>Aircraft/eurofighter/Nasal/environment.nas</file>
-		</environment>
-		<guns>
-			<file>Aircraft/eurofighter/Nasal/weapons.nas</file>
-		</guns>
-		<load>
-			<file>Aircraft/eurofighter/Nasal/ext_stores.nas</file>
-		</load>
-		<hud>
-			<file>Aircraft/eurofighter/Nasal/MiscRwr.nas</file>
-		</hud>
-		<missile>
-			<file>Aircraft/eurofighter/Nasal/missile.nas</file>
-			<file>Aircraft/eurofighter/Nasal/missile_GroundTargeting.nas</file>
-			<file>Aircraft/eurofighter/Stores/Loading_Missiles.nas</file>
-		</missile>
-		<damage>
-			<file>Aircraft/eurofighter/Nasal/damage.nas</file>
-		</damage>
-		<blackout>
-			<file>Aircraft/eurofighter/Nasal/blackout.nas</file>
-		</blackout>
-		<aar>
-			<file>Aircraft/Generic/aar.nas</file>
-		</aar>
-		<MDEF>
-			<file>Aircraft/eurofighter/Nasal/mdef.nas</file>
-		</MDEF>
-		<warnings>
-			<file>Aircraft/eurofighter/Nasal/warnings.nas</file>
-		</warnings>
+		<dialog> <file>Aircraft/eurofighter/Nasal/dialogs.nas</file> </dialog>
+		
 	</nasal>
-	
-	<logging>
-      <log>
-       <filename>C:/Users/soweli/Documents/eurofighter_testdata.csv</filename>
-       <enabled>false</enabled>
-       <interval-ms>500</interval-ms>/accelerations/pilot/z-accel-fps_sec
-       <delimiter>,</delimiter>
-	   <entry>
-        <enabled>true</enabled>
-        <title>G Load</title>
-        <property>/accelerations/pilot/z-accel-fps_sec</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>Raw elevator control</title>
-        <property>/controls/flight/elevator</property>
-       </entry>
-       <entry>
-        <enabled>true</enabled>
-        <title>FCS elevator input</title>
-        <property>/systems/FCS/control-inputs/elevator</property>
-       </entry>
-       <entry>
-        <enabled>true</enabled>
-        <title>Elevator input gain</title>
-        <property>/systems/FCS/settings/stick-scale-pitch</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>AP altitude lock</title>
-        <property>/systems/autopilot/locks/altitude</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>FCS override</title>
-        <property>/controls/buttons/FCS-override</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>FCS internal pitch command</title>
-        <property>/systems/FCS/internal/pitch-command</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>raw elevator trim</title>
-        <property>controls/flight/elevator-trim</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>FCS input elevator trim</title>
-        <property>/systems/FCS/control-inputs/elevator-trim</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>canard trim</title>
-        <property>/systems/FCS/internal/canard-trim</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>FCS electrical</title>
-        <property>/systems/electrical/outputs/FCS</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>flaperon offset</title>
-        <property>/systems/FCS/settings/flaperon-offset</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>flaperon pitch</title>
-        <property>/systems/FCS/command-outputs/flaperon-pitch</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>fcs canard offset setting</title>
-        <property>/systems/FCS/settings/canard-offset</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>canard out</title>
-        <property>/systems/FCS/command-outputs/canard</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>canard scale</title>
-        <property>/systems/FCS/settings/canard-scale</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>speedbrake out</title>
-        <property>/systems/FCS/command-outputs/speedbrake</property>
-       </entry>
-	   <entry>
-        <enabled>true</enabled>
-        <title>brake compensator</title>
-        <property>/systems/FCS/command-outputs/brake-compensator</property>
-       </entry>
-      </log>
-	</logging>
 	
 </PropertyList>
