@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<!--
+
+everything will be normed to 1, with 0 being off and 1 being full power, and >1 being overpower
+fuel consumption will be handled in the fuel file based off of spinrate
+
+props needed:
+systems/apu/switch
+systems/apu/power
+-->
+
+<system name="apu">
+	<channel name="apusim">
+		
+		<!-- disable the switch if there isn't enough power or fuel -->
+		
+		<switch name="trash/systems/apu/switch">
+			<default value="systems/apu/switch"/>
+			<test logic="OR" value="0">
+				systems/fuel/tank[123]/contents-lbs == 0.0
+				systems/electric/sources/output-norm lt 0.5
+			</test>
+			<output>systems/apu/switch</output>
+		</switch>
+		
+		<!-- turn on the apu if the switch is on, and we have enough power and fuel -->
+
+		<switch name="trash/systems/apu/power">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				systems/fuel/tank[123]/contents-lbs gt 0.0
+				systems/electric/sources/output-norm gt 0.5
+				systems/apu/switch == 1
+			</test>
+			<output>systems/apu/power</output>
+		</switch>
+	
+		<!-- determine spin rate - a filter would probably be best here. -->
+
+		<lag_filter name="trash/systems/apu/spinrate">
+			<input>systems/apu/power</input>
+			<c1>1.5</c1> <!-- test me -->
+			<clipto>
+				<min>0</min>
+				<max>1</max>
+			</clipto>
+			<output>systems/apu/spinrate</output>
+		</lag_filter>
+		
+	</channel>
+</system>

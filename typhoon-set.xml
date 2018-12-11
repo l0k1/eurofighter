@@ -186,6 +186,63 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 
 	<fdm>
 		<jsbsim>
+			<systems>
+				<electric>
+					<input>
+						<!-- switches and 2-state buttons-->
+						<battery type="double">0</battery>
+						<lboost type="double">0</lboost>
+						<rboost type="double">0</rboost>
+						<voice type="double">0</voice>
+						<rad1 type="double">0</rad1>
+						<mids type="double">0</mids>
+						<rlpcock type="double">0</rlpcock>
+						<llpcock type="double">0</llpcock>
+						<enginestart type="double">0</enginestart>
+						<apu type="double">0</apu>
+						<aflash type="double">0</aflash> <!-- beacon on top center spine -->
+						<daynightlight type="double">0</daynightlight>
+						<extlight type="double">0</extlight>
+						<navbrt type="double">0</navbrt>
+						<acoll type="double">0</acoll>
+						<ecsramair type="double">0</ecsramair>
+						<demist type="double">0</demist>
+						<decoy type="double">0</decoy>
+						<expdman type="double">0</expdman>
+						<emergoxy type="double">0</emergoxy>
+						<landtaxioff type="double">0</landtaxioff>
+					</input>
+					<output>
+						<!-- switches and 2-state buttons-->
+						<battery type="double">0</battery>
+						<lboost type="double">0</lboost>
+						<rboost type="double">0</rboost>
+						<voice type="double">0</voice>
+						<rad1 type="double">0</rad1>
+						<mids type="double">0</mids>
+						<rlpcock type="double">0</rlpcock>
+						<llpcock type="double">0</llpcock>
+						<enginestart type="double">0</enginestart>
+						<apu type="double">0</apu>
+						<aflash type="double">0</aflash> <!-- beacon on top center spine -->
+						<daynightlight type="double">0</daynightlight>
+						<extlight type="double">0</extlight>
+						<navbrt type="double">0</navbrt>
+						<acoll type="double">0</acoll>
+						<ecsramair type="double">0</ecsramair>
+						<demist type="double">0</demist>
+						<decoy type="double">0</decoy>
+						<expdman type="double">0</expdman>
+						<emergoxy type="double">0</emergoxy>
+						<landtaxioff type="double">0</landtaxioff>
+						<!--knobbins-->
+					</output>
+				</electric>
+			</systems>
+
+
+
+
 			<!-- for in-flight FDM tuning -->
 			<tune>
 				<lift>

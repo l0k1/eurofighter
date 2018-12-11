@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<!--
+
+other than fuel tank amounts, most of this info is a best guess.
+fuel tank amounts have been closely estimated based upon the mfd screen
+
+props needed:
+systems/electric/left-booster
+systems/electric/right-booster
+systems/electric/transfer-boosters
+systems/fuel/pressurization
+-->
+
+<!-- 
+tank list:
+0 - fore tank - 2028
+1 - mid tank - 2095
+2 - aft tank - 1962
+3 - foreleft wing tank - 1080
+4 - aftleft wing tank - 1080
+5 - foreright wing tank - 1080
+6 - aftright wing tank - 1080
+7 - center drop tank
+8 - left drop tank
+9 - right drop tank
+10 - left accumulator - 2
+11 - right accumulator - 2
+-->
+
+<!--
+	logic:
+	mid boosts to left acc (lpcock according)
+	aft boosts to right acc (lpcock according)
+
+	center tank pressures into mid
+	wing drop pressures into wing fore
+	wing fore pressures into wing aft
+
+	fore pressures into aft, then - 
+	wing aft pressures into aft
+
+	refuel feeds fore and aft
+	transfer fuel for cg shift happens between aft wings and fore
+-->
+
+<system name="fuel">
+	<channel name="fuelflow">
+
+
+		
+	</channel>
+</system>

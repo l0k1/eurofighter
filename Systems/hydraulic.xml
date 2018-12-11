@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+
+<!--
+
+everything will be normed to 1, with 0 being off and 1 being full power, and >1 being overpower
+
+props needed:
+systems/hydraulic/contents-tank[0]
+systems/hydraulic/contents-system[0]
+systems/hydraulic/pressure[0]
+systems/hydraulic/usage[0]
+systems/hydraulic/output[0]
+
+systems/hydraulic/contents-tank[1]
+systems/hydraulic/contents-system[1]
+systems/hydraulic/pressure[1]
+systems/hydraulic/usage[1]
+systems/hydraulic/output[1]
+
+systems/hydraulic/xfeed
+-->
+
+<system name="hydraulics">
+	<channel name="output">
+			
+		<fcs_function name="trash/systems/hydraulic/contents[0]">
+			<function>
+				<!-- tank level = contents-system - (pressure / 10) - (usage / (10 / (xfeed + 1))) -->
+				<difference>
+					<property>systems/hydraulic/contents-system[0]</property>
+					<quotient>
+						<property>systems/hydraulic/pressure[0]</property>
+						<value>10</value>
+					</quotient>
+					<quotient>
+						<property>systems/hydraulic/usage[0]</property>
+						<quotient>
+							<value>10</value>
+							<sum>
+								<property>systems/hydraulic/xfeed</property>
+								<value>1</value>
+							</sum>
+						</quotient>
+					</quotient>
+				</difference>
+			</function>
+			<min>0.0</min>
+			<max>1.0</max>
+			<output>systems/hydraulic/contents[0]</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/hydraulic/contents[1]">
+			<function>
+				<!-- tank level = contents-system - (pressure / 10) - (usage / (10 / (xfeed + 1))) -->
+				<difference>
+					<property>systems/hydraulic/contents-system[1]</property>
+					<quotient>
+						<property>systems/hydraulic/pressure[1]</property>
+						<value>10</value>
+					</quotient>
+					<quotient>
+						<property>systems/hydraulic/usage[1]</property>
+						<quotient>
+							<value>10</value>
+							<sum>
+								<property>systems/hydraulic/xfeed</property>
+								<value>1</value>
+							</sum>
+						</quotient>
+					</quotient>
+				</difference>
+			</function>
+			<min>0.0</min>
+			<max>1.0</max>
+			<output>systems/hydraulic/contents[1]</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/hydraulic/pressure[0]">
+			<function>
+				<product>
+					<or>
+						<gt>
+							<property>propulsion/engine[0]/n1</property>
+							<value>20</value>
+						</gt>
+						<gt>
+							<property>propulsion/engine[1]/n1</property>
+							<value>20</value>
+						</gt>
+						<gt>
+							<property>systems/apu/spinrate</property>
+							<value>0.75</value>
+						</gt>
+						<eq>
+							<property>systems/electric/sources/ext-power-connected</property>
+							<value>1</value>
+						</eq>
+					</or>
+					<table>
+						<independentVar lookup="row">systems/hydraulic/contents-tank[0]</independentVar>
+						<tableData>
+							0.0		0.0
+							0.2 	1.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<clipto>
+				<min>0.0</min>
+				<max>1.0</max>
+			</clipto>
+			<output>systems/hydraulic/pressure[0]</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/hydraulic/pressure[1]">
+			<function>
+				<product>
+					<or>
+						<gt>
+							<property>propulsion/engine[0]/n1</property>
+							<value>20</value>
+						</gt>
+						<gt>
+							<property>propulsion/engine[1]/n1</property>
+							<value>20</value>
+						</gt>
+						<gt>
+							<property>systems/apu/spinrate</property>
+							<value>0.75</value>
+						</gt>
+						<eq>
+							<property>systems/electric/sources/ext-power-connected</property>
+							<value>1</value>
+						</eq>
+					</or>
+					<table>
+						<independentVar lookup="row">systems/hydraulic/contents-tank[1]</independentVar>
+						<tableData>
+							0.0		0.0
+							0.2 	1.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<clipto>
+				<min>0.0</min>
+				<max>1.0</max>
+			</clipto>
+			<output>systems/hydraulic/pressure[1]</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/hydraulic/output[0]">
+			<function>
+				<ifthen>
+					<property>systems/hydraulic/xfeed</property>
+					<max>
+						<property>systems/hydraulic/pressure[0]</property>
+						<property>systems/hydraulic/pressure[1]</property>
+					</max>
+					<property>systems/hydraulic/pressure[0]</property>
+				</ifthen>
+			</function>
+			<clipto>
+				<min>0.0</min>
+				<max>1.0</max>
+			</clipto>
+			<output>systems/hydraulic/output[0]</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/hydraulic/output[1]">
+			<function>
+				<ifthen>
+					<property>systems/hydraulic/xfeed</property>
+					<max>
+						<property>systems/hydraulic/pressure[0]</property>
+						<property>systems/hydraulic/pressure[1]</property>
+					</max>
+					<property>systems/hydraulic/pressure[1]</property>
+				</ifthen>
+			</function>
+			<clipto>
+				<min>0.0</min>
+				<max>1.0</max>
+			</clipto>
+			<output>systems/hydraulic/output[1]</output>
+		</fcs_function>
+		
+	</channel>
+	<channel name="input">
+		<!-- monitor surfaces and systems to calculate systems/hydraulic/usage amounts -->
+	</channel>
+</system>

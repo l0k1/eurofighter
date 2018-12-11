@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+
+<!--
+
+everything will be normed to 1, with 0 being off and 1 being full power, and >1 being overpower
+
+props needed:
+systems/apu/spinrate
+systems/electric/sources/ext-power-connected
+systems/electric/sources/ext-power-norm
+systems/electric/sources/engine[0]-norm
+systems/electric/sources/engine[1]-norm
+systems/electric/sources/apu-norm
+systems/electric/sources/battery-pre
+systems/electric/sources/battery-norm
+systems/electric/sources/battery-drain
+systems/electric/sources/battery-switch
+systems/electric/sources/output-norm
+
+-->
+
+<system name="electric">
+	<channel name="sources">
+		<!-- ground connect -->
+		<switch name="trash/systems/electric/sources/ext-power-norm">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				systems/electric/sources/ext-power-connected == 1
+			</test>
+			<output>systems/electric/sources/ext-power-norm</output>
+		</switch>
+
+		<!-- engine 0 -->
+		<fcs_function name="trash/systems/electric/sources/engine[0]-norm">
+			<function>
+				<table>
+					<independentVar lookup="row">propulsion/engine[0]/n1</independentVar>
+					<tableData>
+						0.0		0.0
+						22.0	1.0
+					</tableData>
+				</table>
+			</function>
+			<output>systems/electric/sources/engine[0]-norm</output>
+		</fcs_function>
+		
+		<!-- engine 1 -->
+		<fcs_function name="trash/systems/electric/sources/engine[1]-norm">
+			<function>
+				<table>
+					<independentVar lookup="row">propulsion/engine[1]/n1</independentVar>
+					<tableData>
+						0.0		0.0
+						22.0	1.0
+					</tableData>
+				</table>
+			</function>
+			<output>systems/electric/sources/engine[1]-norm</output>
+		</fcs_function>
+		
+		<!-- apu -->
+		<fcs_function name="trash/systems/electric/sources/apu-norm">
+			<function>
+				<table>
+					<independentVar lookup="row">systems/apu/spinrate</independentVar>
+					<tableData>
+						0.0		0.0
+						0.75	1.0
+					</tableData>
+				</table>
+			</function>
+			<output>systems/electric/sources/apu-norm</output>
+		</fcs_function>
+		
+		<!-- battery will need to account for all systems running to
+			calculate drainage, etc. -->
+		
+		<fcs_function name="trash/systems/electric/sources/battery-pre">
+			<function>
+				<!-- charge battery based on eng[0], eng[1], and apu -->
+				<!-- the charge value determines how long to charge -->
+				<!-- 500000 is about 70 minutes from empty to full -->
+				<sum>
+					<!-- charge rate -->
+					<quotient>
+						<max>
+							<property>systems/electric/sources/engine[0]-norm</property>
+							<property>systems/electric/sources/engine[1]-norm</property>
+							<property>systems/electric/sources/apu-norm</property>
+							<property>systems/electric/sources/ext-power-norm</property>
+						</max>
+						<value>500000</value>
+					</quotient>
+					<!-- drain rate - should only drain if switch is on and battery is primary voltage -->
+					<ifthen>
+						<and>
+							<gt>
+								<property>systems/electric/sources/battery-norm</property>
+								<max>
+									<property>systems/electric/sources/engine[0]-norm</property>
+									<property>systems/electric/sources/engine[1]-norm</property>
+									<property>systems/electric/sources/apu-norm</property>
+									<property>systems/electric/sources/ext-power-norm</property>
+								</max>
+							</gt>
+							<eq>
+								<property>systems/electric/sources/battery-switch<property>
+								<value>1</value>
+							</eq>
+						</and>
+						<property>systems/electric/sources/battery-drain</property>
+						</value>0</value>
+					</ifthen>
+					<property>systems/electric/sources/battery-pre</property>
+				</sum>
+			</function>
+			<clipto>
+				<min>0</min>
+				<max>1</max>
+			</clipto>
+			<output>systems/electric/sources/battery-pre</output>
+		</fcs_function>
+		
+		
+		<!-- expose battery voltage only when battery is "on" -->
+		<switch name="trash/systems/electric/sources/battery-norm">
+			<default value="0"/>
+			<test logic="AND" value="systems/electric/sources/battery-pre">
+				systems/electric/sources/battery-switch == 1
+			</test>
+			<output>systems/electric/sources/battery-norm</output>
+		</switch>
+		
+		<!-- final output - take the max between all possible sources -->
+		<fcs_function name="trash/systems/electric/sources/output-norm">
+			<function>
+				<max>
+					<property>systems/electric/sources/engine[0]-norm</property>
+					<property>systems/electric/sources/engine[1]-norm</property>
+					<property>systems/electric/sources/apu-norm</property>
+					<property>systems/electric/sources/ext-power-norm</property>
+					<property>systems/electric/sources/battery-norm</property>
+				</max>
+			</function>
+			<output>systems/electric/sources/output-norm</output>
+		</fcs_function>
+		
+	</channel>
+	<channel name="inputs">
+	</channel>
+	<channel name="outputs">
+	</channel>
+</system>

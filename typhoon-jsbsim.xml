@@ -54,12 +54,12 @@
 
  <ground_reactions file="Aero/typhoon-ground-reactions.xml"/>
 
- <system file="Propulsion.xml"/>
- <system file="Aircraft control.xml"/>
- <system file="Landing Gear.xml"/>
- <system file="Speedbrake.xml"/>
- <system file="Arrestor Hook.xml"/>
- <system file="Drag Chute.xml"/>
+ <system file="propulsion.xml"/>
+ <system file="aircraftcontrol.xml"/>
+ <system file="landinggear.xml"/>
+ <system file="speedbrake.xml"/>
+ <system file="arrestorhook.xml"/>
+ <system file="dragchute.xml"/>
 
  <flight_control name="none"/>
 
