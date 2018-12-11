@@ -25,7 +25,7 @@ systems/hydraulic/xfeed
 			
 		<fcs_function name="trash/systems/hydraulic/contents[0]">
 			<function>
-				<!-- tank level = contents-system - (pressure / 10) - (usage / (10 / (xfeed + 1))) -->
+				<!-- tank level = contents-system - (pressure / 10) - (usage / 10) -->
 				<difference>
 					<property>systems/hydraulic/contents-system[0]</property>
 					<quotient>
@@ -34,13 +34,7 @@ systems/hydraulic/xfeed
 					</quotient>
 					<quotient>
 						<property>systems/hydraulic/usage[0]</property>
-						<quotient>
-							<value>10</value>
-							<sum>
-								<property>systems/hydraulic/xfeed</property>
-								<value>1</value>
-							</sum>
-						</quotient>
+						<value>10</value>
 					</quotient>
 				</difference>
 			</function>
@@ -51,7 +45,7 @@ systems/hydraulic/xfeed
 		
 		<fcs_function name="trash/systems/hydraulic/contents[1]">
 			<function>
-				<!-- tank level = contents-system - (pressure / 10) - (usage / (10 / (xfeed + 1))) -->
+				<!-- tank level = contents-system - (pressure / 10) - (usage / 10) -->
 				<difference>
 					<property>systems/hydraulic/contents-system[1]</property>
 					<quotient>
@@ -60,13 +54,7 @@ systems/hydraulic/xfeed
 					</quotient>
 					<quotient>
 						<property>systems/hydraulic/usage[1]</property>
-						<quotient>
-							<value>10</value>
-							<sum>
-								<property>systems/hydraulic/xfeed</property>
-								<value>1</value>
-							</sum>
-						</quotient>
+						<value>10</value>
 					</quotient>
 				</difference>
 			</function>
