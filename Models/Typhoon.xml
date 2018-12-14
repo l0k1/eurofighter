@@ -1332,12 +1332,12 @@
 		</axis>
 	</animation>
 
-<!--Rudder-->
+	<!--Rudder-->
 	<animation>
 		<type>rotate</type>
 		<object-name>rudder</object-name>
-		<property>surface-positions/rudder-pos-norm</property>
-		<factor>60</factor>
+		<property>sim/multiplay/generic/float[6]</property>
+		<factor>-1</factor>
 		<center>
 			<x-m>6.45483</x-m>
 			<y-m>0</y-m>
