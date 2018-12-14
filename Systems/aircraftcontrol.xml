@@ -114,7 +114,7 @@
 
    <summer name="Rudder Sum">
       <input>fcs/rudder-command-sum</input>
-      <input>fcs/yaw-damper-rate</input>
+
       <clipto>
         <min> -1.1 </min>
         <max>  1.1 </max>
