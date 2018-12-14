@@ -54,14 +54,63 @@
 			</product>
 		</function>
 		
-		<function name="aero/force/Lift_elevator">
-			<description>Lift due to Elevator Deflection</description>
+		<function name="aero/force/Lift_foreplane_L">
+			<description>Lift due to foreplane L deflection</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<property>fcs/elevator-pos-rad</property>
-				<value>0.5364</value>
-				<property>tune/lift/elevator</property>
+				<toradians><property>fcs/foreplane-L-deg</property></toradians>
+				<value>0.0893</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Lift_foreplane_R">
+			<description>Lift due to foreplane R deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<toradians><property>fcs/foreplane-R-deg</property></toradians>
+				<value>0.0893</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Lift_elevon_1L">
+			<description>Lift due to elevon 1L deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<toradians><property>fcs/elevon-1L-deg</property></toradians>
+				<value>0.0883</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Lift_elevon_2L">
+			<description>Lift due to elevon 2L deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<toradians><property>fcs/elevon-2L-deg</property></toradians>
+				<value>0.0903</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Lift_elevon_2R">
+			<description>Lift due to elevon 2R deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<toradians><property>fcs/elevon-2R-deg</property></toradians>
+				<value>0.0903</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Lift_elevon_1R">
+			<description>Lift due to elevon 1R deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<toradians><property>fcs/elevon-1R-deg</property></toradians>
+				<value>0.0883</value>
 			</product>
 		</function>
 	
@@ -149,14 +198,63 @@
 			</product>
 		</function>
 		
-		<function name="aero/force/Drag_elevator">
-			<description>Drag due to Elevator Deflection</description>
+		<function name="aero/force/Drag_foreplane_L">
+			<description>Drag due to foreplane L deflection</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<abs><property>fcs/elevator-pos-rad</property></abs>
-				<value>0.04</value>
-				<property>tune/drag/elevator</property>
+				<abs><toradians><property>fcs/foreplane-L-deg</property></toradians></abs>
+				<value>0.007</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_foreplane_R">
+			<description>Drag due to foreplane R deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<abs><toradians><property>fcs/foreplane-R-deg</property></toradians></abs>
+				<value>0.007</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_elevon_1L">
+			<description>Drag due to elevon 1L deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<abs><toradians><property>fcs/elevon-1L-deg</property></toradians></abs>
+				<value>0.005</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_elevon_2L">
+			<description>Drag due to elevon 2L deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<abs><toradians><property>fcs/elevon-2L-deg</property></toradians></abs>
+				<value>0.007</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_elevon_2R">
+			<description>Drag due to elevon 2R deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<abs><toradians><property>fcs/elevon-2R-deg</property></toradians></abs>
+				<value>0.007</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_elevon_1R">
+			<description>Drag due to elevon 1R deflection</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<abs><toradians><property>fcs/elevon-1R-deg</property></toradians></abs>
+				<value>0.005</value>
 			</product>
 		</function>
 		
@@ -251,14 +349,69 @@
 			</product>
 		</function>
 		
-		<function name="aero/moment/Pitch_elevator">
-			<description>Pitch moment due to elevator</description>
+		<function name="aero/moment/Pitch_foreplane_L">
+			<description>Pitch moment due to foreplane L</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/cbarw-ft</property>
-				<property>fcs/elevator-pos-rad</property>
-				<value>-0.6533</value>
+				<toradians><property>fcs/foreplane-L-deg</property></toradians>
+				<value>-0.5133</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Pitch_foreplane_R">
+			<description>Pitch moment due to foreplane R</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/cbarw-ft</property>
+				<toradians><property>fcs/foreplane-R-deg</property></toradians>
+				<value>-0.5133</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Pitch_elevon_1L">
+			<description>Pitch moment due to elevon 1L</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/cbarw-ft</property>
+				<toradians><property>fcs/elevon-1L-deg</property></toradians>
+				<value>-0.5033</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Pitch_elevon_2L">
+			<description>Pitch moment due to elevon 2L</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/cbarw-ft</property>
+				<toradians><property>fcs/elevon-2L-deg</property></toradians>
+				<value>0.5233</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Pitch_elevon_2R">
+			<description>Pitch moment due to elevon 2R</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/cbarw-ft</property>
+				<toradians><property>fcs/elevon-2R-deg</property></toradians>
+				<value>0.5233</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Pitch_elevon_1R">
+			<description>Pitch moment due to elevon 1R</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/cbarw-ft</property>
+				<toradians><property>fcs/elevon-1R-deg</property></toradians>
+				<value>-0.5033</value>
 			</product>
 		</function>
 		
@@ -325,14 +478,47 @@
 			</product>
 		</function>
 		
-		<function name="aero/moment/Roll_aileron">
-			<description>Roll moment due to aileron</description>
+		<function name="aero/moment/Roll_elevon_1L">
+			<description>Roll moment due to elevon 1L</description>
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>metrics/bw-ft</property>
-				<property>fcs/left-aileron-pos-rad</property>
-				<value>0.26</value>
+				<toradians><property>fcs/elevon-1L-deg</property></toradians>
+				<value>0.0495</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Roll_elevon_2L">
+			<description>Roll moment due to elevon 2L</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/bw-ft</property>
+				<toradians><property>fcs/elevon-2L-deg</property></toradians>
+				<value>0.0595</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Roll_elevon_2R">
+			<description>Roll moment due to elevon 2R</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/bw-ft</property>
+				<toradians><property>fcs/elevon-2R-deg</property></toradians>
+				<value>-0.0595</value>
+			</product>
+		</function>
+		
+		<function name="aero/moment/Roll_elevon_1R">
+			<description>Roll moment due to elevon 1R</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>metrics/bw-ft</property>
+				<toradians><property>fcs/elevon-1R-deg</property></toradians>
+				<value>-0.0495</value>
 			</product>
 		</function>
 		

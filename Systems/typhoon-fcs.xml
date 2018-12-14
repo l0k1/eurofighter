@@ -1,0 +1,324 @@
+<?xml version="1.0"?>
+
+<!-- Eurofighter Typhoon Flight Control System -->
+<!-- Copyright (c) 2018 Joshua Davidson (it0uchpods) -->
+
+<system name="typhoon-fcs">
+	
+	<property value="0">fbw/enable</property>
+	
+	<channel name="FBW: Roll">
+		
+		<fcs_function name="fbw/roll/aileron-nul">
+			<function>
+				<table>
+					<independentVar lookup="row">/controls/flight/aileron</independentVar>
+					<tableData>
+						-1.00 -1.0
+						-0.02  0.0
+						 0.00  0.0
+						 0.02  0.0
+						 1.00  1.0
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+	
+	</channel>
+	
+	<channel name="FBW: Pitch">
+		
+		<fcs_function name="fbw/pitch/elevator-nul">
+			<function>
+				<table>
+					<independentVar lookup="row">/controls/flight/elevator</independentVar>
+					<tableData>
+						-1.00 -1.0
+						-0.02  0.0
+						 0.00  0.0
+						 0.02  0.0
+						 1.00  1.0
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fbw/pitch/elevator-trim-nul"> <!-- This way, the trim can be reset and not affect the G when the pilot tries to center it -->
+			<function>
+				<table>
+					<independentVar lookup="row">/controls/flight/elevator-trim</independentVar>
+					<tableData>
+						-1.00 -1.0
+						-0.02  0.0
+						 0.00  0.0
+						 0.02  0.0
+						 1.00  1.0
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<summer name="fcs/elevator-sum">
+			<input>fbw/pitch/elevator-nul</input>
+			<input>fbw/pitch/elevator-trim-nul</input>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+		</summer>
+	
+	</channel>
+	
+	<channel name="Elevons">
+		
+		<switch name="fcs/roll-input">
+			<default value="0"/>
+			<test value="fbw/roll/aileron-nul">
+				fbw/enable eq 0
+			</test>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+		</switch>
+		
+		<switch name="fcs/roll-inner-input">
+			<default value="0"/>
+			<test value="fbw/roll/aileron-nul">
+				fbw/enable eq 0
+			</test>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+		</switch>
+		
+		<switch name="fcs/pitch-input">
+			<default value="0"/>
+			<test value="fcs/elevator-sum">
+				fbw/enable eq 0
+			</test>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+		</switch>
+		
+		<pure_gain name="fcs/roll-pos-deg">
+			<input>fcs/roll-input</input>
+			<gain>25.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="fcs/roll-inner-pos-deg">
+			<input>fcs/roll-inner-input</input>
+			<gain>25.0</gain>
+		</pure_gain>
+		
+		<aerosurface_scale name="fcs/pitch-pos-deg">
+			<input>fcs/pitch-input</input>
+			<range>
+				<min>-25.0</min>
+				<max>16.0</max>
+			</range>
+		</aerosurface_scale>
+		
+		<fcs_function name="fcs/elevon-1L-cmd">
+			<function>
+				<sum>
+					<property>fcs/roll-pos-deg</property>
+					<property>fcs/pitch-pos-deg</property>
+				</sum>
+			</function>
+			<clipto>
+				<min>-25.0</min>
+				<max>16.0</max>
+			</clipto>
+		</fcs_function>
+		
+		<actuator name="fcs/elevon-1L-deg">
+			<input>fcs/elevon-1L-cmd</input>
+			<rate_limit>1150</rate_limit> <!-- 46 * 25 degrees -->
+			<lag>26.7</lag>
+			<output>/sim/multiplay/generic/float[2]</output>
+		</actuator>
+		
+		<fcs_function name="fcs/elevon-1R-cmd">
+			<function>
+				<sum>
+					<product>
+						<property>fcs/roll-pos-deg</property>
+						<value>-1</value>
+					</product>
+					<property>fcs/pitch-pos-deg</property>
+				</sum>
+			</function>
+			<clipto>
+				<min>-25.0</min>
+				<max>16.0</max>
+			</clipto>
+		</fcs_function>
+		
+		<actuator name="fcs/elevon-1R-deg">
+			<input>fcs/elevon-1R-cmd</input>
+			<rate_limit>1150</rate_limit> <!-- 46 * 25 degrees -->
+			<lag>26.7</lag>
+			<output>/sim/multiplay/generic/float[5]</output>
+		</actuator>
+		
+		<fcs_function name="fcs/elevon-2L-cmd">
+			<function>
+				<sum>
+					<property>fcs/roll-inner-pos-deg</property>
+					<property>fcs/pitch-pos-deg</property>
+				</sum>
+			</function>
+			<clipto>
+				<min>-25.0</min>
+				<max>16.0</max>
+			</clipto>
+		</fcs_function>
+		
+		<actuator name="fcs/elevon-2L-deg">
+			<input>fcs/elevon-2L-cmd</input>
+			<rate_limit>1150</rate_limit> <!-- 46 * 25 degrees -->
+			<lag>26.7</lag>
+			<output>/sim/multiplay/generic/float[3]</output>
+		</actuator>
+		
+		<fcs_function name="fcs/elevon-2R-cmd">
+			<function>
+				<sum>
+					<product>
+						<property>fcs/roll-inner-pos-deg</property>
+						<value>-1</value>
+					</product>
+					<property>fcs/pitch-pos-deg</property>
+				</sum>
+			</function>
+			<clipto>
+				<min>-25.0</min>
+				<max>16.0</max>
+			</clipto>
+		</fcs_function>
+		
+		<actuator name="fcs/elevon-2R-deg">
+			<input>fcs/elevon-2R-cmd</input>
+			<rate_limit>1150</rate_limit> <!-- 46 * 25 degrees -->
+			<lag>26.7</lag>
+			<output>/sim/multiplay/generic/float[4]</output>
+		</actuator>
+	
+	</channel>
+	
+	<channel name="Foreplanes">
+		
+		<pure_gain name="fcs/foreplane-cmd">
+			<input>fcs/pitch-pos-deg</input>
+			<gain>1.0</gain>
+			<clipto>
+				<min>-16.0</min>
+				<max>16.0</max>
+			</clipto>
+		</pure_gain>
+		
+		<actuator name="fcs/foreplane-L-deg">
+			<input>fcs/foreplane-cmd</input>
+			<rate_limit>1152</rate_limit> <!-- 72 * 16 degrees -->
+			<lag>26.7</lag>
+			<output>/sim/multiplay/generic/float[0]</output>
+		</actuator>
+		
+		<actuator name="fcs/foreplane-R-deg">
+			<input>fcs/foreplane-cmd</input>
+			<rate_limit>1152</rate_limit> <!-- 72 * 16 degrees -->
+			<lag>26.7</lag>
+			<output>/sim/multiplay/generic/float[1]</output>
+		</actuator>
+	
+	</channel>
+
+  <channel name="Yaw">
+   <summer name="Rudder Command Sum">
+      <input>fcs/rudder-cmd-norm</input>
+      <input>fcs/yaw-trim-cmd-norm</input>
+      <clipto>
+        <min> -1 </min>
+        <max>  1 </max>
+      </clipto>
+   </summer>
+
+   <summer name="Rudder Sum">
+      <input>fcs/rudder-command-sum</input>
+
+      <clipto>
+        <min> -1.1 </min>
+        <max>  1.1 </max>
+      </clipto>
+   </summer>
+
+   <aerosurface_scale name="Rudder Control">
+      <input>fcs/rudder-sum</input>
+      <domain>
+        <min> -1.1 </min>
+        <max>  1.1 </max>
+      </domain>
+      <range>
+        <min> -0.35 </min>
+        <max>  0.35 </max>
+      </range>
+      <output>fcs/rudder-pos-rad</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Rudder Normalization">
+      <input>fcs/rudder-pos-rad</input>
+      <domain>
+        <min> -0.35 </min>
+        <max>  0.35 </max>
+      </domain>
+      <range>
+        <min> -1 </min>
+        <max>  1 </max>
+      </range>
+      <output>fcs/rudder-pos-norm</output>
+   </aerosurface_scale>
+  </channel>
+	
+	<channel name="Landing Gear">
+		
+		<kinematic name="rubbish/gear-pos-norm">
+			<input>gear/gear-cmd-norm</input>
+			<traverse>
+				<setting>
+					<position> 0 </position>
+					<time> 0 </time>
+				</setting>
+				<setting>
+					<position> 1 </position>
+					<time> 5 </time>
+				</setting>
+			</traverse>
+			<output>gear/gear-pos-norm</output>
+		</kinematic>
+	
+	</channel>
+	
+	<channel name="Speedbrake">
+		
+		<kinematic name="rubbish/speedbrake-pos-norm">
+			<input>fcs/speedbrake-cmd-norm</input>
+			<traverse>
+				<setting>
+					<position> 0 </position>
+					<time> 0 </time>
+				</setting>
+				<setting>
+					<position> 1 </position>
+					<time> 1 </time>
+				</setting>
+			</traverse>
+			<output>fcs/speedbrake-pos-norm</output>
+		</kinematic>
+	
+	</channel>
+
+</system>

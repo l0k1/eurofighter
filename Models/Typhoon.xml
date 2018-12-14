@@ -1144,14 +1144,13 @@
 		</axis>
 	</animation>
 
-<!-- control surfaces -->
-<!-- elevator -->
+	<!-- Control Surfaces -->
+	<!-- Foreplanes -->
 	<animation>
 		<type>rotate</type>
 		<object-name>elevator.L</object-name>
-		<object-name>elevator.R</object-name>
-		<property>surface-positions/elevator-pos-norm</property>
-		<factor>-48</factor>
+		<property>sim/multiplay/generic/float[0]</property>
+		<factor>-1</factor>
 		<center>
 			<x-m>-5.10017</x-m>
 			<y-m>0</y-m>
@@ -1159,14 +1158,30 @@
 		</center>
 		<axis>
 			<x>0</x>
-			<y>1.0</y>
+			<y>1</y>
 			<z>0</z>
 		</axis>
 	</animation>
-
-<!--    Flap-aleron = flaperon.R flaperon1.R -> surface-positions/right-aileron-pos-norm
-	Flap-aleron = flaperon.L flaperon1.L -> surface-positions/left-aileron-pos-norm  -->
+	
 	<animation>
+		<type>rotate</type>
+		<object-name>elevator.R</object-name>
+		<property>sim/multiplay/generic/float[1]</property>
+		<factor>-1</factor>
+		<center>
+			<x-m>-5.10017</x-m>
+			<y-m>0</y-m>
+			<z-m>0.13656</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<!-- Elevons -->
+	<animation> <!-- Elevon 1R -->
 		<name>Flaperon1R</name>
 		<object-name>elevonR.2</object-name>
 		<object-name>flaperon1.R</object-name>
@@ -1174,8 +1189,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Flaperon1R</object-name>
-		<property>surface-positions/right-aileron-pos-norm</property>
-		<factor>-15</factor>
+		<property>sim/multiplay/generic/float[5]</property>
+		<factor>-1</factor>
 		<center>
 			<x-m>4.05548</x-m>
 			<y-m>4.2300</y-m>
@@ -1187,7 +1202,7 @@
 			<z>0</z>
 		</axis>
 	</animation>
-	<animation>
+	<animation> <!-- Elevon 1L -->
 		<name>Flaperon1L</name>
 		<object-name>elevonL.2</object-name>
 		<object-name>flaperon1.L</object-name>
@@ -1195,8 +1210,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Flaperon1L</object-name>
-		<property>surface-positions/left-aileron-pos-norm</property>
-		<factor>15</factor>
+		<property>sim/multiplay/generic/float[2]</property>
+		<factor>1</factor>
 		<center>
 			<x-m>4.05548</x-m>
 			<y-m>-4.2300</y-m>
@@ -1208,7 +1223,7 @@
 			<z>0</z>
 		</axis>
 	</animation>
-	<animation>
+	<animation> <!-- Elevon 2R -->
 		<name>FlaperonR</name>
 		<object-name>elevonR.1</object-name>
 		<object-name>flaperon.R</object-name>
@@ -1216,8 +1231,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>FlaperonR</object-name>
-		<property>surface-positions/right-aileron-pos-norm</property>
-		<factor>20</factor>
+		<property>sim/multiplay/generic/float[4]</property>
+		<factor>1</factor>
 		<center>
 			<x-m>4.04273</x-m>
 			<y-m>2.3100</y-m>
@@ -1229,7 +1244,7 @@
 			<z>0</z>
 		</axis>
 	</animation>
-	<animation>
+	<animation> <!-- Elevon 2L -->
 		<name>FlaperonL</name>
 		<object-name>elevonL.1</object-name>
 		<object-name>flaperon.L</object-name>
@@ -1237,8 +1252,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>FlaperonL</object-name>
-		<property>surface-positions/left-aileron-pos-norm</property>
-		<factor>20</factor>
+		<property>sim/multiplay/generic/float[3]</property>
+		<factor>1</factor>
 		<center>
 			<x-m>4.04273</x-m>
 			<y-m>-2.3100</y-m>
