@@ -129,6 +129,12 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 				<float n="6">0</float> <!-- Rudder -->
 			</generic>
 		</multiplay>
+		
+		<flaps>
+			<setting>0.0</setting>
+			<setting>0.5</setting>
+			<setting>1.0</setting>
+		</flaps>
 	</sim>
 
 	<controls><canopy><position-norm>0</position-norm></canopy></controls>

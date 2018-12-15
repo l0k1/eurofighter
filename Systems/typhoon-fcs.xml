@@ -307,6 +307,38 @@
 	
 	</channel>
 	
+	<channel name="Slats">
+		
+		<kinematic name="fcs/slat-k">
+			<input>/controls/flight/flaps</input>
+			<traverse>
+				<setting>
+					<position>0</position>
+					<time>0.0</time>
+				</setting>
+				<setting>
+					<position>1</position>
+					<time>2.6</time>
+				</setting>
+			</traverse>
+		</kinematic>
+		
+		<pure_gain name="fcs/slat-outer">
+			<input>fcs/slat-k</input>
+			<gain>30.0</gain>
+			<output>fcs/slat-1L-pos-deg</output>
+			<output>fcs/slat-1R-pos-deg</output>
+		</pure_gain>
+		
+		<pure_gain name="fcs/slat-inner">
+			<input>fcs/slat-k</input>
+			<gain>17.5</gain>
+			<output>fcs/slat-2L-pos-deg</output>
+			<output>fcs/slat-2R-pos-deg</output>
+		</pure_gain>
+	
+	</channel>
+	
 	<channel name="Landing Gear">
 		
 		<kinematic name="rubbish/gear-pos-norm">

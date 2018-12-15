@@ -113,6 +113,46 @@
 				<value>0.0883</value>
 			</product>
 		</function>
+		
+		<function name="aero/force/Lift_slat_1L">
+			<description>Delta Lift due to slat 1L</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>fcs/slat-1L-pos-deg</property>
+				<value> 0.00478 </value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Lift_slat_2L">
+			<description>Delta Lift due to slat 2L</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>fcs/slat-2L-pos-deg</property>
+				<value> 0.00578 </value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Lift_slat_2R">
+			<description>Delta Lift due to slat 2R</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>fcs/slat-2R-pos-deg</property>
+				<value> 0.00578 </value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Lift_slat_1R">
+			<description>Delta Lift due to slat 1R</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>fcs/slat-1R-pos-deg</property>
+				<value> 0.00478 </value>
+			</product>
+		</function>
 	
 	</axis>
 	
@@ -255,6 +295,46 @@
 				<property>metrics/Sw-sqft</property>
 				<abs><toradians><property>fcs/elevon-1R-deg</property></toradians></abs>
 				<value>0.005</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_slat_1L">
+			<description>Drag due to slat 1L</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>fcs/slat-1L-pos-deg</property>
+				<value>0.00151</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_slat_2L">
+			<description>Drag due to slat 2L</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>fcs/slat-2L-pos-deg</property>
+				<value>0.00251</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_slat_2R">
+			<description>Drag due to slat 2R</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>fcs/slat-2R-pos-deg</property>
+				<value>0.00251</value>
+			</product>
+		</function>
+		
+		<function name="aero/force/Drag_slat_1R">
+			<description>Drag due to slat 1R</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>fcs/slat-1R-pos-deg</property>
+				<value>0.00151</value>
 			</product>
 		</function>
 		
