@@ -185,9 +185,18 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 			<dump-valve type="bool">false</dump-valve>
 		</fuel>
 	</consumables>
+	
 	<engines>
-		<engine n="0"><running>true</running></engine>
-		<engine n="1"><running>true</running></engine>
+		<engine n="0">
+			<running>true</running>
+		</engine>
+		<engine n="1">
+			<running>true</running>
+		</engine>
+		<engine n="2"> <!-- A crude "hack" to send slats over MP, because we are out of floats -->
+			<n1 type="double">0</n1> <!-- L -->
+			<n2 type="double">0</n2> <!-- R -->
+		</engine>
 	</engines>
 
 	<fdm>

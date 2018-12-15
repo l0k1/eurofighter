@@ -10,17 +10,18 @@
 	</sound>
 	<multiplay>
 		<generic>
-			<string n="0" alias="/identification/pilot-name" /> <!-- Pilot's Display Label (Beneath Canopy) -->
-			<string n="1" alias="/identification/aircraft-number" /> <!-- Aircraft's Serial Number (Rear Flanks) -->
-			<int n="1" alias="/gear/gear[0]/tyre-smoke"/>
-			<int n="2" alias="/gear/gear[1]/tyre-smoke"/>
-			<int n="3" alias="/gear/gear[2]/tyre-smoke"/>
+			<string n="1" alias="identification/pilot-name" /> <!-- Pilot's Display Label (Beneath Canopy) -->
+			<string n="2" alias="identification/aircraft-number" /> <!-- Aircraft's Serial Number (Rear Flanks) -->
+			<string n="3" alias="identification/aircraft-number" /> <!-- Aircraft's Serial Number (Rear Flanks) -->
+			<int n="1" alias="gear/gear[0]/tyre-smoke"/>
+			<int n="2" alias="gear/gear[1]/tyre-smoke"/>
+			<int n="3" alias="gear/gear[2]/tyre-smoke"/>
 			<int n="6" type="int">0</int>    <!-- radar-standby -->
 			<int n="7" type="int">0</int>    <!-- als ldg-light -->
 			<int n="8" type="int">0</int>    <!-- wingtip-vortex -->
 			<int n="9" type="int">0</int>    <!-- contrail -->
 			<int n="11"/>										<!-- demo smoke -->
-			<int n="19" alias="/systems/weapons/display-smoke" /> <!-- Smokewinders Active -->
+			<int n="19" alias="systems/weapons/display-smoke" /> <!-- Smokewinders Active -->
 			<int n="20" alias="controls/armament/gun-trigger" /> <!-- Cannon Firing -->
 			<float n="0">0</float> <!-- Left Foreplane -->
 			<float n="1">0</float> <!-- Right Foreplane -->
@@ -29,21 +30,21 @@
 			<float n="4">0</float> <!-- Right Inner Elevon -->
 			<float n="5">0</float> <!-- Right Outer Elevon -->
 			<float n="6">0</float> <!-- Rudder -->
-			<float n="7" alias="/systems/electrical/outputs/external-lights/nav-lights"/>
-			<float n="8" alias="/systems/electrical/outputs/external-lights/landing-lights"/>
-			<float n="9" alias="/surface-positions/nozzle-left-norm" /> <!-- ConDi Nozzle Left Engine -->
-			<float n="10" alias="/surface-positions/nozzle-right-norm" /> <!-- ConDi Nozzle Right Engine -->
-			<float n="11" alias="/engines/engine[0]/reheat" /> <!-- Reheat Left Engine -->
-			<float n="12" alias="/engines/engine[1]/reheat" /> <!-- Reheat Right Engine -->
-			<float n="13" alias="/engines/engine[0]/n1" /> <!-- Left Engine -->
-			<float n="14" alias="/engines/engine[1]/n1" /> <!-- Right Engine -->
-			<float n="15" alias="/velocities/mach" /> <!-- Mach for Multiplayer Sound -->
-			<float n="16" alias="/engines/engine[0]/thrust-lbs" /> <!-- Thrust for Multiplayer Sound -->
-			<float n="17" alias="/engines/engine[1]/thrust-lbs" /> <!-- Thrust for Multiplayer Sound -->
-			<float n="18" alias="/controls/rotary/formation-lights" />
-			<float n="19" alias="/systems/electrical/outputs/external-lights/taxi-lights"/>
-				<!-- int n="6" = radar2.radarStandbyMP -->
-			<string  alias="/sim/multiplay/callsign"/>
+			<float n="7" alias="systems/electrical/outputs/external-lights/nav-lights"/>
+			<float n="8" alias="systems/electrical/outputs/external-lights/landing-lights"/>
+			<float n="9" alias="surface-positions/nozzle-left-norm" /> <!-- ConDi Nozzle Left Engine -->
+			<float n="10" alias="surface-positions/nozzle-right-norm" /> <!-- ConDi Nozzle Right Engine -->
+			<float n="11" alias="engines/engine[0]/reheat" /> <!-- Reheat Left Engine -->
+			<float n="12" alias="engines/engine[1]/reheat" /> <!-- Reheat Right Engine -->
+			<float n="13">0</float> <!-- Airbrake -->
+			<float n="14" alias="engines/engine[1]/n1" /> <!-- Right Engine -->
+			<float n="15" alias="velocities/mach" /> <!-- Mach for Multiplayer Sound -->
+			<float n="16" alias="engines/engine[0]/thrust-lbs" /> <!-- Thrust for Multiplayer Sound -->
+			<float n="17" alias="engines/engine[1]/thrust-lbs" /> <!-- Thrust for Multiplayer Sound -->
+			<float n="18" alias="controls/rotary/formation-lights" />
+			<float n="19" alias="systems/electrical/outputs/external-lights/taxi-lights"/>
+			<!-- int n="6" = radar2.radarStandbyMP -->
+			<string alias="sim/multiplay/callsign"/>
 		</generic>
 	</multiplay>
 	<!--<submodels>

@@ -1266,7 +1266,7 @@
 		</axis>
 	</animation>
 
-  <!-- Slats +++++++++++++++++++++  -->
+  <!-- Slats  -->
 	<animation>
 		<name>Slat.L</name>
 		<object-name>Slat.L_0</object-name>
@@ -1275,8 +1275,8 @@
 	<animation>
 		<type>translate</type>
 		<object-name>Slat.L</object-name>
-		<property>surface-positions/slats-pos-norm</property>
-		<factor>0.17</factor>
+		<property>engines/engine[2]/n1</property> <!-- A crude "hack" to send slats over MP, because we are out of floats -->
+		<factor>0.00566</factor>
 		<axis>
 			<x>-2.5</x>
 			<y>-0.1</y>
@@ -1288,11 +1288,11 @@
 		<object-name>Slat.R_0</object-name>
 		<object-name>Slat.R_1</object-name>
 	</animation>
-	<animation><!-- todo best axis -->
+	<animation>
 		<type>translate</type>
 		<object-name>Slat.R</object-name>
-		<property>surface-positions/slats-pos-norm</property>
-		<factor>0.17</factor>
+		<property>engines/engine[2]/n2</property> <!-- A crude "hack" to send slats over MP, because we are out of floats -->
+		<factor>0.00566</factor>
 		<axis>
 			<x>-2.5</x>
 			<y>0.1</y>
@@ -1302,8 +1302,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Slat.R</object-name>
-		<property>surface-positions/slats-pos-norm</property>
-		<factor>-10</factor>
+		<property>engines/engine[2]/n2</property> <!-- A crude "hack" to send slats over MP, because we are out of floats -->
+		<factor>-1</factor>
 		<center>
 			<x-m>1.268678</x-m>
 			<y-m>3.425586</y-m>
@@ -1318,8 +1318,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Slat.L</object-name>
-		<property>surface-positions/slats-pos-norm</property>
-		<factor>10</factor>
+		<property>engines/engine[2]/n1</property> <!-- A crude "hack" to send slats over MP, because we are out of floats -->
+		<factor>1</factor>
 		<center>
 			<x-m>1.268678</x-m>
 			<y-m>-3.425586</y-m>
@@ -1358,14 +1358,8 @@
 		<type>rotate</type>
 		<object-name>speedbrake</object-name>
 		<object-name>speedbrake2</object-name>
-		<condition>
-			<greater-than>
-				<property>/systems/hydraulics/circuit2_press</property>
-				<value type="int">120</value>
-			</greater-than>
-		</condition>
-		<property>surface-positions/speedbrake-pos-norm</property>
-		<factor>50</factor>
+		<property>sim/multiplay/generic/float[13]</property>
+		<factor>1</factor>
 		<center>
 			<x-m>-1.63917</x-m>
 			<y-m>0</y-m>
@@ -1373,7 +1367,7 @@
 		</center>
 		<axis>
 			<x>0</x>
-			<y>1.0</y>
+			<y>-1</y>
 			<z>0</z>
 		</axis>
 	</animation>
@@ -1382,14 +1376,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>SpeedBrakeActuator</object-name>
-		<condition>
-			<greater-than>
-				<property>/systems/hydraulics/circuit2_press</property>
-				<value type="int">120</value>
-			</greater-than>
-		</condition>
-		<property>surface-positions/speedbrake-pos-norm</property>
-		<factor>15</factor>
+		<property>sim/multiplay/generic/float[13]</property>
+		<factor>0.2727</factor>
 		<center>
 			<x-m>-0.34717</x-m>
 			<y-m>0</y-m>
@@ -1397,21 +1385,15 @@
 		</center>
 		<axis>
 			<x>0</x>
-			<y>-1</y>
+			<y>1</y>
 			<z>0</z>
 		</axis>
 	</animation>
 	<animation>
 		<type>rotate</type>
 		<object-name>SpeedBrakeBase</object-name>
-		<condition>
-			<greater-than>
-				<property>/systems/hydraulics/circuit2_press</property>
-				<value type="int">120</value>
-			</greater-than>
-		</condition>
-		<property>surface-positions/speedbrake-pos-norm</property>
-		<factor>15</factor>
+		<property>sim/multiplay/generic/float[13]</property>
+		<factor>0.2727</factor>
 		<center>
 			<x-m>-0.36357</x-m>
 			<y-m>0</y-m>
@@ -1419,21 +1401,15 @@
 		</center>
 		<axis>
 			<x>0</x>
-			<y>-1</y>
+			<y>1</y>
 			<z>0</z>
 		</axis>
 	</animation>
 	<animation>
 		<type>rotate</type>
 		<object-name>SpeedBrakeRam</object-name>
-		<condition>
-			<greater-than>
-				<property>/systems/hydraulics/circuit2_press</property>
-				<value type="int">120</value>
-			</greater-than>
-		</condition>
-		<property>surface-positions/speedbrake-pos-norm</property>
-		<factor>15</factor>
+		<property>sim/multiplay/generic/float[13]</property>
+		<factor>0.2727</factor>
 		<center>
 			<x-m>-0.09247</x-m>
 			<y-m>0</y-m>
@@ -1441,21 +1417,15 @@
 		</center>
 		<axis>
 			<x>0</x>
-			<y>-1</y>
+			<y>1</y>
 			<z>0</z>
 		</axis>
 	</animation>
 	<animation>
 		<type>translate</type>
 		<object-name>SpeedBrakeRam</object-name>
-		<condition>
-			<greater-than>
-				<property>/systems/hydraulics/circuit2_press</property>
-				<value type="int">120</value>
-			</greater-than>
-		</condition>
-		<property>surface-positions/speedbrake-pos-norm</property>
-		<factor>-0.65</factor>
+		<property>sim/multiplay/generic/float[13]</property>
+		<factor>0.0118</factor>
 		<axis>
 			<x>-1</x>
 			<y>0</y>

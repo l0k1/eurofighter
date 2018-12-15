@@ -323,18 +323,14 @@
 			</traverse>
 		</kinematic>
 		
-		<pure_gain name="fcs/slat-outer">
+		<pure_gain name="fcs/slat-deg">
 			<input>fcs/slat-k</input>
 			<gain>30.0</gain>
-			<output>fcs/slat-1L-pos-deg</output>
-			<output>fcs/slat-1R-pos-deg</output>
-		</pure_gain>
-		
-		<pure_gain name="fcs/slat-inner">
-			<input>fcs/slat-k</input>
-			<gain>17.5</gain>
-			<output>fcs/slat-2L-pos-deg</output>
-			<output>fcs/slat-2R-pos-deg</output>
+			<output>fcs/slat-L-deg</output>
+			<output>fcs/slat-R-deg</output>
+			<!-- A crude "hack" to send slats over MP, because we are out of floats -->
+			<output>/engines/engine[2]/n1</output> <!-- L -->
+			<output>/engines/engine[2]/n2</output> <!-- R -->
 		</pure_gain>
 	
 	</channel>
@@ -345,12 +341,12 @@
 			<input>gear/gear-cmd-norm</input>
 			<traverse>
 				<setting>
-					<position> 0 </position>
-					<time> 0 </time>
+					<position>0</position>
+					<time>0</time>
 				</setting>
 				<setting>
-					<position> 1 </position>
-					<time> 5 </time>
+					<position>1</position>
+					<time>5</time>
 				</setting>
 			</traverse>
 			<output>gear/gear-pos-norm</output>
@@ -358,22 +354,27 @@
 	
 	</channel>
 	
-	<channel name="Speedbrake">
+	<channel name="Airbrake">
 		
-		<kinematic name="rubbish/speedbrake-pos-norm">
+		<kinematic name="fcs/airbrake-k">
 			<input>fcs/speedbrake-cmd-norm</input>
 			<traverse>
 				<setting>
-					<position> 0 </position>
-					<time> 0 </time>
+					<position>0</position>
+					<time>0.0</time>
 				</setting>
 				<setting>
-					<position> 1 </position>
-					<time> 1 </time>
+					<position>1</position>
+					<time>3.0</time>
 				</setting>
 			</traverse>
-			<output>fcs/speedbrake-pos-norm</output>
 		</kinematic>
+		
+		<pure_gain name="fcs/airbrake-deg">
+			<input>fcs/airbrake-k</input>
+			<gain>55.0</gain>
+			<output>/sim/multiplay/generic/float[13]</output>
+		</pure_gain>
 	
 	</channel>
 
