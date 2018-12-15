@@ -117,19 +117,6 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
             <shadow-volume type="bool">true</shadow-volume>
 		</rendering>
 		
-		<!-- Multiplayer properties -->
-		<multiplay>
-			<generic>
-				<float n="0">0</float> <!-- Left Foreplane -->
-				<float n="1">0</float> <!-- Right Foreplane -->
-				<float n="2">0</float> <!-- Left Outer Elevon -->
-				<float n="3">0</float> <!-- Left Inner Elevon -->
-				<float n="4">0</float> <!-- Right Inner Elevon -->
-				<float n="5">0</float> <!-- Right Outer Elevon -->
-				<float n="6">0</float> <!-- Rudder -->
-			</generic>
-		</multiplay>
-		
 		<flaps>
 			<setting>0.0</setting>
 			<setting>0.5</setting>

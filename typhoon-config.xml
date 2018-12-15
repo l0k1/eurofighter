@@ -19,16 +19,16 @@
 			<int n="7" type="int">0</int>    <!-- als ldg-light -->
 			<int n="8" type="int">0</int>    <!-- wingtip-vortex -->
 			<int n="9" type="int">0</int>    <!-- contrail -->
-				<!--int n="10" alias="/engines/engine[0]/afterburner" /-->
 			<int n="11"/>										<!-- demo smoke -->
 			<int n="19" alias="/systems/weapons/display-smoke" /> <!-- Smokewinders Active -->
 			<int n="20" alias="controls/armament/gun-trigger" /> <!-- Cannon Firing -->
-			<float n="1">0.0</float>
-			<float n="2" alias="/position/gear-agl-m">0.0</float> <!-- altitude for MP shadow -->
-			<float n="3">0.0</float>
-			<float n="4" alias="/systems/electrical/outputs/beacon/state"/>
-			<float n="5" alias="/systems/electrical/outputs/external-lights/strobe-lights"/>
-			<float n="6" type="double">0</float><!-- refuel probe   -->
+			<float n="0">0</float> <!-- Left Foreplane -->
+			<float n="1">0</float> <!-- Right Foreplane -->
+			<float n="2">0</float> <!-- Left Outer Elevon -->
+			<float n="3">0</float> <!-- Left Inner Elevon -->
+			<float n="4">0</float> <!-- Right Inner Elevon -->
+			<float n="5">0</float> <!-- Right Outer Elevon -->
+			<float n="6">0</float> <!-- Rudder -->
 			<float n="7" alias="/systems/electrical/outputs/external-lights/nav-lights"/>
 			<float n="8" alias="/systems/electrical/outputs/external-lights/landing-lights"/>
 			<float n="9" alias="/surface-positions/nozzle-left-norm" /> <!-- ConDi Nozzle Left Engine -->
