@@ -539,11 +539,11 @@
         <interpolation>
             <entry>
                 <ind>0</ind>
-                <dep>-0.03</dep>
+                <dep>0.0</dep>
             </entry>
             <entry>
                 <ind>1.0</ind>
-                <dep>0.8</dep>
+                <dep>0.33</dep>
             </entry>
         </interpolation>
         <axis>
@@ -558,7 +558,7 @@
         <object-name>nwOleoUp</object-name>
         <object-name>nwOleoDown</object-name>
         <property>gear/gear[0]/compression-norm</property>
-        <factor>90</factor>
+        <factor>37.125</factor>
 	<center>
 		<x-m>-2.67701</x-m>
 		<y-m>0.02018</y-m>
@@ -575,7 +575,7 @@
 	<type>rotate</type>
         <object-name>nwOleoDown</object-name>
         <property>gear/gear[0]/compression-norm</property>
-        <factor>180</factor>
+        <factor>74.25</factor>
 	<center>
 		<x-m>-2.8748</x-m>
 		<y-m>0.02018</y-m>
@@ -810,7 +810,6 @@
 		<object-name>wheel2.L</object-name>
         <property>gear/gear[1]/compression-norm</property>
         <offset-m>-0.1</offset-m>
-        <factor></factor>
         <interpolation>
             <entry>
                 <ind>0</ind>
