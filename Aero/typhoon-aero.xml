@@ -120,7 +120,7 @@
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>fcs/slat-L-deg</property>
-				<value>0.00998</value>
+				<value>0.00498</value>
 			</product>
 		</function>
 		
@@ -130,7 +130,7 @@
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>fcs/slat-R-deg</property>
-				<value>0.00998</value>
+				<value>0.00498</value>
 			</product>
 		</function>
 		
