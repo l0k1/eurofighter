@@ -47,6 +47,13 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 				<menu n="101">
 					<label>Dev</label>
 					<item>
+						<label>Toggle FBW</label>
+						<binding>
+							<command>property-toggle</command>
+							<property>/fdm/jsbsim/fbw/enable</property>
+						</binding>
+					</item>
+					<item>
 						<label>Tune Drag</label>
 						<binding>
 							<command>nasal</command>
