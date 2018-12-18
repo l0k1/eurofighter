@@ -47,10 +47,10 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 				<menu n="101">
 					<label>Dev</label>
 					<item>
-						<label>Toggle FBW</label>
+						<label>FBW Control</label>
 						<binding>
-							<command>property-toggle</command>
-							<property>/fdm/jsbsim/fbw/enable</property>
+							<command>dialog-show</command>
+							<dialog-name>fbw</dialog-name>
 						</binding>
 					</item>
 					<item>

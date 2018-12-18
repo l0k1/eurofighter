@@ -6,12 +6,10 @@
 <system name="typhoon-fcs">
 	
 	<property value="1">fbw/enable</property>
-	<property value="0">fbw/roll/pid</property>
 	<property value="0">fbw/yaw/beta-pd</property>
 	
 	<!-- Default gains for tuning -->
 	<property value="0">fbw/roll/p-gain</property>
-	<property value="0">fbw/roll/d-gain</property>
 	<property value="0">fbw/yaw/yd-p-gain</property>
 	<property value="0">fbw/yaw/beta-p-gain</property>
 	<property value="0">fbw/yaw/beta-d-gain</property>
@@ -38,37 +36,21 @@
 			</test>
 		</switch>
 		
-		<!--fcs_function name="fbw/roll/p-gain">
+		<fcs_function name="fbw/roll/p-gain">
 			<function>
 				<table>
 					<independentVar lookup="row">velocities/vc-kts</independentVar>
 					<independentVar lookup="column">fbw/gain-switch</independentVar>
 					<tableData>
 						     0     1     2
-						130 -1.09 -0.12  0.00
-						320 -0.51 -0.12  0.00
-						600 -0.16 -0.12  0.00
-						950 -0.11 -0.12  0.00
+						130 -1.70 -0.15  0.00
+						320 -1.20 -0.15  0.00
+						600 -0.44 -0.15  0.00
+						950 -0.24 -0.15  0.00
 					</tableData>
 				</table>
 			</function>
 		</fcs_function>
-		
-		<fcs_function name="fbw/roll/d-gain">
-			<function>
-				<table>
-					<independentVar lookup="row">velocities/vc-kts</independentVar>
-					<independentVar lookup="column">fbw/gain-switch</independentVar>
-					<tableData>
-						     0       1
-						130 -0.0045  0.0000
-						320 -0.0035  0.0000
-						600 -0.0030  0.0000
-						950 -0.0010  0.0000
-					</tableData>
-				</table>
-			</function>
-		</fcs_function-->
 		
 		<fcs_function name="fbw/yaw/yd-p-gain">
 			<function>
@@ -136,6 +118,83 @@
 				</table>
 			</function>
 		</fcs_function>
+		
+		<fcs_function name="fbw/roll/aileron-modified">
+			<function>
+				<product>
+					<property>fbw/roll/aileron-nul</property>
+					<table>
+						<independentVar lookup="row">fbw/roll/aileron-nul</independentVar>
+						<tableData>
+							-1  20
+							 0   1
+							 1  20
+						</tableData>
+					</table>
+				</product>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fbw/roll/rate-stick"> <!-- 250 deg/4.36332 rad per sec -->
+			<function>
+				<table>
+					<independentVar lookup="row">fbw/roll/aileron-modified</independentVar>
+					<tableData>
+						-20.000 -4.36332
+						  0.000  0.00000
+						 20.000  4.36332
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<lag_filter name="fbw/roll/rate-command">
+			<input>fbw/roll/rate-stick</input>
+			<c1>6.8</c1>
+		</lag_filter>
+		
+		<!-- No AP yet! -->
+		<!--switch name="fbw/roll/rate-demand">
+			<default value="fbw/roll/rate-command"/>
+			<test value="fbw/ap/roll-cmd">
+				fbw/ap/roll-enabled eq 1
+			</test>
+		</switch-->
+		
+		<fcs_function name="fbw/roll/rate-error">
+			<function>
+				<difference>
+					<property>velocities/p-rad_sec</property>
+					<!--property>fbw/roll/rate-demand</property--> <!-- No AP yet! -->
+					<property>fbw/roll/rate-command</property>
+				</difference>
+			</function>
+		</fcs_function>
+		
+		<pure_gain name="fbw/roll/rate-control">
+			<input>fbw/roll/rate-error</input>
+			<gain>fbw/roll/p-gain</gain>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+		</pure_gain>
+		
+		<scheduled_gain name="fbw/roll-outer-output">
+			<input>fbw/roll/rate-control</input>
+			<table>
+				<independentVar lookup="row">velocities/vc-kts</independentVar>
+				<tableData>
+					180  1.0
+					320  0.7
+				</tableData>
+			</table>
+		</scheduled_gain>
+		
+		<pure_gain name="fbw/roll-inner-output">
+			<input>fbw/roll/rate-control</input>
+			<gain>1.0</gain>
+		</pure_gain>
 	
 	</channel>
 	
@@ -368,7 +427,7 @@
 	<channel name="Elevons">
 		
 		<switch name="fcs/roll-input">
-			<default value="fbw/roll/aileron-nul"/>
+			<default value="fbw/roll-outer-output"/>
 			<test value="fbw/roll/aileron-nul">
 				fbw/enable eq 0
 			</test>
@@ -379,7 +438,7 @@
 		</switch>
 		
 		<switch name="fcs/roll-inner-input">
-			<default value="fbw/roll/aileron-nul"/>
+			<default value="fbw/roll-inner-output"/>
 			<test value="fbw/roll/aileron-nul">
 				fbw/enable eq 0
 			</test>
