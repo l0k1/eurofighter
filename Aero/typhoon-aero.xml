@@ -8,7 +8,6 @@
 	
 	<axis name="LIFT">
 		
-		<!-- Lift above 0.85 and below -0.85 is generalised -->
 		<function name="aero/force/Lift_alpha">
 			<description>Lift due to alpha</description>
 			<product>
@@ -17,10 +16,10 @@
 				<table>
 					<independentVar lookup="row">aero/alpha-deg</independentVar>
 					<tableData>
-						-50 -1.00
-						  0  0.09
-						 15  0.75
-						 35  1.23
+						-35 -1.52
+						  0  0.01
+						 15  0.72
+						 35  1.20
 						 40  0.70
 						 50  1.03
 						 90  0.00
