@@ -52,6 +52,15 @@
 			</function>
 		</fcs_function>
 		
+		<fcs_function name="fbw/roll/control-clamp-factor">
+			<function>
+				<product>
+					<property>fbw/roll/p-gain</property>
+					<value>-0.58823529411764705882352941176471</value> <!-- -1.0 divided by highest P gain -->
+				</product>
+			</function>
+		</fcs_function>
+		
 		<fcs_function name="fbw/yaw/yd-p-gain">
 			<function>
 				<table>
@@ -150,7 +159,7 @@
 		
 		<lag_filter name="fbw/roll/rate-command">
 			<input>fbw/roll/rate-stick</input>
-			<c1>6.8</c1>
+			<c1>7.6</c1>
 		</lag_filter>
 		
 		<!-- No AP yet! -->
@@ -171,12 +180,56 @@
 			</function>
 		</fcs_function>
 		
+		<fcs_function name="fbw/roll/control-clamp-min">
+			<function>
+				<ifthen>
+					<or>
+						<lt>
+							<property>fbw/roll/aileron-nul</property>
+							<value>0</value>
+						</lt>
+						<nq>
+							<property>fbw/gain-switch</property>
+							<value>0</value>
+						</nq>
+					</or>
+					<value>-1.0</value>
+					<product>
+						<property>fbw/roll/control-clamp-factor</property>
+						<value>-0.2</value>
+					</product>
+				</ifthen>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fbw/roll/control-clamp-max">
+			<function>
+				<ifthen>
+					<or>
+						<gt>
+							<property>fbw/roll/aileron-nul</property>
+							<value>0</value>
+						</gt>
+						<nq>
+							<property>fbw/gain-switch</property>
+							<value>0</value>
+						</nq>
+					</or>
+					<value>1.0</value>
+					<product>
+						<property>fbw/roll/control-clamp-factor</property>
+						<value>0.2</value>
+					</product>
+				</ifthen>
+			</function>
+		</fcs_function>
+		
 		<pure_gain name="fbw/roll/rate-control">
 			<input>fbw/roll/rate-error</input>
 			<gain>fbw/roll/p-gain</gain>
 			<clipto>
-				<min>-1.0</min>
-				<max>1.0</max>
+				<min>fbw/roll/control-clamp-min</min>
+				<max>fbw/roll/control-clamp-max</max>
 			</clipto>
 		</pure_gain>
 		
