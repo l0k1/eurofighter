@@ -6,7 +6,7 @@
 <system name="typhoon-fcs">
 	
 	<property value="1">fbw/enable</property>
-	<property value="0">fbw/yaw/beta-pd</property>
+	<property value="0">fbw/yaw/beta-d</property>
 	
 	<!-- Default gains for tuning -->
 	<property value="0">fbw/roll/p-gain</property>
@@ -447,17 +447,35 @@
 			</function>
 		</fcs_function>
 		
-		<pid name="fbw/yaw/beta-pd-v">
+		<pure_gain name="fbw/yaw/beta-p">
 			<input>fbw/yaw/beta-error</input>
-			<kp>fbw/yaw/beta-p-gain</kp>
+			<gain>fbw/yaw/beta-p-gain</gain>
+			<clipto>
+				<min>-0.5</min>
+				<max>0.5</max>
+			</clipto>
+		</pure_gain>
+		
+		<pid name="fbw/yaw/beta-d-v">
+			<input>aero/beta-rad</input>
+			<kp>0.0</kp>
 			<ki>0.0</ki>
 			<kd>fbw/yaw/beta-d-gain</kd>
 			<clipto>
 				<min>-0.5</min>
 				<max>0.5</max>
 			</clipto>
-			<output>fbw/yaw/beta-pd</output>
+			<output>fbw/yaw/beta-d</output>
 		</pid>
+		
+		<summer name="fbw/yaw/beta-pd">
+			<input>fbw/yaw/beta-p</input>
+			<input>fbw/yaw/beta-d</input>
+			<clipto>
+				<min>-0.5</min>
+				<max>0.5</max>
+			</clipto>
+		</summer>
 		
 		<summer name="fbw/yaw/active">
 			<input>fbw/yaw/yd-f</input>
