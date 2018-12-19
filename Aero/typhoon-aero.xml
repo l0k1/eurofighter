@@ -167,13 +167,13 @@
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<table>
-					<independentVar lookup="row">aero/alpha-deg</independentVar>
+					<independentVar lookup="row">aero/alpha-rad</independentVar>
 					<tableData>
-						-12.55  11.3242
-						 -1.57   1.4085
-						  0.00   0.0000
-						  1.57   1.4085
-						 12.55  11.3242
+						-1.57  0.190
+						-0.26  0.027
+						 0.00  0.011
+						 0.26  0.057
+						 1.57  0.120
 					</tableData>
 				</table>
 				<property>tune/drag/alpha</property>
