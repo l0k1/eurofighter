@@ -6,10 +6,12 @@
 <system name="typhoon-fcs">
 	
 	<property value="1">fbw/enable</property>
+	<property value="0">fbw/roll/rate-damp</property>
 	<property value="0">fbw/yaw/beta-d</property>
 	
 	<!-- Default gains for tuning -->
 	<property value="0">fbw/roll/p-gain</property>
+	<property value="0">fbw/roll/d-gain</property>
 	<property value="0">fbw/yaw/yd-p-gain</property>
 	<property value="0">fbw/yaw/beta-p-gain</property>
 	<property value="0">fbw/yaw/beta-d-gain</property>
@@ -43,21 +45,28 @@
 					<independentVar lookup="column">fbw/gain-switch</independentVar>
 					<tableData>
 						     0     1     2
-						130 -1.70 -0.15  0.00
-						320 -1.20 -0.15  0.00
-						600 -0.44 -0.15  0.00
+						130 -1.80 -0.15  0.00
+						320 -1.30 -0.15  0.00
+						600 -0.58 -0.15  0.00
 						950 -0.24 -0.15  0.00
 					</tableData>
 				</table>
 			</function>
 		</fcs_function>
 		
-		<fcs_function name="fbw/roll/control-clamp-factor">
+		<fcs_function name="fbw/roll/d-gain">
 			<function>
-				<product>
-					<property>fbw/roll/p-gain</property>
-					<value>-0.58823529411764705882352941176471</value> <!-- -1.0 divided by highest P gain -->
-				</product>
+				<table>
+					<independentVar lookup="row">velocities/vc-kts</independentVar>
+					<independentVar lookup="column">fbw/gain-switch</independentVar>
+					<tableData>
+						     0     1
+						130 -0.15  0.00
+						320 -0.09  0.00
+						600 -0.02  0.00
+						950 -0.01  0.00
+					</tableData>
+				</table>
 			</function>
 		</fcs_function>
 		
@@ -159,7 +168,7 @@
 		
 		<lag_filter name="fbw/roll/rate-command">
 			<input>fbw/roll/rate-stick</input>
-			<c1>7.6</c1>
+			<c1>11.3</c1>
 		</lag_filter>
 		
 		<!-- No AP yet! -->
@@ -180,61 +189,38 @@
 			</function>
 		</fcs_function>
 		
-		<fcs_function name="fbw/roll/control-clamp-min">
-			<function>
-				<ifthen>
-					<or>
-						<lt>
-							<property>fbw/roll/aileron-nul</property>
-							<value>0</value>
-						</lt>
-						<nq>
-							<property>fbw/gain-switch</property>
-							<value>0</value>
-						</nq>
-					</or>
-					<value>-1.0</value>
-					<product>
-						<property>fbw/roll/control-clamp-factor</property>
-						<value>-0.2</value>
-					</product>
-				</ifthen>
-			</function>
-		</fcs_function>
-		
-		<fcs_function name="fbw/roll/control-clamp-max">
-			<function>
-				<ifthen>
-					<or>
-						<gt>
-							<property>fbw/roll/aileron-nul</property>
-							<value>0</value>
-						</gt>
-						<nq>
-							<property>fbw/gain-switch</property>
-							<value>0</value>
-						</nq>
-					</or>
-					<value>1.0</value>
-					<product>
-						<property>fbw/roll/control-clamp-factor</property>
-						<value>0.2</value>
-					</product>
-				</ifthen>
-			</function>
-		</fcs_function>
-		
 		<pure_gain name="fbw/roll/rate-control">
 			<input>fbw/roll/rate-error</input>
 			<gain>fbw/roll/p-gain</gain>
 			<clipto>
-				<min>fbw/roll/control-clamp-min</min>
-				<max>fbw/roll/control-clamp-max</max>
+				<min>-1.0</min>
+				<max>1.0</max>
 			</clipto>
 		</pure_gain>
 		
-		<scheduled_gain name="fbw/roll-outer-output">
+		<pid name="fbw/roll/rate-damp-v">
+			<input>velocities/p-rad_sec</input>
+			<kp>0.0</kp>
+			<ki>0.0</ki>
+			<kd>fbw/roll/d-gain</kd>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+			<output>fbw/roll/rate-damp</output>
+		</pid>
+		
+		<summer name="fbw/roll/control-sum">
 			<input>fbw/roll/rate-control</input>
+			<input>fbw/roll/rate-damp</input>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+		</summer>
+		
+		<scheduled_gain name="fbw/roll-outer-output">
+			<input>fbw/roll/control-sum</input>
 			<table>
 				<independentVar lookup="row">velocities/vc-kts</independentVar>
 				<tableData>
@@ -245,7 +231,7 @@
 		</scheduled_gain>
 		
 		<pure_gain name="fbw/roll-inner-output">
-			<input>fbw/roll/rate-control</input>
+			<input>fbw/roll/control-sum</input>
 			<gain>1.0</gain>
 		</pure_gain>
 	
