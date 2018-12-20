@@ -7,11 +7,15 @@
 	
 	<property value="1">fbw/enable</property>
 	<property value="0">fbw/roll/rate-damp</property>
+	<property value="0">fbw/pitch/q-demand</property>
 	<property value="0">fbw/yaw/beta-d</property>
 	
 	<!-- Default gains for tuning -->
 	<property value="0">fbw/roll/p-gain</property>
 	<property value="0">fbw/roll/d-gain</property>
+	<property value="0">fbw/pitch/q-p-gain</property>
+	<property value="0">fbw/pitch/g-p-gain</property>
+	<property value="0">fbw/pitch/g-i-gain</property>
 	<property value="0">fbw/yaw/yd-p-gain</property>
 	<property value="0">fbw/yaw/beta-p-gain</property>
 	<property value="0">fbw/yaw/beta-d-gain</property>
@@ -65,6 +69,52 @@
 						320 -0.09  0.00
 						600 -0.02  0.00
 						950 -0.01  0.00
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fbw/pitch/q-p-gain">
+			<function>
+				<table>
+					<independentVar lookup="row">velocities/vc-kts</independentVar>
+					<independentVar lookup="column">fbw/gain-switch</independentVar>
+					<tableData>
+						     0    1
+						130  8.0  4.5
+						320  3.0  4.5
+						600  1.1  4.5
+						950  0.7  4.5
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fbw/pitch/g-p-gain">
+			<function>
+				<table>
+					<independentVar lookup="row">velocities/vc-kts</independentVar>
+					<tableData>
+						130 -0.24
+						320 -0.10
+						600 -0.06
+						950 -0.03
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fbw/pitch/g-i-gain">
+			<function>
+				<table>
+					<independentVar lookup="row">velocities/vc-kts</independentVar>
+					<independentVar lookup="column">fbw/gain-switch</independentVar>
+					<tableData>
+						     0      1
+						130 -0.120  0.000
+						320 -0.092  0.000
+						600 -0.070  0.000
+						950 -0.049  0.000
 					</tableData>
 				</table>
 			</function>
@@ -278,6 +328,20 @@
 			</clipto>
 		</summer>
 		
+		<fcs_function name="fbw/pitch/deadzone">
+			<function>
+				<table>
+					<independentVar lookup="row">fbw/roll/aileron-nul</independentVar>
+					<tableData>
+						-1.0  0.15
+						-0.5  0.00
+						 0.5  0.00
+						 1.0  0.15
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
 		<switch name="fbw/pitch/alpha-switched">
 			<default value="aero/alpha-deg"/>
 			<test value="0">
@@ -289,6 +353,203 @@
 			<input>fbw/pitch/alpha-switched</input>
 			<c1>10</c1>
 		</lag_filter>
+		
+		<fcs_function name="fbw/pitch/alpha-pitch-feed">
+			<function>
+				<table>
+					<independentVar lookup="row">fbw/pitch/alpha-lag</independentVar>
+					<tableData>
+						26  0.0
+						28  0.5
+						30  1.0
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fbw/pitch/elevator-modified-min">
+			<function>
+				<table>
+					<independentVar lookup="row">fbw/pitch/alpha-lag</independentVar>
+					<tableData>
+						22 -1.00
+						25 -0.85
+						29  0.00
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fbw/pitch/elevator-modified">
+			<function>
+				<product>
+					<quotient>
+						<property>fbw/pitch/elevator-nul</property>
+						<pow>
+							<value>1</value>
+							<property>fbw/pitch/elevator-nul</property>
+						</pow>
+					</quotient>
+					<product>
+						<max>
+							<value>0</value>
+							<difference>
+								<abs>
+									<property>fbw/pitch/elevator-nul</property>
+								</abs>
+								<property>fbw/pitch/deadzone</property>
+							</difference>
+						</max>
+						<quotient>
+							<value>1.0</value>
+							<difference>
+								<value>1.0</value>
+								<property>fbw/pitch/deadzone</property>
+							</difference>
+						</quotient>
+					</product>
+				</product>
+			</function>
+			<clipto>
+				<min>fbw/pitch/elevator-modified-min</min>
+				<max>1.0</max>
+			</clipto>
+		</fcs_function>
+		
+		<summer name="fbw/pitch/g-command-input">
+			<input>fbw/pitch/elevator-modified</input>
+			<input>fbw/pitch/alpha-pitch-feed</input>
+		</summer>
+		
+		<fcs_function name="fbw/pitch/g-command">
+			<function>
+				<sum>
+					<product> <!-- Reduces stick sensitivity at low speeds -->
+						<difference>
+							<sum>
+								<table>
+									<independentVar lookup="row">fbw/pitch/g-command-input</independentVar>
+									<tableData>
+										-1.000 10.5
+										-0.900  8.5 <!-- A slight null zone for the elastic stop -->
+										-0.850  8.5
+										 0.000  1.0
+										 1.000 -3.5
+									</tableData>
+								</table>
+								<product> <!-- Equals +/-1.0G -->
+									<property>fbw/pitch/elevator-trim-nul</property>
+									<value>-1.0</value>
+								</product>
+							</sum>
+							<value>1.0</value>
+						</difference>
+						<table>
+							<independentVar lookup="row">velocities/mach</independentVar>
+							<tableData>
+								0.2  0.25
+								0.3  0.50
+								0.5  1.00
+							</tableData>
+						</table>
+					</product>
+					<value>1.0</value>
+				</sum>
+			</function>
+			<clipto>
+				<min>-3.5</min>
+				<max>10.5</max>
+			</clipto>
+		</fcs_function>
+		
+		<lag_filter name="fbw/pitch/g-command-lag">
+			<input>fbw/pitch/g-command</input>
+			<c1>8.1</c1>
+		</lag_filter>
+		
+		<!--switch name="fbw/pitch/g-demand">
+			<default value="fbw/pitch/g-command-lag"/>
+			<test value="fbw/ap/g-cmd">
+				fbw/ap/pitch-enabled eq 1
+			</test>
+		</switch-->
+		
+		<pure_gain name="fbw/pitch/instrumented-g">
+			<input>/accelerations/pilot-g</input>
+			<gain>1.0</gain>
+			<output>/instrumentation/g-meter/instrumented-g</output>
+		</pure_gain>
+		
+		<fcs_function name="fbw/pitch/g-error">
+			<function>
+				<difference>
+					<property>fbw/pitch/instrumented-g</property>
+					<!--property>fbw/pitch/g-demand</property--> <!-- No AP yet! -->
+					<property>fbw/pitch/g-command-lag</property>
+				</difference>
+			</function>
+		</fcs_function>
+		
+		<switch name="fbw/pitch/g-trigger">
+			<default value="0"/>
+			<test value="-1">
+				fbw/gain-switch gt 0
+			</test>
+			<test logic="OR" value="1">
+				fbw/pitch/q-demand le -0.999
+				fbw/pitch/q-demand ge 0.999
+			</test>
+		</switch>
+		
+		<pid name="fbw/pitch/g-pid-v">
+			<input>fbw/pitch/g-error</input>
+			<kp>fbw/pitch/g-p-gain</kp>
+			<ki>fbw/pitch/g-i-gain</ki>
+			<kd>0.0</kd>
+			<trigger>fbw/pitch/g-trigger</trigger>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+			<output>fbw/pitch/q-demand</output>
+		</pid>
+		
+		<fcs_function name="fbw/pitch/q-error">
+			<function>
+				<difference>
+					<property>velocities/q-rad_sec</property>
+					<product>
+						<property>fbw/pitch/q-demand</property>
+						<value>0.523599</value>
+						<!-- For tuning/testing only -->
+						<!--property>fbw/pitch/elevator-nul</property>
+						<value>-0.523599</value-->
+					</product>
+				</difference>
+			</function>
+		</fcs_function>
+		
+		<pure_gain name="fbw/pitch/q-final">
+			<input>fbw/pitch/q-error</input>
+			<gain>fbw/pitch/q-p-gain</gain>
+			<clipto>
+				<min>-1.0</min>
+				<max>0.64</max>
+			</clipto>
+		</pure_gain>
+		
+		<fcs_function name="fbw/pitch-output">
+			<function>
+				<table>
+					<independentVar lookup="row">fbw/pitch/q-final</independentVar>
+					<tableData>
+						-1.00 -1.0
+						 0.00  0.0
+						 0.64  1.0
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
 	
 	</channel>
 	
@@ -340,8 +601,8 @@
 					<independentVar lookup="column">attitude/roll-rad</independentVar>
 					<tableData>
 						    0.000000  0.174533
-						12 -1.0      -1.0
-						18 -1.0       0.0
+						22 -1.0      -1.0
+						28 -1.0       0.0
 					</tableData>
 				</table>
 			</function>
@@ -354,8 +615,8 @@
 					<independentVar lookup="column">attitude/roll-rad</independentVar>
 					<tableData>
 						   -0.174533  0.000000
-						12  1.0       1.0
-						18  0.0       1.0
+						22  1.0       1.0
+						28  0.0       1.0
 					</tableData>
 				</table>
 			</function>
@@ -506,7 +767,7 @@
 		</switch>
 		
 		<switch name="fcs/pitch-input">
-			<default value="fcs/elevator-sum"/>
+			<default value="fbw/pitch-output"/>
 			<test value="fcs/elevator-sum">
 				fbw/enable eq 0
 			</test>
