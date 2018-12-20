@@ -229,15 +229,11 @@
 			</test>
 		</switch-->
 		
-		<fcs_function name="fbw/roll/rate-error">
-			<function>
-				<difference>
-					<property>velocities/p-rad_sec</property>
-					<!--property>fbw/roll/rate-demand</property--> <!-- No AP yet! -->
-					<property>fbw/roll/rate-command</property>
-				</difference>
-			</function>
-		</fcs_function>
+		<summer name="fbw/roll/rate-error">
+			<input>velocities/p-rad_sec</input>
+			<!--input>-fbw/roll/rate-demand</input--> <!-- No AP yet! -->
+			<input>-fbw/roll/rate-command</input>
+		</summer>
 		
 		<pure_gain name="fbw/roll/rate-control">
 			<input>fbw/roll/rate-error</input>
@@ -480,15 +476,11 @@
 			<output>/instrumentation/g-meter/instrumented-g</output>
 		</pure_gain>
 		
-		<fcs_function name="fbw/pitch/g-error">
-			<function>
-				<difference>
-					<property>fbw/pitch/instrumented-g</property>
-					<!--property>fbw/pitch/g-demand</property--> <!-- No AP yet! -->
-					<property>fbw/pitch/g-command-lag</property>
-				</difference>
-			</function>
-		</fcs_function>
+		<summer name="fbw/pitch/g-error">
+			<input>fbw/pitch/instrumented-g</input>
+			<!--input>-fbw/pitch/g-demand</input--> <!-- No AP yet! -->
+			<input>-fbw/pitch/g-command-lag</input>
+		</summer>
 		
 		<switch name="fbw/pitch/g-trigger">
 			<default value="0"/>
@@ -685,14 +677,10 @@
 			</function>
 		</fcs_function>
 		
-		<fcs_function name="fbw/yaw/beta-error">
-			<function>
-				<difference>
-					<property>aero/beta-rad</property>
-					<property>fbw/yaw/beta-cmd</property>
-				</difference>
-			</function>
-		</fcs_function>
+		<summer name="fbw/yaw/beta-error">
+			<input>aero/beta-rad</input>
+			<input>-fbw/yaw/beta-cmd</input>
+		</summer>
 		
 		<pure_gain name="fbw/yaw/beta-p">
 			<input>fbw/yaw/beta-error</input>
