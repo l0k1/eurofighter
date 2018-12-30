@@ -355,9 +355,8 @@
 				<table>
 					<independentVar lookup="row">fbw/pitch/alpha-lag</independentVar>
 					<tableData>
-						26  0.0
-						28  0.5
-						30  1.0
+						24  0.0
+						34  1.0
 					</tableData>
 				</table>
 			</function>
@@ -368,8 +367,8 @@
 				<table>
 					<independentVar lookup="row">fbw/pitch/alpha-lag</independentVar>
 					<tableData>
-						22 -1.00
-						25 -0.85
+						17 -1.00
+						20 -0.85
 						29  0.00
 					</tableData>
 				</table>
@@ -593,7 +592,7 @@
 					<independentVar lookup="column">attitude/roll-rad</independentVar>
 					<tableData>
 						    0.000000  0.174533
-						22 -1.0      -1.0
+						20 -1.0      -1.0
 						28 -1.0       0.0
 					</tableData>
 				</table>
@@ -607,7 +606,7 @@
 					<independentVar lookup="column">attitude/roll-rad</independentVar>
 					<tableData>
 						   -0.174533  0.000000
-						22  1.0       1.0
+						20  1.0       1.0
 						28  0.0       1.0
 					</tableData>
 				</table>
