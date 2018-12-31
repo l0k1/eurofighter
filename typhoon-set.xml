@@ -131,7 +131,11 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 		</flaps>
 	</sim>
 
-	<controls><canopy><position-norm>0</position-norm></canopy></controls>
+	<controls>
+		<canopy>
+			<position-norm>0</position-norm>
+		</canopy>
+	</controls>
 
 	<!--<systems include="typhoon-systems.xml" />-->
 	<identification>
@@ -316,10 +320,15 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 		</jsbsim>
 	</fdm>
 
+	<velocities n="0">
+		<groundspeed-kt>0</groundspeed-kt>
+	</velocities>
+
 <!-- Nasal files/scripts -->
 	<nasal>
-		<dialog> <file>Aircraft/eurofighter/Nasal/dialogs.nas</file> </dialog>
-		
+		<dialog> 
+			<file>Aircraft/eurofighter/Nasal/dialogs.nas</file>
+		</dialog>
 	</nasal>
 	
 </PropertyList>

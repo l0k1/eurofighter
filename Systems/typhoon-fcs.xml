@@ -971,6 +971,31 @@
 	
 	</channel>
 	
+	<channel name="Nose Wheel">
+		
+		<fcs_function name="fcs/steer-function">
+			<function>
+				<table>
+					<independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
+					<independentVar lookup="column">/controls/flight/rudder</independentVar>
+					<tableData>
+							   -1     0    1
+						 0.500  00.0  0.0  00.0
+						 1.000 -45.0  0.0  45.0
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<actuator name="fcs/steer-deg">
+			<input>fcs/steer-function</input>
+			<rate_limit>140</rate_limit>
+			<output>fcs/steer-pos-deg</output>
+			<output>/sim/multiplay/generic/float[14]</output>
+		</actuator>
+	
+	</channel>
+	
 	<channel name="Airbrake">
 		
 		<kinematic name="fcs/airbrake-k">

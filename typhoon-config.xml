@@ -37,7 +37,7 @@
 			<float n="11" alias="engines/engine[0]/reheat" /> <!-- Reheat Left Engine -->
 			<float n="12" alias="engines/engine[1]/reheat" /> <!-- Reheat Right Engine -->
 			<float n="13">0</float> <!-- Airbrake -->
-			<float n="14" alias="engines/engine[1]/n1" /> <!-- Right Engine -->
+			<float n="14">0</float> <!-- Nose Gear -->
 			<float n="15" alias="velocities/mach" /> <!-- Mach for Multiplayer Sound -->
 			<float n="16" alias="engines/engine[0]/thrust-lbs" /> <!-- Thrust for Multiplayer Sound -->
 			<float n="17" alias="engines/engine[1]/thrust-lbs" /> <!-- Thrust for Multiplayer Sound -->
