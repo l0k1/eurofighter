@@ -282,4 +282,30 @@
         <!--        <script>hud.switch_distance()</script>-->
       </binding>
     </key>
+	<key n="120">
+		<name>x</name>
+		<desc>Decrease field of view</desc>
+		<repeatable type="bool">true</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>libraries.fovZoom(-1);</script>
+		</binding>
+	</key>
+	<key n="24">
+		<name>Ctrl-x</name>
+		<desc>Reset zoom to default</desc>
+		<binding>
+			<command>nasal</command>
+			<script>libraries.fovZoom(0);</script>
+		</binding>
+	</key>
+	<key n="88">
+		<name>X</name>
+		<desc>Increase field of view</desc>
+		<repeatable type="bool">true</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>libraries.fovZoom(1);</script>
+		</binding>
+	</key>
 </PropertyList>

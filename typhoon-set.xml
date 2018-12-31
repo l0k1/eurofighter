@@ -142,7 +142,43 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 		<aircraft-number type="string" archive="y">XP-210</aircraft-number>
 		<pilot-name type="string" archive="y"></pilot-name>
 	</identification>
-	<input>
+	<input n="0">
+		<mice n="0">
+			<mouse n="0">
+				<mode n="0">
+					<button n="3">
+						<binding n="0">
+							<script></script>
+						</binding>
+						<binding n="1">
+							<condition>
+								<and>
+									<property>/devices/status/mice/mouse[0]/button[2]</property>
+									<not><property>/sim/mouse/right-button-mode-cycle-enabled</property></not>
+								</and>
+							</condition>
+							<command>nasal</command>
+							<script>libraries.fovZoom(-1);</script>
+						</binding>
+					</button>
+					<button n="4">
+						<binding n="0">
+							<script></script>
+						</binding>
+						<binding n="1">
+							<condition>
+								<and>
+									<property>/devices/status/mice/mouse[0]/button[2]</property>
+									<not><property>/sim/mouse/right-button-mode-cycle-enabled</property></not>
+								</and>
+							</condition>
+							<command>nasal</command>
+							<script>libraries.fovZoom(1);</script>
+						</binding>
+					</button>
+				</mode>
+			</mouse>
+		</mice>
 		<keyboard include="Input/typhoon-keyboard.xml" />
 	</input>
 	<!--canopy>
@@ -329,6 +365,9 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 		<dialog> 
 			<file>Aircraft/eurofighter/Nasal/dialogs.nas</file>
 		</dialog>
+		<libraries>
+			<file>Aircraft/eurofighter/Nasal/zoom-views.nas</file>
+		</libraries>
 	</nasal>
 	
 </PropertyList>

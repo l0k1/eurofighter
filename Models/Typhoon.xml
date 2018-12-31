@@ -597,11 +597,11 @@
 		<object-name>nosewheel.5</object-name>
 		<object-name>nosewheel.6</object-name>
 		<property>gear/gear[0]/rollspeed-ms</property>
-		<factor>9</factor>
+		<factor>10</factor>
 		<center>
-			<x-m>-2.67717</x-m>
-			<y-m>-0.00675</y-m>
-			<z-m>-1.89795</z-m>
+			<x-m>-2.67842</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-1.9001</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
@@ -866,11 +866,11 @@
 		<object-name>wheel1.L</object-name>
 		<object-name>wheel2.L</object-name>
 		<property>gear/gear[1]/rollspeed-ms</property>
-		<factor>4</factor>
+		<factor>10</factor>
 		<center>
-			<x-m> 1.39874</x-m>
-			<y-m>-2.16168</y-m>
-			<z-m>-1.52194</z-m>
+			<x-m>1.39834</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-1.52574</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
@@ -1128,11 +1128,11 @@
 		<object-name>wheel1.R</object-name>
 		<object-name>wheel2.R</object-name>
 		<property>gear/gear[2]/rollspeed-ms</property>
-		<factor>4</factor>
+		<factor>10</factor>
 		<center>
-			<x-m> 1.39796</x-m>
-			<y-m> 2.16140</y-m>
-			<z-m>-1.53044</z-m>
+			<x-m>1.39834</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-1.52574</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
