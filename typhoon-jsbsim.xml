@@ -42,7 +42,7 @@
 	</metrics>
 	
 	<mass_balance>
-		<ixx unit="SLUG*FT2"> 26430.65 </ixx>
+		<ixx unit="SLUG*FT2"> 11265.32 </ixx>
 		<iyy unit="SLUG*FT2"> 59659.78 </iyy>
 		<izz unit="SLUG*FT2"> 61658.53 </izz>
 		
