@@ -917,7 +917,7 @@
 		
 		<actuator name="fcs/rudder-deg">
 			<input>fcs/yaw-input-deg</input>
-			<rate_limit>105</rate_limit>
+			<rate_limit>145</rate_limit>
 			<lag>24.7</lag>
 			<output>/sim/multiplay/generic/float[6]</output>
 		</actuator>
