@@ -797,7 +797,7 @@
 		
 		<actuator name="fcs/elevon-1L-deg">
 			<input>fcs/elevon-1L-cmd</input>
-			<rate_limit>1150</rate_limit> <!-- 46 * 25 degrees -->
+			<rate_limit>100</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[2]</output>
 		</actuator>
@@ -820,7 +820,7 @@
 		
 		<actuator name="fcs/elevon-1R-deg">
 			<input>fcs/elevon-1R-cmd</input>
-			<rate_limit>1150</rate_limit> <!-- 46 * 25 degrees -->
+			<rate_limit>100</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[5]</output>
 		</actuator>
@@ -840,7 +840,7 @@
 		
 		<actuator name="fcs/elevon-2L-deg">
 			<input>fcs/elevon-2L-cmd</input>
-			<rate_limit>1150</rate_limit> <!-- 46 * 25 degrees -->
+			<rate_limit>100</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[3]</output>
 		</actuator>
@@ -863,7 +863,7 @@
 		
 		<actuator name="fcs/elevon-2R-deg">
 			<input>fcs/elevon-2R-cmd</input>
-			<rate_limit>1150</rate_limit> <!-- 46 * 25 degrees -->
+			<rate_limit>100</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[4]</output>
 		</actuator>
@@ -883,14 +883,14 @@
 		
 		<actuator name="fcs/foreplane-L-deg">
 			<input>fcs/foreplane-cmd</input>
-			<rate_limit>1152</rate_limit> <!-- 72 * 16 degrees -->
+			<rate_limit>75</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[0]</output>
 		</actuator>
 		
 		<actuator name="fcs/foreplane-R-deg">
 			<input>fcs/foreplane-cmd</input>
-			<rate_limit>1152</rate_limit> <!-- 72 * 16 degrees -->
+			<rate_limit>75</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[1]</output>
 		</actuator>
@@ -917,7 +917,7 @@
 		
 		<actuator name="fcs/rudder-deg">
 			<input>fcs/yaw-input-deg</input>
-			<rate_limit>3150</rate_limit> <!-- 126 * 25 degrees -->
+			<rate_limit>105</rate_limit>
 			<lag>24.7</lag>
 			<output>/sim/multiplay/generic/float[6]</output>
 		</actuator>
