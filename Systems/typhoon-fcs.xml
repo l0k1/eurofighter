@@ -883,14 +883,14 @@
 		
 		<actuator name="fcs/foreplane-L-deg">
 			<input>fcs/foreplane-cmd</input>
-			<rate_limit>75</rate_limit>
+			<rate_limit>125</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[0]</output>
 		</actuator>
 		
 		<actuator name="fcs/foreplane-R-deg">
 			<input>fcs/foreplane-cmd</input>
-			<rate_limit>75</rate_limit>
+			<rate_limit>125</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[1]</output>
 		</actuator>
