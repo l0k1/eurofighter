@@ -2,69 +2,75 @@
 <?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
 
 <fdm_config name="typhoon" version="2.0" release="ALPHA"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
-
- <fileheader>
-  <author> Aeromatic v 3.3.10 </author>
-  <filecreationdate> 08 Dec 2018 </filecreationdate>
-  <version>$Revision: 1.80 $</version>
-  <description> Models a typhoon. </description>
- </fileheader>
-
- <metrics>
-   <wingarea  unit="FT2">   538.20 </wingarea>
-   <wingspan  unit="FT" >    35.93 </wingspan>
-   <wing_incidence unit="DEG"> 2.00 </wing_incidence>
-   <chord     unit="FT" >    87.43 </chord>
-   <htailarea unit="FT2">   107.64 </htailarea>
-   <htailarm  unit="FT" >    20.94 </htailarm>
-   <vtailarea  unit="FT2">   64.58 </vtailarea>
-   <vtailarm  unit="FT" >    20.94 </vtailarm>
-   <location name="AERORP" unit="M">
-     <x>    1.00603 </x>
-     <y>       0.00 </y>
-     <z>  -0.240554 </z>
-   </location>
-   <location name="EYEPOINT" unit="M">
-     <x>   -3.87599 </x>
-     <y>       0.00 </y>
-     <z>    1.25469 </z>
-   </location>
-   <location name="VRP" unit="M">
-     <x>     0.0 </x>
-     <y>     0.0 </y>
-     <z>     0.0 </z>
-   </location>
- </metrics>
-
- <mass_balance>
-   <ixx unit="SLUG*FT2">  20430.65 </ixx>
-   <iyy unit="SLUG*FT2">  59659.78 </iyy>
-   <izz unit="SLUG*FT2">  61658.53 </izz>
-   <emptywt unit="LBS" >  24243.97 </emptywt>
-   <location name="CG" unit="IN">
-     <x>    0.90603 </x>
-     <y>       0.00 </y>
-     <z>  -0.140554 </z>
-   </location>
- </mass_balance>
-
- <propulsion file="Aero/typhoon-propulsion.xml"/>
-
- <ground_reactions file="Aero/typhoon-ground-reactions.xml"/>
-
- <system file="propulsion.xml"/>
- <system file="aircraftcontrol.xml"/>
- <system file="landinggear.xml"/>
- <system file="speedbrake.xml"/>
- <system file="arrestorhook.xml"/>
- <system file="dragchute.xml"/>
-
- <flight_control name="none"/>
-
- <aerodynamics file="Aero/typhoon-aero.xml"/>
-
- <external_reactions file="Aero/typhoon-external-forces.xml"/>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+	
+	<fileheader>
+		<author> Aeromatic v3.3.10, Joshua Davidson (it0uchpods) </author>
+		<filecreationdate> 08 Dec 2018 </filecreationdate>
+		<version> 0.0 </version>
+		<description> Eurofighter Typhoon JSBsim </description>
+	</fileheader>
+	
+	<metrics>
+		<wingarea  unit="FT2">    538.20 </wingarea>
+		<wingspan  unit="FT" >     35.93 </wingspan>
+		<wing_incidence unit="DEG"> 1.02 </wing_incidence>
+		<chord     unit="FT" >     11.43 </chord>
+		<htailarea unit="FT2">    107.64 </htailarea>
+		<htailarm  unit="FT" >     20.94 </htailarm>
+		<vtailarea unit="FT2">     64.58 </vtailarea>
+		<vtailarm  unit="FT" >     20.94 </vtailarm>
+		
+		<location name="AERORP" unit="M">
+			<x> 0.76603 </x>
+			<y> 0.0 </y>
+			<z> -0.240554 </z>
+		</location>
+		
+		<location name="EYEPOINT" unit="M">
+			<x> -3.87599 </x>
+			<y> 0.0 </y>
+			<z> 1.25469 </z>
+		</location>
+		
+		<location name="VRP" unit="M">
+			<x> 0.0 </x>
+			<y> 0.0 </y>
+			<z> 0.0 </z>
+		</location>
+	</metrics>
+	
+	<mass_balance>
+		<ixx unit="SLUG*FT2"> 11265.32 </ixx>
+		<iyy unit="SLUG*FT2"> 59659.78 </iyy>
+		<izz unit="SLUG*FT2"> 61658.53 </izz>
+		
+		<ixy unit="SLUG*FT2">        0 </ixy>
+		<ixz unit="SLUG*FT2">        0 </ixz>
+		<iyz unit="SLUG*FT2">        0 </iyz>
+		<emptywt unit="LBS" > 24243.97 </emptywt>
+		
+		<location name="CG" unit="M">
+			<x> 0.90603 </x>
+			<y> 0.0 </y>
+			<z> -0.140554 </z>
+		</location>
+	</mass_balance>
+	
+	<propulsion file="Aero/typhoon-propulsion.xml"/>
+	
+	<ground_reactions file="Aero/typhoon-ground-reactions.xml"/>
+	
+	<system file="propulsion"/>
+	<system file="typhoon-fcs"/>
+	<system file="arrestorhook"/>
+	<system file="dragchute"/>
+	
+	<flight_control name="none"/>
+	
+	<aerodynamics file="Aero/typhoon-aero.xml"/>
+	
+	<external_reactions file="Aero/typhoon-external-forces.xml"/>
 
 </fdm_config>
