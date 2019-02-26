@@ -249,7 +249,25 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 	<fdm>
 		<jsbsim>
 			<systems>
+				<apu>
+					<spinrate type="double">0</spinrate>
+					<switch type="double">0</switch>
+					<power type="double">0</power>
+				</apu>
 				<electric>
+					<sources>
+						<ext-power-connected type="double">0</ext-power-connected>
+						<ext-power-norm type="double">0</ext-power-norm>
+						<engine0-norm type="double">0</engine0-norm>
+						<engine1-norm type="double">0</engine1-norm>
+						<apu-norm type="double">0</apu-norm>
+						<battery-pre type="double">0</battery-pre>
+						<battery-norm type="double">0</battery-norm>
+						<battery-drain type="double">0</battery-drain>
+						<battery-switch type="double">0</battery-switch>
+						<output-norm type="double">0</output-norm>
+					</sources>
+
 					<input>
 						<!-- switches and 2-state buttons-->
 						<battery type="double">0</battery>
@@ -300,6 +318,19 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 						<!--knobbins-->
 					</output>
 				</electric>
+				<hydraulic>
+					<contents-tank type="double" n="0">0</contents-tank>
+					<contents-system type="double" n="0">0</contents-system>
+					<pressure type="double" n="0">0</pressure>
+					<usage type="double" n="0">0</usage>
+					<output type="double" n="0">0</output>
+					<contents-tank type="double" n="1">0</contents-tank>
+					<contents-system type="double" n="1">0</contents-system>
+					<pressure type="double" n="1">0</pressure>
+					<usage type="double" n="1">0</usage>
+					<output type="double" n="1">0</output>
+					<xfeed type="double">0</xfeed>
+				</hydraulic>
 			</systems>
 
 

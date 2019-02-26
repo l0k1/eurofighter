@@ -8,8 +8,8 @@ props needed:
 systems/apu/spinrate
 systems/electric/sources/ext-power-connected
 systems/electric/sources/ext-power-norm
-systems/electric/sources/engine[0]-norm
-systems/electric/sources/engine[1]-norm
+systems/electric/sources/engine0-norm
+systems/electric/sources/engine1-norm
 systems/electric/sources/apu-norm
 systems/electric/sources/battery-pre
 systems/electric/sources/battery-norm
@@ -31,7 +31,7 @@ systems/electric/sources/output-norm
 		</switch>
 
 		<!-- engine 0 -->
-		<fcs_function name="trash/systems/electric/sources/engine[0]-norm">
+		<fcs_function name="trash/systems/electric/sources/engine0-norm">
 			<function>
 				<table>
 					<independentVar lookup="row">propulsion/engine[0]/n1</independentVar>
@@ -41,11 +41,11 @@ systems/electric/sources/output-norm
 					</tableData>
 				</table>
 			</function>
-			<output>systems/electric/sources/engine[0]-norm</output>
+			<output>systems/electric/sources/engine0-norm</output>
 		</fcs_function>
 		
 		<!-- engine 1 -->
-		<fcs_function name="trash/systems/electric/sources/engine[1]-norm">
+		<fcs_function name="trash/systems/electric/sources/engine1-norm">
 			<function>
 				<table>
 					<independentVar lookup="row">propulsion/engine[1]/n1</independentVar>
@@ -55,7 +55,7 @@ systems/electric/sources/output-norm
 					</tableData>
 				</table>
 			</function>
-			<output>systems/electric/sources/engine[1]-norm</output>
+			<output>systems/electric/sources/engine1-norm</output>
 		</fcs_function>
 		
 		<!-- apu -->
@@ -84,8 +84,8 @@ systems/electric/sources/output-norm
 					<!-- charge rate -->
 					<quotient>
 						<max>
-							<property>systems/electric/sources/engine[0]-norm</property>
-							<property>systems/electric/sources/engine[1]-norm</property>
+							<property>systems/electric/sources/engine0-norm</property>
+							<property>systems/electric/sources/engine1-norm</property>
 							<property>systems/electric/sources/apu-norm</property>
 							<property>systems/electric/sources/ext-power-norm</property>
 						</max>
@@ -97,19 +97,19 @@ systems/electric/sources/output-norm
 							<gt>
 								<property>systems/electric/sources/battery-norm</property>
 								<max>
-									<property>systems/electric/sources/engine[0]-norm</property>
-									<property>systems/electric/sources/engine[1]-norm</property>
+									<property>systems/electric/sources/engine0-norm</property>
+									<property>systems/electric/sources/engine1-norm</property>
 									<property>systems/electric/sources/apu-norm</property>
 									<property>systems/electric/sources/ext-power-norm</property>
 								</max>
 							</gt>
 							<eq>
-								<property>systems/electric/sources/battery-switch<property>
+								<property>systems/electric/sources/battery-switch</property>
 								<value>1</value>
 							</eq>
 						</and>
 						<property>systems/electric/sources/battery-drain</property>
-						</value>0</value>
+						<value>0</value>
 					</ifthen>
 					<property>systems/electric/sources/battery-pre</property>
 				</sum>
@@ -135,8 +135,8 @@ systems/electric/sources/output-norm
 		<fcs_function name="trash/systems/electric/sources/output-norm">
 			<function>
 				<max>
-					<property>systems/electric/sources/engine[0]-norm</property>
-					<property>systems/electric/sources/engine[1]-norm</property>
+					<property>systems/electric/sources/engine0-norm</property>
+					<property>systems/electric/sources/engine1-norm</property>
 					<property>systems/electric/sources/apu-norm</property>
 					<property>systems/electric/sources/ext-power-norm</property>
 					<property>systems/electric/sources/battery-norm</property>

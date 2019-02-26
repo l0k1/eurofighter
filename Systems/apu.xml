@@ -18,7 +18,7 @@ systems/apu/power
 		<switch name="trash/systems/apu/switch">
 			<default value="systems/apu/switch"/>
 			<test logic="OR" value="0">
-				systems/fuel/tank[123]/contents-lbs == 0.0
+				propulsion/tank[0]/contents-lbs == 0.0
 				systems/electric/sources/output-norm lt 0.5
 			</test>
 			<output>systems/apu/switch</output>
@@ -29,7 +29,7 @@ systems/apu/power
 		<switch name="trash/systems/apu/power">
 			<default value="0"/>
 			<test logic="AND" value="1">
-				systems/fuel/tank[123]/contents-lbs gt 0.0
+				propulsion/tank[0]/contents-lbs gt 0.0
 				systems/electric/sources/output-norm gt 0.5
 				systems/apu/switch == 1
 			</test>
@@ -40,7 +40,7 @@ systems/apu/power
 
 		<lag_filter name="trash/systems/apu/spinrate">
 			<input>systems/apu/power</input>
-			<c1>1.5</c1> <!-- test me -->
+			<c1>1.9</c1> <!-- test me -->
 			<clipto>
 				<min>0</min>
 				<max>1</max>
