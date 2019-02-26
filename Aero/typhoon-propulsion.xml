@@ -14,7 +14,7 @@
        <roll>     0.00 </roll>
         <yaw>     0.00 </yaw>
     </orient>
-    <feed> 0 </feed>
+    <feed> 10 </feed>
 
     <thruster file="direct">
      <sense> 1 </sense>
@@ -42,7 +42,7 @@
        <roll>     0.00 </roll>
         <yaw>     0.00 </yaw>
     </orient>
-    <feed> 1 </feed>
+    <feed> 11 </feed>
 
     <thruster file="direct">
      <sense> 1 </sense>
@@ -59,32 +59,141 @@
     </thruster>
   </engine>
 
+<!-- 
+tank list:
+0 - fore tank - 2028
+1 - mid tank - 2095
+2 - aft tank - 1962
+3 - foreleft wing tank - 1080
+4 - aftleft wing tank - 1080
+5 - foreright wing tank - 1080
+6 - aftright wing tank - 1080
+7 - center drop tank
+8 - left drop tank
+9 - right drop tank
+10 - left accumulator - 2
+11 - right accumulator - 2
+-->
+
+  <!-- fore -->
   <tank type="FUEL" number="0"> <!--  Tanks are at CG so they do not interfere with Aero tuning -->
      <location unit="M">
 		<x> 0.90603 </x>
 		<y> 0.0 </y>
 		<z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 3583.01 </capacity>
-     <contents unit="LBS"> 1791.51 </contents>
+     <capacity unit="LBS"> 2028.00 </capacity>
+     <contents unit="LBS"> 2028.00 </contents>
   </tank>
+  <!-- mid -->
   <tank type="FUEL" number="1">
      <location unit="M">
 		<x> 0.90603 </x>
 		<y> 0.0 </y>
 		<z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 3583.01 </capacity>
-     <contents unit="LBS"> 1791.51 </contents>
+     <capacity unit="LBS"> 2095.00 </capacity>
+     <contents unit="LBS"> 2095.00 </contents>
   </tank>
+  <!-- aft -->
   <tank type="FUEL" number="2">
      <location unit="M">
 		<x> 0.90603 </x>
 		<y> 0.0 </y>
 		<z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 3583.01 </capacity>
-     <contents unit="LBS"> 1791.51 </contents>
+     <capacity unit="LBS"> 1962.00 </capacity>
+     <contents unit="LBS"> 1962.00 </contents>
+  </tank>
+  <!-- foreleft -->
+  <tank type="FUEL" number="2">
+     <location unit="M">
+    <x> 0.90603 </x>
+    <y> 0.0 </y>
+    <z> -0.140554 </z>
+     </location>
+     <capacity unit="LBS"> 1080.00 </capacity>
+     <contents unit="LBS"> 1080.00 </contents>
+  </tank>
+  <!-- aftleft -->
+  <tank type="FUEL" number="2">
+     <location unit="M">
+    <x> 0.90603 </x>
+    <y> 0.0 </y>
+    <z> -0.140554 </z>
+     </location>
+     <capacity unit="LBS"> 1080.00 </capacity>
+     <contents unit="LBS"> 1080.00 </contents>
+  </tank>
+  <!-- foreright -->
+  <tank type="FUEL" number="2">
+     <location unit="M">
+    <x> 0.90603 </x>
+    <y> 0.0 </y>
+    <z> -0.140554 </z>
+     </location>
+     <capacity unit="LBS"> 1080.00 </capacity>
+     <contents unit="LBS"> 1080.00 </contents>
+  </tank>
+  <!-- aftright -->
+  <tank type="FUEL" number="2">
+     <location unit="M">
+    <x> 0.90603 </x>
+    <y> 0.0 </y>
+    <z> -0.140554 </z>
+     </location>
+     <capacity unit="LBS"> 1080.00 </capacity>
+     <contents unit="LBS"> 1080.00 </contents>
+  </tank>
+  <!-- center drop tank -->
+  <tank type="FUEL" number="2">
+     <location unit="M">
+    <x> 0.90603 </x>
+    <y> 0.0 </y>
+    <z> -0.140554 </z>
+     </location>
+     <capacity unit="LBS"> 0.0 </capacity>
+     <contents unit="LBS"> 0.0 </contents>
+  </tank>
+  <!-- left drop tank -->
+  <tank type="FUEL" number="2">
+     <location unit="M">
+    <x> 0.90603 </x>
+    <y> 0.0 </y>
+    <z> -0.140554 </z>
+     </location>
+     <capacity unit="LBS"> 0.0 </capacity>
+     <contents unit="LBS"> 0.0 </contents>
+  </tank>
+  <!-- right drop tank -->
+  <tank type="FUEL" number="2">
+     <location unit="M">
+    <x> 0.90603 </x>
+    <y> 0.0 </y>
+    <z> -0.140554 </z>
+     </location>
+     <capacity unit="LBS"> 0.0 </capacity>
+     <contents unit="LBS"> 0.0 </contents>
+  </tank>
+  <!-- left accumulator -->
+  <tank type="FUEL" number="2">
+     <location unit="M">
+    <x> 0.90603 </x>
+    <y> 0.0 </y>
+    <z> -0.140554 </z>
+     </location>
+     <capacity unit="LBS"> 2.0 </capacity>
+     <contents unit="LBS"> 2.0 </contents>
+  </tank>
+  <!-- right accumulator -->
+  <tank type="FUEL" number="2">
+     <location unit="M">
+    <x> 0.90603 </x>
+    <y> 0.0 </y>
+    <z> -0.140554 </z>
+     </location>
+     <capacity unit="LBS"> 2.0 </capacity>
+     <contents unit="LBS"> 2.0 </contents>
   </tank>
 
  </propulsion>
