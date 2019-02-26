@@ -6,6 +6,7 @@ other than fuel tank amounts, most of this info is a best guess.
 fuel tank amounts have been closely estimated based upon the mfd screen
 
 props needed:
+systems/fuel/cg-ratio (0 is fore, 0.5 is centered, 1.0 is aft) use me to balance tanks on the fly
 systems/electric/left-booster
 systems/electric/right-booster
 systems/electric/transfer-boosters
@@ -108,6 +109,34 @@ tank list:
 			</function>
 			<output>systems/fuel/right-boost-pressure</output>
 		</fcs_function>
+
+		<!-- balancing logic -->
+		<!-- because fuel tanks are all at CG right now, this will
+			seek to balance fore and aft tanks. -->
+
+		<fcs_function name="trash/systems/fuel/transfer-balance">
+			<function>
+				<ifthen>
+					<gt>
+						<difference>
+							<product>
+								<sum>
+									<property>propulsion/tank[0]/contents-lbs</property>
+									<property>propulsion/tank[2]/contents-lbs</property>
+								</sum>
+								<property>systems/fuel/cg-ratio</property>
+							</product>
+							<property>propulsion/tank[0]/contents-lbs</property>
+						</difference>
+						<value>0</value>
+					</gt>
+					<value>1</value>
+					<value>-1</value>
+				</ifthen>
+			</function>
+			<output>systems/fuel/transfer-flow</output>
+		</fcs_function>
+			
 		
 		<fcs_function name="trash/systems/fuel/transfer-pressure">
 			<function>
@@ -120,6 +149,7 @@ tank list:
 						</tableData>
 					</table>
 					<property>systems/fuel/transfer-flow</property>
+					<value>-1</value>
 				</product>
 			</function>
 			<output>systems/fuel/transfer-pressure</output>
@@ -242,7 +272,7 @@ tank list:
 			<default value="0"/>
 			<test logic="AND" value="systems/fuel/pressure-flow">
 				propulsion/tank[0]/contents-lbs lt 100
-				propulsion/tank[5]/contents-lbs gt 0.5
+				propulsion/tank[6]/contents-lbs gt 0.5
 				propulsion/tank[2]/contents-lbs lt 1960
 			</test>
 			<output>propulsion/tank[6]/right-aft-to-aft</output>
@@ -265,6 +295,7 @@ tank list:
 		<!-- summers -->
 		<summer name="trash/propulsion/tank[0]/external-flow-rate-pps">
 			<input>-propulsion/tank[0]/fore-to-aft</input>
+			<input>-propulsion/tank[0]/fore-to-aft-xfer</input>
 			<output>propulsion/tank[0]/external-flow-rate-pps</output>
 		</summer>
 		
@@ -279,6 +310,7 @@ tank list:
 			<input>-propulsion/tank[2]/aft-to-left-acc</input>
 			<input>-propulsion/tank[2]/aft-to-right-acc</input>
 			<input>propulsion/tank[0]/fore-to-aft</input>
+			<input>propulsion/tank[0]/fore-to-aft-xfer</input>
 			<input>propulsion/tank[4]/left-aft-to-aft</input>
 			<input>propulsion/tank[6]/right-aft-to-aft</input>
 			<output>propulsion/tank[2]/external-flow-rate-pps</output>

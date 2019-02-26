@@ -353,6 +353,7 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 					<left-lpcock type="double">1</left-lpcock>
 					<right-lpcock type="double">1</right-lpcock>
 					<xfeed type="double">1</xfeed>
+					<cg-ratio type="double">0.5</cg-ratio>
 				</fuel>
 
 			</systems>
