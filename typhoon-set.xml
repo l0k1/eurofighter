@@ -15,7 +15,6 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 		<aircraft-version>1.5X</aircraft-version>
 		<flight-model>jsb</flight-model>
 		<aero>typhoon-jsbsim</aero>
-		<fuel-fraction>0.6</fuel-fraction>
 		<startup>
 			<splash-texture>Aircraft/eurofighter/Splash2.jpg</splash-texture>
 		</startup>
@@ -192,42 +191,52 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 	<consumables>
 		<fuel>
 			<tank n="0">
-				<name>forward fuselage Tank</name>
+				<name>Fore</name>
 				<selected type="bool">true</selected>
-				<kill-when-empty type="bool">false</kill-when-empty>
-				<level-gal_us archive="y">500</level-gal_us>
 			</tank>
 			<tank n="1">
-				<name>rear fuselage Tank</name>
+				<name>Mid</name>
 				<selected type="bool">true</selected>
 			</tank>
 			<tank n="2">
-				<name>forward left wing Tank</name>
+				<name>Aft</name>
 				<selected type="bool">true</selected>
 			</tank>
 			<tank n="3">
-				<name>rear left wing Tank</name>
+				<name>Foreleft Wing</name>
 				<selected type="bool">true</selected>
 			</tank>
 			<tank n="4">
-				<name>forward right wing Tank</name>
+				<name>Aftleft Wing</name>
 				<selected type="bool">true</selected>
 			</tank>
 			<tank n="5">
-				<name>rear right wing Tank</name>
+				<name>Foreright Wing</name>
 				<selected type="bool">true</selected>
 			</tank>
 			<tank n="6">
-				<name>left wing Droptank</name>
-				<selected type="bool">false</selected>
+				<name>Aftright Wing</name>
+				<selected type="bool">true</selected>
 			</tank>
 			<tank n="7">
-				<name>right wing Droptank</name>
-				<selected type="bool">false</selected>
+				<name>Center Droptank</name>
+				<selected type="bool">true</selected>
 			</tank>
 			<tank n="8">
-				<name>centerline Droptank</name>
-				<selected type="bool">false</selected>
+				<name>Left Droptank</name>
+				<selected type="bool">true</selected>
+			</tank>
+			<tank n="9">
+				<name>Right Droptank</name>
+				<selected type="bool">true</selected>
+			</tank>
+			<tank n="10">
+				<name>Left Accumulator</name>
+				<selected type="bool">true</selected>
+			</tank>
+			<tank n="11">
+				<name>Right Accumulator</name>
+				<selected type="bool">true</selected>
 			</tank>
 			<dump-valve type="bool">false</dump-valve>
 		</fuel>
@@ -317,6 +326,10 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 						<landtaxioff type="double">0</landtaxioff>
 						<!--knobbins-->
 					</output>
+					<!-- replace me -->
+					<left-booster type="double">1</left-booster>
+					<right-booster type="double">1</right-booster>
+					<transfer-boosters type="double">1</transfer-boosters>
 				</electric>
 				<hydraulic>
 					<contents-tank type="double" n="0">0</contents-tank>
@@ -331,6 +344,17 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 					<output type="double" n="1">0</output>
 					<xfeed type="double">0</xfeed>
 				</hydraulic>
+				<fuel>
+					<pressure-flow type="double">0</pressure-flow>
+					<transfer-flow type="double">0</transfer-flow>
+					<left-boost-pressure type="double">0</left-boost-pressure>
+					<right-boost-pressure type="double">0</right-boost-pressure>
+					<transfer-pressure type="double">0</transfer-pressure>
+					<left-lpcock type="double">1</left-lpcock>
+					<right-lpcock type="double">1</right-lpcock>
+					<xfeed type="double">1</xfeed>
+				</fuel>
+
 			</systems>
 
 

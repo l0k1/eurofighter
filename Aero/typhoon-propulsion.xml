@@ -152,8 +152,8 @@ tank list:
     <y> 0.0 </y>
     <z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 0.0 </capacity>
-     <contents unit="LBS"> 0.0 </contents>
+     <capacity unit="LBS"> 1.0 </capacity>
+     <contents unit="LBS"> 1.0 </contents>
   </tank>
   <!-- left drop tank -->
   <tank type="FUEL" number="2">
@@ -162,8 +162,8 @@ tank list:
     <y> 0.0 </y>
     <z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 0.0 </capacity>
-     <contents unit="LBS"> 0.0 </contents>
+     <capacity unit="LBS"> 1.0 </capacity>
+     <contents unit="LBS"> 1.0 </contents>
   </tank>
   <!-- right drop tank -->
   <tank type="FUEL" number="2">
@@ -172,8 +172,8 @@ tank list:
     <y> 0.0 </y>
     <z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 0.0 </capacity>
-     <contents unit="LBS"> 0.0 </contents>
+     <capacity unit="LBS"> 1.0 </capacity>
+     <contents unit="LBS"> 1.0 </contents>
   </tank>
   <!-- left accumulator -->
   <tank type="FUEL" number="2">

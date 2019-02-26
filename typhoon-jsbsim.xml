@@ -69,6 +69,7 @@
 	<system file="apu"/>
 	<system file="electric"/>
 	<system file="hydraulic"/>
+	<system file="fuel"/>
 	
 	<flight_control name="none"/>
 	
