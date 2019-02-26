@@ -23,7 +23,7 @@ systems/hydraulic/xfeed
 <system name="hydraulics">
 	<channel name="output">
 			
-		<fcs_function name="trash/systems/hydraulic/contents[0]">
+		<fcs_function name="trash/systems/hydraulic/contents-tank[0]">
 			<function>
 				<!-- tank level = contents-system - (pressure / 10) - (usage / 10) -->
 				<difference>
@@ -40,10 +40,10 @@ systems/hydraulic/xfeed
 			</function>
 			<min>0.0</min>
 			<max>1.0</max>
-			<output>systems/hydraulic/contents[0]</output>
+			<output>systems/hydraulic/contents-tank[0]</output>
 		</fcs_function>
 		
-		<fcs_function name="trash/systems/hydraulic/contents[1]">
+		<fcs_function name="trash/systems/hydraulic/contents-tank[1]">
 			<function>
 				<!-- tank level = contents-system - (pressure / 10) - (usage / 10) -->
 				<difference>
@@ -60,7 +60,7 @@ systems/hydraulic/xfeed
 			</function>
 			<min>0.0</min>
 			<max>1.0</max>
-			<output>systems/hydraulic/contents[1]</output>
+			<output>systems/hydraulic/contents-tank[1]</output>
 		</fcs_function>
 		
 		<fcs_function name="trash/systems/hydraulic/pressure[0]">

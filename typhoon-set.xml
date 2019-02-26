@@ -261,7 +261,7 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 						<engine0-norm type="double">0</engine0-norm>
 						<engine1-norm type="double">0</engine1-norm>
 						<apu-norm type="double">0</apu-norm>
-						<battery-pre type="double">0</battery-pre>
+						<battery-pre type="double">0.95</battery-pre>
 						<battery-norm type="double">0</battery-norm>
 						<battery-drain type="double">0</battery-drain>
 						<battery-switch type="double">0</battery-switch>
@@ -320,12 +320,12 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 				</electric>
 				<hydraulic>
 					<contents-tank type="double" n="0">0</contents-tank>
-					<contents-system type="double" n="0">0</contents-system>
+					<contents-system type="double" n="0">1</contents-system>
 					<pressure type="double" n="0">0</pressure>
 					<usage type="double" n="0">0</usage>
 					<output type="double" n="0">0</output>
 					<contents-tank type="double" n="1">0</contents-tank>
-					<contents-system type="double" n="1">0</contents-system>
+					<contents-system type="double" n="1">1</contents-system>
 					<pressure type="double" n="1">0</pressure>
 					<usage type="double" n="1">0</usage>
 					<output type="double" n="1">0</output>
