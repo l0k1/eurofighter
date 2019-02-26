@@ -59,29 +59,29 @@
     </thruster>
   </engine>
 
-  <tank type="FUEL" number="0">
+  <tank type="FUEL" number="0"> <!--  Tanks are at CG so they do not interfere with Aero tuning -->
      <location unit="M">
-       <x>   0.348819 </x>
-       <y>   0.0 </y>
-       <z>   0.395376 </z>
+		<x> 0.90603 </x>
+		<y> 0.0 </y>
+		<z> -0.140554 </z>
      </location>
      <capacity unit="LBS"> 3583.01 </capacity>
      <contents unit="LBS"> 1791.51 </contents>
   </tank>
   <tank type="FUEL" number="1">
      <location unit="M">
-       <x>   2.34651 </x>
-       <y>  -2.42436 </y>
-       <z>  -0.20598 </z>
+		<x> 0.90603 </x>
+		<y> 0.0 </y>
+		<z> -0.140554 </z>
      </location>
      <capacity unit="LBS"> 3583.01 </capacity>
      <contents unit="LBS"> 1791.51 </contents>
   </tank>
   <tank type="FUEL" number="2">
      <location unit="M">
-       <x>   2.34651 </x>
-       <y>  2.42436 </y>
-       <z>  -0.20598 </z>
+		<x> 0.90603 </x>
+		<y> 0.0 </y>
+		<z> -0.140554 </z>
      </location>
      <capacity unit="LBS"> 3583.01 </capacity>
      <contents unit="LBS"> 1791.51 </contents>

@@ -445,17 +445,15 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Gear.nose</object-name>
-		<property>/gear/gear[0]/caster-angle-deg</property>
-		<factor>-1</factor>
-		<center>
-			<x-m>-2.46317</x-m>
-			<y-m>0.0</y-m>
-			<z-m>-0.69944</z-m>
-		</center>
+		<property>sim/multiplay/generic/float[14]</property>
+		<factor>1</factor>
 		<axis>
-			<x>0</x>
-			<y>0</y>
-			<z>1</z>
+			<x1-m>-2.49696</x1-m>
+			<y1-m>0</y1-m>
+			<z1-m>-0.70077</z1-m>
+			<x2-m>-2.5893</x2-m>
+			<y2-m>0</y2-m>
+			<z2-m>-1.30107</z2-m>
 		</axis>
 	</animation>
 	<animation>
@@ -539,11 +537,11 @@
         <interpolation>
             <entry>
                 <ind>0</ind>
-                <dep>-0.03</dep>
+                <dep>0.0</dep>
             </entry>
             <entry>
                 <ind>1.0</ind>
-                <dep>0.8</dep>
+                <dep>0.33</dep>
             </entry>
         </interpolation>
         <axis>
@@ -558,7 +556,7 @@
         <object-name>nwOleoUp</object-name>
         <object-name>nwOleoDown</object-name>
         <property>gear/gear[0]/compression-norm</property>
-        <factor>90</factor>
+        <factor>37.125</factor>
 	<center>
 		<x-m>-2.67701</x-m>
 		<y-m>0.02018</y-m>
@@ -575,7 +573,7 @@
 	<type>rotate</type>
         <object-name>nwOleoDown</object-name>
         <property>gear/gear[0]/compression-norm</property>
-        <factor>180</factor>
+        <factor>74.25</factor>
 	<center>
 		<x-m>-2.8748</x-m>
 		<y-m>0.02018</y-m>
@@ -599,11 +597,11 @@
 		<object-name>nosewheel.5</object-name>
 		<object-name>nosewheel.6</object-name>
 		<property>gear/gear[0]/rollspeed-ms</property>
-		<factor>9</factor>
+		<factor>10</factor>
 		<center>
-			<x-m>-2.67717</x-m>
-			<y-m>-0.00675</y-m>
-			<z-m>-1.89795</z-m>
+			<x-m>-2.67842</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-1.9001</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
@@ -810,7 +808,6 @@
 		<object-name>wheel2.L</object-name>
         <property>gear/gear[1]/compression-norm</property>
         <offset-m>-0.1</offset-m>
-        <factor></factor>
         <interpolation>
             <entry>
                 <ind>0</ind>
@@ -869,11 +866,11 @@
 		<object-name>wheel1.L</object-name>
 		<object-name>wheel2.L</object-name>
 		<property>gear/gear[1]/rollspeed-ms</property>
-		<factor>4</factor>
+		<factor>10</factor>
 		<center>
-			<x-m> 1.39874</x-m>
-			<y-m>-2.16168</y-m>
-			<z-m>-1.52194</z-m>
+			<x-m>1.39834</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-1.52574</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
@@ -1131,11 +1128,11 @@
 		<object-name>wheel1.R</object-name>
 		<object-name>wheel2.R</object-name>
 		<property>gear/gear[2]/rollspeed-ms</property>
-		<factor>4</factor>
+		<factor>10</factor>
 		<center>
-			<x-m> 1.39796</x-m>
-			<y-m> 2.16140</y-m>
-			<z-m>-1.53044</z-m>
+			<x-m>1.39834</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-1.52574</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
@@ -1144,14 +1141,13 @@
 		</axis>
 	</animation>
 
-<!-- control surfaces -->
-<!-- elevator -->
+	<!-- Control Surfaces -->
+	<!-- Foreplanes -->
 	<animation>
 		<type>rotate</type>
 		<object-name>elevator.L</object-name>
-		<object-name>elevator.R</object-name>
-		<property>surface-positions/elevator-pos-norm</property>
-		<factor>-48</factor>
+		<property>sim/multiplay/generic/float[0]</property>
+		<factor>-1</factor>
 		<center>
 			<x-m>-5.10017</x-m>
 			<y-m>0</y-m>
@@ -1159,14 +1155,30 @@
 		</center>
 		<axis>
 			<x>0</x>
-			<y>1.0</y>
+			<y>1</y>
 			<z>0</z>
 		</axis>
 	</animation>
-
-<!--    Flap-aleron = flaperon.R flaperon1.R -> surface-positions/right-aileron-pos-norm
-	Flap-aleron = flaperon.L flaperon1.L -> surface-positions/left-aileron-pos-norm  -->
+	
 	<animation>
+		<type>rotate</type>
+		<object-name>elevator.R</object-name>
+		<property>sim/multiplay/generic/float[1]</property>
+		<factor>-1</factor>
+		<center>
+			<x-m>-5.10017</x-m>
+			<y-m>0</y-m>
+			<z-m>0.13656</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<!-- Elevons -->
+	<animation> <!-- Elevon 1R -->
 		<name>Flaperon1R</name>
 		<object-name>elevonR.2</object-name>
 		<object-name>flaperon1.R</object-name>
@@ -1174,8 +1186,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Flaperon1R</object-name>
-		<property>surface-positions/right-aileron-pos-norm</property>
-		<factor>-15</factor>
+		<property>sim/multiplay/generic/float[5]</property>
+		<factor>-1</factor>
 		<center>
 			<x-m>4.05548</x-m>
 			<y-m>4.2300</y-m>
@@ -1187,7 +1199,7 @@
 			<z>0</z>
 		</axis>
 	</animation>
-	<animation>
+	<animation> <!-- Elevon 1L -->
 		<name>Flaperon1L</name>
 		<object-name>elevonL.2</object-name>
 		<object-name>flaperon1.L</object-name>
@@ -1195,8 +1207,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Flaperon1L</object-name>
-		<property>surface-positions/left-aileron-pos-norm</property>
-		<factor>15</factor>
+		<property>sim/multiplay/generic/float[2]</property>
+		<factor>1</factor>
 		<center>
 			<x-m>4.05548</x-m>
 			<y-m>-4.2300</y-m>
@@ -1208,7 +1220,7 @@
 			<z>0</z>
 		</axis>
 	</animation>
-	<animation>
+	<animation> <!-- Elevon 2R -->
 		<name>FlaperonR</name>
 		<object-name>elevonR.1</object-name>
 		<object-name>flaperon.R</object-name>
@@ -1216,8 +1228,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>FlaperonR</object-name>
-		<property>surface-positions/right-aileron-pos-norm</property>
-		<factor>20</factor>
+		<property>sim/multiplay/generic/float[4]</property>
+		<factor>1</factor>
 		<center>
 			<x-m>4.04273</x-m>
 			<y-m>2.3100</y-m>
@@ -1229,7 +1241,7 @@
 			<z>0</z>
 		</axis>
 	</animation>
-	<animation>
+	<animation> <!-- Elevon 2L -->
 		<name>FlaperonL</name>
 		<object-name>elevonL.1</object-name>
 		<object-name>flaperon.L</object-name>
@@ -1237,8 +1249,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>FlaperonL</object-name>
-		<property>surface-positions/left-aileron-pos-norm</property>
-		<factor>20</factor>
+		<property>sim/multiplay/generic/float[3]</property>
+		<factor>1</factor>
 		<center>
 			<x-m>4.04273</x-m>
 			<y-m>-2.3100</y-m>
@@ -1251,7 +1263,7 @@
 		</axis>
 	</animation>
 
-  <!-- Slats +++++++++++++++++++++  -->
+  <!-- Slats  -->
 	<animation>
 		<name>Slat.L</name>
 		<object-name>Slat.L_0</object-name>
@@ -1260,8 +1272,8 @@
 	<animation>
 		<type>translate</type>
 		<object-name>Slat.L</object-name>
-		<property>surface-positions/slats-pos-norm</property>
-		<factor>0.17</factor>
+		<property>engines/engine[2]/n1</property> <!-- A crude "hack" to send slats over MP, because we are out of floats -->
+		<factor>0.00566</factor>
 		<axis>
 			<x>-2.5</x>
 			<y>-0.1</y>
@@ -1273,11 +1285,11 @@
 		<object-name>Slat.R_0</object-name>
 		<object-name>Slat.R_1</object-name>
 	</animation>
-	<animation><!-- todo best axis -->
+	<animation>
 		<type>translate</type>
 		<object-name>Slat.R</object-name>
-		<property>surface-positions/slats-pos-norm</property>
-		<factor>0.17</factor>
+		<property>engines/engine[2]/n2</property> <!-- A crude "hack" to send slats over MP, because we are out of floats -->
+		<factor>0.00566</factor>
 		<axis>
 			<x>-2.5</x>
 			<y>0.1</y>
@@ -1287,8 +1299,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Slat.R</object-name>
-		<property>surface-positions/slats-pos-norm</property>
-		<factor>-10</factor>
+		<property>engines/engine[2]/n2</property> <!-- A crude "hack" to send slats over MP, because we are out of floats -->
+		<factor>-1</factor>
 		<center>
 			<x-m>1.268678</x-m>
 			<y-m>3.425586</y-m>
@@ -1303,8 +1315,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Slat.L</object-name>
-		<property>surface-positions/slats-pos-norm</property>
-		<factor>10</factor>
+		<property>engines/engine[2]/n1</property> <!-- A crude "hack" to send slats over MP, because we are out of floats -->
+		<factor>1</factor>
 		<center>
 			<x-m>1.268678</x-m>
 			<y-m>-3.425586</y-m>
@@ -1317,12 +1329,12 @@
 		</axis>
 	</animation>
 
-<!--Rudder-->
+	<!--Rudder-->
 	<animation>
 		<type>rotate</type>
 		<object-name>rudder</object-name>
-		<property>surface-positions/rudder-pos-norm</property>
-		<factor>60</factor>
+		<property>sim/multiplay/generic/float[6]</property>
+		<factor>-1</factor>
 		<center>
 			<x-m>6.45483</x-m>
 			<y-m>0</y-m>
@@ -1343,14 +1355,8 @@
 		<type>rotate</type>
 		<object-name>speedbrake</object-name>
 		<object-name>speedbrake2</object-name>
-		<condition>
-			<greater-than>
-				<property>/systems/hydraulics/circuit2_press</property>
-				<value type="int">120</value>
-			</greater-than>
-		</condition>
-		<property>surface-positions/speedbrake-pos-norm</property>
-		<factor>50</factor>
+		<property>sim/multiplay/generic/float[13]</property>
+		<factor>1</factor>
 		<center>
 			<x-m>-1.63917</x-m>
 			<y-m>0</y-m>
@@ -1358,7 +1364,7 @@
 		</center>
 		<axis>
 			<x>0</x>
-			<y>1.0</y>
+			<y>-1</y>
 			<z>0</z>
 		</axis>
 	</animation>
@@ -1367,14 +1373,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>SpeedBrakeActuator</object-name>
-		<condition>
-			<greater-than>
-				<property>/systems/hydraulics/circuit2_press</property>
-				<value type="int">120</value>
-			</greater-than>
-		</condition>
-		<property>surface-positions/speedbrake-pos-norm</property>
-		<factor>15</factor>
+		<property>sim/multiplay/generic/float[13]</property>
+		<factor>0.2727</factor>
 		<center>
 			<x-m>-0.34717</x-m>
 			<y-m>0</y-m>
@@ -1382,21 +1382,15 @@
 		</center>
 		<axis>
 			<x>0</x>
-			<y>-1</y>
+			<y>1</y>
 			<z>0</z>
 		</axis>
 	</animation>
 	<animation>
 		<type>rotate</type>
 		<object-name>SpeedBrakeBase</object-name>
-		<condition>
-			<greater-than>
-				<property>/systems/hydraulics/circuit2_press</property>
-				<value type="int">120</value>
-			</greater-than>
-		</condition>
-		<property>surface-positions/speedbrake-pos-norm</property>
-		<factor>15</factor>
+		<property>sim/multiplay/generic/float[13]</property>
+		<factor>0.2727</factor>
 		<center>
 			<x-m>-0.36357</x-m>
 			<y-m>0</y-m>
@@ -1404,21 +1398,15 @@
 		</center>
 		<axis>
 			<x>0</x>
-			<y>-1</y>
+			<y>1</y>
 			<z>0</z>
 		</axis>
 	</animation>
 	<animation>
 		<type>rotate</type>
 		<object-name>SpeedBrakeRam</object-name>
-		<condition>
-			<greater-than>
-				<property>/systems/hydraulics/circuit2_press</property>
-				<value type="int">120</value>
-			</greater-than>
-		</condition>
-		<property>surface-positions/speedbrake-pos-norm</property>
-		<factor>15</factor>
+		<property>sim/multiplay/generic/float[13]</property>
+		<factor>0.2727</factor>
 		<center>
 			<x-m>-0.09247</x-m>
 			<y-m>0</y-m>
@@ -1426,21 +1414,15 @@
 		</center>
 		<axis>
 			<x>0</x>
-			<y>-1</y>
+			<y>1</y>
 			<z>0</z>
 		</axis>
 	</animation>
 	<animation>
 		<type>translate</type>
 		<object-name>SpeedBrakeRam</object-name>
-		<condition>
-			<greater-than>
-				<property>/systems/hydraulics/circuit2_press</property>
-				<value type="int">120</value>
-			</greater-than>
-		</condition>
-		<property>surface-positions/speedbrake-pos-norm</property>
-		<factor>-0.65</factor>
+		<property>sim/multiplay/generic/float[13]</property>
+		<factor>0.0118</factor>
 		<axis>
 			<x>-1</x>
 			<y>0</y>
@@ -1501,7 +1483,7 @@
 		<object-name>fueldoor.002</object-name>
 		<object-name>FuelProbeOuter</object-name>
 		<object-name>FuelProbeInner</object-name>
-		<property>sim/multiplay/generic/float[6]</property>
+		<property>sim/multiplay/generic/float[7]</property>
 		<interpolation>
 			<entry>
 				<ind>0</ind>
@@ -1534,7 +1516,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>FuelProbeInner</object-name>
-		<property>sim/multiplay/generic/float[6]</property>
+		<property>sim/multiplay/generic/float[7]</property>
 		<interpolation>
 			<entry>
 				<ind>0</ind>
@@ -1562,7 +1544,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>fueldoor.001</object-name>
-		<property>sim/multiplay/generic/float[6]</property>
+		<property>sim/multiplay/generic/float[7]</property>
 		<interpolation>
 			<entry><ind>0.0</ind><dep>0.0</dep></entry>
 			<entry><ind>0.25</ind><dep>-100.0</dep></entry>

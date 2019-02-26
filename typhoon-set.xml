@@ -10,7 +10,7 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 <PropertyList>
 	<sim include="typhoon-config.xml">
 		<description>EFA (Eurofighter) Typhoon</description>
-		<author>Maverick Alex and others</author>
+		<author>Maverick Alex, Justin Nicholson (pinto), Joshua Davidson (it0uchpods), and others</author>
 		<status>Special Edition</status>
 		<aircraft-version>1.5X</aircraft-version>
 		<flight-model>jsb</flight-model>
@@ -46,6 +46,13 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 			<default>
 				<menu n="101">
 					<label>Dev</label>
+					<item>
+						<label>FBW Control</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>fbw</dialog-name>
+						</binding>
+					</item>
 					<item>
 						<label>Tune Drag</label>
 						<binding>
@@ -116,16 +123,62 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 			</als-secondary-lights>
             <shadow-volume type="bool">true</shadow-volume>
 		</rendering>
+		
+		<flaps>
+			<setting>0.0</setting>
+			<setting>0.5</setting>
+			<setting>1.0</setting>
+		</flaps>
 	</sim>
 
-	<controls><canopy><position-norm>0</position-norm></canopy></controls>
+	<controls>
+		<canopy>
+			<position-norm>0</position-norm>
+		</canopy>
+	</controls>
 
 	<!--<systems include="typhoon-systems.xml" />-->
 	<identification>
 		<aircraft-number type="string" archive="y">XP-210</aircraft-number>
 		<pilot-name type="string" archive="y"></pilot-name>
 	</identification>
-	<input>
+	<input n="0">
+		<mice n="0">
+			<mouse n="0">
+				<mode n="0">
+					<button n="3">
+						<binding n="0">
+							<script></script>
+						</binding>
+						<binding n="1">
+							<condition>
+								<and>
+									<property>/devices/status/mice/mouse[0]/button[2]</property>
+									<not><property>/sim/mouse/right-button-mode-cycle-enabled</property></not>
+								</and>
+							</condition>
+							<command>nasal</command>
+							<script>libraries.fovZoom(-1);</script>
+						</binding>
+					</button>
+					<button n="4">
+						<binding n="0">
+							<script></script>
+						</binding>
+						<binding n="1">
+							<condition>
+								<and>
+									<property>/devices/status/mice/mouse[0]/button[2]</property>
+									<not><property>/sim/mouse/right-button-mode-cycle-enabled</property></not>
+								</and>
+							</condition>
+							<command>nasal</command>
+							<script>libraries.fovZoom(1);</script>
+						</binding>
+					</button>
+				</mode>
+			</mouse>
+		</mice>
 		<keyboard include="Input/typhoon-keyboard.xml" />
 	</input>
 	<!--canopy>
@@ -179,9 +232,18 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 			<dump-valve type="bool">false</dump-valve>
 		</fuel>
 	</consumables>
+	
 	<engines>
-		<engine n="0"><running>true</running></engine>
-		<engine n="1"><running>true</running></engine>
+		<engine n="0">
+			<running>true</running>
+		</engine>
+		<engine n="1">
+			<running>true</running>
+		</engine>
+		<engine n="2"> <!-- A crude "hack" to send slats over MP, because we are out of floats -->
+			<n1 type="double">0</n1> <!-- L -->
+			<n2 type="double">0</n2> <!-- R -->
+		</engine>
 	</engines>
 
 	<fdm>
@@ -294,10 +356,18 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 		</jsbsim>
 	</fdm>
 
+	<velocities n="0">
+		<groundspeed-kt>0</groundspeed-kt>
+	</velocities>
+
 <!-- Nasal files/scripts -->
 	<nasal>
-		<dialog> <file>Aircraft/eurofighter/Nasal/dialogs.nas</file> </dialog>
-		
+		<dialog> 
+			<file>Aircraft/eurofighter/Nasal/dialogs.nas</file>
+		</dialog>
+		<libraries>
+			<file>Aircraft/eurofighter/Nasal/zoom-views.nas</file>
+		</libraries>
 	</nasal>
 	
 </PropertyList>
