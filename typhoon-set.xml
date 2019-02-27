@@ -418,12 +418,11 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 
 <!-- Nasal files/scripts -->
 	<nasal>
-		<dialog> 
-			<file>Aircraft/eurofighter/Nasal/dialogs.nas</file>
-		</dialog>
-		<libraries>
-			<file>Aircraft/eurofighter/Nasal/zoom-views.nas</file>
-		</libraries>
+		<prop_io>	<file>Aircraft/eurofighter/nasal/prop_io.nas</file>		</prop_io>
+		<hud>		<file>Aircraft/eurofighter/nasal/hud.nas</file>			</hud>
+		<dialog>	<file>Aircraft/eurofighter/Nasal/dialogs.nas</file>		</dialog>
+		<libraries>	<file>Aircraft/eurofighter/Nasal/zoom-views.nas</file>	</libraries>
+		<main>		<file>Aircraft/eurofighter/Nasal/main.nas</file>		</main>
 	</nasal>
 	
 </PropertyList>
