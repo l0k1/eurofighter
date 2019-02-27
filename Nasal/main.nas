@@ -8,7 +8,9 @@ var main_loop = func() {
     hud.hud_ref.update();
 }
 
+var timer = maketimer(update_rate, main_loop);
+timer.start();
+
 var init = setlistener("/sim/signals/fdm-initialized", func() {
     removelistener(init); # only call once
-    maketimer(update_rate, main_loop).start();
 });

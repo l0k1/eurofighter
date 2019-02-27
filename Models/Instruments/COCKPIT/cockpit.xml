@@ -412,92 +412,17 @@
 		</condition>
 	</animation>	
 
-<!-- ****** HUD steering bug ****** -->
-	<animation>
-		<type>select</type>
-		<object-name>steering-bug</object-name>
-		<condition>
-			<or>
-				<and>
-					<greater-than>
-						<property>/systems/electrical/outputs/avionics/HUD</property>
-						<value>27</value>
-					</greater-than>
-					<not-equals>
-						<property>/instrumentation/HUD/steering-bug</property>
-						<value>off</value>
-					</not-equals>
-				</and>
-				<and>
-					<greater-than>
-						<property>/systems/electrical/outputs/avionics/HUD</property>
-						<value>27</value>
-					</greater-than>
-					<equals>
-						<property>/instrumentation/HUD/test-mode</property>
-						<value>true</value>
-					</equals>
-				</and>
-			</or>
-		</condition>
-	</animation>
-	<animation>
-		<type>translate</type>
-		<object-name>steering-bug</object-name>
-		<property>/instrumentation/HUD/steering-bug-position</property>
-		<factor>0.00275</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-		<min-m>-0.055</min-m>
-		<max-m>0.055</max-m>
-	</animation>
-	<animation>
-		<type>rotate</type>
-		<object-name>steering-bug</object-name>
-		<property>/instrumentation/HUD/steering-bug-position</property>
-		<factor>5</factor>
-		<axis>
-			<x>-1</x>
-			<y>0</y>
-			<z>0</z>
-		</axis>
-		<center>
-			<x-m>3.45</x-m>
-			<y-m>0.0</y-m>
-			<z-m>1.345</z-m>
-		</center>
-		<min-deg>-90</min-deg>
-		<max-deg>90</max-deg>
-	</animation>
-	<text>
-		<name>steering-bug</name>
-		<font>lucida.txf</font>
-		<character-size type="double">0.0075</character-size>
-		<offsets>
-			<x-m>3.45</x-m>
-			<y-m>0.0</y-m>
-			<z-m>1.345</z-m>
-			<roll-deg>-90</roll-deg>
-		</offsets>
-		<axis-alignment>yz-plane</axis-alignment>
-		<type type="string">literal</type>
-		<text type="string">C</text>
-		<draw-text type="bool">true</draw-text>
-		<alignment>center-center</alignment>
-	</text>
+<!-- ****** HUD  ****** -->
 	<animation>
 		<type>material</type>
   <!--object-name>autopilot-tacans</object-name>
   <object-name>autopilot-tacans-id</object-name-->
-		<object-name>steering-bug</object-name>
+		<object-name>HudCanvas</object-name>
 		<emission>
 			<red>0.0</red>
 			<green>1.0</green>
 			<blue>0.0</blue>
-			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
+			<factor-prop>/sim/hud/color/brightness</factor-prop>
 		</emission>
 	</animation>
 	<effect>
