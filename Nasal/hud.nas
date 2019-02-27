@@ -47,8 +47,6 @@ var HUD_SCREEN = {
         ## pitch bars
         ###############################
         
-        # todo - line at 0
-        
         m.pitch_bars_height = m.canvas_settings["view"][0] * m.pitch_bars_size_percent * m.y_res_norm;
         m.pitch_px_per_degree = m.pitch_bars_height / m.pitch_bars_deg_shown;
         m.pitch_bottom = m.canvas_settings["view"][0] / 2 + m.pitch_bars_height / 2;
@@ -71,10 +69,18 @@ var HUD_SCREEN = {
                                 ["line",87,0],
                                 ["line",0,17],
                                 ];
+        m.c_pitch_bar_layout = [["move",38,15],
+                                ["line",0,-15],
+                                ["line",235,0]
+                                ];
         
         # create the actual lines
         m.pitch_bars_canvas_group = m.mfd.createGroup();
         m.pitch_bars_canvas_group.setTranslation(m.canvas_settings["view"][0] / 2, m.canvas_settings["view"][1] / 2);
+        m.pitch_bar_center = m.pitch_bars_canvas_group.createChild("path")
+                                    .setStrokeLineWidth(m.line_width)
+                                    .setColor(m.red,m.green,m.blue));
+        m.array_to_path(m.pitch_bar_center,m.c_pitch_bar_layout, 1);
         for(var i = 0; i < m.pitch_bars_deg_shown / m.pitch_bars_deg_spacing; i = i + 1) {
             append(m.pitch_bars_down, m.pitch_bars_canvas_group.createChild("path")
                                         .setStrokeLineWidth(m.line_width)
@@ -82,8 +88,8 @@ var HUD_SCREEN = {
             append(m.pitch_bars_up, m.pitch_bars_canvas_group.createChild("path")
                                         .setStrokeLineWidth(m.line_width)
                                         .setColor(m.red,m.green,m.blue));
-            m.array_to_path(m.pitch_bars_down[i], m.d_pitch_bar_layout);
-            m.array_to_path(m.pitch_bars_up[i], m.u_pitch_bar_layout);
+            m.array_to_path(m.pitch_bars_down[i], m.d_pitch_bar_layout, 1);
+            m.array_to_path(m.pitch_bars_up[i], m.u_pitch_bar_layout, 1);
             append(m.pitch_bars_text, m.pitch_bars_canvas_group.createChild("text")
                                         .setAlignment("left-center")
                                         .setFontSize(m.font_size)
@@ -101,14 +107,13 @@ var HUD_SCREEN = {
         ###############################
         me.pitch_bars_canvas_group.setRotation(-prop_io.roll * D2R);
         
-        # todo - line at 0
-        
         # determine bottom bar location
         me.b_line = (me.pitch_bars_height - me.pitch_px_per_degree * me.pitch_bars_deg_spacing) + 
                             (math.mod(prop_io.pitch,me.pitch_bars_deg_spacing) * me.pitch_px_per_degree);
         # me.b_pitch is propably off by a spacing or two
         me.b_pitch = prop_io.pitch - math.mod(prop_io.pitch, me.pitch_bars_deg_spacing) - 
                             ((me.pitch_bars_deg_shown / 2) - (math.mod(me.pitch_bars_deg_shown / 2, me.pitch_bars_deg_spacing));
+        me.pitch_bar_center.hide();
         for(var i = 0; i < m.pitch_bars_deg_shown / m.pitch_bars_deg_spacing; i = i + 1) {
             if (me.b_line < me.pitch_bottom and me.b_line > me.pitch_top) {
                 if (me.b_pitch < 0) {
@@ -119,7 +124,12 @@ var HUD_SCREEN = {
                     me.pitch_bars_up[i].setTranslation(0,me.b_line);
                     me.pitch_bars_down[i].hide();
                     me.pitch_bars_text[i].setText(int(me.b_pitch)).setTranslation(-110 * me.x_res_norm,me.b_line - 20);
+                } else {
+                    me.pitch_bar_center.setTranslation(0,me.b_line);
+                    me.pitch_bars_down[i].hide();
+                    me.pitch_bars_up[i].hide();
                 }
+                    
             } else {
                 me.pitch_bars_down[i].hide();
                 me.pitch_bars_up[i].hide();
@@ -131,12 +141,20 @@ var HUD_SCREEN = {
         
     },
     
-    array_to_path: func(path, arr) {
+    array_to_path: func(path, arr, mirror_x = 0) {
         foreach(var i; arr) {
             if( i[0] == "move" ) {
                 path.move(j[1] * m.x_res_norm,j[2] * m.y_res_norm);
             } elsif( i[0] == "line" ) {
                 path.line(j[1] * m.x_res_norm,j[2] * m.y_res_norm);
+            }
+        }
+        if( mirror_x ) {
+            path.moveTo(0,0);
+            if( i[0] == "move" ) {
+                path.move(-j[1] * m.x_res_norm,j[2] * m.y_res_norm);
+            } elsif( i[0] == "line" ) {
+                path.line(-j[1] * m.x_res_norm,j[2] * m.y_res_norm);
             }
         }
     },
