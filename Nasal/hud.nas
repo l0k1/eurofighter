@@ -21,7 +21,7 @@ var HUD_SCREEN = {
         m.line_width = 3;
         
         m.font_size = 20;
-        m.font = "LED-16.ttf";
+        m.font = "lcd.txf";
         
         m.red = 0.1;
         m.green = 1.0;
@@ -41,7 +41,7 @@ var HUD_SCREEN = {
         m.avg_norm = (m.x_res_norm + m.y_res_norm) / 2;
 
         m.hud.addPlacement(placement);
-        m.hud.setColorBackground(0,0,0,0);
+        m.hud.setColorBackground(m.red,m.green,m.blue,0);
         
         ###############################
         ## pitch bars
@@ -101,7 +101,7 @@ var HUD_SCREEN = {
                                         .setAlignment("left-center")
                                         .setFontSize(m.font_size)
                                         .setFont(m.font)
-                                        .setColor(m.red,m.green,m.blue));
+                                        .setColor(m.red,m.green,m.blue,1));
         }
         m.test_group = m.hud.createGroup();
         m.test_text = m.test_group.createChild("text").setAlignment("center-center").setFontSize(50).setTranslation(512,512).setColor(0,1,0).setFont(m.font).setText("foo").show();
