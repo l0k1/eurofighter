@@ -164,6 +164,23 @@ var HUD_SCREEN = {
                                         .setColor(m.red,m.green,m.blue,1));
             }
         }
+        m.compass_heading_marker = m.compass.createChild("path")
+                                    .move(0,3)
+                                    .line(0,21)
+                                    .move(0,-21)
+                                    .line(-8,14)
+                                    .move(8,-14)
+                                    .line(8,14)
+                                    .setColor(m.read,m.green,m.blue)
+                                    .setStrokeLineWidth(m.line_width);
+        m.compass_route_marker = m.compass.createChild("path")
+                                    .move(0,-3)
+                                    .move(-8,-20)
+                                    .arcSmallCW(12,12,0,16,0)
+                                    .setColor(m.read,m.green,m.blue)
+                                    .setStrokeLineWidth(m.line_width)
+                                    .hide();
+                                    
         
         ###############################
         ## altitude circle
@@ -222,6 +239,9 @@ var HUD_SCREEN = {
         ###############################
         ## compass
         ###############################
+        
+        # me.compass_route_marker is used to show AP route heading. currently it is hide()ing.
+        
         # determine leftmost dot location
         
         me.b_dot = ((prop_io.heading - (math.mod(prop_io.heading,me.compass_dot_spread_deg)) - prop_io.heading) + me.compass_dot_spread_deg);
