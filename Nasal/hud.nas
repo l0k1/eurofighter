@@ -141,7 +141,12 @@ var HUD_SCREEN = {
         m.dot_spread_deg = 5; # per hud image in docs
         m.dot_spread_px = 34;
         
+        m.compass_px_per_degree = m.dot_spread_px / m.dot_spread_deg;
+        m.compass_total_spread = m.compass_spread_deg + m.compass_dot_spread_deg;
+        m.compass_left_limit = (m.compass_total_spread / 2) * m.compass_px_per_degree * -1;
+        
         m.compass = m.hud.createGroup();
+        m.compass.setTranslation(m.canvas_settings["view"][0] / 2, m.canvas_settings["view"][1] / 2 - 235);
         m.compass_dots = [];
         m.compass_text = [];
         for (var i = 0; i < m.compass_spread_deg / m.dot_spread_deg + 1; i = i + 1) {
@@ -217,16 +222,6 @@ var HUD_SCREEN = {
         ###############################
         ## compass
         ###############################
-        m.compass_spread_deg = 35; # per hud image in docs?
-        m.compass_dot_spread_deg = 5; # per hud image in docs
-        m.compass_dot_spread_px = 34;
-        
-        m.compass_px_per_degree = m.dot_spread_px / m.dot_spread_deg;
-        m.compass_total_spread = m.compass_spread_deg + m.compass_dot_spread_deg;
-        m.compass_left_limit = (m.compass_total_spread / 2) * m.compass_px_per_degree * -1;
-        
-        prop_io.heading
-        
         # determine leftmost dot location
         
         me.b_dot = ((prop_io.heading - (math.mod(prop_io.heading,me.compass_dot_spread_deg)) - prop_io.heading) + me.compass_dot_spread_deg);
@@ -237,8 +232,6 @@ var HUD_SCREEN = {
         
         # update the dots
         me.text_idx = 0;
-        m.compass_dots = [];
-        m.compass_text = [];
         for (var i = 0; i < m.compass_spread_deg / m.dot_spread_deg + 1; i = i + 1) {
             me.compass_dots[i].setTranslation(me.b_dot,0);
             if (math.mod(me.b_text,me.dot_spread_deg) == 0) {
