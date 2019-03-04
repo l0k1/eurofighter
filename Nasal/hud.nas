@@ -103,6 +103,71 @@ var HUD_SCREEN = {
                                         .setFont(m.font)
                                         .setColor(m.red,m.green*2,m.blue,1));
         }
+        
+        ###############################
+        ## flight direction indicators
+        ###############################
+        
+        m.flight_dir_indicators = m.hud.createGroup();
+        m.climbdive_symbol = m.flight_dir_indicators.createChild("path")
+                                .move(-9,0)
+                                .arcSmallCW(9,9,0,18,0)
+                                .arcSmallCW(9,9,0,-18,0)
+                                .line(-25,0)
+                                .move(43,0)
+                                .line(25,0)
+                                .setStrokeLineWidth(m.line_width)
+                                .setColor(m.red,m.green,m.blue);
+        m.attitude_symbol = m.flight_dir_indicators.createChild("path")
+                                .move(-34,0)
+                                .line(68,0)
+                                .move(-43,9)
+                                .line(9,-18)
+                                .line(9,18);
+        m.velocity_vector = m.flight_dir_indicators.createChild("path")
+                                .move(-8,0)
+                                .line(8,9)
+                                .line(8,-9)
+                                .line(-8,-9)
+                                .line(-8,9)
+                                .setStrokeLineWidth(m.line_width)
+                                .setColor(m.red,m.green,m.blue);
+        
+        ###############################
+        ## compass
+        ###############################
+        m.dot_circ = 5;
+        m.compass_spread_deg = 35; # per hud image in docs?
+        m.dot_spread_deg = 5; # per hud image in docs
+        m.dot_spread_px = 34;
+        
+        m.compass = m.hud.createGroup();
+        m.compass_dots = [];
+        m.compass_text = [];
+        for (var i = 0; i < m.compass_spread_deg / m.dot_spread_deg + 1; i = i + 1) {
+            append(m.compass_dots, m.compass.createChild("path")
+                                    .move(-m.dot_circ/2,0)
+                                    .arcSmallCW(m.dot_circ/2, m.dot_circ/2,0,m.dot_circ, 0)
+                                    .arcSmallCW(m.dot_circ/2, m.dot_circ/2,0,-m.dot_circ, 0)
+                                    .setColor(m.red,m.green,m.blue)
+                                    .setColorFill(m.red,m.green,m.blue));
+            if (math.mod(i,2) == 0) {
+                append(m.compass_text, m.compass.createChild("text")
+                                        .setAlignment("center-bottom")
+                                        .setFontSize(m.font_size)
+                                        .setFont(m.font)
+                                        .setColor(m.red,m.green,m.blue,1));
+            }
+        }
+        
+        ###############################
+        ## altitude circle
+        ###############################
+        
+        ###############################
+        ## vertical speed indicator
+        ###############################
+        
         m.test_group = m.hud.createGroup();
         m.test_text = m.test_group.createChild("text").setAlignment("center-center").setFontSize(50).setTranslation(512,512).setColor(0,1,0).setFont(m.font).setText("foo").show();
         return m;
@@ -111,7 +176,7 @@ var HUD_SCREEN = {
     update: func() {
         
         ###############################
-        #################### pitch bars
+        ## pitch bars
         ###############################
         me.pitch_bars_canvas_group.setRotation(-prop_io.roll * D2R);
         
@@ -147,6 +212,41 @@ var HUD_SCREEN = {
             }
             me.b_pitch += me.pitch_bars_deg_spacing;
             me.b_line -= (me.pitch_px_per_degree * me.pitch_bars_deg_spacing);
+        }
+        
+        ###############################
+        ## compass
+        ###############################
+        m.compass_spread_deg = 35; # per hud image in docs?
+        m.compass_dot_spread_deg = 5; # per hud image in docs
+        m.compass_dot_spread_px = 34;
+        
+        m.compass_px_per_degree = m.dot_spread_px / m.dot_spread_deg;
+        m.compass_total_spread = m.compass_spread_deg + m.compass_dot_spread_deg;
+        m.compass_left_limit = (m.compass_total_spread / 2) * m.compass_px_per_degree * -1;
+        
+        prop_io.heading
+        
+        # determine leftmost dot location
+        
+        me.b_dot = ((prop_io.heading - (math.mod(prop_io.heading,me.compass_dot_spread_deg)) - prop_io.heading) + me.compass_dot_spread_deg);
+        me.b_dot = me.b_dot * me.compass_px_per_degree + me.compass_left_limit;
+        
+        # determine leftmost dot number
+        me.b_text = prop_io.heading - math.mod(prop_io.heading, me.compass_dot_spread_deg) - me.compass_total_spread;
+        
+        # update the dots
+        me.text_idx = 0;
+        m.compass_dots = [];
+        m.compass_text = [];
+        for (var i = 0; i < m.compass_spread_deg / m.dot_spread_deg + 1; i = i + 1) {
+            me.compass_dots[i].setTranslation(me.b_dot,0);
+            if (math.mod(me.b_text,me.dot_spread_deg) == 0) {
+                me.compass_text[me.text_idx].setTranslation(me.b_dot,-4)
+                                            .setText(math.periodic(0,360,me.b_text));
+                me.text_idx += 1;
+            }
+            me.b_dot += me.compass_dot_spread_px;
         }
         
     },
