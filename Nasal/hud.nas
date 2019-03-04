@@ -21,7 +21,7 @@ var HUD_SCREEN = {
         m.line_width = 3;
         
         m.font_size = 20;
-        m.font = "lcd.txf";
+        m.font = "led-5-7.txf";
         
         m.red = 0.1;
         m.green = 1.0;
@@ -101,7 +101,7 @@ var HUD_SCREEN = {
                                         .setAlignment("left-center")
                                         .setFontSize(m.font_size)
                                         .setFont(m.font)
-                                        .setColor(m.red,m.green,m.blue,1));
+                                        .setColor(m.red,m.green*2,m.blue,1));
         }
         m.test_group = m.hud.createGroup();
         m.test_text = m.test_group.createChild("text").setAlignment("center-center").setFontSize(50).setTranslation(512,512).setColor(0,1,0).setFont(m.font).setText("foo").show();
@@ -128,11 +128,11 @@ var HUD_SCREEN = {
                 if (me.b_pitch < 0) {
                     me.pitch_bars_down[i].setTranslation(0,me.b_line - me.pitch_center_y).show();
                     me.pitch_bars_up[i].hide();
-                    me.pitch_bars_text[i].setText(int(me.b_pitch)).setTranslation(-110 * me.x_res_norm,me.b_line - 20 - me.pitch_center_y).show();
+                    me.pitch_bars_text[i].setText(int(me.b_pitch)).setTranslation(-115 * me.x_res_norm,me.b_line - 25 - me.pitch_center_y).show();
                 } elsif (me.b_pitch > 0) {
                     me.pitch_bars_up[i].setTranslation(0,me.b_line - me.pitch_center_y).show();
                     me.pitch_bars_down[i].hide();
-                    me.pitch_bars_text[i].setText(int(me.b_pitch)).setTranslation(-110 * me.x_res_norm,me.b_line + 20 - me.pitch_center_y).show();
+                    me.pitch_bars_text[i].setText(int(me.b_pitch)).setTranslation(-115 * me.x_res_norm,me.b_line + 25 - me.pitch_center_y).show();
                 } else {
                     me.pitch_bar_center.setTranslation(0,me.b_line - me.pitch_center_y).show();
                     me.pitch_bars_down[i].hide();
