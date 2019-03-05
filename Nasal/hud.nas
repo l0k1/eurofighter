@@ -19,6 +19,7 @@ var HUD_SCREEN = {
         m.update_rate = 0.1;
         
         m.line_width = 3;
+        m.dot_circ = 5;
         
         m.font_size = 20;
         m.font = "led-5-7.txf";
@@ -136,7 +137,6 @@ var HUD_SCREEN = {
         ###############################
         ## compass
         ###############################
-        m.dot_circ = 5;
         m.compass_spread_deg = 35; # per hud image in docs?
         m.dot_spread_deg = 5; # per hud image in docs
         m.dot_spread_px = 34;
@@ -146,7 +146,7 @@ var HUD_SCREEN = {
         m.compass_left_limit = (m.compass_total_spread / 2) * m.compass_px_per_degree * -1;
         
         m.compass = m.hud.createGroup();
-        m.compass.setTranslation(m.canvas_settings["view"][0] / 2, m.canvas_settings["view"][1] / 2 - 235);
+        m.compass.setTranslation(m.canvas_settings["view"][0] / 2, m.canvas_settings["view"][1] / 2 - 316);
         m.compass_dots = [];
         m.compass_text = [];
         for (var i = 0; i < m.compass_spread_deg / m.dot_spread_deg + 1; i = i + 1) {
@@ -185,6 +185,41 @@ var HUD_SCREEN = {
         ###############################
         ## altitude circle
         ###############################
+        m.alt_num_dots = 10;
+        m.alt_circle_radius = 92 / 2;
+        m.alt_line_inner_radius = 30;
+        m.alt_line_outer_radius = 46;
+        m.alt_rotations_per_foot = 1/1000; # one rotation every thousand feet
+        
+        m.alt_deg_per_dot = 360 / m.alt_num_dots;
+        
+        m.alt_display = m.hud.createGroup();
+        m.alt_display.setTranslation(m.canvas_settings["view"][0] / 2 + 211, m.canvas_settings["view"][1] / 2 - 233);
+        m.alt_dots = [];
+        
+        for (var i = 0; i < m.alt_num_dots; i = i + 1) {
+            m.angle = i * (m.alt_deg_per_dot+180) * D2R;
+            m.x = math.sin(m.angle) * m.alt_circle_radius;
+            m.y = math.cos(m.angle) * m.alt_circle_radius;
+            append(m.alt_dots, m.alt_display.createChild("path")
+                                    .move(m.x, m.y)
+                                    .move(-m.dot_circ/2,0)
+                                    .arcSmallCW(m.dot_circ/2, m.dot_circ/2,0,m.dot_circ, 0)
+                                    .arcSmallCW(m.dot_circ/2, m.dot_circ/2,0,-m.dot_circ, 0)
+                                    .setColor(m.red,m.green,m.blue)
+                                    .setColorFill(m.red,m.green,m.blue));
+        }
+        m.alt_line = m.alt_display.createChild("path")
+                                    .move(-m.alt_line_outer_radius)
+                                    .line(m.alt_inner_radius)
+                                    .setColor(m.read,m.green,m.blue)
+                                    .setStrokeLineWidth(m.line_width);
+        m.alt_text = m.alt_display.createChild("text")
+                                    .setAlignment("center-center")
+                                    .setFontSize(m.font_size)
+                                    .setFont(m.font)
+                                    .setColor(m.red,m.green,m.blue,1));
+            
         
         ###############################
         ## vertical speed indicator
@@ -260,6 +295,24 @@ var HUD_SCREEN = {
                 me.text_idx += 1;
             }
             me.b_dot += me.compass_dot_spread_px;
+        }
+        
+        ###############################
+        ## altitude circle
+        ###############################
+        me.alt_line
+        me.alt_text
+        me.alt_rotations_per_1k_feet
+        prop_io.altitude
+        
+        # rotate line
+        me.alt_line.setRotation(prop_io.altitude / me.alt_rotations_per_foot * 360 * D2R);
+        # display text
+        # display resolution is 20ft increments below 5000ft, and 50ft above
+        if (prop_io.altitude <= 5000) {
+            me.alt_text.setText(prop_io.altitude - math.mod(prop_io.altitude,20));
+        } else {
+            me.alt_text.setText(prop_io.altitude - math.mod(prop_io.altitude,50));
         }
         
     },
