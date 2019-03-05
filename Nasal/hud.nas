@@ -21,12 +21,12 @@ var HUD_SCREEN = {
         m.line_width = 3;
         m.dot_circ = 5;
         
-        m.font_size = 20;
+        m.font_size = 18;
         m.font = "led-5-7.txf";
         
-        m.red = 0.1;
+        m.red = 0.3;
         m.green = 1.0;
-        m.blue = 0.2;
+        m.blue = 0.15;
         
         # pitch bars
         m.pitch_bars_deg_shown = 25;
@@ -124,7 +124,10 @@ var HUD_SCREEN = {
                                 .line(68,0)
                                 .move(-43,9)
                                 .line(9,-18)
-                                .line(9,18);
+                                .line(9,18)
+                                .setStrokeLineWidth(m.line_width)
+                                .setColor(m.red,m.green,m.blue)
+                                .setTranslation(m.canvas_settings["view"][0] / 2,m.canvas_settings["view"][0] / 2);
         m.velocity_vector = m.flight_dir_indicators.createChild("path")
                                 .move(-8,0)
                                 .line(8,9)
@@ -138,10 +141,10 @@ var HUD_SCREEN = {
         ## compass
         ###############################
         m.compass_spread_deg = 35; # per hud image in docs?
-        m.dot_spread_deg = 5; # per hud image in docs
-        m.dot_spread_px = 34;
+        m.compass_dot_spread_deg = 5; # per hud image in docs
+        m.compass_dot_spread_px = 34;
         
-        m.compass_px_per_degree = m.dot_spread_px / m.dot_spread_deg;
+        m.compass_px_per_degree = m.compass_dot_spread_px / m.compass_dot_spread_deg;
         m.compass_total_spread = m.compass_spread_deg + m.compass_dot_spread_deg;
         m.compass_left_limit = (m.compass_total_spread / 2) * m.compass_px_per_degree * -1;
         
@@ -149,7 +152,7 @@ var HUD_SCREEN = {
         m.compass.setTranslation(m.canvas_settings["view"][0] / 2, m.canvas_settings["view"][1] / 2 - 316);
         m.compass_dots = [];
         m.compass_text = [];
-        for (var i = 0; i < m.compass_spread_deg / m.dot_spread_deg + 1; i = i + 1) {
+        for (var i = 0; i < m.compass_spread_deg / m.compass_dot_spread_deg + 1; i = i + 1) {
             append(m.compass_dots, m.compass.createChild("path")
                                     .move(-m.dot_circ/2,0)
                                     .arcSmallCW(m.dot_circ/2, m.dot_circ/2,0,m.dot_circ, 0)
@@ -171,13 +174,13 @@ var HUD_SCREEN = {
                                     .line(-8,14)
                                     .move(8,-14)
                                     .line(8,14)
-                                    .setColor(m.read,m.green,m.blue)
-                                    .setStrokeLineWidth(m.line_width);
+                                    .setColor(m.red,m.green,m.blue)
+                                    .setStrokeLineWidth(m.line_width/2);
         m.compass_route_marker = m.compass.createChild("path")
                                     .move(0,-3)
                                     .move(-8,-20)
                                     .arcSmallCW(12,12,0,16,0)
-                                    .setColor(m.read,m.green,m.blue)
+                                    .setColor(m.red,m.green,m.blue)
                                     .setStrokeLineWidth(m.line_width)
                                     .hide();
                                     
@@ -198,35 +201,36 @@ var HUD_SCREEN = {
         m.alt_dots = [];
         
         for (var i = 0; i < m.alt_num_dots; i = i + 1) {
-            m.angle = i * (m.alt_deg_per_dot+180) * D2R;
+            m.angle = (i * m.alt_deg_per_dot + 180) * D2R;
             m.x = math.sin(m.angle) * m.alt_circle_radius;
             m.y = math.cos(m.angle) * m.alt_circle_radius;
+            #print(m.x ~ "|" ~ m.y);
             append(m.alt_dots, m.alt_display.createChild("path")
-                                    .move(m.x, m.y)
                                     .move(-m.dot_circ/2,0)
                                     .arcSmallCW(m.dot_circ/2, m.dot_circ/2,0,m.dot_circ, 0)
                                     .arcSmallCW(m.dot_circ/2, m.dot_circ/2,0,-m.dot_circ, 0)
+                                    .setTranslation(m.x,m.y)
                                     .setColor(m.red,m.green,m.blue)
                                     .setColorFill(m.red,m.green,m.blue));
         }
         m.alt_line = m.alt_display.createChild("path")
-                                    .move(-m.alt_line_outer_radius)
-                                    .line(m.alt_inner_radius)
-                                    .setColor(m.read,m.green,m.blue)
+                                    .move(0,-m.alt_line_outer_radius)
+                                    .line(0,m.alt_line_inner_radius)
+                                    .setColor(m.red,m.green,m.blue)
                                     .setStrokeLineWidth(m.line_width);
         m.alt_text = m.alt_display.createChild("text")
                                     .setAlignment("center-center")
                                     .setFontSize(m.font_size)
                                     .setFont(m.font)
-                                    .setColor(m.red,m.green,m.blue,1));
+                                    .setColor(m.red,m.green,m.blue,1);
             
         
         ###############################
         ## vertical speed indicator
         ###############################
         
-        m.test_group = m.hud.createGroup();
-        m.test_text = m.test_group.createChild("text").setAlignment("center-center").setFontSize(50).setTranslation(512,512).setColor(0,1,0).setFont(m.font).setText("foo").show();
+        #m.test_group = m.hud.createGroup();
+        #m.test_text = m.test_group.createChild("text").setAlignment("center-center").setFontSize(50).setTranslation(512,512).setColor(0,1,0).setFont(m.font).setText("foo").show();
         return m;
     },
     
@@ -287,26 +291,23 @@ var HUD_SCREEN = {
         
         # update the dots
         me.text_idx = 0;
-        for (var i = 0; i < m.compass_spread_deg / m.dot_spread_deg + 1; i = i + 1) {
+        for (var i = 0; i < me.compass_spread_deg / me.compass_dot_spread_deg + 1; i = i + 1) {
             me.compass_dots[i].setTranslation(me.b_dot,0);
-            if (math.mod(me.b_text,me.dot_spread_deg) == 0) {
+            if (math.mod(me.b_text,me.compass_dot_spread_deg*2) == 0) {
                 me.compass_text[me.text_idx].setTranslation(me.b_dot,-4)
                                             .setText(math.periodic(0,360,me.b_text));
                 me.text_idx += 1;
             }
+            me.b_text += me.compass_dot_spread_deg;
             me.b_dot += me.compass_dot_spread_px;
         }
         
         ###############################
         ## altitude circle
         ###############################
-        me.alt_line
-        me.alt_text
-        me.alt_rotations_per_1k_feet
-        prop_io.altitude
         
         # rotate line
-        me.alt_line.setRotation(prop_io.altitude / me.alt_rotations_per_foot * 360 * D2R);
+        me.alt_line.setRotation(prop_io.altitude * me.alt_rotations_per_foot * 360 * D2R);
         # display text
         # display resolution is 20ft increments below 5000ft, and 50ft above
         if (prop_io.altitude <= 5000) {
