@@ -229,12 +229,29 @@ var HUD_SCREEN = {
         ## vertical speed indicator
         ###############################
         
+        ###############################
+        ## IAS text
+        ###############################
+        m.ias_text = m.hud.createGroup().createChild("text")
+                            .setAlignment("center-center")
+                            .setFontSize(m.font_size)
+                            .setFont(m.font)
+                            .setColor(m.red,m.green,m.blue,1)
+                            .setTranslation(m.canvas_settings["view"][0] / 2 - 156, m.canvas_settings["view"][1] / 2 - 128);
+                                    
+        
         #m.test_group = m.hud.createGroup();
         #m.test_text = m.test_group.createChild("text").setAlignment("center-center").setFontSize(50).setTranslation(512,512).setColor(0,1,0).setFont(m.font).setText("foo").show();
         return m;
     },
     
     update: func() {
+        
+        ###############################
+        ## ias
+        ###############################
+        
+        ias_text.setText(sprintf("%i",prop_io.airspeed))
         
         ###############################
         ## pitch bars
