@@ -48,8 +48,8 @@
 				systems/electric/sources/output-norm ge 0.05
 			</test>
 			<test logic="OR" value="2">
-				fcs/hydraulic-avail ne 1
 				fbw/enable eq 0
+				fcs/hydraulic-avail ne 1
 				systems/electric/sources/output-norm lt 0.05
 			</test>
 		</switch>
