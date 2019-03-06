@@ -9,11 +9,11 @@
 			<y> 0.00 </y>
 			<z> -2.13497 </z>
 		</location>
-		<static_friction> 1.0 </static_friction>
-		<dynamic_friction> 0.5 </dynamic_friction>
+		<static_friction> 0.6 </static_friction>
+		<dynamic_friction> 0.375 </dynamic_friction>
 		<rolling_friction> 0.02 </rolling_friction>
-		<spring_coeff unit="LBS/FT"> 20200 </spring_coeff>
-		<damping_coeff unit="LBS/FT/SEC"> 1400 </damping_coeff>
+		<spring_coeff unit="LBS/FT"> 17250 </spring_coeff>
+		<damping_coeff unit="LBS/FT/SEC"> 4250 </damping_coeff>
 		<max_steer unit="DEG"> 45.0 </max_steer>
 		<brake_group> NONE </brake_group>
 		<retractable> 1 </retractable>
@@ -22,14 +22,14 @@
 	<contact type="BOGEY" name="LEFT_MAIN">
 		<location unit="M">
 			<x> 1.39755 </x>
-			<y> -2.10623 </y>
+			<y> -2.22291 </y>
 			<z> -2.05699 </z>
 		</location>
-		<static_friction> 1.0 </static_friction>
+		<static_friction> 0.8 </static_friction>
 		<dynamic_friction> 0.5 </dynamic_friction>
 		<rolling_friction> 0.02 </rolling_friction>
-		<spring_coeff unit="LBS/FT"> 29200 </spring_coeff>
-		<damping_coeff unit="LBS/FT/SEC"> 1400 </damping_coeff>
+		<spring_coeff unit="LBS/FT"> 37500 </spring_coeff>
+		<damping_coeff unit="LBS/FT/SEC"> 7500 </damping_coeff>
 		<max_steer unit="DEG"> 0.0 </max_steer>
 		<brake_group> LEFT </brake_group>
 		<retractable> 1 </retractable>
@@ -38,14 +38,14 @@
 	<contact type="BOGEY" name="RIGHT_MAIN">
 		<location unit="M">
 			<x> 1.39755 </x>
-			<y> 2.10623 </y>
+			<y> 2.22291 </y>
 			<z> -2.05699 </z>
 		</location>
-		<static_friction> 1.0 </static_friction>
+		<static_friction> 0.8 </static_friction>
 		<dynamic_friction> 0.5 </dynamic_friction>
 		<rolling_friction> 0.02 </rolling_friction>
-		<spring_coeff unit="LBS/FT"> 29200 </spring_coeff>
-		<damping_coeff unit="LBS/FT/SEC"> 1400 </damping_coeff>
+		<spring_coeff unit="LBS/FT"> 37500 </spring_coeff>
+		<damping_coeff unit="LBS/FT/SEC"> 7500 </damping_coeff>
 		<max_steer unit="DEG"> 0.0 </max_steer>
 		<brake_group> RIGHT </brake_group>
 		<retractable> 1 </retractable>

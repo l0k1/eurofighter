@@ -31,14 +31,26 @@
 			</test>
 		</switch>
 		
+		<switch name="fcs/hydraulic-avail">
+			<default value="0"/>
+			<test logic="OR" value="1">
+				systems/hydraulic/pressure[0] gt 0.03
+				systems/hydraulic/pressure[1] gt 0.03
+			</test>
+		</switch>
+		
 		<switch name="fbw/gain-switch">
 			<default value="0"/>
 			<test logic="AND" value="1">
 				position/wow eq 1
 				fbw/enable eq 1
+				fcs/hydraulic-avail eq 1
+				systems/electric/sources/output-norm ge 0.05
 			</test>
-			<test value="2">
+			<test logic="OR" value="2">
+				fcs/hydraulic-avail ne 1
 				fbw/enable eq 0
+				systems/electric/sources/output-norm lt 0.05
 			</test>
 		</switch>
 		
@@ -520,7 +532,7 @@
 			</function>
 		</fcs_function>
 		
-		<pure_gain name="fbw/pitch/q-final">
+		<pure_gain name="fbw/pitch-output">
 			<input>fbw/pitch/q-error</input>
 			<gain>fbw/pitch/q-p-gain</gain>
 			<clipto>
@@ -528,19 +540,6 @@
 				<max>0.64</max>
 			</clipto>
 		</pure_gain>
-		
-		<fcs_function name="fbw/pitch-output">
-			<function>
-				<table>
-					<independentVar lookup="row">fbw/pitch/q-final</independentVar>
-					<tableData>
-						-1.00 -1.0
-						 0.00  0.0
-						 0.64  1.0
-					</tableData>
-				</table>
-			</function>
-		</fcs_function>
 	
 	</channel>
 	
@@ -629,12 +628,17 @@
 			</test>
 		</switch>
 		
-		<pure_gain name="fbw/yaw/yd-f">
+		<washout_filter name="fbw/yaw/r-washout">
 			<input>velocities/r-rad_sec</input>
+			<c1>0.5</c1>
+		</washout_filter>
+		
+		<pure_gain name="fbw/yaw/yd-f">
+			<input>fbw/yaw/r-washout</input>
 			<gain>fbw/yaw/yd-p-gain</gain>
 			<clipto>
-				<min>-0.3</min>
-				<max>0.3</max>
+				<min>-0.5</min>
+				<max>0.5</max>
 			</clipto>
 		</pure_gain>
 		
@@ -685,8 +689,8 @@
 			<input>fbw/yaw/beta-error</input>
 			<gain>fbw/yaw/beta-p-gain</gain>
 			<clipto>
-				<min>-0.5</min>
-				<max>0.5</max>
+				<min>-1.0</min>
+				<max>1.0</max>
 			</clipto>
 		</pure_gain>
 		
@@ -696,8 +700,8 @@
 			<ki>0.0</ki>
 			<kd>fbw/yaw/beta-d-gain</kd>
 			<clipto>
-				<min>-0.5</min>
-				<max>0.5</max>
+				<min>-1.0</min>
+				<max>1.0</max>
 			</clipto>
 			<output>fbw/yaw/beta-d</output>
 		</pid>
@@ -706,14 +710,18 @@
 			<input>fbw/yaw/beta-p</input>
 			<input>fbw/yaw/beta-d</input>
 			<clipto>
-				<min>-0.5</min>
-				<max>0.5</max>
+				<min>-1.0</min>
+				<max>1.0</max>
 			</clipto>
 		</summer>
 		
 		<summer name="fbw/yaw/active">
 			<input>fbw/yaw/yd-f</input>
 			<input>fbw/yaw/beta-pd</input>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
 		</summer>
 		
 		<switch name="fbw/yaw-output">
@@ -730,6 +738,18 @@
 	</channel>
 	
 	<channel name="Elevons">
+		
+		<fcs_function name="fcs/elevon-droop">
+			<function>
+				<table>
+					<independentVar lookup="row">velocities/vc-kts</independentVar>
+					<tableData>
+						62  16
+						74   0
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
 		
 		<switch name="fcs/roll-input">
 			<default value="fbw/roll-outer-output"/>
@@ -774,20 +794,28 @@
 			<gain>25.0</gain>
 		</pure_gain>
 		
-		<aerosurface_scale name="fcs/pitch-pos-deg">
+		<pure_gain name="fcs/pitch-pos-deg">
 			<input>fcs/pitch-input</input>
-			<range>
+			<gain>25.0</gain>
+			<clipto>
 				<min>-25.0</min>
 				<max>16.0</max>
-			</range>
-		</aerosurface_scale>
+			</clipto>
+		</pure_gain>
 		
 		<fcs_function name="fcs/elevon-1L-cmd">
 			<function>
-				<sum>
-					<property>fcs/roll-pos-deg</property>
-					<property>fcs/pitch-pos-deg</property>
-				</sum>
+				<ifthen>
+					<eq>
+						<property>fcs/hydraulic-avail</property>
+						<value>1</value>
+					</eq>
+					<sum>
+						<property>fcs/roll-pos-deg</property>
+						<property>fcs/pitch-pos-deg</property>
+					</sum>
+					<property>fcs/elevon-droop</property>
+				</ifthen>
 			</function>
 			<clipto>
 				<min>-25.0</min>
@@ -804,13 +832,20 @@
 		
 		<fcs_function name="fcs/elevon-1R-cmd">
 			<function>
-				<sum>
-					<product>
-						<property>fcs/roll-pos-deg</property>
-						<value>-1</value>
-					</product>
-					<property>fcs/pitch-pos-deg</property>
-				</sum>
+				<ifthen>
+					<eq>
+						<property>fcs/hydraulic-avail</property>
+						<value>1</value>
+					</eq>
+					<sum>
+						<product>
+							<property>fcs/roll-pos-deg</property>
+							<value>-1</value>
+						</product>
+						<property>fcs/pitch-pos-deg</property>
+					</sum>
+					<property>fcs/elevon-droop</property>
+				</ifthen>
 			</function>
 			<clipto>
 				<min>-25.0</min>
@@ -827,10 +862,17 @@
 		
 		<fcs_function name="fcs/elevon-2L-cmd">
 			<function>
-				<sum>
-					<property>fcs/roll-inner-pos-deg</property>
-					<property>fcs/pitch-pos-deg</property>
-				</sum>
+				<ifthen>
+					<eq>
+						<property>fcs/hydraulic-avail</property>
+						<value>1</value>
+					</eq>
+					<sum>
+						<property>fcs/roll-inner-pos-deg</property>
+						<property>fcs/pitch-pos-deg</property>
+					</sum>
+					<property>fcs/elevon-droop</property>
+				</ifthen>
 			</function>
 			<clipto>
 				<min>-25.0</min>
@@ -847,13 +889,20 @@
 		
 		<fcs_function name="fcs/elevon-2R-cmd">
 			<function>
-				<sum>
-					<product>
-						<property>fcs/roll-inner-pos-deg</property>
-						<value>-1</value>
-					</product>
-					<property>fcs/pitch-pos-deg</property>
-				</sum>
+				<ifthen>
+					<eq>
+						<property>fcs/hydraulic-avail</property>
+						<value>1</value>
+					</eq>
+					<sum>
+						<product>
+							<property>fcs/roll-inner-pos-deg</property>
+							<value>-1</value>
+						</product>
+						<property>fcs/pitch-pos-deg</property>
+					</sum>
+					<property>fcs/elevon-droop</property>
+				</ifthen>
 			</function>
 			<clipto>
 				<min>-25.0</min>
@@ -881,15 +930,22 @@
 			</clipto>
 		</pure_gain>
 		
+		<switch name="fcs/foreplane-cmd-hyd">
+			<default value="0"/> <!-- They don't really droop since they are mounted in the center -->
+			<test value="fcs/foreplane-cmd">
+				fcs/hydraulic-avail eq 1
+			</test>
+		</switch>
+		
 		<actuator name="fcs/foreplane-L-deg">
-			<input>fcs/foreplane-cmd</input>
+			<input>fcs/foreplane-cmd-hyd</input>
 			<rate_limit>125</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[0]</output>
 		</actuator>
 		
 		<actuator name="fcs/foreplane-R-deg">
-			<input>fcs/foreplane-cmd</input>
+			<input>fcs/foreplane-cmd-hyd</input>
 			<rate_limit>125</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[1]</output>
@@ -915,8 +971,15 @@
 			<gain>25.0</gain>
 		</pure_gain>
 		
+		<switch name="fcs/yaw-input-deg-hyd">
+			<default value="0"/>
+			<test value="fcs/yaw-input-deg">
+				fcs/hydraulic-avail eq 1
+			</test>
+		</switch>
+		
 		<actuator name="fcs/rudder-deg">
-			<input>fcs/yaw-input-deg</input>
+			<input>fcs/yaw-input-deg-hyd</input>
 			<rate_limit>145</rate_limit>
 			<lag>24.7</lag>
 			<output>/sim/multiplay/generic/float[6]</output>
@@ -926,22 +989,20 @@
 	
 	<channel name="Slats">
 		
-		<kinematic name="fcs/slat-k">
+		<switch name="fcs/slat-rate-limit">
+			<default value="0"/>
+			<test value="0.38462">
+				fcs/hydraulic-avail eq 1
+			</test>
+		</switch>
+		
+		<actuator name="fcs/slat-a">
 			<input>/controls/flight/flaps</input>
-			<traverse>
-				<setting>
-					<position>0</position>
-					<time>0.0</time>
-				</setting>
-				<setting>
-					<position>1</position>
-					<time>2.6</time>
-				</setting>
-			</traverse>
-		</kinematic>
+			<rate_limit>fcs/slat-rate-limit</rate_limit>
+		</actuator>
 		
 		<pure_gain name="fcs/slat-deg">
-			<input>fcs/slat-k</input>
+			<input>fcs/slat-a</input>
 			<gain>30.0</gain>
 			<output>fcs/slat-L-deg</output>
 			<output>fcs/slat-R-deg</output>
@@ -998,8 +1059,15 @@
 	
 	<channel name="Airbrake">
 		
+		<switch name="fcs/airbrake-cmd">
+			<default value="0"/>
+			<test value="fcs/speedbrake-cmd-norm">
+				fcs/hydraulic-avail eq 1
+			</test>
+		</switch>
+		
 		<kinematic name="fcs/airbrake-k">
-			<input>fcs/speedbrake-cmd-norm</input>
+			<input>fcs/airbrake-cmd</input>
 			<traverse>
 				<setting>
 					<position>0</position>
