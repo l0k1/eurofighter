@@ -45,6 +45,35 @@ var HUD_SCREEN = {
         m.hud.setColorBackground(m.red,m.green,m.blue,0);
         
         ###############################
+        ## view stuff
+        ###############################
+        
+        # x and z coords of the center of the hud
+        m.hud_x = 1.3;
+        m.hud_z = 1.15;
+        
+        # rewrite this with whatever the current view x/z is set to
+        m.view_x = 1.05;
+        m.view_z = 1.20;
+        
+        m.hud_height_m = 0.5; # get this out of blender, the height of the hud in meters
+        m.hud_height_px = 920; # however high the hud is in pixels
+        
+        # calculate angle from view to center of the hud
+        m.z_delta = m.view_z - m.hud_z;
+        m.x_delta = m.view_x - m.hud_x;
+        m.view_dist = math.sqrt(m.z_delta * m.z_delta + m.x_delta * m.x_delta);
+        m.angle_to_hud = math.asin(m.x_delta / m.view_dist);
+        
+        # calculate how many degrees == how many pixels in a 1:1 ratio
+        # get angle to the bottom of the hud
+        m.z_to_bottom_delta = m.z_delta - (m.hud_height_m / 2);
+        m.hypot_to_bottom = math.sqrt(m.z_to_bottom_delta * m.z_to_bottom_delta + m.x_delta * m.x_delta);
+        m.angle_to_bottom = math.asin(m.x_delta / m.hypot_to_bottom);
+        
+        m.px_per_degree = math.abs(m.angle_to_bottom - m.angle_to_hud) / (m.hud_height_px / 2);
+        
+        ###############################
         ## pitch bars
         ###############################
         
@@ -127,7 +156,7 @@ var HUD_SCREEN = {
                                 .line(9,18)
                                 .setStrokeLineWidth(m.line_width)
                                 .setColor(m.red,m.green,m.blue)
-                                .setTranslation(m.canvas_settings["view"][0] / 2,m.canvas_settings["view"][0] / 2);
+                                .setTranslation(m.canvas_settings["view"][0] / 2,m.hud_height_px / 2);
         m.velocity_vector = m.flight_dir_indicators.createChild("path")
                                 .move(-8,0)
                                 .line(8,9)
@@ -149,7 +178,7 @@ var HUD_SCREEN = {
         m.compass_left_limit = (m.compass_total_spread / 2) * m.compass_px_per_degree * -1;
         
         m.compass = m.hud.createGroup();
-        m.compass.setTranslation(m.canvas_settings["view"][0] / 2, m.canvas_settings["view"][1] / 2 - 316);
+        m.compass.setTranslation(m.canvas_settings["view"][0] / 2, m.hud_height_px / 2 - 316);
         m.compass_dots = [];
         m.compass_text = [];
         for (var i = 0; i < m.compass_spread_deg / m.compass_dot_spread_deg + 1; i = i + 1) {
@@ -197,7 +226,7 @@ var HUD_SCREEN = {
         m.alt_deg_per_dot = 360 / m.alt_num_dots;
         
         m.alt_display = m.hud.createGroup();
-        m.alt_display.setTranslation(m.canvas_settings["view"][0] / 2 + 211, m.canvas_settings["view"][1] / 2 - 233);
+        m.alt_display.setTranslation(m.canvas_settings["view"][0] / 2 + 211, m.hud_height_px / 2 - 233);
         m.alt_dots = [];
         
         for (var i = 0; i < m.alt_num_dots; i = i + 1) {
@@ -237,7 +266,7 @@ var HUD_SCREEN = {
                             .setFontSize(m.font_size)
                             .setFont(m.font)
                             .setColor(m.red,m.green,m.blue,1)
-                            .setTranslation(m.canvas_settings["view"][0] / 2 - 156, m.canvas_settings["view"][1] / 2 - 128);
+                            .setTranslation(m.canvas_settings["view"][0] / 2 - 156, m.hud_height_px / 2 - 128);
                                     
         
         #m.test_group = m.hud.createGroup();
@@ -251,12 +280,15 @@ var HUD_SCREEN = {
         ## ias
         ###############################
         
-        ias_text.setText(sprintf("%i",prop_io.airspeed))
+        me.ias_text.setText(sprintf("%i",prop_io.airspeed));
         
         ###############################
         ## pitch bars
         ###############################
         me.pitch_bars_canvas_group.setRotation(-prop_io.roll * D2R);
+        
+        # var center_hud_pitch = angle_to_hud + aircraft_pitch;
+        # var px_y_pitch_loc = get_pitch_location(prop_io.pitch - center_hud_pitch);
         
         # determine bottom bar location
         me.b_line = (me.pitch_bars_height - me.pitch_px_per_degree * me.pitch_bars_deg_spacing) + 
@@ -333,6 +365,28 @@ var HUD_SCREEN = {
             me.alt_text.setText(prop_io.altitude - math.mod(prop_io.altitude,50));
         }
         
+    },
+    get_pitch_location: func(p) {
+        # returns the pixel location of a given pitch
+        # does not check for out of bounds
+        # needs:
+        # px_per_degree
+        # center_hud_angle
+        
+        # get pixel_pos of the center angle
+        me.center_px_offset = me.center_hud_angle * (me.px_per_degree / get_pitch_ratio(me.center_hud_angle));
+        
+        # get pixel_pos of the requested angle
+        return me.center_px_offset - p * (me.px_per_degree / get_pitch_ratio(p)) + me.pitch_center_y;
+    },
+    get_pitch_ratio: func(p) {
+        # at less than 20, the ratio is 1
+        # from 20 to 90, the ratio increases
+        # exponentially to ~4.4
+        if (math.abs(p) < 20) {
+            return 1;
+        }
+        return 0.0007 * math.pow(math.abs(p) - 20,2) + 1;
     },
 };
 
