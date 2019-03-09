@@ -10,6 +10,12 @@
 	<property value="0">fbw/pitch/q-demand</property>
 	<property value="0">fbw/yaw/beta-d</property>
 	
+	<!-- Autopilot stuff -->
+	<property value="0">fbw/ap/roll-enabled</property>
+	<property value="0">fbw/ap/pitch-enabled</property>
+	<property value="0">fbw/ap/roll-cmd</property>
+	<property value="0">fbw/ap/g-cmd</property>
+	
 	<!-- Default gains for tuning -->
 	<property value="0">fbw/roll/p-gain</property>
 	<property value="0">fbw/roll/d-gain</property>
@@ -93,10 +99,10 @@
 					<independentVar lookup="column">fbw/gain-switch</independentVar>
 					<tableData>
 						     0    1
-						130  8.0  4.5
+						130  6.5  4.5
 						320  3.0  4.5
-						600  1.1  4.5
-						950  0.7  4.5
+						600  1.0  4.5
+						950  0.6  4.5
 					</tableData>
 				</table>
 			</function>
@@ -220,18 +226,62 @@
 				<table>
 					<independentVar lookup="row">fbw/roll/aileron-modified</independentVar>
 					<tableData>
-						-20.000 -4.36332
-						  0.000  0.00000
-						 20.000  4.36332
+						-20 -4.36332
+						  0  0.00000
+						 20  4.36332
 					</tableData>
 				</table>
 			</function>
 		</fcs_function>
 		
-		<lag_filter name="fbw/roll/rate-command">
+		<lag_filter name="fbw/roll/rate-stick-lag">
 			<input>fbw/roll/rate-stick</input>
 			<c1>11.3</c1>
 		</lag_filter>
+		
+		<switch name="fbw/roll/rad-hold">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				fbw/roll/rate-stick-lag lt 0.005
+				fbw/roll/rate-stick-lag gt -0.005
+				position/wow eq 0
+				fbw/ap/roll-enabled eq 0
+				velocities/p-rad_sec lt 0.10472
+				velocities/p-rad_sec gt -0.10472
+			</test>
+		</switch>
+		
+		<fcs_function name="fbw/roll/rad">
+			<function>
+				<ifthen>
+					<eq>
+						<property>fbw/roll/rad-hold</property>
+						<value>0</value>
+					</eq>
+					<property>attitude/roll-rad</property>
+					<property>fbw/roll/rad</property>
+				</ifthen>
+			</function>
+		</fcs_function>
+		
+		<summer name="fbw/roll/rad-error">
+			<input>attitude/roll-rad</input>
+			<input>-fbw/roll/rad</input>
+		</summer>
+		
+		<pure_gain name="fbw/roll/rad-rate">
+			<input>fbw/roll/rad-error</input>
+			<gain>-2.5</gain>
+			<clipto>
+				<min>-0.0872665</min>
+				<max>0.0872665</max>
+			</clipto>
+		</pure_gain>
+		
+		<summer name="fbw/roll/rate-command">
+			<input>fbw/roll/rate-stick-lag</input>
+			<input>fbw/roll/rad-rate</input>
+		</summer>
 		
 		<!-- No AP yet! -->
 		<!--switch name="fbw/roll/rate-demand">
@@ -825,7 +875,7 @@
 		
 		<actuator name="fcs/elevon-1L-deg">
 			<input>fcs/elevon-1L-cmd</input>
-			<rate_limit>150</rate_limit>
+			<rate_limit>100</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[2]</output>
 		</actuator>
@@ -855,7 +905,7 @@
 		
 		<actuator name="fcs/elevon-1R-deg">
 			<input>fcs/elevon-1R-cmd</input>
-			<rate_limit>150</rate_limit>
+			<rate_limit>100</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[5]</output>
 		</actuator>
@@ -882,7 +932,7 @@
 		
 		<actuator name="fcs/elevon-2L-deg">
 			<input>fcs/elevon-2L-cmd</input>
-			<rate_limit>150</rate_limit>
+			<rate_limit>100</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[3]</output>
 		</actuator>
@@ -912,7 +962,7 @@
 		
 		<actuator name="fcs/elevon-2R-deg">
 			<input>fcs/elevon-2R-cmd</input>
-			<rate_limit>150</rate_limit>
+			<rate_limit>100</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[4]</output>
 		</actuator>
@@ -939,14 +989,14 @@
 		
 		<actuator name="fcs/foreplane-L-deg">
 			<input>fcs/foreplane-cmd-hyd</input>
-			<rate_limit>125</rate_limit>
+			<rate_limit>80</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[0]</output>
 		</actuator>
 		
 		<actuator name="fcs/foreplane-R-deg">
 			<input>fcs/foreplane-cmd-hyd</input>
-			<rate_limit>125</rate_limit>
+			<rate_limit>80</rate_limit>
 			<lag>26.7</lag>
 			<output>/sim/multiplay/generic/float[1]</output>
 		</actuator>
@@ -980,7 +1030,7 @@
 		
 		<actuator name="fcs/rudder-deg">
 			<input>fcs/yaw-input-deg-hyd</input>
-			<rate_limit>145</rate_limit>
+			<rate_limit>95</rate_limit>
 			<lag>24.7</lag>
 			<output>/sim/multiplay/generic/float[6]</output>
 		</actuator>
