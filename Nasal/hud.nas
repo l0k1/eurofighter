@@ -49,29 +49,32 @@ var HUD_SCREEN = {
         ###############################
         
         # x and z coords of the center of the hud
-        m.hud_x = 1.3;
-        m.hud_z = 1.15;
+        m.hud_x = -4.74837; #3.3058, z: 1.25087
+        m.hud_z = 1.16543;
         
         # rewrite this with whatever the current view x/z is set to
-        m.view_x = 1.05;
-        m.view_z = 1.20;
+        m.view_x = -4.14417;
+        m.view_z = 1.20837;
         
-        m.hud_height_m = 0.5; # get this out of blender, the height of the hud in meters
+        m.hud_height_m = 0.25; # get this out of blender, the height of the hud in meters
         m.hud_height_px = 920; # however high the hud is in pixels
         
         # calculate angle from view to center of the hud
         m.z_delta = m.view_z - m.hud_z;
         m.x_delta = m.view_x - m.hud_x;
         m.view_dist = math.sqrt(m.z_delta * m.z_delta + m.x_delta * m.x_delta);
-        m.angle_to_hud = math.asin(m.x_delta / m.view_dist);
+        m.angle_to_hud = (90 * D2R) - math.asin(m.x_delta / m.view_dist);
+        #print('angle to hud: ' ~ (m.angle_to_hud * R2D));
         
         # calculate how many degrees == how many pixels in a 1:1 ratio
         # get angle to the bottom of the hud
-        m.z_to_bottom_delta = m.z_delta - (m.hud_height_m / 2);
+        m.z_to_bottom_delta = m.z_delta + (m.hud_height_m / 2);
         m.hypot_to_bottom = math.sqrt(m.z_to_bottom_delta * m.z_to_bottom_delta + m.x_delta * m.x_delta);
-        m.angle_to_bottom = math.asin(m.x_delta / m.hypot_to_bottom);
+        m.angle_to_bottom = (90 * D2R) - math.asin(m.x_delta / m.hypot_to_bottom);
         
-        m.px_per_degree = math.abs(m.angle_to_bottom - m.angle_to_hud) / (m.hud_height_px / 2);
+        m.px_per_degree = (m.hud_height_px / 2) / (math.abs(m.angle_to_bottom - m.angle_to_hud) * R2D);
+        #print('px: ' ~ m.px_per_degree);
+        me.climbdive_mode = 0;
         
         ###############################
         ## pitch bars
@@ -85,10 +88,11 @@ var HUD_SCREEN = {
         m.pitch_bars_down = [];
         m.pitch_bars_up = [];
         m.pitch_bars_text = [];
+        m.build_pitch_lookup_array();
                 
         # create the actual lines
         m.pitch_bars_canvas_group = m.hud.createGroup();
-        m.pitch_bars_canvas_group.setTranslation(m.canvas_settings["view"][0] / 2, m.canvas_settings["view"][1] / 2);
+        m.pitch_bars_canvas_group.setTranslation(m.canvas_settings["view"][0] / 2, m.hud_height_px / 2);
         m.pitch_bar_center = m.pitch_bars_canvas_group.createChild("path")
                                     .move(-273,0)
                                     .line(235,0)
@@ -98,7 +102,7 @@ var HUD_SCREEN = {
                                     .line(235,0)
                                     .setStrokeLineWidth(m.line_width)
                                     .setColor(m.red,m.green,m.blue);
-        for(var i = 0; i < m.pitch_bars_deg_shown / m.pitch_bars_deg_spacing; i = i + 1) {
+        for(var i = 0; i < 180 / 5; i = i + 1) {
             append(m.pitch_bars_down, m.pitch_bars_canvas_group.createChild("path")
                                         .move(-123,-17)
                                         .line(0,17)
@@ -139,6 +143,7 @@ var HUD_SCREEN = {
         ###############################
         
         m.flight_dir_indicators = m.hud.createGroup();
+        m.flight_dir_indicators.setTranslation(m.canvas_settings["view"][0] / 2, m.hud_height_px / 2);
         m.climbdive_symbol = m.flight_dir_indicators.createChild("path")
                                 .move(-9,0)
                                 .arcSmallCW(9,9,0,18,0)
@@ -147,7 +152,8 @@ var HUD_SCREEN = {
                                 .move(43,0)
                                 .line(25,0)
                                 .setStrokeLineWidth(m.line_width)
-                                .setColor(m.red,m.green,m.blue);
+                                .setColor(m.red,m.green,m.blue)
+                                .hide();
         m.attitude_symbol = m.flight_dir_indicators.createChild("path")
                                 .move(-34,0)
                                 .line(68,0)
@@ -155,8 +161,7 @@ var HUD_SCREEN = {
                                 .line(9,-18)
                                 .line(9,18)
                                 .setStrokeLineWidth(m.line_width)
-                                .setColor(m.red,m.green,m.blue)
-                                .setTranslation(m.canvas_settings["view"][0] / 2,m.hud_height_px / 2);
+                                .setColor(m.red,m.green,m.blue);
         m.velocity_vector = m.flight_dir_indicators.createChild("path")
                                 .move(-8,0)
                                 .line(8,9)
@@ -164,7 +169,8 @@ var HUD_SCREEN = {
                                 .line(-8,-9)
                                 .line(-8,9)
                                 .setStrokeLineWidth(m.line_width)
-                                .setColor(m.red,m.green,m.blue);
+                                .setColor(m.red,m.green,m.blue)
+                                .hide();
         
         ###############################
         ## compass
@@ -285,43 +291,72 @@ var HUD_SCREEN = {
         ###############################
         ## pitch bars
         ###############################
-        me.pitch_bars_canvas_group.setRotation(-prop_io.roll * D2R);
         
-        # var center_hud_pitch = angle_to_hud + aircraft_pitch;
-        # var px_y_pitch_loc = get_pitch_location(prop_io.pitch - center_hud_pitch);
-        
-        # determine bottom bar location
-        me.b_line = (me.pitch_bars_height - me.pitch_px_per_degree * me.pitch_bars_deg_spacing) + 
-                            (math.mod(prop_io.pitch,me.pitch_bars_deg_spacing) * me.pitch_px_per_degree);
-        # me.b_pitch is propably off by a spacing or two
-        me.b_pitch = prop_io.pitch - math.mod(prop_io.pitch, me.pitch_bars_deg_spacing) - 
-                            ((me.pitch_bars_deg_shown / 2) - (math.mod(me.pitch_bars_deg_shown / 2, me.pitch_bars_deg_spacing)));
+        me.center_hud_pitch = prop_io.pitch - (me.angle_to_hud * R2D);
         me.pitch_bar_center.hide();
-        for(var i = 0; i < me.pitch_bars_deg_shown / me.pitch_bars_deg_spacing; i = i + 1) {
-            #print('updating i: ' ~ me.b_pitch ~ " " ~ me.b_line);
-            if (me.b_line < me.pitch_bottom and me.b_line > me.pitch_top) {
-                if (me.b_pitch < 0) {
-                    me.pitch_bars_down[i].setTranslation(0,me.b_line - me.pitch_center_y).show();
-                    me.pitch_bars_up[i].hide();
-                    me.pitch_bars_text[i].setText(int(me.b_pitch)).setTranslation(-115 * me.x_res_norm,me.b_line - 25 - me.pitch_center_y).show();
-                } elsif (me.b_pitch > 0) {
-                    me.pitch_bars_up[i].setTranslation(0,me.b_line - me.pitch_center_y).show();
-                    me.pitch_bars_down[i].hide();
-                    me.pitch_bars_text[i].setText(int(me.b_pitch)).setTranslation(-115 * me.x_res_norm,me.b_line + 25 - me.pitch_center_y).show();
-                } else {
-                    me.pitch_bar_center.setTranslation(0,me.b_line - me.pitch_center_y).show();
-                    me.pitch_bars_down[i].hide();
-                    me.pitch_bars_up[i].hide();
-                    me.pitch_bars_text[i].hide();
-                }
-                    
+
+        if (me.climbdive_mode == 0 and prop_io.airspeed > 48) {
+            me.climbdive_mode = 1;
+            me.attitude_symbol.hide();
+            me.climbdive_symbol.show();
+        } elsif (me.climbdive_mode == 1 and prop_io.airspeed < 48) {
+            me.climbdive_mode = 0;
+            me.attitude_symbol.show();
+            me.climbdive_symbol.hide();
+        }
+        if (me.climbdive_mode == 0) {
+            me.attitude_symbol.setTranslation(0, me.get_pitch_location(prop_io.pitch));
+            me.attitude_symbol.setRotation(prop_io.roll * D2R);
+            me.pitch_bars_canvas_group.setCenter(0, me.get_pitch_location(prop_io.pitch));
+            me.flight_dir_indicators.setCenter(0, me.get_pitch_location(prop_io.pitch));
+        } elsif (me.climbdive_mode == 1) {
+            me.cd_out = math.clamp(prop_io.pitch - math.clamp(prop_io.alpha,-5,15),-90,90);
+            me.climbdive_symbol.setTranslation(0, me.get_pitch_location(prop_io.pitch - prop_io.alpha));
+            me.climbdive_symbol.setRotation(prop_io.roll * D2R);
+            me.pitch_bars_canvas_group.setCenter(0, me.get_pitch_location(prop_io.pitch - prop_io.alpha));
+            me.flight_dir_indicators.setCenter(0, me.get_pitch_location(prop_io.pitch - prop_io.alpha));
+        }
+        #print(me.get_pitch_location(prop_io.pitch));
+
+
+        me.flight_dir_indicators.setRotation(-prop_io.roll * D2R);
+        me.pitch_bars_canvas_group.setRotation(-prop_io.roll * D2R);
+        me.b_pitch = -90;
+        me.top_limit = 100;
+        me.bottom_limit = me.hud_height_px - me.top_limit;
+        for (var i = 0; i < size(me.pitch_bars_down); i = i + 1){
+            if (me.b_pitch > 90) {
+                me.pitch_bars_down[i].hide();
+                me.pitch_bars_up[i].hide();
+                me.pitch_bars_text[i].hide();
+                continue;
+            }
+            me.px_location = me.get_pitch_location(me.b_pitch);
+            #print(me.b_pitch ~ " " ~ me.px_location);
+            if (me.b_pitch < 0 and me.px_location < me.hud_height_px / 2) {
+                me.pitch_bars_down[i].setTranslation(0,me.px_location).show();
+                me.pitch_bars_up[i].hide();
+                me.pitch_bars_text[i].setText(int(me.b_pitch)).setTranslation(-115 * me.x_res_norm,me.px_location - 25).show();
+            } elsif (me.b_pitch == 0) {
+                #print(me.b_pitch ~ " " ~ me.px_location);
+                me.pitch_bars_down[i].hide();
+                me.pitch_bars_up[i].hide();
+                me.pitch_bars_text[i].hide();
+                me.pitch_bar_center.setTranslation(0,me.px_location).show();
+            } elsif (me.b_pitch > 0 and me.px_location > -me.hud_height_px / 2) {
+                me.pitch_bars_up[i].setTranslation(0,me.px_location).show();
+                me.pitch_bars_down[i].hide();
+                me.pitch_bars_text[i].setText(int(me.b_pitch)).setTranslation(-115 * me.x_res_norm,me.px_location + 25).show();
             } else {
                 me.pitch_bars_down[i].hide();
                 me.pitch_bars_up[i].hide();
                 me.pitch_bars_text[i].hide();
             }
-            me.b_pitch += me.pitch_bars_deg_spacing;
-            me.b_line -= (me.pitch_px_per_degree * me.pitch_bars_deg_spacing);
+            if (me.b_pitch < 30 and me.b_pitch >= -30) {
+                me.b_pitch += 5;
+            } else {
+                me.b_pitch += 10;
+            }
         }
         
         ###############################
@@ -367,26 +402,37 @@ var HUD_SCREEN = {
         
     },
     get_pitch_location: func(p) {
-        # returns the pixel location of a given pitch
-        # does not check for out of bounds
-        # needs:
-        # px_per_degree
-        # center_hud_angle
+        me.center_px_offset = me.get_pitch_pixel(me.center_hud_pitch);
         
-        # get pixel_pos of the center angle
-        me.center_px_offset = me.center_hud_angle * (me.px_per_degree / get_pitch_ratio(me.center_hud_angle));
-        
-        # get pixel_pos of the requested angle
-        return me.center_px_offset - p * (me.px_per_degree / get_pitch_ratio(p)) + me.pitch_center_y;
+        me.actual_px = (me.center_px_offset - me.get_pitch_pixel(p))  * -1;
+        return me.actual_px;
+    },
+    get_pitch_pixel: func(p) {
+        me.absp = math.abs(p);
+        me.res_1 = me.pitch_lookup_array[int(me.absp)];
+        me.res_2 = me.pitch_lookup_array[int(me.absp) + 1];
+        me.fraction = me.absp - int(me.absp);
+        return (((me.res_2 - me.res_1) * me.fraction) + me.res_1) * (math.sgn(p) * -1);
+    },
+    build_pitch_lookup_array: func() {
+        me.pitch_lookup_array = [0];
+        me.running_tally = 0;
+        for (var i = 1; i <= 91; i = i + 1) {
+            me.running_tally += me.px_per_degree / me.get_pitch_ratio(i);
+            append(me.pitch_lookup_array,me.running_tally);
+            #print(i ~ "|" ~ me.running_tally);
+        }
     },
     get_pitch_ratio: func(p) {
-        # at less than 20, the ratio is 1
-        # from 20 to 90, the ratio increases
+        # at less than 5, the ratio is 1
+        # from 5 to 90, the ratio increases
         # exponentially to ~4.4
-        if (math.abs(p) < 20) {
+
+        if (math.abs(p) < 5) {
             return 1;
         }
-        return 0.0007 * math.pow(math.abs(p) - 20,2) + 1;
+
+        return 0.00042 * math.pow(math.abs(p), 2) + 0.99
     },
 };
 
