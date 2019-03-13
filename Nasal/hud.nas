@@ -301,60 +301,10 @@ var HUD_SCREEN = {
     },
     
     dev_mode_update: func() {
-        
-        ###############################
-        ## ias
-        ###############################
-        
         me.ias_text.setText(sprintf("%i",prop_io.airspeed));
-        
-        ###############################
-        ## pitch bars
-        ###############################
-        
         me.pitch_bars_display();
-        
-        ###############################
-        ## compass
-        ###############################
-        
-        # me.compass_route_marker is used to show AP route heading. currently it is hide()ing.
-        
-        # determine leftmost dot location
-        
-        me.b_dot = ((prop_io.heading - (math.mod(prop_io.heading,me.compass_dot_spread_deg)) - prop_io.heading) + me.compass_dot_spread_deg);
-        me.b_dot = me.b_dot * me.compass_px_per_degree + me.compass_left_limit;
-        
-        # determine leftmost dot number
-        me.b_text = prop_io.heading - math.mod(prop_io.heading, me.compass_dot_spread_deg) - me.compass_total_spread;
-        
-        # update the dots
-        me.text_idx = 0;
-        for (var i = 0; i < me.compass_spread_deg / me.compass_dot_spread_deg + 1; i = i + 1) {
-            me.compass_dots[i].setTranslation(me.b_dot,0);
-            if (math.mod(me.b_text,me.compass_dot_spread_deg*2) == 0) {
-                me.compass_text[me.text_idx].setTranslation(me.b_dot,-4)
-                                            .setText(math.periodic(0,360,me.b_text));
-                me.text_idx += 1;
-            }
-            me.b_text += me.compass_dot_spread_deg;
-            me.b_dot += me.compass_dot_spread_px;
-        }
-        
-        ###############################
-        ## altitude circle
-        ###############################
-        
-        # rotate line
-        me.alt_line.setRotation(prop_io.altitude * me.alt_rotations_per_foot * 360 * D2R);
-        # display text
-        # display resolution is 20ft increments below 5000ft, and 50ft above
-        if (prop_io.altitude <= 5000) {
-            me.alt_text.setText(prop_io.altitude - math.mod(prop_io.altitude,20));
-        } else {
-            me.alt_text.setText(prop_io.altitude - math.mod(prop_io.altitude,50));
-        }
-        
+        me.compass_display();
+        me.altitude_display();
     },
 
     pitch_bars_display: func() {
@@ -416,6 +366,43 @@ var HUD_SCREEN = {
                 me.pitch_bars_down[j].hide();
                 me.pitch_bars_up[j].hide();
                 me.pitch_bars_text[j].hide();
+        }
+    },
+    
+    compass_display: func() {
+        # me.compass_route_marker is used to show AP route heading. currently it is hide()ing.
+        
+        # determine leftmost dot location
+        
+        me.b_dot = ((prop_io.heading - (math.mod(prop_io.heading,me.compass_dot_spread_deg)) - prop_io.heading) + me.compass_dot_spread_deg);
+        me.b_dot = me.b_dot * me.compass_px_per_degree + me.compass_left_limit;
+        
+        # determine leftmost dot number
+        me.b_text = prop_io.heading - math.mod(prop_io.heading, me.compass_dot_spread_deg) - me.compass_total_spread;
+        
+        # update the dots
+        me.text_idx = 0;
+        for (var i = 0; i < me.compass_spread_deg / me.compass_dot_spread_deg + 1; i = i + 1) {
+            me.compass_dots[i].setTranslation(me.b_dot,0);
+            if (math.mod(me.b_text,me.compass_dot_spread_deg*2) == 0) {
+                me.compass_text[me.text_idx].setTranslation(me.b_dot,-4)
+                                            .setText(math.periodic(0,360,me.b_text));
+                me.text_idx += 1;
+            }
+            me.b_text += me.compass_dot_spread_deg;
+            me.b_dot += me.compass_dot_spread_px;
+        }
+    },
+    
+    me.altitude_display = func() {
+        # rotate line
+        me.alt_line.setRotation(prop_io.altitude * me.alt_rotations_per_foot * 360 * D2R);
+        # display text
+        # display resolution is 20ft increments below 5000ft, and 50ft above
+        if (prop_io.altitude <= 5000) {
+            me.alt_text.setText(prop_io.altitude - math.mod(prop_io.altitude,20));
+        } else {
+            me.alt_text.setText(prop_io.altitude - math.mod(prop_io.altitude,50));
         }
     },
 
