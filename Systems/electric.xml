@@ -146,8 +146,44 @@ systems/electric/sources/output-norm
 		</fcs_function>
 		
 	</channel>
-	<channel name="inputs">
+	<channel name="distribution">
+	
+		<!-- switches
+		for instance:
+		<switch name="foo">
+			<default value="0">
+			<test logic="AND" value="systems/electric/sources/output-norm">
+				foo == 1
+			</test>
+			<output>foo</output>
+		</switch>
+		-->
+		
+		<!-- puregains for stuff that isn't switchable -->
+		
+		<pure_gain name="trash/systems/electric/distribution/hud">
+			<input>systems/electric/sources/output-norm</input>
+			<gain>1.0</gain>
+			<output>systems/electric/distribution/hud</output>
+		</pure_gain>
+		
 	</channel>
-	<channel name="outputs">
+	<channel name="load">
+		
+		<!-- calculate how much load on the system each distribution point is -->
+		
+		<pure_gain name="trash/systems/electric/load/hud">
+			<input>systems/electric/distribution/hud</input>
+			<gain>0.01</gain>
+			<output>systems/electric/load/hud</output>
+		</pure_gain>
+	
+		<!-- sum up all loads into systems/electric/sources/battery-drain -->
+		<!-- need more than one input here. soon.tm.
+		<summer>
+			<input>systems/electric/load/hud</input>
+			<input></input>
+			<output>systems/electric/sources/battery-drain</output>
+		</summer>-->
 	</channel>
 </system>

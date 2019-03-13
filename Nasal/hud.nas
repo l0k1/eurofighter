@@ -16,6 +16,7 @@ var HUD_SCREEN = {
         m.cur_main_func = nil;
         m.cur_init_func = nil;
         m.cur_end_func = nil;
+        m.cur_state = nil;
         
         ###############################
         ###################### settings
@@ -457,6 +458,7 @@ var HUD_SCREEN = {
     change_state: func(state) {
         if (state.main_func == nil) { return; }
         if (state.temp == 0) {
+            me.cur_state = state;
             if (me.cur_end_func != nil) {
                 #print('calling the end func');
                 call(me.cur_end_func, nil, hud_ref);
@@ -482,13 +484,16 @@ var HUD_SCREEN = {
     },
     
     main_loop: func() {
+        # check for electricity power
+        if (me.cur_state != hud_state_off and prop_io.hud_power < 0.8) {
+            me.change_state(hud_state_off);
+        } elsif (me.cur_state == hud_state_off and prop_io.hud_power > 0.8) {
+            me.change_state(hud_dev_mode);
+        }
         if (me.cur_main_func != nil) {
             call(me.cur_main_func, nil, hud_ref );
         }
     },
-    
-    # state definitions
-    ,
     
 };
 
