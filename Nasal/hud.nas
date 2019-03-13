@@ -11,6 +11,11 @@ var HUD_SCREEN = {
             parents: [HUD_SCREEN],
             hud: canvas.new(HUD_SCREEN.canvas_settings)
         };
+
+
+        m.cur_main_func = nil;
+        m.cur_init_func = nil;
+        m.cur_end_func = nil;
         
         ###############################
         ###################### settings
@@ -49,7 +54,7 @@ var HUD_SCREEN = {
         ###############################
         
         # x and z coords of the center of the hud
-        m.hud_x = -4.74837; #3.3058, z: 1.25087
+        m.hud_x = -4.74837;
         m.hud_z = 1.16543;
         
         # rewrite this with whatever the current view x/z is set to
@@ -58,6 +63,10 @@ var HUD_SCREEN = {
         
         m.hud_height_m = 0.25; # get this out of blender, the height of the hud in meters
         m.hud_height_px = 920; # however high the hud is in pixels
+        
+        ###############################
+        ## pitch bars
+        ###############################
         
         # calculate angle from view to center of the hud
         m.z_delta = m.view_z - m.hud_z;
@@ -73,18 +82,9 @@ var HUD_SCREEN = {
         m.angle_to_bottom = (90 * D2R) - math.asin(m.x_delta / m.hypot_to_bottom);
         
         m.px_per_degree = (m.hud_height_px / 2) / (math.abs(m.angle_to_bottom - m.angle_to_hud) * R2D);
-        #print('px: ' ~ m.px_per_degree);
+
         me.climbdive_mode = 0;
-        
-        ###############################
-        ## pitch bars
-        ###############################
-        
-        m.pitch_bars_height = m.canvas_settings["view"][0] * m.pitch_bars_size_percent * m.y_res_norm;
-        m.pitch_px_per_degree = m.pitch_bars_height / m.pitch_bars_deg_shown;
-        m.pitch_bottom = m.canvas_settings["view"][1] / 2 + m.pitch_bars_height / 2;
-        m.pitch_top = m.canvas_settings["view"][1] / 2 - m.pitch_bars_height / 2;
-        m.pitch_center_y = (m.pitch_bottom + m.pitch_top) / 2;
+
         m.pitch_bars_down = [];
         m.pitch_bars_up = [];
         m.pitch_bars_text = [];
@@ -274,13 +274,32 @@ var HUD_SCREEN = {
                             .setColor(m.red,m.green,m.blue,1)
                             .setTranslation(m.canvas_settings["view"][0] / 2 - 156, m.hud_height_px / 2 - 128);
                                     
-        
-        #m.test_group = m.hud.createGroup();
-        #m.test_text = m.test_group.createChild("text").setAlignment("center-center").setFontSize(50).setTranslation(512,512).setColor(0,1,0).setFont(m.font).setText("foo").show();
-        return m;
+       return m;
+    },
+
+    off_mode_init: func() {
+        me.flight_dir_indicators.hide();
+        me.pitch_bars_canvas_group.hide();
+        me.compass.hide();
+        me.alt_display.hide();
+        me.ias_text.hide();
+    },
+    off_mode_update: func() {
+        # the hud is off, we do nothing
+        return;
     },
     
-    update: func() {
+    dev_mode_init: func() {
+        me.flight_dir_indicators.show();
+        me.pitch_bars_canvas_group.show();
+        me.compass.show();
+        me.alt_display.show();
+        me.ias_text.show();
+        me.pitch_bars_shown = [-90, -80, -70, -60, -50, -40, -30, -25, -20, -15, -10, -5, 0,
+                                5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90]
+    },
+    
+    dev_mode_update: func() {
         
         ###############################
         ## ias
@@ -292,72 +311,7 @@ var HUD_SCREEN = {
         ## pitch bars
         ###############################
         
-        me.center_hud_pitch = prop_io.pitch - (me.angle_to_hud * R2D);
-        me.pitch_bar_center.hide();
-
-        if (me.climbdive_mode == 0 and prop_io.airspeed > 48) {
-            me.climbdive_mode = 1;
-            me.attitude_symbol.hide();
-            me.climbdive_symbol.show();
-        } elsif (me.climbdive_mode == 1 and prop_io.airspeed < 48) {
-            me.climbdive_mode = 0;
-            me.attitude_symbol.show();
-            me.climbdive_symbol.hide();
-        }
-        if (me.climbdive_mode == 0) {
-            me.attitude_symbol.setTranslation(0, me.get_pitch_location(prop_io.pitch));
-            me.attitude_symbol.setRotation(prop_io.roll * D2R);
-            me.pitch_bars_canvas_group.setCenter(0, me.get_pitch_location(prop_io.pitch));
-            me.flight_dir_indicators.setCenter(0, me.get_pitch_location(prop_io.pitch));
-        } elsif (me.climbdive_mode == 1) {
-            me.cd_out = math.clamp(prop_io.pitch - math.clamp(prop_io.alpha,-5,15),-90,90);
-            me.climbdive_symbol.setTranslation(0, me.get_pitch_location(prop_io.pitch - prop_io.alpha));
-            me.climbdive_symbol.setRotation(prop_io.roll * D2R);
-            me.pitch_bars_canvas_group.setCenter(0, me.get_pitch_location(prop_io.pitch - prop_io.alpha));
-            me.flight_dir_indicators.setCenter(0, me.get_pitch_location(prop_io.pitch - prop_io.alpha));
-        }
-        #print(me.get_pitch_location(prop_io.pitch));
-
-
-        me.flight_dir_indicators.setRotation(-prop_io.roll * D2R);
-        me.pitch_bars_canvas_group.setRotation(-prop_io.roll * D2R);
-        me.b_pitch = -90;
-        me.top_limit = 100;
-        me.bottom_limit = me.hud_height_px - me.top_limit;
-        for (var i = 0; i < size(me.pitch_bars_down); i = i + 1){
-            if (me.b_pitch > 90) {
-                me.pitch_bars_down[i].hide();
-                me.pitch_bars_up[i].hide();
-                me.pitch_bars_text[i].hide();
-                continue;
-            }
-            me.px_location = me.get_pitch_location(me.b_pitch);
-            #print(me.b_pitch ~ " " ~ me.px_location);
-            if (me.b_pitch < 0 and me.px_location < me.hud_height_px / 2) {
-                me.pitch_bars_down[i].setTranslation(0,me.px_location).show();
-                me.pitch_bars_up[i].hide();
-                me.pitch_bars_text[i].setText(int(me.b_pitch)).setTranslation(-115 * me.x_res_norm,me.px_location - 25).show();
-            } elsif (me.b_pitch == 0) {
-                #print(me.b_pitch ~ " " ~ me.px_location);
-                me.pitch_bars_down[i].hide();
-                me.pitch_bars_up[i].hide();
-                me.pitch_bars_text[i].hide();
-                me.pitch_bar_center.setTranslation(0,me.px_location).show();
-            } elsif (me.b_pitch > 0 and me.px_location > -me.hud_height_px / 2) {
-                me.pitch_bars_up[i].setTranslation(0,me.px_location).show();
-                me.pitch_bars_down[i].hide();
-                me.pitch_bars_text[i].setText(int(me.b_pitch)).setTranslation(-115 * me.x_res_norm,me.px_location + 25).show();
-            } else {
-                me.pitch_bars_down[i].hide();
-                me.pitch_bars_up[i].hide();
-                me.pitch_bars_text[i].hide();
-            }
-            if (me.b_pitch < 30 and me.b_pitch >= -30) {
-                me.b_pitch += 5;
-            } else {
-                me.b_pitch += 10;
-            }
-        }
+        me.pitch_bars_display();
         
         ###############################
         ## compass
@@ -401,6 +355,69 @@ var HUD_SCREEN = {
         }
         
     },
+
+    pitch_bars_display: func() {
+        me.center_hud_pitch = prop_io.pitch - (me.angle_to_hud * R2D);
+        me.pitch_bar_center.hide();
+
+        if (me.climbdive_mode == 0 and prop_io.airspeed > 48) {
+            me.climbdive_mode = 1;
+            me.attitude_symbol.hide();
+            me.climbdive_symbol.show();
+        } elsif (me.climbdive_mode == 1 and prop_io.airspeed < 48) {
+            me.climbdive_mode = 0;
+            me.attitude_symbol.show();
+            me.climbdive_symbol.hide();
+        }
+        if (me.climbdive_mode == 0) {
+            me.symbol_location = math.clamp(me.get_pitch_location(prop_io.pitch), -me.hud_height_px  / 2, me.hud_height_px  / 2);
+            me.attitude_symbol.setTranslation(0, me.symbol_location);
+            me.attitude_symbol.setRotation(prop_io.roll * D2R);
+            me.pitch_bars_canvas_group.setCenter(0, me.symbol_location);
+            me.flight_dir_indicators.setCenter(0, me.symbol_location);
+        } elsif (me.climbdive_mode == 1) {
+            me.cd_out = math.clamp(prop_io.pitch - math.clamp(prop_io.alpha,-5,15),-90,90);
+            me.symbol_location = math.clamp(me.get_pitch_location(me.cd_out), -me.hud_height_px  / 2, me.hud_height_px  / 2);
+            me.climbdive_symbol.setTranslation(0, me.symbol_location);
+            me.climbdive_symbol.setRotation(prop_io.roll * D2R);
+            me.pitch_bars_canvas_group.setCenter(0, me.symbol_location);
+            me.flight_dir_indicators.setCenter(0, me.symbol_location);
+        }
+
+        me.flight_dir_indicators.setRotation(-prop_io.roll * D2R);
+        me.pitch_bars_canvas_group.setRotation(-prop_io.roll * D2R);
+        me.top_limit = 100;
+        me.bottom_limit = me.hud_height_px - me.top_limit;
+        for (var i = 0; i < size(me.pitch_bars_shown); i = i + 1){
+            me.px_location = me.get_pitch_location(me.pitch_bars_shown[i]);
+            #print(me.b_pitch ~ " " ~ me.px_location);
+            if (me.pitch_bars_shown[i] < 0 and me.px_location < me.hud_height_px / 2) {
+                me.pitch_bars_down[i].setTranslation(0,me.px_location).show();
+                me.pitch_bars_up[i].hide();
+                me.pitch_bars_text[i].setText(int(me.pitch_bars_shown[i])).setTranslation(-115 * me.x_res_norm,me.px_location - 25).show();
+            } elsif (me.pitch_bars_shown[i] == 0) {
+                #print(me.b_pitch ~ " " ~ me.px_location);
+                me.pitch_bars_down[i].hide();
+                me.pitch_bars_up[i].hide();
+                me.pitch_bars_text[i].hide();
+                me.pitch_bar_center.setTranslation(0,me.px_location).show();
+            } elsif (me.pitch_bars_shown[i] > 0 and me.px_location > -me.hud_height_px / 2) {
+                me.pitch_bars_up[i].setTranslation(0,me.px_location).show();
+                me.pitch_bars_down[i].hide();
+                me.pitch_bars_text[i].setText(int(me.pitch_bars_shown[i])).setTranslation(-115 * me.x_res_norm,me.px_location + 25).show();
+            } else {
+                me.pitch_bars_down[i].hide();
+                me.pitch_bars_up[i].hide();
+                me.pitch_bars_text[i].hide();
+            }
+        }
+        for (var j = i; j < size(me.pitch_bars_down); j = j + 1) {
+                me.pitch_bars_down[j].hide();
+                me.pitch_bars_up[j].hide();
+                me.pitch_bars_text[j].hide();
+        }
+    },
+
     get_pitch_location: func(p) {
         me.center_px_offset = me.get_pitch_pixel(me.center_hud_pitch);
         
@@ -434,6 +451,57 @@ var HUD_SCREEN = {
 
         return 0.00042 * math.pow(math.abs(p), 2) + 0.99
     },
+    
+    ###################################### state stuff to be worked in
+    
+    change_state: func(state) {
+        if (state.main_func == nil) { return; }
+        if (state.temp == 0) {
+            if (me.cur_end_func != nil) {
+                #print('calling the end func');
+                call(me.cur_end_func, nil, hud_ref);
+            }
+            me.cur_main_func = state.main_func;
+            me.cur_init_func = state.init_func;
+            me.cur_end_func = state.end_func;
+            if (me.cur_init_func != nil) {
+                #print('calling the init func');
+                call(me.cur_init_func, nil, hud_ref);
+            }
+        } else if (state.temp == 1) {
+            if (state.init_func != nil) {
+                call(state.init_func, nil, hud_ref);
+            }
+            if (state.main_func != nil) {
+                call(state.main_func, nil, hud_ref);
+            }
+            if (state.end_func != nil) {
+                call(state.end_func, nil, hud_ref);
+            }
+        }
+    },
+    
+    main_loop: func() {
+        if (me.cur_main_func != nil) {
+            call(me.cur_main_func, nil, hud_ref );
+        }
+    },
+    
+    # state definitions
+    ,
+    
 };
 
 hud_ref = HUD_SCREEN.new({"node": "HudCanvas"});
+
+var state_arch = {
+        main_func: nil,
+        init_func: nil,
+        end_func:  nil,
+        temp:        0,
+};
+
+var hud_state_off = {parents: [state_arch], main_func: hud_ref.off_mode_update, init_func: hud_ref.off_mode_init};
+var hud_dev_mode  = {parents: [state_arch], main_func: hud_ref.dev_mode_update, init_func: hud_ref.dev_mode_init};
+
+hud_ref.change_state(hud_dev_mode);

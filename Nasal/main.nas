@@ -5,7 +5,7 @@ var update_idx = 0;
 
 var main_loop = func() {
     prop_io.update();
-    hud.hud_ref.update();
+    hud.hud_ref.main_loop();
 }
 
 var timer = maketimer(update_rate, main_loop);
