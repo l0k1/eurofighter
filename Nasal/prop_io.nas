@@ -15,6 +15,10 @@ var altitude_prop = props.globals.getNode("position/altitude-ft");
 var altitude = 0;
 var airspeed_prop = props.globals.getNode("velocities/airspeed-kt");
 var airspeed = 0;
+var mach_prop = props.globals.getNode("velocities/mach");
+var mach = 0;
+var groundspeed_prop = props.globals.getNode("velocities/groundspeed-kt");
+var groundspeed = 0;
 
 #################################### electric output props
 var hud_power_prop = props.globals.getNode("fdm/jsbsim/systems/electric/distribution/hud");
@@ -28,6 +32,8 @@ var update = func() {
     heading = heading_prop.getValue();
     altitude = altitude_prop.getValue();
     airspeed = airspeed_prop.getValue();
+    mach = mach_prop.getValue();
+    groundspeed = groundspeed_prop.getValue();
     
     #################################### electric output props
     hud_power = hud_power_prop.getValue();

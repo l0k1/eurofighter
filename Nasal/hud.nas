@@ -266,7 +266,7 @@ var HUD_SCREEN = {
         ###############################
         
         ###############################
-        ## IAS text
+        ## text
         ###############################
         m.ias_text = m.hud.createGroup().createChild("text")
                             .setAlignment("center-center")
@@ -274,7 +274,21 @@ var HUD_SCREEN = {
                             .setFont(m.font)
                             .setColor(m.red,m.green,m.blue,1)
                             .setTranslation(m.canvas_settings["view"][0] / 2 - 156, m.hud_height_px / 2 - 128);
-                                    
+        m.gs_m_mode = 0; # 0 for mach, 1 for groundspeed
+        m.gs_m_display = m.hud.createGroup();
+        m.gs_m_text = m.hud.createGroup().createChild("text")
+                            .setAlignment("center-center")
+                            .setFontSize(m.font_size)
+                            .setFont(m.font)
+                            .setColor(m.red,m.green,m.blue,1)
+                            .setTranslation(m.canvas_settings["view"][0] / 2 - 180, m.hud_height_px / 2 - 140)
+                            .setText("M");
+        m.gs_m_output = m.hud.createGroup().createChild("text")
+                            .setAlignment("center-center")
+                            .setFontSize(m.font_size)
+                            .setFont(m.font)
+                            .setColor(m.red,m.green,m.blue,1)
+                            .setTranslation(m.canvas_settings["view"][0] / 2 - 180, m.hud_height_px / 2 - 118);
        return m;
     },
 
@@ -284,6 +298,7 @@ var HUD_SCREEN = {
         me.compass.hide();
         me.alt_display.hide();
         me.ias_text.hide();
+        me.gs_m_display.hide();
     },
     off_mode_update: func() {
         # the hud is off, we do nothing
@@ -296,12 +311,14 @@ var HUD_SCREEN = {
         me.compass.show();
         me.alt_display.show();
         me.ias_text.show();
+        me.gs_m_display.show();
         me.pitch_bars_shown = [-90, -80, -70, -60, -50, -40, -30, -25, -20, -15, -10, -5, 0,
                                 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90]
     },
     
     dev_mode_update: func() {
-        me.ias_text.setText(sprintf("%i",prop_io.airspeed));
+        me.groundspeed_mach_text();
+        me.ias_text_update();
         me.pitch_bars_display();
         me.compass_display();
         me.altitude_display();
@@ -368,6 +385,40 @@ var HUD_SCREEN = {
                 me.pitch_bars_text[j].hide();
         }
     },
+
+    get_pitch_location: func(p) {
+        me.center_px_offset = me.get_pitch_pixel(me.center_hud_pitch);
+        
+        me.actual_px = (me.center_px_offset - me.get_pitch_pixel(p))  * -1;
+        return me.actual_px;
+    },
+    get_pitch_pixel: func(p) {
+        me.absp = math.abs(p);
+        me.res_1 = me.pitch_lookup_array[int(me.absp)];
+        me.res_2 = me.pitch_lookup_array[int(me.absp) + 1];
+        me.fraction = me.absp - int(me.absp);
+        return (((me.res_2 - me.res_1) * me.fraction) + me.res_1) * (math.sgn(p) * -1);
+    },
+    build_pitch_lookup_array: func() {
+        me.pitch_lookup_array = [0];
+        me.running_tally = 0;
+        for (var i = 1; i <= 91; i = i + 1) {
+            me.running_tally += me.px_per_degree / me.get_pitch_ratio(i);
+            append(me.pitch_lookup_array,me.running_tally);
+            #print(i ~ "|" ~ me.running_tally);
+        }
+    },
+    get_pitch_ratio: func(p) {
+        # at less than 5, the ratio is 1
+        # from 5 to 90, the ratio increases
+        # exponentially to ~4.4
+
+        if (math.abs(p) < 5) {
+            return 1;
+        }
+
+        return 0.00042 * math.pow(math.abs(p), 2) + 0.99
+    },
     
     compass_display: func() {
         # me.compass_route_marker is used to show AP route heading. currently it is hide()ing.
@@ -405,39 +456,18 @@ var HUD_SCREEN = {
             me.alt_text.setText(prop_io.altitude - math.mod(prop_io.altitude,50));
         }
     },
-
-    get_pitch_location: func(p) {
-        me.center_px_offset = me.get_pitch_pixel(me.center_hud_pitch);
+    
+    ias_text_update: func() {
+        me.ias_text.setText(sprintf("%i",prop_io.airspeed));
+    },
         
-        me.actual_px = (me.center_px_offset - me.get_pitch_pixel(p))  * -1;
-        return me.actual_px;
+    groundspeed_mach_text: func() {
+        me.gs_m_output.setText( me.gs_m_mode ? sprintf("%i",prop_io.groundspeed) : sprintf("%0.2f",prop_io.mach));
     },
-    get_pitch_pixel: func(p) {
-        me.absp = math.abs(p);
-        me.res_1 = me.pitch_lookup_array[int(me.absp)];
-        me.res_2 = me.pitch_lookup_array[int(me.absp) + 1];
-        me.fraction = me.absp - int(me.absp);
-        return (((me.res_2 - me.res_1) * me.fraction) + me.res_1) * (math.sgn(p) * -1);
-    },
-    build_pitch_lookup_array: func() {
-        me.pitch_lookup_array = [0];
-        me.running_tally = 0;
-        for (var i = 1; i <= 91; i = i + 1) {
-            me.running_tally += me.px_per_degree / me.get_pitch_ratio(i);
-            append(me.pitch_lookup_array,me.running_tally);
-            #print(i ~ "|" ~ me.running_tally);
-        }
-    },
-    get_pitch_ratio: func(p) {
-        # at less than 5, the ratio is 1
-        # from 5 to 90, the ratio increases
-        # exponentially to ~4.4
-
-        if (math.abs(p) < 5) {
-            return 1;
-        }
-
-        return 0.00042 * math.pow(math.abs(p), 2) + 0.99
+    
+    groundspeed_mach_switch: func() {
+        me.gs_m_mode = 1 - me.gs_m_mode;
+        me.gs_m_text.setText(me.gs_m_mode ? "GS" : "M");
     },
     
     ###################################### state stuff to be worked in
@@ -493,7 +523,13 @@ var state_arch = {
         temp:        0,
 };
 
+# main modes
+# run the init once, loop the main, and then before the mode gets switched again it will run the end function
 var hud_state_off = {parents: [state_arch], main_func: hud_ref.off_mode_update, init_func: hud_ref.off_mode_init};
 var hud_dev_mode  = {parents: [state_arch], main_func: hud_ref.dev_mode_update, init_func: hud_ref.dev_mode_init};
+
+# temps
+# if temp == 1, it will only fire the init, main, and end functions once.
+var hud_switch_gs_m = {parents: [state_arch], main_func: hud_ref.groundspeed_mach_switch, temp: 1};
 
 hud_ref.change_state(hud_dev_mode);
