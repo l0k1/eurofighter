@@ -233,7 +233,7 @@ var HUD_SCREEN = {
         m.alt_deg_per_dot = 360 / m.alt_num_dots;
         
         m.alt_display = m.hud.createGroup();
-        m.alt_display.setTranslation(m.canvas_settings["view"][0] / 2 + 211, m.hud_height_px / 2 - 233);
+        m.alt_display.setTranslation(700, 300);
         m.alt_dots = [];
         
         for (var i = 0; i < m.alt_num_dots; i = i + 1) {
@@ -273,22 +273,22 @@ var HUD_SCREEN = {
                             .setFontSize(m.font_size)
                             .setFont(m.font)
                             .setColor(m.red,m.green,m.blue,1)
-                            .setTranslation(m.canvas_settings["view"][0] / 2 - 156, m.hud_height_px / 2 - 128);
+                            .setTranslation(356, 300);
         m.gs_m_mode = 0; # 0 for mach, 1 for groundspeed
         m.gs_m_display = m.hud.createGroup();
         m.gs_m_text = m.hud.createGroup().createChild("text")
-                            .setAlignment("center-center")
+                            .setAlignment("center-bottom")
                             .setFontSize(m.font_size)
                             .setFont(m.font)
                             .setColor(m.red,m.green,m.blue,1)
-                            .setTranslation(m.canvas_settings["view"][0] / 2 - 180, m.hud_height_px / 2 - 140)
+                            .setTranslation(290, 300 - 3)
                             .setText("M");
         m.gs_m_output = m.hud.createGroup().createChild("text")
-                            .setAlignment("center-center")
+                            .setAlignment("center-top")
                             .setFontSize(m.font_size)
                             .setFont(m.font)
                             .setColor(m.red,m.green,m.blue,1)
-                            .setTranslation(m.canvas_settings["view"][0] / 2 - 180, m.hud_height_px / 2 - 118);
+                            .setTranslation(290, 300 + 3);
        return m;
     },
 
