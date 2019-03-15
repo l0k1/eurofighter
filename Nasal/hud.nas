@@ -445,7 +445,7 @@ var HUD_SCREEN = {
         }
     },
     
-    me.altitude_display = func() {
+    altitude_display: func() {
         # rotate line
         me.alt_line.setRotation(prop_io.altitude * me.alt_rotations_per_foot * 360 * D2R);
         # display text
