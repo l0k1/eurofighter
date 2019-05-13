@@ -10,7 +10,7 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 <PropertyList>
 	<sim include="typhoon-config.xml">
 		<description>EFA (Eurofighter) Typhoon</description>
-		<author>Maverick Alex, Justin Nicholson (pinto), Joshua Davidson (it0uchpods), and others</author>
+		<author>Maverick Alex, Justin Nicholson (pinto), Joshua Davidson (Octal450), and others</author>
 		<status>Special Edition</status>
 		<aircraft-version>1.5X</aircraft-version>
 		<flight-model>jsb</flight-model>
