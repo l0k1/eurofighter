@@ -100,8 +100,8 @@
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<property>fcs/slat-L-deg</property>
 				<property>aero/function/kCLge</property>
+				<property>fcs/slat-L-deg</property>
 				<value>0.00498</value>
 			</product>
 		</function>
@@ -111,8 +111,8 @@
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<property>fcs/slat-R-deg</property>
 				<property>aero/function/kCLge</property>
+				<property>fcs/slat-R-deg</property>
 				<value>0.00498</value>
 			</product>
 		</function>
@@ -225,8 +225,8 @@
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<property>aero/cl-squared</property>
 				<property>aero/function/kCDge</property>
+				<property>aero/cl-squared</property>
 				<value>0.063461</value>
 				<property>tune/drag/induced</property>
 			</product>
