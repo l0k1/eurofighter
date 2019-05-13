@@ -269,6 +269,36 @@
 			</product>
 		</function>
 		
+		<function name="aero/coefficient/CDgear">
+			<description>Drag due to gear</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>gear/gear-pos-norm</property>
+				<value>0.01846</value>
+			</product>
+		</function>
+		
+		<function name="aero/coefficient/CDslat_l">
+			<description>Drag due to slat L</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>fcs/slat-L-deg</property>
+				<value>0.00151</value>
+			</product>
+		</function>
+		
+		<function name="aero/coefficient/CDslat_r">
+			<description>Drag due to slat R</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+				<property>fcs/slat-R-deg</property>
+				<value>0.00151</value>
+			</product>
+		</function>
+		
 		<function name="aero/coefficient/CDdf_l">
 			<description>Drag due to foreplane L</description>
 			<product>
@@ -326,36 +356,6 @@
 				<property>metrics/Sw-sqft</property>
 				<abs><toradians><property>fcs/elevon-1R-deg</property></toradians></abs>
 				<value>0.005</value>
-			</product>
-		</function>
-		
-		<function name="aero/coefficient/CDgear">
-			<description>Drag due to gear</description>
-			<product>
-				<property>aero/qbar-psf</property>
-				<property>metrics/Sw-sqft</property>
-				<property>gear/gear-pos-norm</property>
-				<value>0.01846</value>
-			</product>
-		</function>
-		
-		<function name="aero/coefficient/CDslat_l">
-			<description>Drag due to slat L</description>
-			<product>
-				<property>aero/qbar-psf</property>
-				<property>metrics/Sw-sqft</property>
-				<property>fcs/slat-L-deg</property>
-				<value>0.00151</value>
-			</product>
-		</function>
-		
-		<function name="aero/coefficient/CDslat_r">
-			<description>Drag due to slat R</description>
-			<product>
-				<property>aero/qbar-psf</property>
-				<property>metrics/Sw-sqft</property>
-				<property>fcs/slat-R-deg</property>
-				<value>0.00151</value>
 			</product>
 		</function>
 		
