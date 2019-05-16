@@ -7,6 +7,11 @@
 			<power type="double">0</power>
 		</apu>
 		<electric>
+			<busbars>
+				<xp1 type="double">0</xp1>
+				<xp2 type="double">0</xp2>
+				<pp3 type="double">0</pp3>
+			</busbars>
 			<sources>
 				<ext-power-connected type="double">0</ext-power-connected>
 				<ext-power-norm type="double">0</ext-power-norm>

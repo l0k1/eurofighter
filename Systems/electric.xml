@@ -17,173 +17,1757 @@ systems/electric/sources/battery-drain
 systems/electric/sources/battery-switch
 systems/electric/sources/output-norm
 
+acronyms:
+GCU - generator control unit
+IDG - integrated drive generator
+CTA - current transformer assembly
+
 -->
 
 <system name="electric">
 	<channel name="sources">
 		<!-- ground connect -->
+		<!-- assume unlimited kVA -->
 		<switch name="trash/systems/electric/sources/ext-power-norm">
 			<default value="0"/>
-			<test logic="AND" value="1">
+			<test logic="AND" value="115">
 				systems/electric/sources/ext-power-connected == 1
 			</test>
-			<output>systems/electric/sources/ext-power-norm</output>
+			<output>systems/electric/sources/ext-power-v</output>
 		</switch>
 
-		<!-- engine 0 -->
-		<fcs_function name="trash/systems/electric/sources/engine0-norm">
+		<!-- AC generators -->
+		<!-- 30 kVA continuous, 45 kVA 2 hours, 55 kVA 5 minutes, 60 kVA 5 seconds -->
+		<fcs_function name="trash/systems/electric/sources/idg1-ac">
 			<function>
 				<table>
 					<independentVar lookup="row">propulsion/engine[0]/n1</independentVar>
 					<tableData>
 						0.0		0.0
-						22.0	1.0
+						10.0	115.0
 					</tableData>
 				</table>
 			</function>
-			<output>systems/electric/sources/engine0-norm</output>
+			<output>systems/electric/sources/idg1-ac</output>
 		</fcs_function>
 		
 		<!-- engine 1 -->
-		<fcs_function name="trash/systems/electric/sources/engine1-norm">
+		<fcs_function name="trash/systems/electric/sources/idg2-ac">
 			<function>
 				<table>
 					<independentVar lookup="row">propulsion/engine[1]/n1</independentVar>
 					<tableData>
 						0.0		0.0
-						22.0	1.0
+						10.0	115.0
 					</tableData>
 				</table>
 			</function>
-			<output>systems/electric/sources/engine1-norm</output>
+			<output>systems/electric/sources/idg2-ac</output>
+		</fcs_function>
+		
+		<!-- DC generators -->
+		
+		<fcs_function name="trash/systems/electric/sources/idg1-dc">
+			<function>
+				<table>
+					<independentVar lookup="row">propulsion/engine[0]/n1</independentVar>
+					<tableData>
+						0.0		0.0
+						10.0	28.0
+					</tableData>
+				</table>
+			</function>
+			<output>systems/electric/sources/idg1-dc</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/electric/sources/idg2-dc">
+			<function>
+				<table>
+					<independentVar lookup="row">propulsion/engine[1]/n1</independentVar>
+					<tableData>
+						0.0		0.0
+						10.0	28.0
+					</tableData>
+				</table>
+			</function>
+			<output>systems/electric/sources/idg2-dc</output>
 		</fcs_function>
 		
 		<!-- apu -->
-		<fcs_function name="trash/systems/electric/sources/apu-norm">
+		<!-- 10 kVA continuous, 16 kVA 2 hours, 20 kVA 5 seconds -->
+		<fcs_function name="trash/systems/electric/sources/apu">
 			<function>
 				<table>
 					<independentVar lookup="row">systems/apu/spinrate</independentVar>
 					<tableData>
 						0.0		0.0
-						0.75	1.0
+						0.50	115.0
 					</tableData>
 				</table>
 			</function>
-			<output>systems/electric/sources/apu-norm</output>
+			<output>systems/electric/sources/apu</output>
 		</fcs_function>
 		
-		<!-- battery will need to account for all systems running to
-			calculate drainage, etc. -->
-		
-		<fcs_function name="trash/systems/electric/sources/battery-pre">
+		<!-- tru transformers rely on the XP1/XP2 busbars but they are technically sources soooooooooooo -->
+
+		<fcs_function name="trash/systems/electric/sources/tru1">
 			<function>
-				<!-- charge battery based on eng[0], eng[1], and apu -->
-				<!-- the charge value determines how long to charge -->
-				<!-- 500000 is about 70 minutes from empty to full -->
+				<table>
+					<independentVar lookup="row">systems/electric/busbars/xp1</independentVar>
+					<tableData>
+						0.0		0.0
+						115.0	28.0
+					</tableData>
+				</table>
+			</function>
+			<output>systems/electric/sources/tru1</output>
+		</fcs_function>
+
+		<fcs_function name="trash/systems/electric/sources/tru2">
+			<function>
+				<table>
+					<independentVar lookup="row">systems/electric/busbars/xp2</independentVar>
+					<tableData>
+						0.0		0.0
+						115.0	28.0
+					</tableData>
+				</table>
+			</function>
+			<output>systems/electric/sources/tru2</output>
+		</fcs_function>
+
+		<!-- the battery is a 25 Ah, 23v dc power source -->
+		<fcs_function name="trash/systems/electric/sources/battery-charge">
+			<!-- charge == outgoing level - incoming level (max 10Ah) -->
+			<function>
 				<sum>
-					<!-- charge rate -->
-					<quotient>
-						<max>
-							<property>systems/electric/sources/engine0-norm</property>
-							<property>systems/electric/sources/engine1-norm</property>
-							<property>systems/electric/sources/apu-norm</property>
-							<property>systems/electric/sources/ext-power-norm</property>
-						</max>
-						<value>500000</value>
-					</quotient>
-					<!-- drain rate - should only drain if switch is on and battery is primary voltage -->
-					<ifthen>
-						<and>
-							<gt>
-								<property>systems/electric/sources/battery-norm</property>
-								<max>
-									<property>systems/electric/sources/engine0-norm</property>
-									<property>systems/electric/sources/engine1-norm</property>
-									<property>systems/electric/sources/apu-norm</property>
-									<property>systems/electric/sources/ext-power-norm</property>
-								</max>
-							</gt>
-							<eq>
-								<property>systems/electric/sources/battery-switch</property>
-								<value>1</value>
-							</eq>
-						</and>
-						<property>systems/electric/sources/battery-drain</property>
-						<value>0</value>
-					</ifthen>
-					<property>systems/electric/sources/battery-pre</property>
+					<property>systems/electric/sources/battery-charge</property>
+					<difference>
+						<property>systems/electric/load/battery</property>
+						<product>
+							<table>
+								<independentVar lookup="row">systems/electric/busbars/pp3</independentVar>
+								<tableData>
+									0.0		0.0
+									28.0	10.0
+								</tableData>
+							</table>
+							<lt>
+								<property>systems/electric/sources/battery-charge</property>
+								<value>25</value>
+							</lt>
+						</product>
+					</difference>
 				</sum>
 			</function>
-			<clipto>
-				<min>0</min>
-				<max>1</max>
-			</clipto>
-			<output>systems/electric/sources/battery-pre</output>
+			<output>systems/electric/sources/battery-charge</output>
 		</fcs_function>
-		
-		
-		<!-- expose battery voltage only when battery is "on" -->
-		<switch name="trash/systems/electric/sources/battery-norm">
-			<default value="0"/>
-			<test logic="AND" value="systems/electric/sources/battery-pre">
-				systems/electric/sources/battery-switch == 1
-			</test>
-			<output>systems/electric/sources/battery-norm</output>
-		</switch>
-		
-		<!-- final output - take the max between all possible sources -->
-		<fcs_function name="trash/systems/electric/sources/output-norm">
+
+		<fcs_function name="systems/electric/sources/battery">
+			<function>
+				<table>
+					<independentVar lookup="row">systems/electric/sources/battery-charge</independentVar>
+					<tableData>
+						0.0		14.0
+						25.0	23.5
+					</tableData>
+				</table>
+			</function>
+			<output>systems/electric/sources/battery</output>
+		</fcs_function>
+	</channel>
+
+	<channel name="busbars">
+		<!-- there are 3 AC busbars, prepended with XP -->
+		<!-- there are 7 DC busbars, prepended with PP -->
+
+		<fcs_function name="trash/systems/electric/busbars/xp1">
 			<function>
 				<max>
-					<property>systems/electric/sources/engine0-norm</property>
-					<property>systems/electric/sources/engine1-norm</property>
-					<property>systems/electric/sources/apu-norm</property>
-					<property>systems/electric/sources/ext-power-norm</property>
-					<property>systems/electric/sources/battery-norm</property>
+					<property>systems/electric/sources/idg1-ac</property>
+					<property>systems/electric/sources/apu</property>
 				</max>
 			</function>
-			<output>systems/electric/sources/output-norm</output>
+			<output>systems/electric/busbars/xp1</output>
+		</fcs_function>
+	<fcs_function name="trash/systems/electric/busbars/xp2">
+			<function>
+				<product>
+					<property>systems/electric/sources/idg2-ac</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/electric/busbars/xp2</output>
 		</fcs_function>
 		
+		<fcs_function name="trash/systems/electric/busbars/xp3">
+			<function>
+				<product>
+					<property>systems/electric/busbars/xp2</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/electric/busbars/xp3</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/electric/busbars/pp1">
+			<function>
+				<product>
+					<property>systems/electric/sources/tru1</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/electric/busbars/pp1</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/electric/busbars/pp2">
+			<function>
+				<product>
+					<property>systems/electric/sources/tru2</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/electric/busbars/pp2</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/electric/busbars/pp3">
+			<function>
+				<product>
+					<property>systems/electric/sources/idg1-dc</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/electric/busbars/pp3</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/electric/busbars/pp4">
+			<function>
+				<product>
+					<property>systems/electric/sources/idg2-dc</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/electric/busbars/pp4</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/electric/busbars/pp6">
+			<function>
+				<product>
+					<property>systems/electric/sources/battery</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/electric/busbars/pp6</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/electric/busbars/pp5">
+			<function>
+				<product>
+					<property>systems/electric/busbars/pp6</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/electric/busbars/pp5</output>
+		</fcs_function>
+		
+		<fcs_function name="trash/systems/electric/busbars/pp7">
+			<function>
+				<product>
+					<property>systems/electric/sources/battery</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/electric/busbars/pp7</output>
+		</fcs_function>
 	</channel>
-	<channel name="distribution">
-	
-		<!-- switches
-		for instance:
-		<switch name="foo">
-			<default value="0">
-			<test logic="AND" value="systems/electric/sources/output-norm">
-				foo == 1
-			</test>
-			<output>foo</output>
-		</switch>
-		-->
+	<channel name="xp1-distribution">
 		
-		<!-- puregains for stuff that isn't switchable -->
-		
-		<pure_gain name="trash/systems/electric/distribution/hud">
-			<input>systems/electric/sources/output-norm</input>
+		<pure_gain name="trash/systems/electric/xp1/engine0-afterburner-lightup-detector">
+			<input>systems/electric/busbars/xp1</input>
 			<gain>1.0</gain>
-			<output>systems/electric/distribution/hud</output>
+			<output>systems/electric/xp1/engine0-afterburner-lightup-detector</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/engine1-afterburner-lightup-detector">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/engine1-afterburner-lightup-detector</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/engine0-t2-probe">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/engine0-t2-probe</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/liquid-cooling-system-pump">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/liquid-cooling-system-pump</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/front-avionic-fan">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/front-avionic-fan</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/liquid-conditioning-generation-unit">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/liquid-conditioning-generation-unit</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/rear-liquid-conditioning-generation-unit">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/rear-liquid-conditioning-generation-unit</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/gcu-no1-xp1-phase-a-sense">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/gcu-no1-xp1-phase-a-sense</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/gcu-no2-xp1-phase-a-sense">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/gcu-no2-xp1-phase-a-sense</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/apu-power-supply-monitor">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/apu-power-supply-monitor</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/boost-pump-no1-left">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/boost-pump-no1-left</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/boost-pump-no1-right">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/boost-pump-no1-right</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/left-wing-aft-transfer-pump-no1">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/left-wing-aft-transfer-pump-no1</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/right-wing-aft-transfer-pump-no1">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/right-wing-aft-transfer-pump-no1</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/left-wing-forward-transfer-pump-no1">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/left-wing-forward-transfer-pump-no1</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/right-wing-forward-transfer-pump-no1">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/right-wing-forward-transfer-pump-no1</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/left-mhdd">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/left-mhdd</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/center-mhdd">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/center-mhdd</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/csg1">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/csg1</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/ciu1">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/ciu1</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/left-glareshield">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/left-glareshield</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/left-flare-dispenser">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/left-flare-dispenser</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/left-chaff-dispenser">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/left-chaff-dispenser</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/defensive-aids-computer">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/defensive-aids-computer</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/attack-computer">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/attack-computer</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/iff-interrogator">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/iff-interrogator</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/acs-3-phase-power-channel-aa">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/acs-3-phase-power-channel-aa</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/ins">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/ins</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/bulk-storage-device">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/bulk-storage-device</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/brake-cooling-fans">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/brake-cooling-fans</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/windscreen-heater-control-unit">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/windscreen-heater-control-unit</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/ad-probe-heater-1">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/ad-probe-heater-1</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp1/ad-probe-heater-3">
+			<input>systems/electric/busbars/xp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp1/ad-probe-heater-3</output>
 		</pure_gain>
 		
 	</channel>
-	<channel name="load">
+	<channel name="xp2">
 		
-		<!-- calculate how much load on the system each distribution point is -->
-		
-		<pure_gain name="trash/systems/electric/load/hud">
-			<input>systems/electric/distribution/hud</input>
-			<gain>0.01</gain>
-			<output>systems/electric/load/hud</output>
+		<pure_gain name="trash/systems/electric/xp2/right-engine-t2-probe">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/right-engine-t2-probe</output>
 		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/center-avionic-fan">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/center-avionic-fan</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/ac-ground-test-socket-b">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/ac-ground-test-socket-b</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/external-ground-power-supply-monitor">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/external-ground-power-supply-monitor</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/gcu-no2-xp2-phase-a-sense">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/gcu-no2-xp2-phase-a-sense</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/gcu-no1-xp2-phase-a-sense">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/gcu-no-1-xp2-phase-a-sense</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/left-boost-pump-no2">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/left-boost-pump-no2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/right-boost-pump-no2">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/right-boost-pump-no2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/left-wing-aft-transfer-pump-no2">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/left-wing-aft-transfer-pump-no2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/right-wing-aft-transfer-pump-no2">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/right-wing-aft-transfer-pump-no2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/left-wing-forward-transfer-pump-no2">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/left-wing-forward-transfer-pump-no2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/right-wing-forward-transfer-pump-no2">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/right-wing-forward-transfer-pump-no2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/forward-transfer-pump-no2">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/forward-transfer-pump-no2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/right-mhdd">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/right-mhdd</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/csg2">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/csg2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/ciu2">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/ciu2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/hud">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/hud</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/right-flare-dispenser">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/right-flare-dispenser</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/right-chaff-dispenser">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/right-chaff-dispenser</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/radar-receiver">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/radar-receiver</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/radar-scanner">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/radar-scanner</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/radar-transmitter">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/radar-transmitter</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/radar-processor">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/radar-processor</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/flir">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/flir</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/gps-acu">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/gps-acu</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/gps-rpu">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/gps-rpu</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/gpws">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/gpws</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/navigation-computer">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/navigation-computer</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/mids-ifu">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/mids-ifu</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/navigation-lights">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/navigation-lights</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/formation-lights">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/formation-lights</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/lighting-controller">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/lighting-controller</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/hea">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/hea</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/ice-detector">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/ice-detector</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/ad-probe-heater2">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/ad-probe-heater2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp2/ad-probe-heater4">
+			<input>systems/electric/busbars/xp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp2/ad-probe-heater4</output>
+		</pure_gain>
+	</channel>
+	<channel name="xp3">
+		
+		<pure_gain name="trash/systems/electric/xp3/missile-warner">
+			<input>systems/electric/busbars/xp3</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp3/missile-warner</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp3/laser-warner">
+			<input>systems/electric/busbars/xp3</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp3/laser-warner</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp3/left-wing-tip-cooling-unit">
+			<input>systems/electric/busbars/xp3</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp3/left-wing-tip-cooling-unit</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp3/left-wing-tip-ecm-esm-psu">
+			<input>systems/electric/busbars/xp3</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp3/left-wing-tip-ecm-esm-psu</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp3/avionics-bay-ecm-esm-psu">
+			<input>systems/electric/busbars/xp3</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp3/avionics-bay-ecm-esm-psu</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp3/right-wing-tip-cooling-unit">
+			<input>systems/electric/busbars/xp3</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp3/right-wing-tip-cooling-unit</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp3/apu-gcu-load-shed-status">
+			<input>systems/electric/busbars/xp3</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp3/apu-gcu-load-shed-status</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp3/gc1-xp3-phase-a-sense">
+			<input>systems/electric/busbars/xp3</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp3/gc1-xp3-phase-a-sense</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/xp3/ground-test-socket">
+			<input>systems/electric/busbars/xp3</input>
+			<gain>1.0</gain>
+			<output>systems/electric/xp3/ground-test-socket</output>
+		</pure_gain>
+	</channel>
 	
-		<!-- sum up all loads into systems/electric/sources/battery-drain -->
-		<!-- need more than one input here. soon.tm.
-		<summer>
-			<input>systems/electric/load/hud</input>
-			<input></input>
-			<output>systems/electric/sources/battery-drain</output>
-		</summer>-->
+	<channel name="pp1">
+		<pure_gain name="trash/systems/electric/pp1/center-mhdd-control">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/center-mhdd-control</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/left-mhdd-control">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/left-mhdd-control</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/avionic-3way-sov">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/avionic-3way-sov</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/fan-3way-sov">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/fan-3way-sov</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/emergency-3way-ram-air-valve">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/emergency-3way-ram-air-valve</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/ecs-warning-horn">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/ecs-warning-horn</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/avionic-center-fuselage-fan-speed-transducers">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/avionic-center-fuselage-fan-speed-transducers</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/liquid-pump-speed-transducer">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/liquid-pump-speed-transducer</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/zirconia-oxygen-monitor">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/zirconia-oxygen-monitor</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/liquid-conditioning-generation-unit-front">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/liquid-conditioning-generation-unit-front</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/liquid-conditioning-generation-unit-rear">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/liquid-conditioning-generation-unit-rear</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/forward-and-rear-group-refuel-valves">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/forward-and-rear-group-refuel-valves</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/left-and-right-fore-wing-refuel-valves">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/left-and-right-fore-wing-refuel-valves</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/defuel-isolate-valve">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/defuel-isolate-valve</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/underfuselage-refuel-transfer-valve">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/underfuselage-refuel-transfer-valve</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/transfer-1-pump-control">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/transfer-1-pump-control</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/dc-ground-test-socket-a">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/dc-ground-test-socket-a</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/battery-heater-test">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/battery-heater-test</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/battery-heater">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/battery-heater</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/gcu1-busbar-monitor">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/gcu1-busbar-monitor</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/gcu2-busbar-monitor">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/gcu2-busbar-monitor</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/sensor-and-signal-conditioning-units">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/sensor-and-signal-conditioning-units</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/vvr">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/vvr</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/landing-taxi-light-control">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/landing-taxi-light-control</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/left-taxi-light-supply">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/left-taxi-light-supply</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/right-landing-light-supply">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/right-landing-light-supply</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/anticollision-light">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/anticollision-light</output>
+		</pure_gain>
+		<pure_gain name="trash/systems/electric/pp1/camu">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/camu</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/precision-distance-measuring-equipment">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/precision-distance-measuring-equipment</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/missile-approach-warner-ps-decoy">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/missile-approach-warner-ps-decoy</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/left-wing-tip-pid-cooling-unit">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/left-wing-tip-pid-cooling-unit</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/right-wing-tip-pod-cooling-unit">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/right-wing-tip-pod-cooling-unit</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/forward-detector-unit">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/forward-detector-unit</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/rear-left-detector-unit">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/rear-left-detector-unit</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/rear-right-detector-unit">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/rear-right-detector-unit</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp1/iff-interrogator">
+			<input>systems/electric/busbars/pp1</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp1/iff-interrogator</output>
+		</pure_gain>
+	</channel>
+	
+	<channel name="pp2">
+	
+		<pure_gain name="trash/systems/electric/pp2/right-mhdd-control">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/right-mhdd-control</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/right-glareshield">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/right-glareshield</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/forward-transfer-tank-refuel-valve">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/forward-transfer-tank-refuel-valve</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/left-and-right-aft-wing-tank-refuel-valves">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/left-and-right-aft-wing-tank-refuel-valves</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/pressure-vent-valve">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/pressure-vent-valve</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/forward-and-rear-group-transfer-valves">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/forward-and-rear-group-transfer-valves</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/left-and-right-underwing-refuel-transfer-valves">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/left-and-right-underwing-refuel-transfer-valves</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/stage-2-transfer-pumps-control">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/stage-2-transfer-pumps-control</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/tank-interconnect-valve">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/tank-interconnect-valve</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/left-and-right-boost-pump-control-no-2">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/left-and-right-boost-pump-control-no-2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/dc-ground-test-socket-b">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/dc-ground-test-socket-b</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/gcu1-busbar-monitor">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/gcu1-busbar-monitor</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/gcu2-busbar-monitor">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/gcu2-busbar-monitor</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/ldr2">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/ldr2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/ldc1">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/ldc1</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/mission-data-loader-recorder">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/mission-data-loader-recorder</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/sensor-and-signal-condition-unit">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/sensor-and-signal-condition-unit</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/anticollision-light">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/anticollision-light</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/left-landing-light-supply">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/left-landing-light-supply</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/right-taxi-light-supply">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/right-taxi-light-supply</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/acs-vdc-2-power-channel-ab">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/acs-vdc-2-power-channel-ab</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/acs-vdc-1-power-channel-ab">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/acs-vdc-1-power-channel-ab</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/acs-vdc-2-power-channel-ab-backup">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/acs-vdc-2-power-channel-ab-backup</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/acs-vdc-1-power-channel-ab-backup">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/acs-vdc-1-power-channel-ab-backup</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/microwave-landing-system-rnav">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/microwave-landing-system-rnav</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/tacan">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/tacan</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/rf-decoy-deployment">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/rf-decoy-deployment</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/vuhf-transceiver-2">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/vuhf-transceiver-2</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/radar-control-wgu">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/radar-control-wgu</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/windscreen-heater-controller">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/windscreen-heater-controller</output>
+		</pure_gain>
+		
+		<pure_gain name="trash/systems/electric/pp2/hea">
+			<input>systems/electric/busbars/pp2</input>
+			<gain>1.0</gain>
+			<output>systems/electric/pp2/hea</output>
+		</pure_gain>
+		
+	</channel>
+	<channel name="pp3">
+		
+		<pure_gain name="systems/electric/pp3/right-decu-power-supply-line-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-decu-power-supply-line-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-decu-service-supply-line-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/right-decu-service-supply-line-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/right-high-energy-ignition-unit-line-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/right-high-energy-ignition-unit-line-2">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-high-energy-ignition-unit-line-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-high-energy-ignition-unit-line-2">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-engine-probe-heater">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-engine-low-oil-pressure-warning">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-engine-fire-detection-warning">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/right-engine-fire-detection-warning">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/emu-supply">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/right-engine-low-oil-pressure-warning">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/engine-bleed-air-sov">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/ecs-sov">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/bleed-air-variable-pressure-sov">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/ejector-sov">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/precooler-bypass-valve">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/temprature-control-valve">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/demist-sov">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/antimist-sov">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/airflow-control-valve">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/msoc-solenoid-valves">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/mosc-pressure-regulating-sov">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/right-engine-bleed-sov">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/oxygen-concentration-monitor">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/bleed-air-leak-detection-system">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/oxygen-changeover-valve-override-solenoid">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/nbc-ventilation">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/front-computer">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/aircrew-services-package-relay">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/dwp">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/right-glareshield">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/fcs-computer-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/fcs-computer-2">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/fcs-computer-3">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/fcs-computer-4">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/fcs-actuator-supplies-3">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/fcs-actuator-supplies-4">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/inertial-motion-unit-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/inertial-motion-unit-2">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/inertial-motion-unit-3">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/inertial-motion-unit-4">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/right-emergency-cowel">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-emergency-cowl">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-lp-cock">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/right-lp-cock">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/fuel-crossfeed">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/engine-feed-monitoring">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/aar-reference">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-fuel-computer">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-and-right-boost-pump-no-2-control">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/transfer-isolate-valve">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/fuel-gaging-interface-unit">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/vent-bypass">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/ldc2">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/battery-over-temperature-warning">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/battery-contactor">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/dc-dc-converter">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/gcu1-and-2-busbar-monitor">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/dc-ground-test-socket-a">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/acs-vdc-1-power-channel-aa">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/acs-vdc-2-power-channel-aa-secondary">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/tru-1-fault-annunciator">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/tru-2-fault-annunciator">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/dc-gcu-4">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/dc-gcu-4-backup-supply">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/dc-gcu-3-backup-supply">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/utility-isolation-valve-system-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/hydraulic-pressure-switch-system-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/hydraulic-pressure-switch-system-2">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/hydraulic-depressurization-valve-system-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/hydraulic-catastrophic-failure-warning">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/interface-processor-unit">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/csmu">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/csmu-write-enable">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/mdp">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/mission-data-loader-recorder">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/landing-gear-computer-ps1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/brake-and-antiskid-equipment-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/emergency-landing-gear-selection">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/wow-relay-system-1">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/arrestor-hook-uplock-solenoid-a">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/mass-indication-power-supply-aa">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/mass-indication-power-supply-ab">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/acs-vdc-2-power-channel-aa">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/scac">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/left-sps-system">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/in-system">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/iff-interrogator">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/canopy-relay-computer-discrete-inputs">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/cockpit-throttle-box">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/ip-seat-raise-lower">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<!--<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="systems/electric/pp3/">
+			<input>systems/electric/busbars/pp3</input>
+			<gain>1.0</gain>
+		</pure_gain>-->
+		
 	</channel>
 </system>
