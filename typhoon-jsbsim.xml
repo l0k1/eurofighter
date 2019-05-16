@@ -1,12 +1,9 @@
 <?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
 
-<fdm_config name="typhoon" version="2.0" release="ALPHA"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+<fdm_config name="IDG-PA28" version="2.0" release="BETA" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	
 	<fileheader>
-		<author> Aeromatic v3.3.10, Joshua Davidson (it0uchpods) </author>
+		<author> Aeromatic v3.3.10, Joshua Davidson (Octal450) </author>
 		<filecreationdate> 08 Dec 2018 </filecreationdate>
 		<version> 0.0 </version>
 		<description> Eurofighter Typhoon JSBsim </description>
@@ -58,9 +55,8 @@
 		</location>
 	</mass_balance>
 	
-	<propulsion file="Aero/typhoon-propulsion.xml"/>
-	
 	<ground_reactions file="Aero/typhoon-ground-reactions.xml"/>
+	<propulsion file="Aero/typhoon-propulsion.xml"/>
 	
 	<system file="propulsion"/>
 	<system file="electric"/>
@@ -72,9 +68,7 @@
 	<system file="fuel"/>
 	
 	<flight_control name="none"/>
-	
 	<aerodynamics file="Aero/typhoon-aero.xml"/>
-	
 	<external_reactions file="Aero/typhoon-external-forces.xml"/>
 
 </fdm_config>
