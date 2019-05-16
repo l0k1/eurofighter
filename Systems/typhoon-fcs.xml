@@ -51,12 +51,12 @@
 				position/wow eq 1
 				fbw/enable eq 1
 				fcs/hydraulic-avail eq 1
-				systems/electric/sources/output-norm ge 0.05
+				systems/electric/busbars/xp1 ge 0.05
 			</test>
 			<test logic="OR" value="2">
 				fbw/enable eq 0
 				fcs/hydraulic-avail ne 1
-				systems/electric/sources/output-norm lt 0.05
+				systems/electric/busbars/xp1 lt 0.05
 			</test>
 		</switch>
 		

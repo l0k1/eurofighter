@@ -21,7 +21,7 @@ var groundspeed_prop = props.globals.getNode("velocities/groundspeed-kt");
 var groundspeed = 0;
 
 #################################### electric output props
-var hud_power_prop = props.globals.getNode("fdm/jsbsim/systems/electric/distribution/hud");
+var hud_power_prop = props.globals.getNode("fdm/jsbsim/systems/electric/xp2/hud");
 var hud_power = 0;
 
 var update = func() {
