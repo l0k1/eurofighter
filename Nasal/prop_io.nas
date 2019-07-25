@@ -20,6 +20,16 @@ var mach = 0;
 var groundspeed_prop = props.globals.getNode("velocities/groundspeed-kt");
 var groundspeed = 0;
 
+#################################### landing gear props
+var geardown_prop = props.globals.getNode("/controls/gear/gear-down");
+var geardown = 0;
+var gear0wow_prop = props.globals.getNode("/gear/gear[0]/wow");
+var gear0wow = 0;
+var gear1wow_prop = props.globals.getNode("/gear/gear[1]/wow");
+var gear1wow = 0;
+var gear2wow_prop = props.globals.getNode("/gear/gear[2]/wow");
+var gear2wow = 0;
+
 #################################### electric output props
 var hud_power_prop = props.globals.getNode("fdm/jsbsim/systems/electric/xp2/hud");
 var hud_power = 0;
@@ -34,7 +44,16 @@ var update = func() {
     airspeed = airspeed_prop.getValue();
     mach = mach_prop.getValue();
     groundspeed = groundspeed_prop.getValue();
-    
+
     #################################### electric output props
     hud_power = hud_power_prop.getValue();
+}
+
+# functions for listeners
+
+var main_gear_down_listener = func() {}
+    geardown = geardown_prop.getValue();
+    gear0wow = gear0wow_prop.getValue();
+    gear1wow = gear1wow_prop.getValue();
+    gear2wow = gear2wow_prop.getValue();
 }

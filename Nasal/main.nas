@@ -8,18 +8,17 @@ var main_loop = func() {
     hud.hud_ref.main_loop();
 }
 
-var timer = maketimer(update_rate, main_loop);
-timer.start();
 
+var timer = maketimer(update_rate, main_loop);
 var init = setlistener("/sim/signals/fdm-initialized", func() {
     removelistener(init); # only call once
+	timer.start();
 });
 
 # Prevent a JSB bug
-var down = 1;
 setlistener("/controls/gear/gear-down", func {
-	down = getprop("/controls/gear/gear-down");
-	if (!down and (getprop("/gear/gear[0]/wow") or getprop("/gear/gear[1]/wow") or getprop("/gear/gear[2]/wow"))) {
-		setprop("/controls/gear/gear-down", 1);
+	prop_io.main_gear_down_listener();
+	if (!prop_io.geardown and (prop_io.gear0wow or prop_io.gear1wow or prop_io.gear2wow)) {
+		prop_io.geardown_prop.setValue(1);
 	}
 });
