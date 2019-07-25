@@ -138,7 +138,38 @@ var HUD_SCREEN = {
                                         .setFont(m.font)
                                         .setColor(m.red,m.green*2,m.blue,1));
         }
-        
+
+        m.nadir = m.pitch_bars_canvas_group.createChild("path")
+                                        .move(0,-90)
+                                        .arcSmallCW(90,90,0,0,-180)
+                                        .arcSmallCW(90,90,0,0,180)
+                                        .line(0,180)
+                                        .setStrokeLineWidth(m.line_width)
+                                        .setColor(m.red,m.green,m.blue);
+
+        m.zenith = m.pitch_bars_canvas_group.createChild("path")
+                                        .move(0,-96)
+                                        .line(-16,66)
+                                        .line(-23,-6)
+                                        .line(6,22)
+                                        .line(-64,14)
+                                        .line(65,17)
+                                        .line(-6,20)
+                                        .line(22,-5)
+                                        .line(16,264)
+                                        .line(16,-264)
+                                        .line(22,5)
+                                        .line(-6,-20)
+                                        .line(65,-17)
+                                        .line(-64,-14)
+                                        .line(6,-22)
+                                        .line(-23,6)
+                                        .line(-16,-66)
+                                        .line(0,96)
+                                        .setStrokeLineWidth(m.line_width)
+                                        .setColor(m.red,m.green,m.blue);
+
+
         ###############################
         ## flight direction indicators
         ###############################
@@ -327,6 +358,8 @@ var HUD_SCREEN = {
     pitch_bars_display: func() {
         me.center_hud_pitch = prop_io.pitch - (me.angle_to_hud * R2D);
         me.pitch_bar_center.hide();
+        me.zenith.hide();
+        me.nadir.hide();
 
         if (me.climbdive_mode == 0 and prop_io.airspeed > 48) {
             me.climbdive_mode = 1;
@@ -359,7 +392,17 @@ var HUD_SCREEN = {
         for (var i = 0; i < size(me.pitch_bars_shown); i = i + 1){
             me.px_location = me.get_pitch_location(me.pitch_bars_shown[i]);
             #print(me.b_pitch ~ " " ~ me.px_location);
-            if (me.pitch_bars_shown[i] < 0 and me.px_location < me.hud_height_px / 2) {
+            if (int(me.pitch_bars_shown[i]) == 90 and me.px_location > -me.hud_height_px / 2){
+                me.pitch_bars_down[i].hide();
+                me.pitch_bars_up[i].hide();
+                me.pitch_bars_text[i].hide();
+                me.zenith.setTranslation(0,me.px_location).show();
+            }elsif (int(me.pitch_bars_shown[i]) == -90 and me.px_location < me.hud_height_px / 2) {
+                me.pitch_bars_down[i].hide();
+                me.pitch_bars_up[i].hide();
+                me.pitch_bars_text[i].hide();
+                me.nadir.setTranslation(0,me.px_location).show();
+            }elsif (me.pitch_bars_shown[i] < 0 and me.px_location < me.hud_height_px / 2) {
                 me.pitch_bars_down[i].setTranslation(0,me.px_location).show();
                 me.pitch_bars_up[i].hide();
                 me.pitch_bars_text[i].setText(int(me.pitch_bars_shown[i])).setTranslation(-115 * me.x_res_norm,me.px_location - 25).show();
