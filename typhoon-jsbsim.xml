@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<fdm_config name="IDG-PA28" version="2.0" release="BETA" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+<fdm_config name="Typhoon" version="2.0" release="BETA" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	
 	<fileheader>
 		<author> Aeromatic v3.3.10, Joshua Davidson (Octal450) </author>
