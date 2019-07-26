@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!--
+flight computer i/o
+not sure exactly what this is going to look like 100% yet...
+but all native flightgear properties (speed, heading, etc) should be filtered
+through this file before going to the instruments. we shouldn't always have
+direct tie ins between native fg properties and the instruments themselves
+(despite what the forums say :P)
+-->
+
+<system name="fc">
+    
+    <channel name="g_meter">
+
+        <fcs_function name="trash/systems/flightcomputer/normal-g">
+            <function>
+                <sum>
+                    <property>accelerations/Nz</property>
+                    <value>1</value>
+                </sum>
+            </function>
+            <output>systems/flightcomputer/normal-g</output>
+        </fcs_function>
+
+    </channel>
+
+</system>
