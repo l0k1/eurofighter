@@ -5,27 +5,6 @@
 
 <system name="typhoon-fcs">
     
-    <property value="1">fbw/enable</property>
-    <property value="0">fbw/roll/rate-damp</property>
-    <property value="0">fbw/pitch/q-demand</property>
-    <property value="0">fbw/yaw/beta-d</property>
-    
-    <!-- Autopilot stuff -->
-    <property value="0">fbw/ap/roll-enabled</property>
-    <property value="0">fbw/ap/pitch-enabled</property>
-    <property value="0">fbw/ap/roll-cmd</property>
-    <property value="0">fbw/ap/g-cmd</property>
-    
-    <!-- Default gains for tuning -->
-    <property value="0">fbw/roll/p-gain</property>
-    <property value="0">fbw/roll/d-gain</property>
-    <property value="0">fbw/pitch/q-p-gain</property>
-    <property value="0">fbw/pitch/g-p-gain</property>
-    <property value="0">fbw/pitch/g-i-gain</property>
-    <property value="0">fbw/yaw/yd-p-gain</property>
-    <property value="0">fbw/yaw/beta-p-gain</property>
-    <property value="0">fbw/yaw/beta-d-gain</property>
-    
     <channel name="Libraries">
         
         <switch name="position/wow">

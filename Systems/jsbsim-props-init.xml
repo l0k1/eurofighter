@@ -107,34 +107,47 @@
             <xfeed type="double">1</xfeed>
             <cg-ratio type="double">0.5</cg-ratio>
         </fuel>
-
+        <chute>
+            <chute-cmd-norm type="double">0</chute-cmd-norm>
+            <chute-released type="double">0</chute-released>
+        </chute>
+        <hook>
+            <tailhook-cmd-norm type="double">0</tailhook-cmd-norm>
+            <tailhook-length-ft type="double">4.2</tailhook-length-ft>
+            <tailhook-pos-min-deg type="double">-2</tailhook-pos-min-deg>
+            <tailhook-pos-max-deg type="double">42</tailhook-pos-max-deg>
+            <tailhook-offset-x-in type="double">571.8</tailhook-offset-x-in>
+            <tailhook-offset-y-in type="double">0</tailhook-offset-y-in>
+            <tailhook-offset-z-in type="double">-12.57</tailhook-offset-z-in>
+            <tailhook-pos-deg type="double">-2</tailhook-pos-deg>
+        </hook>
     </systems>
 
     <!-- fbw, moved from typhoon-fcs.xml -->
     <fbw>
-        <property value="1">enable</property>
+        <enable type="double">1</enable>
         <roll>
-            <property value="0">rate-damp</property>
-            <property value="0">p-gain</property>
-            <property value="0">d-gain</property>
+            <rate-damp type="double">0</rate-damp>
+            <p-gain type="double">0</p-gain>
+            <d-gain type="double">0</d-gain>
         </roll>
         <pitch>
-            <property value="0">q-demand</property>
-            <property value="0">q-p-gain</property>
-            <property value="0">g-p-gain</property>
-            <property value="0">g-i-gain</property>
+            <q-demand type="double">0</q-demand>
+            <q-p-gain type="double">0</q-p-gain>
+            <g-p-gain type="double">0</g-p-gain>
+            <g-i-gain type="double">0</g-i-gain>
         </pitch>
         <yaw>
-            <property value="0">beta-d</property>
-            <property value="0">yd-p-gain</property>
-            <property value="0">beta-p-gain</property>
-            <property value="0">beta-d-gain</property>
+            <beta-d type="double">0</beta-d>
+            <yd-p-gain type="double">0</yd-p-gain>
+            <beta-p-gain type="double">0</beta-p-gain>
+            <beta-d-gain type="double">0</beta-d-gain>
         </yaw>
         <ap>
-            <property value="0">roll-enabled</property>
-            <property value="0">pitch-enabled</property>
-            <property value="0">roll-cmd</property>
-            <property value="0">g-cmd</property>
+            <roll-enabled type="double">0</roll-enabled>
+            <pitch-enabled type="double">0</pitch-enabled>
+            <roll-cmd type="double">0</roll-cmd>
+            <g-cmd type="double">0</g-cmd>
         </ap>
     </fbw>
 
