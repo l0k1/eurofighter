@@ -372,7 +372,7 @@ var HUD_SCREEN = {
     },
 
     pitch_bars_display: func() {
-        me.center_hud_pitch = prop_io.pitch - (me.angle_to_hud * R2D);
+        me.center_hud_pitch = prop_io.pitch - (me.angle_to_hud * math.cos(prop_io.roll * D2R) * R2D);
         me.pitch_bar_center.hide();
         me.zenith.hide();
         me.nadir.hide();
