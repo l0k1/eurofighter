@@ -1,164 +1,189 @@
 <?xml version="1.0"?>
 <PropertyList>
-	<systems>
-		<apu>
-			<spinrate type="double">0</spinrate>
-			<switch type="double">0</switch>
-			<power type="double">0</power>
-		</apu>
-		<electric>
-			<busbars>
-				<xp1 type="double">0</xp1>
-				<xp2 type="double">0</xp2>
-				<pp3 type="double">0</pp3>
-			</busbars>
-			<sources>
-				<ext-power-connected type="double">0</ext-power-connected>
-				<ext-power-norm type="double">0</ext-power-norm>
-				<engine0-norm type="double">0</engine0-norm>
-				<engine1-norm type="double">0</engine1-norm>
-				<apu-norm type="double">0</apu-norm>
-				<battery-pre type="double">0.95</battery-pre>
-				<battery-norm type="double">0</battery-norm>
-				<battery-drain type="double">0</battery-drain>
-				<battery-switch type="double">0</battery-switch>
-				<output-norm type="double">0</output-norm>
-			</sources>
+    <systems>
+        <apu>
+            <spinrate type="double">0</spinrate>
+            <switch type="double">0</switch>
+            <power type="double">0</power>
+        </apu>
+        <electric>
+            <busbars>
+                <xp1 type="double">0</xp1>
+                <xp2 type="double">0</xp2>
+                <pp3 type="double">0</pp3>
+            </busbars>
+            <sources>
+                <ext-power-connected type="double">0</ext-power-connected>
+                <ext-power-norm type="double">0</ext-power-norm>
+                <engine0-norm type="double">0</engine0-norm>
+                <engine1-norm type="double">0</engine1-norm>
+                <apu-norm type="double">0</apu-norm>
+                <battery-pre type="double">0.95</battery-pre>
+                <battery-norm type="double">0</battery-norm>
+                <battery-drain type="double">0</battery-drain>
+                <battery-switch type="double">0</battery-switch>
+                <output-norm type="double">0</output-norm>
+            </sources>
 
-			<distribution>
-				<!-- switches and 2-state buttons-->
-				<battery type="double">0</battery>
-				<lboost type="double">0</lboost>
-				<rboost type="double">0</rboost>
-				<voice type="double">0</voice>
-				<rad1 type="double">0</rad1>
-				<mids type="double">0</mids>
-				<rlpcock type="double">0</rlpcock>
-				<llpcock type="double">0</llpcock>
-				<enginestart type="double">0</enginestart>
-				<apu type="double">0</apu>
-				<aflash type="double">0</aflash> <!-- beacon on top center spine -->
-				<daynightlight type="double">0</daynightlight>
-				<extlight type="double">0</extlight>
-				<navbrt type="double">0</navbrt>
-				<acoll type="double">0</acoll>
-				<ecsramair type="double">0</ecsramair>
-				<demist type="double">0</demist>
-				<decoy type="double">0</decoy>
-				<expdman type="double">0</expdman>
-				<emergoxy type="double">0</emergoxy>
-				<landtaxioff type="double">0</landtaxioff>
-				<!--auto on-->
-				<hud type="double">0</hud>
-			</distribution>
-			<load>
-				<!-- switches and 2-state buttons-->
-				<battery type="double">0</battery>
-				<lboost type="double">0</lboost>
-				<rboost type="double">0</rboost>
-				<voice type="double">0</voice>
-				<rad1 type="double">0</rad1>
-				<mids type="double">0</mids>
-				<rlpcock type="double">0</rlpcock>
-				<llpcock type="double">0</llpcock>
-				<enginestart type="double">0</enginestart>
-				<apu type="double">0</apu>
-				<aflash type="double">0</aflash> <!-- beacon on top center spine -->
-				<daynightlight type="double">0</daynightlight>
-				<extlight type="double">0</extlight>
-				<navbrt type="double">0</navbrt>
-				<acoll type="double">0</acoll>
-				<ecsramair type="double">0</ecsramair>
-				<demist type="double">0</demist>
-				<decoy type="double">0</decoy>
-				<expdman type="double">0</expdman>
-				<emergoxy type="double">0</emergoxy>
-				<landtaxioff type="double">0</landtaxioff>
-				<!--knobbins-->
-				<!--auto on-->
-				<hud type="double">0</hud>
-			</load>
-			<!-- replace me -->
-			<left-booster type="double">1</left-booster>
-			<right-booster type="double">1</right-booster>
-			<transfer-boosters type="double">1</transfer-boosters>
-		</electric>
-		<hydraulic>
-			<contents-tank type="double" n="0">0</contents-tank>
-			<contents-system type="double" n="0">1</contents-system>
-			<pressure type="double" n="0">0</pressure>
-			<usage type="double" n="0">0</usage>
-			<output type="double" n="0">0</output>
-			<contents-tank type="double" n="1">0</contents-tank>
-			<contents-system type="double" n="1">1</contents-system>
-			<pressure type="double" n="1">0</pressure>
-			<usage type="double" n="1">0</usage>
-			<output type="double" n="1">0</output>
-			<xfeed type="double">0</xfeed>
-		</hydraulic>
-		<fuel>
-			<pressure-flow type="double">0</pressure-flow>
-			<transfer-flow type="double">0</transfer-flow>
-			<left-boost-pressure type="double">0</left-boost-pressure>
-			<right-boost-pressure type="double">0</right-boost-pressure>
-			<transfer-pressure type="double">0</transfer-pressure>
-			<left-lpcock type="double">1</left-lpcock>
-			<right-lpcock type="double">1</right-lpcock>
-			<xfeed type="double">1</xfeed>
-			<cg-ratio type="double">0.5</cg-ratio>
-		</fuel>
+            <distribution>
+                <!-- switches and 2-state buttons-->
+                <battery type="double">0</battery>
+                <lboost type="double">0</lboost>
+                <rboost type="double">0</rboost>
+                <voice type="double">0</voice>
+                <rad1 type="double">0</rad1>
+                <mids type="double">0</mids>
+                <rlpcock type="double">0</rlpcock>
+                <llpcock type="double">0</llpcock>
+                <enginestart type="double">0</enginestart>
+                <apu type="double">0</apu>
+                <aflash type="double">0</aflash> <!-- beacon on top center spine -->
+                <daynightlight type="double">0</daynightlight>
+                <extlight type="double">0</extlight>
+                <navbrt type="double">0</navbrt>
+                <acoll type="double">0</acoll>
+                <ecsramair type="double">0</ecsramair>
+                <demist type="double">0</demist>
+                <decoy type="double">0</decoy>
+                <expdman type="double">0</expdman>
+                <emergoxy type="double">0</emergoxy>
+                <landtaxioff type="double">0</landtaxioff>
+                <!--auto on-->
+                <hud type="double">0</hud>
+            </distribution>
+            <load>
+                <!-- switches and 2-state buttons-->
+                <battery type="double">0</battery>
+                <lboost type="double">0</lboost>
+                <rboost type="double">0</rboost>
+                <voice type="double">0</voice>
+                <rad1 type="double">0</rad1>
+                <mids type="double">0</mids>
+                <rlpcock type="double">0</rlpcock>
+                <llpcock type="double">0</llpcock>
+                <enginestart type="double">0</enginestart>
+                <apu type="double">0</apu>
+                <aflash type="double">0</aflash> <!-- beacon on top center spine -->
+                <daynightlight type="double">0</daynightlight>
+                <extlight type="double">0</extlight>
+                <navbrt type="double">0</navbrt>
+                <acoll type="double">0</acoll>
+                <ecsramair type="double">0</ecsramair>
+                <demist type="double">0</demist>
+                <decoy type="double">0</decoy>
+                <expdman type="double">0</expdman>
+                <emergoxy type="double">0</emergoxy>
+                <landtaxioff type="double">0</landtaxioff>
+                <!--knobbins-->
+                <!--auto on-->
+                <hud type="double">0</hud>
+            </load>
+            <!-- replace me -->
+            <left-booster type="double">1</left-booster>
+            <right-booster type="double">1</right-booster>
+            <transfer-boosters type="double">1</transfer-boosters>
+        </electric>
+        <hydraulic>
+            <contents-tank type="double" n="0">0</contents-tank>
+            <contents-system type="double" n="0">1</contents-system>
+            <pressure type="double" n="0">0</pressure>
+            <usage type="double" n="0">0</usage>
+            <output type="double" n="0">0</output>
+            <contents-tank type="double" n="1">0</contents-tank>
+            <contents-system type="double" n="1">1</contents-system>
+            <pressure type="double" n="1">0</pressure>
+            <usage type="double" n="1">0</usage>
+            <output type="double" n="1">0</output>
+            <xfeed type="double">0</xfeed>
+        </hydraulic>
+        <fuel>
+            <pressure-flow type="double">0</pressure-flow>
+            <transfer-flow type="double">0</transfer-flow>
+            <left-boost-pressure type="double">0</left-boost-pressure>
+            <right-boost-pressure type="double">0</right-boost-pressure>
+            <transfer-pressure type="double">0</transfer-pressure>
+            <left-lpcock type="double">1</left-lpcock>
+            <right-lpcock type="double">1</right-lpcock>
+            <xfeed type="double">1</xfeed>
+            <cg-ratio type="double">0.5</cg-ratio>
+        </fuel>
 
-	</systems>
+    </systems>
 
+    <!-- fbw, moved from typhoon-fcs.xml -->
+    <fbw>
+        <property value="1">enable</property>
+        <roll>
+            <property value="0">rate-damp</property>
+            <property value="0">p-gain</property>
+            <property value="0">d-gain</property>
+        </roll>
+        <pitch>
+            <property value="0">q-demand</property>
+            <property value="0">q-p-gain</property>
+            <property value="0">g-p-gain</property>
+            <property value="0">g-i-gain</property>
+        </pitch>
+        <yaw>
+            <property value="0">beta-d</property>
+            <property value="0">yd-p-gain</property>
+            <property value="0">beta-p-gain</property>
+            <property value="0">beta-d-gain</property>
+        </yaw>
+        <ap>
+            <property value="0">roll-enabled</property>
+            <property value="0">pitch-enabled</property>
+            <property value="0">roll-cmd</property>
+            <property value="0">g-cmd</property>
+        </ap>
+    </fbw>
 
-
-
-	<!-- for in-flight FDM tuning -->
-	<tune>
-		<lift>
-			<alpha type="double">1</alpha>
-			<pitch_rate type="double">1</pitch_rate>
-			<alpha_rate type="double">1</alpha_rate>
-			<elevator type="double">1</elevator>
-		</lift>
-		<drag>
-			<minimum type="double">1</minimum>
-			<alpha type="double">1</alpha>
-			<induced type="double">1</induced>
-			<mach type="double">1</mach>
-			<beta type="double">1</beta>
-			<elevator type="double">1</elevator>
-			<gear type="double">1</gear>
-			<flap type="double">1</flap>
-			<speedbrake type="double">1</speedbrake>
-			<chute type="double">1</chute>
-		</drag>
-		<side>
-			<beta type="double">1</beta>
-			<roll_rate type="double">1</roll_rate>
-			<yaw_rate type="double">1</yaw_rate>
-			<rudder type="double">1</rudder>
-		</side>
-		<pitch>
-			<alpha type="double">1</alpha>
-			<elevator type="double">1</elevator>
-			<damp type="double">1</damp>
-			<alphadot type="double">1</alphadot>
-		</pitch>
-		<roll>
-			<beta type="double">1</beta>
-			<damp type="double">1</damp>
-			<yaw type="double">1</yaw>
-			<aileron type="double">1</aileron>
-			<rudder type="double">1</rudder>
-		</roll>
-		<yaw>
-			<alpha type="double">1</alpha>
-			<beta type="double">1</beta>
-			<roll_rate type="double">1</roll_rate>
-			<damp type="double">1</damp>
-			<rudder type="double">1</rudder>
-			<aileron type="double">1</aileron>
-		</yaw>
-	</tune>
+    <!-- for in-flight FDM tuning -->
+    <tune>
+        <lift>
+            <alpha type="double">1</alpha>
+            <pitch_rate type="double">1</pitch_rate>
+            <alpha_rate type="double">1</alpha_rate>
+            <elevator type="double">1</elevator>
+        </lift>
+        <drag>
+            <minimum type="double">1</minimum>
+            <alpha type="double">1</alpha>
+            <induced type="double">1</induced>
+            <mach type="double">1</mach>
+            <beta type="double">1</beta>
+            <elevator type="double">1</elevator>
+            <gear type="double">1</gear>
+            <flap type="double">1</flap>
+            <speedbrake type="double">1</speedbrake>
+            <chute type="double">1</chute>
+        </drag>
+        <side>
+            <beta type="double">1</beta>
+            <roll_rate type="double">1</roll_rate>
+            <yaw_rate type="double">1</yaw_rate>
+            <rudder type="double">1</rudder>
+        </side>
+        <pitch>
+            <alpha type="double">1</alpha>
+            <elevator type="double">1</elevator>
+            <damp type="double">1</damp>
+            <alphadot type="double">1</alphadot>
+        </pitch>
+        <roll>
+            <beta type="double">1</beta>
+            <damp type="double">1</damp>
+            <yaw type="double">1</yaw>
+            <aileron type="double">1</aileron>
+            <rudder type="double">1</rudder>
+        </roll>
+        <yaw>
+            <alpha type="double">1</alpha>
+            <beta type="double">1</beta>
+            <roll_rate type="double">1</roll_rate>
+            <damp type="double">1</damp>
+            <rudder type="double">1</rudder>
+            <aileron type="double">1</aileron>
+        </yaw>
+    </tune>
 </PropertyList>
