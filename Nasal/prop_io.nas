@@ -45,13 +45,13 @@ var update = func() {
     mach = mach_prop.getValue();
     groundspeed = groundspeed_prop.getValue();
 
-    #################################### electric output props
+    ################################## electric output props
     hud_power = hud_power_prop.getValue();
 }
 
 # functions for listeners
 
-var main_gear_down_listener = func() {}
+var main_gear_down_listener = func() {
     geardown = geardown_prop.getValue();
     gear0wow = gear0wow_prop.getValue();
     gear1wow = gear1wow_prop.getValue();

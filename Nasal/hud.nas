@@ -142,23 +142,23 @@ var HUD_SCREEN = {
         m.nadir = m.pitch_bars_canvas_group.createChild("path")
                                         # circle with 5 lines going horizontally inside, and one line coming out the top
                                         .move(0,-15)
-                                        .ArcSmallCW(15,15,0,8,2)
+                                        .arcSmallCW(15,15,0,8,2)
                                         .line(-16,0)
                                         .move(16,0)
-                                        .ArcSmallCW(15,15,0,5,5)
+                                        .arcSmallCW(15,15,0,5,5)
                                         .line(-26,0)
                                         .move(26,0)
-                                        .ArcSmallCW(15,15,0,2,8)
+                                        .arcSmallCW(15,15,0,2,8)
                                         .line(-30,0)
                                         .move(30,0)
-                                        .ArcSmallCW(15,15,0,-2,8)
+                                        .arcSmallCW(15,15,0,-2,8)
                                         .line(-26,0)
                                         .move(26,0)
-                                        .ArcSmallCW(15,15,0,-5,5)
+                                        .arcSmallCW(15,15,0,-5,5)
                                         .line(-16,0)
                                         .move(16,0)
-                                        .ArcSmallCW(15,15,0,-8,2)
-                                        .ArcSmallCW(15,15,0,0,-15)
+                                        .arcSmallCW(15,15,0,-8,2)
+                                        .arcSmallCW(15,15,0,0,-30)
                                         .line(0,-30)
                                         .setStrokeLineWidth(m.line_width)
                                         .setColor(m.red,m.green,m.blue);
@@ -173,8 +173,8 @@ var HUD_SCREEN = {
                                         .line(20,5)
                                         .line(-2,6)
                                         .line(7,-2)
-                                        .line(5,82)
-                                        .line(5,-82)
+                                        .line(5,75)
+                                        .line(5,-75)
                                         .line(7,2)
                                         .line(-2,-6)
                                         .line(20,-5)
@@ -336,7 +336,9 @@ var HUD_SCREEN = {
                             .setFont(m.font)
                             .setColor(m.red,m.green,m.blue,1)
                             .setTranslation(290, 300 + 3);
-       return m;
+
+        m.c = 0;
+        return m;
     },
 
     off_mode_init: func() {
@@ -372,7 +374,7 @@ var HUD_SCREEN = {
     },
 
     pitch_bars_display: func() {
-        me.center_hud_pitch = prop_io.pitch - (me.angle_to_hud * R2D);
+        me.center_hud_pitch = (prop_io.pitch - (me.angle_to_hud * R2D)) * math.cos(prop_io.roll * D2R);
         me.pitch_bar_center.hide();
         me.zenith.hide();
         me.nadir.hide();
@@ -403,11 +405,12 @@ var HUD_SCREEN = {
 
         me.flight_dir_indicators.setRotation(-prop_io.roll * D2R);
         me.pitch_bars_canvas_group.setRotation(-prop_io.roll * D2R);
-        me.top_limit = 100;
-        me.bottom_limit = me.hud_height_px - me.top_limit;
+        me.c = me.c < 25 ? me.c + 1 : 0;
+        if (me.c == 0) {
+            print(me.center_hud_pitch);
+        }
         for (var i = 0; i < size(me.pitch_bars_shown); i = i + 1){
             me.px_location = me.get_pitch_location(me.pitch_bars_shown[i]);
-            #print(me.b_pitch ~ " " ~ me.px_location);
             if (int(me.pitch_bars_shown[i]) == 90 and me.px_location > -me.hud_height_px / 2){
                 me.pitch_bars_down[i].hide();
                 me.pitch_bars_up[i].hide();
@@ -447,7 +450,7 @@ var HUD_SCREEN = {
 
     get_pitch_location: func(p) {
         me.center_px_offset = me.get_pitch_pixel(me.center_hud_pitch);
-        
+
         me.actual_px = (me.center_px_offset - me.get_pitch_pixel(p))  * -1;
         return me.actual_px;
     },
