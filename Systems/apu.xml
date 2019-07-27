@@ -11,42 +11,42 @@ systems/apu/power
 -->
 
 <system name="apu">
-	<channel name="apusim">
-		
-		<!-- disable the switch if there isn't enough power or fuel -->
-		
-		<switch name="trash/systems/apu/switch">
-			<default value="systems/apu/switch"/>
-			<test logic="OR" value="0">
-				propulsion/tank[0]/contents-lbs == 0.0
-				systems/electric/sources/output-norm lt 0.5
-			</test>
-			<output>systems/apu/switch</output>
-		</switch>
-		
-		<!-- turn on the apu if the switch is on, and we have enough power and fuel -->
+    <channel name="apusim">
+        
+        <!-- disable the switch if there isn't enough power or fuel -->
+        
+        <switch name="trash/systems/apu/switch">
+            <default value="systems/apu/switch"/>
+            <test logic="OR" value="0">
+                propulsion/tank[0]/contents-lbs == 0.0
+                systems/electric/sources/output-norm lt 0.5
+            </test>
+            <output>systems/apu/switch</output>
+        </switch>
+        
+        <!-- turn on the apu if the switch is on, and we have enough power and fuel -->
 
-		<switch name="trash/systems/apu/power">
-			<default value="0"/>
-			<test logic="AND" value="1">
-				propulsion/tank[0]/contents-lbs gt 0.0
-				systems/electric/sources/output-norm gt 0.5
-				systems/apu/switch == 1
-			</test>
-			<output>systems/apu/power</output>
-		</switch>
-	
-		<!-- determine spin rate - a filter would probably be best here. -->
+        <switch name="trash/systems/apu/power">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                propulsion/tank[0]/contents-lbs gt 0.0
+                systems/electric/sources/output-norm gt 0.5
+                systems/apu/switch == 1
+            </test>
+            <output>systems/apu/power</output>
+        </switch>
+    
+        <!-- determine spin rate - a filter would probably be best here. -->
 
-		<lag_filter name="trash/systems/apu/spinrate">
-			<input>systems/apu/power</input>
-			<c1>1.9</c1> <!-- test me -->
-			<clipto>
-				<min>0</min>
-				<max>1</max>
-			</clipto>
-			<output>systems/apu/spinrate</output>
-		</lag_filter>
-		
-	</channel>
+        <lag_filter name="trash/systems/apu/spinrate">
+            <input>systems/apu/power</input>
+            <c1>1.9</c1> <!-- test me -->
+            <clipto>
+                <min>0</min>
+                <max>1</max>
+            </clipto>
+            <output>systems/apu/spinrate</output>
+        </lag_filter>
+        
+    </channel>
 </system>

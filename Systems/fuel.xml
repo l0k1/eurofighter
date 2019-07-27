@@ -37,335 +37,335 @@ tank list:
 -->
 
 <!--
-	todo:
-	finalize transfer fuel for cg shift happens between aft wings and fore
-	refueling
+    todo:
+    finalize transfer fuel for cg shift happens between aft wings and fore
+    refueling
 -->
 
 <system name="fuel">
-	<channel name="fuelflow">
+    <channel name="fuelflow">
 
-		<!-- calc fuel pressure -->
-		<fcs_function name="trash/systems/fuel/pressure-flow">
-			<function>
-				<interpolate1d>
-					<max>
-						<property>propulsion/engine[0]/n1</property>
-						<property>propulsion/engine[1]/n1</property>
-						<product>
-							<property>systems/apu/spinrate</property>
-							<value>30</value>
-						</product>
-					</max>
-					<value> 0.0</value> <value> 0.0</value>
-					<value>30.0</value> <value>12.0</value>
-				</interpolate1d>
-			</function>
-			<output>systems/fuel/pressure-flow</output>
-		</fcs_function>
-		
-		<!-- calculate left and right booster pressure -->
-		<fcs_function name="trash/systems/fuel/left-boost-pressure">
-			<function>
-				<quotient>
-					<table>
-						<independentVar lookup="row">systems/electric/left-booster</independentVar>
-						<tableData>
-							0.0		 0.0
-							1.0 	15.0
-						</tableData>
-					</table>
-					<sum>
-						<product>
-							<property>systems/fuel/right-lpcock</property>
-							<property>systems/fuel/xfeed</property>
-						</product>
-						<value>1</value>
-					</sum>
-				</quotient>
-			</function>
-			<output>systems/fuel/left-boost-pressure</output>
-		</fcs_function>
-		
-		
-		<fcs_function name="trash/systems/fuel/right-boost-pressure">
-			<function>
-				<quotient>
-					<table>
-						<independentVar lookup="row">systems/electric/right-booster</independentVar>
-						<tableData>
-							0.0		 0.0
-							1.0 	15.0
-						</tableData>
-					</table>
-					<sum>
-						<product>
-							<property>systems/fuel/left-lpcock</property>
-							<property>systems/fuel/xfeed</property>
-						</product>
-						<value>1</value>
-					</sum>
-				</quotient>
-			</function>
-			<output>systems/fuel/right-boost-pressure</output>
-		</fcs_function>
+        <!-- calc fuel pressure -->
+        <fcs_function name="trash/systems/fuel/pressure-flow">
+            <function>
+                <interpolate1d>
+                    <max>
+                        <property>propulsion/engine[0]/n1</property>
+                        <property>propulsion/engine[1]/n1</property>
+                        <product>
+                            <property>systems/apu/spinrate</property>
+                            <value>30</value>
+                        </product>
+                    </max>
+                    <value> 0.0</value> <value> 0.0</value>
+                    <value>30.0</value> <value>12.0</value>
+                </interpolate1d>
+            </function>
+            <output>systems/fuel/pressure-flow</output>
+        </fcs_function>
+        
+        <!-- calculate left and right booster pressure -->
+        <fcs_function name="trash/systems/fuel/left-boost-pressure">
+            <function>
+                <quotient>
+                    <table>
+                        <independentVar lookup="row">systems/electric/left-booster</independentVar>
+                        <tableData>
+                            0.0         0.0
+                            1.0     15.0
+                        </tableData>
+                    </table>
+                    <sum>
+                        <product>
+                            <property>systems/fuel/right-lpcock</property>
+                            <property>systems/fuel/xfeed</property>
+                        </product>
+                        <value>1</value>
+                    </sum>
+                </quotient>
+            </function>
+            <output>systems/fuel/left-boost-pressure</output>
+        </fcs_function>
+        
+        
+        <fcs_function name="trash/systems/fuel/right-boost-pressure">
+            <function>
+                <quotient>
+                    <table>
+                        <independentVar lookup="row">systems/electric/right-booster</independentVar>
+                        <tableData>
+                            0.0         0.0
+                            1.0     15.0
+                        </tableData>
+                    </table>
+                    <sum>
+                        <product>
+                            <property>systems/fuel/left-lpcock</property>
+                            <property>systems/fuel/xfeed</property>
+                        </product>
+                        <value>1</value>
+                    </sum>
+                </quotient>
+            </function>
+            <output>systems/fuel/right-boost-pressure</output>
+        </fcs_function>
 
-		<!-- balancing logic -->
-		<!-- because fuel tanks are all at CG right now, this will
-			seek to balance fore and aft tanks. -->
+        <!-- balancing logic -->
+        <!-- because fuel tanks are all at CG right now, this will
+            seek to balance fore and aft tanks. -->
 
-		<fcs_function name="trash/systems/fuel/transfer-balance">
-			<function>
-				<ifthen>
-					<gt>
-						<difference>
-							<product>
-								<sum>
-									<property>propulsion/tank[0]/contents-lbs</property>
-									<property>propulsion/tank[2]/contents-lbs</property>
-								</sum>
-								<property>systems/fuel/cg-ratio</property>
-							</product>
-							<property>propulsion/tank[0]/contents-lbs</property>
-						</difference>
-						<value>0</value>
-					</gt>
-					<value>1</value>
-					<value>-1</value>
-				</ifthen>
-			</function>
-			<output>systems/fuel/transfer-flow</output>
-		</fcs_function>
-			
-		
-		<fcs_function name="trash/systems/fuel/transfer-pressure">
-			<function>
-				<product>
-					<table>
-						<independentVar lookup="row">systems/electric/transfer-boosters</independentVar>
-						<tableData>
-							0.0		 0.0
-							1.0 	15.0
-						</tableData>
-					</table>
-					<property>systems/fuel/transfer-flow</property>
-					<value>-1</value>
-				</product>
-			</function>
-			<output>systems/fuel/transfer-pressure</output>
-		</fcs_function>
-			
-		<!-- mid to accumulators -->
-		<switch name="trash/propulsion/tank[1]/mid-to-left-acc">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/left-boost-pressure">
-				systems/fuel/left-lpcock == 1
-				propulsion/tank[1]/contents-lbs gt 0.5
-				propulsion/tank[10]/contents-lbs lt 1.0
-			</test>
-			<output>propulsion/tank[1]/mid-to-left-acc</output>
-		</switch>
-		
-		<switch name="trash/propulsion/tank[1]/mid-to-right-acc">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/left-boost-pressure">
-				systems/fuel/right-lpcock == 1
-				systems/fuel/xfeed == 1
-				propulsion/tank[1]/contents-lbs gt 0.5
-				propulsion/tank[11]/contents-lbs lt 1.0
-			</test>
-			<output>propulsion/tank[1]/mid-to-right-acc</output>
-		</switch>
-		
-		<!-- aft to accumulators -->
-		<switch name="trash/propulsion/tank[2]/aft-to-left-acc">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/right-boost-pressure">
-				systems/fuel/left-lpcock == 1
-				systems/fuel/xfeed == 1
-				propulsion/tank[2]/contents-lbs gt 0.5
-				propulsion/tank[10]/contents-lbs lt 1.0
-			</test>
-			<output>propulsion/tank[2]/aft-to-left-acc</output>
-		</switch>
-		
-		<switch name="trash/propulsion/tank[2]/aft-to-right-acc">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/right-boost-pressure">
-				systems/fuel/right-lpcock == 1
-				propulsion/tank[2]/contents-lbs gt 0.5
-				propulsion/tank[11]/contents-lbs lt 1.0
-			</test>
-			<output>propulsion/tank[2]/aft-to-right-acc</output>
-		</switch>
-		
-		<!-- center to mid -->
-		<switch name="trash/propulsion/tank[7]/center-to-mid">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/pressure-flow">
-				propulsion/tank[7]/contents-lbs gt 0.5
-				propulsion/tank[1]/contents-lbs lt 2094
-			</test>
-			<output>propulsion/tank[7]/center-to-mid</output>
-		</switch>
-		
-		<!-- wing drop tanks into wing fore tanks and fore to aft-->
-		<switch name="trash/propulsion/tank[8]/left-drop-to-left-fore">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/pressure-flow">
-				propulsion/tank[8]/contents-lbs gt 0.5
-				propulsion/tank[3]/contents-lbs lt 1079
-			</test>
-			<output>propulsion/tank[8]/left-drop-to-left-fore</output>
-		</switch>
-		
-		
-		<switch name="trash/propulsion/tank[3]/left-fore-to-left-aft">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/pressure-flow">
-				propulsion/tank[3]/contents-lbs gt 0.5
-				propulsion/tank[4]/contents-lbs lt 1079
-			</test>
-			<output>propulsion/tank[3]/left-fore-to-left-aft</output>
-		</switch>
-		
-		<switch name="trash/propulsion/tank[9]/right-drop-to-right-fore">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/pressure-flow">
-				propulsion/tank[9]/contents-lbs gt 0.5
-				propulsion/tank[5]/contents-lbs lt 1079
-			</test>
-			<output>propulsion/tank[9]/right-drop-to-right-fore</output>
-		</switch>
-		
-		<switch name="trash/propulsion/tank[5]/right-fore-to-right-aft">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/pressure-flow">
-				propulsion/tank[5]/contents-lbs gt 0.5
-				propulsion/tank[6]/contents-lbs lt 1079
-			</test>
-			<output>propulsion/tank[5]/right-fore-to-right-aft</output>
-		</switch>
-		
-		<!-- fore pressures into aft, then wings pressure int aft -->
-		
-		<switch name="trash/propulsion/tank[0]/fore-to-aft">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/pressure-flow">
-				propulsion/tank[0]/contents-lbs gt 0.5
-				propulsion/tank[2]/contents-lbs lt 1960
-			</test>
-			<output>propulsion/tank[0]/fore-to-aft</output>
-		</switch>
-		
-		<switch name="trash/propulsion/tank[4]/left-aft-to-aft">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/pressure-flow">
-				propulsion/tank[0]/contents-lbs lt 100
-				propulsion/tank[4]/contents-lbs gt 0.5
-				propulsion/tank[2]/contents-lbs lt 1960
-			</test>
-			<output>propulsion/tank[4]/left-aft-to-aft</output>
-		</switch>
-		
-		<switch name="trash/propulsion/tank[6]/right-aft-to-aft">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/pressure-flow">
-				propulsion/tank[0]/contents-lbs lt 100
-				propulsion/tank[6]/contents-lbs gt 0.5
-				propulsion/tank[2]/contents-lbs lt 1960
-			</test>
-			<output>propulsion/tank[6]/right-aft-to-aft</output>
-		</switch>
-		
-		<!-- transfer fuel between fore and aft for cg -->
-		<!-- because systems/fuel/transfer-pressure can be pos or neg, only need 1 switch -->
-		<switch name="trash/propulsion/tank[0]/fore-to-aft-xfer">
-			<default value="0"/>
-			<test logic="AND" value="systems/fuel/transfer-pressure">
-				systems/fuel/transfer-flow ne 0
-				propulsion/tank[0]/contents-lbs gt 0.5
-				propulsion/tank[2]/contents-lbs gt 0.5
-				propulsion/tank[0]/contents-lbs le 2028
-				propulsion/tank[2]/contents-lbs le 1962
-			</test>
-			<output>propulsion/tank[0]/fore-to-aft-xfer</output>
-		</switch>
-		
-		<!-- summers -->
-		<summer name="trash/propulsion/tank[0]/external-flow-rate-pps">
-			<input>-propulsion/tank[0]/fore-to-aft</input>
-			<input>-propulsion/tank[0]/fore-to-aft-xfer</input>
-			<output>propulsion/tank[0]/external-flow-rate-pps</output>
-		</summer>
-		
-		<summer name="trash/propulsion/tank[1]/external-flow-rate-pps">
-			<input>-propulsion/tank[1]/mid-to-left-acc</input>
-			<input>-propulsion/tank[1]/mid-to-right-acc</input>
-			<input>propulsion/tank[7]/center-to-mid</input>
-			<output>propulsion/tank[1]/external-flow-rate-pps</output>
-		</summer>
-		
-		<summer name="trash/propulsion/tank[2]/external-flow-rate-pps">
-			<input>-propulsion/tank[2]/aft-to-left-acc</input>
-			<input>-propulsion/tank[2]/aft-to-right-acc</input>
-			<input>propulsion/tank[0]/fore-to-aft</input>
-			<input>propulsion/tank[0]/fore-to-aft-xfer</input>
-			<input>propulsion/tank[4]/left-aft-to-aft</input>
-			<input>propulsion/tank[6]/right-aft-to-aft</input>
-			<output>propulsion/tank[2]/external-flow-rate-pps</output>
-		</summer>
-		
-		<summer name="trash/propulsion/tank[3]/external-flow-rate-pps">
-			<input>-propulsion/tank[3]/left-fore-to-left-aft</input>
-			<input>propulsion/tank[8]/left-drop-to-left-fore</input>
-			<output>propulsion/tank[3]/external-flow-rate-pps</output>
-		</summer>
-		
-		<summer name="trash/propulsion/tank[4]/external-flow-rate-pps">
-			<input>-propulsion/tank[4]/left-aft-to-aft</input>
-			<input>propulsion/tank[3]/left-fore-to-left-aft</input>
-			<output>propulsion/tank[4]/external-flow-rate-pps</output>
-		</summer>
-		
-		<summer name="trash/propulsion/tank[5]/external-flow-rate-pps">
-			<input>-propulsion/tank[5]/right-fore-to-right-aft</input>
-			<input>propulsion/tank[9]/right-drop-to-right-fore</input>
-			<output>propulsion/tank[5]/external-flow-rate-pps</output>
-		</summer>
-		
-		<summer name="trash/propulsion/tank[6]/external-flow-rate-pps">
-			<input>-propulsion/tank[6]/right-aft-to-aft</input>
-			<input>propulsion/tank[5]/right-fore-to-right-aft</input>
-			<output>propulsion/tank[6]/external-flow-rate-pps</output>
-		</summer>
-		
-		<summer name="trash/propulsion/tank[7]/external-flow-rate-pps">
-			<input>-propulsion/tank[7]/center-to-mid</input>
-			<output>propulsion/tank[7]/external-flow-rate-pps</output>
-		</summer>
-		
-		<summer name="trash/propulsion/tank[8]/external-flow-rate-pps">
-			<input>-propulsion/tank[8]/left-drop-to-left-fore</input>
-			<output>propulsion/tank[8]/external-flow-rate-pps</output>
-		</summer>
-		
-		<summer name="trash/propulsion/tank[9]/external-flow-rate-pps">
-			<input>-propulsion/tank[9]/right-drop-to-right-fore</input>
-			<output>propulsion/tank[9]/external-flow-rate-pps</output>
-		</summer>
-		
-		<summer name="trash/propulsion/tank[10]/external-flow-rate-pps">
-			<input>propulsion/tank[1]/mid-to-left-acc</input>
-			<input>propulsion/tank[2]/aft-to-left-acc</input>
-			<output>propulsion/tank[10]/external-flow-rate-pps</output>
-		</summer>
-		
-		<summer name="trash/propulsion/tank[11]/external-flow-rate-pps">
-			<input>propulsion/tank[1]/mid-to-right-acc</input>
-			<input>propulsion/tank[2]/aft-to-right-acc</input>
-			<output>propulsion/tank[11]/external-flow-rate-pps</output>
-		</summer>
-	
-	</channel>
+        <fcs_function name="trash/systems/fuel/transfer-balance">
+            <function>
+                <ifthen>
+                    <gt>
+                        <difference>
+                            <product>
+                                <sum>
+                                    <property>propulsion/tank[0]/contents-lbs</property>
+                                    <property>propulsion/tank[2]/contents-lbs</property>
+                                </sum>
+                                <property>systems/fuel/cg-ratio</property>
+                            </product>
+                            <property>propulsion/tank[0]/contents-lbs</property>
+                        </difference>
+                        <value>0</value>
+                    </gt>
+                    <value>1</value>
+                    <value>-1</value>
+                </ifthen>
+            </function>
+            <output>systems/fuel/transfer-flow</output>
+        </fcs_function>
+            
+        
+        <fcs_function name="trash/systems/fuel/transfer-pressure">
+            <function>
+                <product>
+                    <table>
+                        <independentVar lookup="row">systems/electric/transfer-boosters</independentVar>
+                        <tableData>
+                            0.0         0.0
+                            1.0     15.0
+                        </tableData>
+                    </table>
+                    <property>systems/fuel/transfer-flow</property>
+                    <value>-1</value>
+                </product>
+            </function>
+            <output>systems/fuel/transfer-pressure</output>
+        </fcs_function>
+            
+        <!-- mid to accumulators -->
+        <switch name="trash/propulsion/tank[1]/mid-to-left-acc">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/left-boost-pressure">
+                systems/fuel/left-lpcock == 1
+                propulsion/tank[1]/contents-lbs gt 0.5
+                propulsion/tank[10]/contents-lbs lt 1.0
+            </test>
+            <output>propulsion/tank[1]/mid-to-left-acc</output>
+        </switch>
+        
+        <switch name="trash/propulsion/tank[1]/mid-to-right-acc">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/left-boost-pressure">
+                systems/fuel/right-lpcock == 1
+                systems/fuel/xfeed == 1
+                propulsion/tank[1]/contents-lbs gt 0.5
+                propulsion/tank[11]/contents-lbs lt 1.0
+            </test>
+            <output>propulsion/tank[1]/mid-to-right-acc</output>
+        </switch>
+        
+        <!-- aft to accumulators -->
+        <switch name="trash/propulsion/tank[2]/aft-to-left-acc">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/right-boost-pressure">
+                systems/fuel/left-lpcock == 1
+                systems/fuel/xfeed == 1
+                propulsion/tank[2]/contents-lbs gt 0.5
+                propulsion/tank[10]/contents-lbs lt 1.0
+            </test>
+            <output>propulsion/tank[2]/aft-to-left-acc</output>
+        </switch>
+        
+        <switch name="trash/propulsion/tank[2]/aft-to-right-acc">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/right-boost-pressure">
+                systems/fuel/right-lpcock == 1
+                propulsion/tank[2]/contents-lbs gt 0.5
+                propulsion/tank[11]/contents-lbs lt 1.0
+            </test>
+            <output>propulsion/tank[2]/aft-to-right-acc</output>
+        </switch>
+        
+        <!-- center to mid -->
+        <switch name="trash/propulsion/tank[7]/center-to-mid">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/pressure-flow">
+                propulsion/tank[7]/contents-lbs gt 0.5
+                propulsion/tank[1]/contents-lbs lt 2094
+            </test>
+            <output>propulsion/tank[7]/center-to-mid</output>
+        </switch>
+        
+        <!-- wing drop tanks into wing fore tanks and fore to aft-->
+        <switch name="trash/propulsion/tank[8]/left-drop-to-left-fore">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/pressure-flow">
+                propulsion/tank[8]/contents-lbs gt 0.5
+                propulsion/tank[3]/contents-lbs lt 1079
+            </test>
+            <output>propulsion/tank[8]/left-drop-to-left-fore</output>
+        </switch>
+        
+        
+        <switch name="trash/propulsion/tank[3]/left-fore-to-left-aft">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/pressure-flow">
+                propulsion/tank[3]/contents-lbs gt 0.5
+                propulsion/tank[4]/contents-lbs lt 1079
+            </test>
+            <output>propulsion/tank[3]/left-fore-to-left-aft</output>
+        </switch>
+        
+        <switch name="trash/propulsion/tank[9]/right-drop-to-right-fore">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/pressure-flow">
+                propulsion/tank[9]/contents-lbs gt 0.5
+                propulsion/tank[5]/contents-lbs lt 1079
+            </test>
+            <output>propulsion/tank[9]/right-drop-to-right-fore</output>
+        </switch>
+        
+        <switch name="trash/propulsion/tank[5]/right-fore-to-right-aft">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/pressure-flow">
+                propulsion/tank[5]/contents-lbs gt 0.5
+                propulsion/tank[6]/contents-lbs lt 1079
+            </test>
+            <output>propulsion/tank[5]/right-fore-to-right-aft</output>
+        </switch>
+        
+        <!-- fore pressures into aft, then wings pressure int aft -->
+        
+        <switch name="trash/propulsion/tank[0]/fore-to-aft">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/pressure-flow">
+                propulsion/tank[0]/contents-lbs gt 0.5
+                propulsion/tank[2]/contents-lbs lt 1960
+            </test>
+            <output>propulsion/tank[0]/fore-to-aft</output>
+        </switch>
+        
+        <switch name="trash/propulsion/tank[4]/left-aft-to-aft">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/pressure-flow">
+                propulsion/tank[0]/contents-lbs lt 100
+                propulsion/tank[4]/contents-lbs gt 0.5
+                propulsion/tank[2]/contents-lbs lt 1960
+            </test>
+            <output>propulsion/tank[4]/left-aft-to-aft</output>
+        </switch>
+        
+        <switch name="trash/propulsion/tank[6]/right-aft-to-aft">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/pressure-flow">
+                propulsion/tank[0]/contents-lbs lt 100
+                propulsion/tank[6]/contents-lbs gt 0.5
+                propulsion/tank[2]/contents-lbs lt 1960
+            </test>
+            <output>propulsion/tank[6]/right-aft-to-aft</output>
+        </switch>
+        
+        <!-- transfer fuel between fore and aft for cg -->
+        <!-- because systems/fuel/transfer-pressure can be pos or neg, only need 1 switch -->
+        <switch name="trash/propulsion/tank[0]/fore-to-aft-xfer">
+            <default value="0"/>
+            <test logic="AND" value="systems/fuel/transfer-pressure">
+                systems/fuel/transfer-flow ne 0
+                propulsion/tank[0]/contents-lbs gt 0.5
+                propulsion/tank[2]/contents-lbs gt 0.5
+                propulsion/tank[0]/contents-lbs le 2028
+                propulsion/tank[2]/contents-lbs le 1962
+            </test>
+            <output>propulsion/tank[0]/fore-to-aft-xfer</output>
+        </switch>
+        
+        <!-- summers -->
+        <summer name="trash/propulsion/tank[0]/external-flow-rate-pps">
+            <input>-propulsion/tank[0]/fore-to-aft</input>
+            <input>-propulsion/tank[0]/fore-to-aft-xfer</input>
+            <output>propulsion/tank[0]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer name="trash/propulsion/tank[1]/external-flow-rate-pps">
+            <input>-propulsion/tank[1]/mid-to-left-acc</input>
+            <input>-propulsion/tank[1]/mid-to-right-acc</input>
+            <input>propulsion/tank[7]/center-to-mid</input>
+            <output>propulsion/tank[1]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer name="trash/propulsion/tank[2]/external-flow-rate-pps">
+            <input>-propulsion/tank[2]/aft-to-left-acc</input>
+            <input>-propulsion/tank[2]/aft-to-right-acc</input>
+            <input>propulsion/tank[0]/fore-to-aft</input>
+            <input>propulsion/tank[0]/fore-to-aft-xfer</input>
+            <input>propulsion/tank[4]/left-aft-to-aft</input>
+            <input>propulsion/tank[6]/right-aft-to-aft</input>
+            <output>propulsion/tank[2]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer name="trash/propulsion/tank[3]/external-flow-rate-pps">
+            <input>-propulsion/tank[3]/left-fore-to-left-aft</input>
+            <input>propulsion/tank[8]/left-drop-to-left-fore</input>
+            <output>propulsion/tank[3]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer name="trash/propulsion/tank[4]/external-flow-rate-pps">
+            <input>-propulsion/tank[4]/left-aft-to-aft</input>
+            <input>propulsion/tank[3]/left-fore-to-left-aft</input>
+            <output>propulsion/tank[4]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer name="trash/propulsion/tank[5]/external-flow-rate-pps">
+            <input>-propulsion/tank[5]/right-fore-to-right-aft</input>
+            <input>propulsion/tank[9]/right-drop-to-right-fore</input>
+            <output>propulsion/tank[5]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer name="trash/propulsion/tank[6]/external-flow-rate-pps">
+            <input>-propulsion/tank[6]/right-aft-to-aft</input>
+            <input>propulsion/tank[5]/right-fore-to-right-aft</input>
+            <output>propulsion/tank[6]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer name="trash/propulsion/tank[7]/external-flow-rate-pps">
+            <input>-propulsion/tank[7]/center-to-mid</input>
+            <output>propulsion/tank[7]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer name="trash/propulsion/tank[8]/external-flow-rate-pps">
+            <input>-propulsion/tank[8]/left-drop-to-left-fore</input>
+            <output>propulsion/tank[8]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer name="trash/propulsion/tank[9]/external-flow-rate-pps">
+            <input>-propulsion/tank[9]/right-drop-to-right-fore</input>
+            <output>propulsion/tank[9]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer name="trash/propulsion/tank[10]/external-flow-rate-pps">
+            <input>propulsion/tank[1]/mid-to-left-acc</input>
+            <input>propulsion/tank[2]/aft-to-left-acc</input>
+            <output>propulsion/tank[10]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer name="trash/propulsion/tank[11]/external-flow-rate-pps">
+            <input>propulsion/tank[1]/mid-to-right-acc</input>
+            <input>propulsion/tank[2]/aft-to-right-acc</input>
+            <output>propulsion/tank[11]/external-flow-rate-pps</output>
+        </summer>
+    
+    </channel>
 </system>

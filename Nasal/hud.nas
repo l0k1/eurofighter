@@ -338,6 +338,17 @@ var HUD_SCREEN = {
                             .setTranslation(290, 300 + 3);
 
         m.c = 0;
+        m.gmeter_text = [];
+        m.gmeter_group = m.hud.createGroup();
+        for (var i = 0; i < 3; i = i + 1) {
+            append(m.gmeter_text, m.gmeter_group.createChild("text")
+                            .setAlignment("right-center")
+                            .setFontSize(m.font_size)
+                            .setFont(m.font)
+                            .setColor(m.red,m.green,m.blue,1));
+        }
+        m.gmeter_spacing = m.font_size / 4;
+        #m.gmeter_group.set("clip","rect(1px, 1px, 1px, 1px)"); # top right bottom left
         return m;
     },
 
@@ -348,6 +359,7 @@ var HUD_SCREEN = {
         me.alt_display.hide();
         me.ias_text.hide();
         me.gs_m_display.hide();
+        me.gmeter_group.hide();
     },
     off_mode_update: func() {
         # the hud is off, we do nothing
@@ -374,7 +386,7 @@ var HUD_SCREEN = {
     },
 
     pitch_bars_display: func() {
-        me.center_hud_pitch = (prop_io.pitch - (me.angle_to_hud * R2D)) * math.cos(prop_io.roll * D2R);
+        me.center_hud_pitch = prop_io.pitch - (me.angle_to_hud * math.cos(prop_io.roll * D2R) * R2D);
         me.pitch_bar_center.hide();
         me.zenith.hide();
         me.nadir.hide();
@@ -530,6 +542,20 @@ var HUD_SCREEN = {
     groundspeed_mach_switch: func() {
         me.gs_m_mode = 1 - me.gs_m_mode;
         me.gs_m_text.setText(me.gs_m_mode ? "GS" : "M");
+    },
+    
+    gmeter_display: func() {
+    
+        me.gmeter_center = prop_io.normalg;
+        me.gmeter_offset = 0 - me.gmeter_spacing + ((((prop_io.normalg - 0.1) * 10) - math.floor(prop_io.normalg * 10)) / 10) * me.gmeter_spacing;
+        
+        me.gmeter_text[0].setTranslation(0,me.gmeter_offset);
+        me.gmeter_text[0].setText(math.round((prop_io.normalg - 0.1) * 10) / 10);
+        me.gmeter_text[1].setTranslation(0,me.gmeter_offset + me.gmeter_spacing);
+        me.gmeter_text[1].setText(math.round(prop_io.normalg * 10) / 10);
+        me.gmeter_text[2].setTranslation(0,me.gmeter_offset + me.gmeter_spacing * 2);
+        me.gmeter_text[2].setText(math.round((prop_io.normalg + 0.1) * 10) / 10);
+
     },
     
     ###################################### state stuff to be worked in
