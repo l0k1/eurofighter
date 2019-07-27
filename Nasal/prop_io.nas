@@ -20,6 +20,10 @@ var mach = 0;
 var groundspeed_prop = props.globals.getNode("velocities/groundspeed-kt");
 var groundspeed = 0;
 
+#################################### instrumentation props
+var normalg_prop = props.globals.getNode("fdm/jsbsim/systems/flightcomputer/normal-g");
+var normalg = 0;
+
 #################################### landing gear props
 var geardown_prop = props.globals.getNode("/controls/gear/gear-down");
 var geardown = 0;
@@ -44,7 +48,10 @@ var update = func() {
     airspeed = airspeed_prop.getValue();
     mach = mach_prop.getValue();
     groundspeed = groundspeed_prop.getValue();
-
+    
+    #################################### instrumentation props
+    normalg = normalg_prop.getValue();
+    
     #################################### electric output props
     hud_power = hud_power_prop.getValue();
 }
