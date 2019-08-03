@@ -462,9 +462,13 @@ var HUD_SCREEN = {
 
     get_pitch_location: func(p) {
         me.center_px_offset = me.get_pitch_pixel(me.center_hud_pitch);
-
-        me.actual_px = (me.center_px_offset - me.get_pitch_pixel(p))  * -1;
-        return me.actual_px;
+        
+        me.y_px = (me.center_px_offset - me.get_pitch_pixel(p))  * -1;
+        
+        me.x_px = 0 - y_px * sin(prop_io.roll_rad * D2R);
+        me.y_px = y_px * cos(prop_io.roll_rad * D2R);
+        
+        return me.x_px, me.y_px;
     },
     get_pitch_pixel: func(p) {
         me.absp = math.abs(p);

@@ -43,6 +43,7 @@ var update = func() {
     pitch = pitch_prop.getValue();
     alpha = alpha_prop.getValue();
     roll = roll_prop.getValue();
+    roll_rad = roll * D2R;
     heading = heading_prop.getValue();
     altitude = altitude_prop.getValue();
     airspeed = airspeed_prop.getValue();
