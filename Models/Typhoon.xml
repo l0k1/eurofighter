@@ -49,7 +49,6 @@
   <!-- Rembrandt Glass Select -->
 	<effect>
 		<inherits-from>Effects/model-transparent</inherits-from>
-		<object-name>CanopyGlass</object-name>
 		<object-name>canopyglass</object-name>
 		<object-name>canopyglass.front</object-name>
 		<object-name>Windshield</object-name>
@@ -64,19 +63,18 @@
 		<object-name>Wing.L</object-name>
 		<object-name>Wing.R</object-name>
 		<object-name>engine-cowling</object-name>
-		<object-name>CanopyGlass</object-name>
 	</effect>
 	<effect>
 		<name>typhoonglass</name>
 		<inherits-from>Effects/typhoonglass</inherits-from>
-		<object-name>canopyglass.inside</object-name>
+		<object-name>canopyglass</object-name>
 	</effect>
 	<effect>
 		<name>typhoonwindshield</name>
 		<inherits-from>Effects/typhoonwindshield</inherits-from>
-		<object-name>canopyglass.front.inside</object-name>
+		<object-name>canopyglass.front</object-name>
 	</effect>
-    <!-- Canopy -->
+    <!-- Canopy
 	<animation>
 		<type>select</type>
 		<condition>
@@ -84,9 +82,9 @@
 				<property>/sim/rendering/rembrandt/enabled</property>
 			</not>
 		</condition>
-		<object-name>canopyglass.inside</object-name>
-		<object-name>canopyglass.front.inside</object-name>
-	</animation>
+		<object-name>canopyglass</object-name>
+		<object-name>canopyglass.front</object-name>
+	</animation> -->
 
   <!-- ********************** effects **********************-->
 	<model>
@@ -221,7 +219,7 @@
 		</offsets>
 	</model>
 	<animation>
-		<object-name>pilot</object-name>
+		<object-name>Pilot</object-name>
 		<type>range</type>
 		<min-m>2</min-m>
 		<max-m>1500</max-m>
@@ -1475,7 +1473,6 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>canopyglass</object-name>
-		<object-name>canopyglass.inside</object-name>
 		<object-name>canopyframe</object-name>
 		<object-name>canopyframe.inside</object-name>
 		<object-name>CanopyMirrors</object-name>
@@ -1618,15 +1615,15 @@
 	</animation>
 	<animation>
 		<type>noshadow</type>
-		<object-name>Light.beacup</object-name>
-		<!--object-name>Light.beacon.d.L</object-name-->
-		<object-name>Light.beacon.d.R</object-name>
+		<object-name>beacon.up</object-name>
+		<object-name>beacon.d.L</object-name>
+		<object-name>beacon.d.R</object-name>
 	</animation>
 	<animation>
 		<type>noshadow</type>
-		<object-name>Light.strobeup</object-name>
-		<!--object-name>Light.strobe.d.L</object-name-->
-		<object-name>Light.strobe.d.R</object-name>
+		<object-name>strobe.up</object-name>
+		<object-name>strobe.d.L</object-name>
+		<object-name>strobe.d.R</object-name>
 	</animation>
 	<animation>
 		<type>alpha-test</type>
@@ -1637,23 +1634,23 @@
 	</animation>
 	<animation>
 		<type>alpha-test</type>
-		<object-name>Light.beacup</object-name>
-		<!--object-name>Light.beacon.d.L</object-name-->
-		<object-name>Light.beacon.d.R</object-name>
+		<object-name>beacon.up</object-name>
+		<object-name>beacon.d.L</object-name>
+		<object-name>beacon.d.R</object-name>
 		<alpha-factor>0.01</alpha-factor>
 	</animation>
 	<animation>
 		<type>alpha-test</type>
-		<object-name>Light.strobeup</object-name>
-		<!--object-name>Light.strobe.d.L</object-name-->
-		<object-name>Light.strobe.d.R</object-name>
+		<object-name>strobe.up</object-name>
+		<object-name>strobe.d.L</object-name>
+		<object-name>strobe.d.R</object-name>
 		<alpha-factor>0.01</alpha-factor>
 	</animation>
 
 <!-- Flash Lights -->
 	<animation>
 		<type>select</type>
-		<object-name>Light.beacon.d.R</object-name>
+		<object-name>beacon.d.R</object-name>
 		<condition>
 			<and>
 				<equals>
@@ -1677,7 +1674,7 @@
 	</animation>
 	<animation>
 		<type>select</type>
-		<object-name>Light.strobe.d.R</object-name>
+		<object-name>strobe.d.R</object-name>
 		<condition>
 			<and>
 				<equals>
@@ -1707,7 +1704,7 @@
 <!-- animation for other liveries -->
 	<animation>
 		<type>select</type>
-		<object-name>Light.beacon.d.L</object-name>
+		<object-name>beacon.d.L</object-name>
 		<condition>
 			<and>
 				<equals>
@@ -1731,7 +1728,7 @@
 	</animation>
 	<animation>
 		<type>select</type>
-		<object-name>Light.strobe.d.L</object-name>
+		<object-name>strobe.d.L</object-name>
 		<condition>
 			<and>
 				<equals>
@@ -1819,7 +1816,7 @@
 	</animation>
 	<animation>
 		<type>select</type>
-		<object-name>Light.beacup</object-name>
+		<object-name>beacon.up</object-name>
 		<condition>
 			<property>/sim/multiplay/generic/float[4]</property>
 			<property>sim/model/livery/beacon</property>
@@ -1832,7 +1829,7 @@
 	</animation>
 	<animation>
 		<type>select</type>
-		<object-name>Light.strobeup</object-name>
+		<object-name>strobe.up</object-name>
 		<condition>
 			<and>
 				<property>/sim/multiplay/generic/float[5]</property>
@@ -2020,12 +2017,12 @@
 		<object-name>Light.L</object-name>
 		<object-name>Light.R</object-name>
 		<object-name>Light.rear</object-name>
-		<object-name>Light.beacup</object-name>
-		<object-name>Light.beacon.d.L</object-name>
-		<object-name>Light.beacon.d.R</object-name>
-		<object-name>Light.strobeup</object-name>
-		<object-name>Light.strobe.d.L</object-name>
-		<object-name>Light.strobe.d.R</object-name>
+		<object-name>beacon.up</object-name>
+		<object-name>beacon.d.L</object-name>
+		<object-name>beacon.d.R</object-name>
+		<object-name>strobe.up</object-name>
+		<object-name>strobe.d.L</object-name>
+		<object-name>strobe.d.R</object-name>
 	</animation>
 	<animation>
 		<type>select</type>

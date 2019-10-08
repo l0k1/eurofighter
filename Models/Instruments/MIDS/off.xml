@@ -28,7 +28,6 @@
     <!-- this thing popped up in extra views. Not anymore. -->
 	<animation>
 		<type>select</type>
-		<object-name>MIDS Screen</object-name>
 		<condition>
 			<equals>
 				<property>sim/current-view/name</property>

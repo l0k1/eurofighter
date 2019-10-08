@@ -85,6 +85,10 @@
 		<name>Y</name>
 		<desc>Select previous pylon</desc>
 	</key>
+    <key>
+    <name>&lt;</name>
+    <desc>Change Pilot Model View</desc>
+  </key>
 	
 	<text>
     U L P (Upper Left Panel) Autopilot and functions :

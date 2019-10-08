@@ -3,21 +3,7 @@
 <!-- Manual Data Entry Facility - XPDR (Transponder) Subsystem Keys -->
 <PropertyList>
 	<path>softkeys.ac</path>
-	<animation>
-		<object-name>softkeys.on</object-name>
-		<type>material</type>
-		<diffuse>
-			<red>0.1</red>
-			<green>0.3</green>
-			<blue>0.1</blue>
-		</diffuse>
-		<emission>
-			<red>0.4</red>
-			<green>0.8</green>
-			<blue>0.4</blue>
-			<factor-prop>/instrumentation/illumination/glareshield-backlight</factor-prop>
-		</emission>
-	</animation>
+	
 	<animation>
 		<type>select</type>
 		<object-name>softkeys.05.off</object-name>

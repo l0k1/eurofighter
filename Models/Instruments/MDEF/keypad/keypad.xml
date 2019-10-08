@@ -142,20 +142,11 @@
   <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/nav2s.xml</path>
  </model>
  
- <!--model>
-  <name>keypad-com1a</name>
-  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/com1a.xml</path>
- </model-->
- 
+
  <model>
   <name>keypad-com1s</name>
   <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/com1s.xml</path>
  </model>
- 
- <!--model>
-  <name>keypad-com2a</name>
-  <path>Aircraft/eurofighter/Models/Instruments/MDEF/keypad/com2a.xml</path>
- </model-->
  
  <model>
   <name>keypad-com2s</name>
@@ -401,7 +392,7 @@
   </condition>
  </animation>
  
- <animation>
+ <!--<animation>
   <type>select</type>
   <object-name>keypad-crs-step1</object-name>
   <condition>
@@ -475,7 +466,7 @@
 	<value>4</value>
    </equals>
   </condition>
- </animation>
+  </animation>-->
  
  <animation>
   <type>select</type>
@@ -630,21 +621,6 @@
  
  <animation>
   <type>select</type>
-  <object-name>keypad-com1a</object-name>
-  <condition>
-   <greater-than>
-    <property>/systems/electrical/outputs/avionics/MDEF</property>
-    <value>21</value>
-   </greater-than>
-   <equals>
-    <property>/instrumentation/MDEF/keypad-page-selected</property>
-	<value>com1a</value>
-   </equals>
-  </condition>
- </animation>
- 
- <animation>
-  <type>select</type>
   <object-name>keypad-com1s</object-name>
   <condition>
    <greater-than>
@@ -654,21 +630,6 @@
    <equals>
     <property>/instrumentation/MDEF/keypad-page-selected</property>
 	<value>com1s</value>
-   </equals>
-  </condition>
- </animation>
- 
- <animation>
-  <type>select</type>
-  <object-name>keypad-com2a</object-name>
-  <condition>
-   <greater-than>
-    <property>/systems/electrical/outputs/avionics/MDEF</property>
-    <value>21</value>
-   </greater-than>
-   <equals>
-    <property>/instrumentation/MDEF/keypad-page-selected</property>
-	<value>com2a</value>
    </equals>
   </condition>
  </animation>
