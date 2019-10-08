@@ -245,7 +245,7 @@
 	</animation>
 	<animation>
 		<type>rotate</type>
-		<object-name>knob.L</object-name>
+		<object-name>knobL</object-name>
 		<property>/systems/autopilot/settings/target-heading-deg</property>
 		<axis>
 			<x1-m>0.096</x1-m>

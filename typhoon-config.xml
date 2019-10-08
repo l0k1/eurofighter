@@ -24,17 +24,18 @@
 	</instrumentation>
 	<multiplay>
 		<generic>
-			<string n="0" alias="/identification/pilot-name" /> <!-- Pilot's Display Label (Beneath Canopy) -->
-			<string n="1" alias="/identification/aircraft-number" /> <!-- Aircraft's Serial Number (Rear Flanks) -->
+			<string n="0" alias="/identification/pilot-name" /><!-- Pilot's Display Label (Beneath Canopy) -->
+			<string n="1" alias="/identification/aircraft-number" /><!-- Aircraft's Serial Number (Rear Flanks) -->
+            <!-- <string n="3" alias="/sim/multiplay/callsign"/>-->
 			<int n="1" alias="/gear/gear[0]/tyre-smoke"/>
 			<int n="2" alias="/gear/gear[1]/tyre-smoke"/>
 			<int n="3" alias="/gear/gear[2]/tyre-smoke"/>
-			<int n="6" type="int">0</int>    <!-- radar-standby -->
+			<int n="6" type="int">0</int>    <!-- radar-standby --><!-- int n="6" = radar2.radarStandbyMP -->
 			<int n="7" type="int">0</int>    <!-- als ldg-light -->
 			<int n="8" type="int">0</int>    <!-- wingtip-vortex -->
 			<int n="9" type="int">0</int>    <!-- contrail -->
-				<!--int n="10" alias="/engines/engine[0]/afterburner" /-->
-			<int n="11"/>										<!-- demo smoke -->
+            <int n="10" type="int">0</int>   <!-- Smoke wingtip -->
+			<int n="11" type="int">0</int>   <!-- Smoke wingtip --><!-- demo smoke -->
 			<int n="19" alias="/systems/weapons/display-smoke" /> <!-- Smokewinders Active -->
 			<int n="20" alias="controls/armament/gun-trigger" /> <!-- Cannon Firing -->
 			<float n="1">0.0</float>
@@ -56,8 +57,6 @@
 			<float n="17" alias="/engines/engine[1]/thrust-lbs" /> <!-- Thrust for Multiplayer Sound -->
 			<float n="18" alias="/controls/rotary/formation-lights" />
 			<float n="19" alias="/systems/electrical/outputs/external-lights/taxi-lights"/>
-				<!-- int n="6" = radar2.radarStandbyMP -->
-			<string  alias="/sim/multiplay/callsign"/>
 		</generic>
 	</multiplay>
 	<submodels>
@@ -108,6 +107,8 @@
 		<daylight-dim type="double">0.5</daylight-dim>
 	</lighting>
 
+    <chase-distance-m type="double" archive="y"> -45 </chase-distance-m>
+    
 	<view n="0">
 		<internal archive="y">true</internal>
 		<config>

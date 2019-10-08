@@ -1,16 +1,7 @@
 <?xml version="1.0"?>
 <PropertyList>
 	<path>eng-status.ac</path>
-	<animation>
-		<type>select</type>
-		<object-name>EngEstatus</object-name>
-		<condition>
-			<equals>
-				<property>controls/HSD/on-off</property>
-				<value>0</value>
-			</equals>
-		</condition>
-	</animation>
+	
 	<animation>
 		<type>select</type>
 		<object-name>rpm.L</object-name>

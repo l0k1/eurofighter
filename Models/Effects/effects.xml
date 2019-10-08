@@ -141,7 +141,7 @@
 		</offsets>
 	</model>
     
- <!-- Smoke leftwingtip -->
+ <!-- Smoke leftwingtip                                                 propertiies int10 und11 nicht definiert!
 	<model>
 		<path>Aircraft/eurofighter/Models/Effects/smokeW.xml</path>
 		<offsets>
@@ -150,9 +150,9 @@
 			<z-m>-0.24</z-m>
 			<pitch-deg> -2.0 </pitch-deg>
 		</offsets>
-	</model>
+	</model> -->
 
-  <!-- Smoke rightwingtip -->
+  <!-- Smoke rightwingtip
 	<model>
 		<path>Aircraft/eurofighter/Models/Effects/smokeW.xml</path>
 		<offsets>
@@ -161,7 +161,8 @@
 			<z-m>-0.24</z-m>
 			<pitch-deg> -2.0 </pitch-deg>
 		</offsets>
-	</model>
+	</model> -->
+    
 	<model>
 		<path>Aircraft/eurofighter/Models/Effects/fuel-vapour.xml</path>
 		<offsets>

@@ -611,6 +611,28 @@
 			<factor-prop>/instrumentation/illumination/LCD</factor-prop>
 		</emission>
 	</animation>
+    
+    
+    <animation>
+		<name>mfd-eadi</name>
+		<object-name>mapmode</object-name>
+		<object-name>map</object-name>
+		<object-name>hpa1</object-name>
+		<object-name>hpa2</object-name>
+		<object-name>hpa3</object-name>
+		<object-name>hpa4</object-name>
+		<object-name>proc</object-name>
+		<object-name>eadi</object-name>
+		<object-name>fuel</object-name>
+		<object-name>engine</object-name>
+		<object-name>hydraulic</object-name>
+		<object-name>waypoint</object-name>
+		<object-name>frequency</object-name>
+		<object-name>navpos1</object-name>
+		<object-name>navpos2</object-name>
+		<object-name>tcas</object-name>
+	</animation>
+    
 	<animation>
 		<object-name>mfd-eadi</object-name>
 		<type>material</type>
