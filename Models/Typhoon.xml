@@ -1489,6 +1489,24 @@
 			<z>0</z>
 		</axis>
 	</animation>
+    
+    <!-- Stairs -->
+ 
+ <model>
+   <name>stairs</name>
+   <path>Aircraft/eurofighter/Models/stairs/EF-stairs.ac</path>
+   <condition>
+     <greater-than>
+       <property>/controls/canopy/position-norm</property>
+       <value>0.5</value>
+     </greater-than>
+   </condition>
+   <offsets>
+     <x-m>-0.5</x-m>
+     <y-m>0</y-m>
+     <z-m>0</z-m>
+   </offsets>   
+ </model>
 
 <!-- ******************************************************************* -->
 <!-- Refuelling probe                                                    -->
