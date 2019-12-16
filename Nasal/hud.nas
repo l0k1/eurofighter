@@ -462,8 +462,8 @@ var HUD_SCREEN = {
         
         me.y_px = (me.center_px_offset - me.get_pitch_pixel(p))  * -1;
         
-        me.x_px = 0 - y_px * sin(prop_io.roll_rad * D2R);
-        me.y_px = y_px * cos(prop_io.roll_rad * D2R);
+        me.x_px = 0 - y_px * sin(prop_io.roll_rad);
+        me.y_px = y_px * cos(prop_io.roll_rad);
         
         return me.x_px, me.y_px;
     },
