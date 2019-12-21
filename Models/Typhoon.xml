@@ -300,33 +300,7 @@
 			<pitch-deg>0.0</pitch-deg>
 		</offsets>
 	</model>	
-	<model>
-		<path>Aircraft/eurofighter/Models/Instruments/MFDs/mfd1.xml</path>
-		<offsets>
-			<x-m>-4.69017</x-m>
-			<y-m>-0.0</y-m>
-			<z-m>0.76456</z-m>
-			<pitch-deg>-13</pitch-deg>
-		</offsets>
-	</model>
-	<model>
-		<path>Aircraft/eurofighter/Models/Instruments/MFDs/mfd2.xml</path>
-		<offsets>
-			<x-m>-4.69517</x-m>
-			<y-m>-0.21</y-m>
-			<z-m>0.82456</z-m>
-			<pitch-deg>-13</pitch-deg>
-		</offsets>
-	</model>
-	<model>
-		<path>Aircraft/eurofighter/Models/Instruments/MFDs/mfd3.xml</path>
-		<offsets>
-			<x-m>-4.69517</x-m>
-			<y-m>0.21</y-m>
-			<z-m>0.82456</z-m>
-			<pitch-deg>-13</pitch-deg>
-		</offsets>
-	</model>
+
 	<model>
 		<path>Aircraft/eurofighter/Models/Instruments/MIDS/midsAll.xml</path>
 		<offsets>
