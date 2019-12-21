@@ -9,6 +9,7 @@ var alpha_prop = props.globals.getNode("orientation/alpha-deg");
 var alpha = 0;
 var roll_prop = props.globals.getNode("orientation/roll-deg");
 var roll = 0;
+var roll_rad = 0;
 var heading_prop = props.globals.getNode("orientation/heading-deg");
 var heading = 0;
 var altitude_prop = props.globals.getNode("position/altitude-ft");
@@ -23,6 +24,8 @@ var groundspeed = 0;
 #################################### instrumentation props
 var normalg_prop = props.globals.getNode("fdm/jsbsim/systems/flightcomputer/normal-g");
 var normalg = 0;
+var vspeed_prop = props.globals.getNode("velocities/vertical-speed-fps");
+var vspeed = 0;
 
 #################################### landing gear props
 var geardown_prop = props.globals.getNode("/controls/gear/gear-down");
@@ -52,6 +55,7 @@ var update = func() {
     
     #################################### instrumentation props
     normalg = normalg_prop.getValue();
+    vspeed = vspeed_prop.getValue();
     
     #################################### electric output props
     hud_power = hud_power_prop.getValue();

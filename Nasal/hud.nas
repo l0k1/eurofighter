@@ -27,12 +27,12 @@ var HUD_SCREEN = {
         m.line_width = 3;
         m.dot_circ = 5;
         
-        m.font_size = 18;
+        m.font_size = 21;
         m.font = "led-5-7.txf";
         
-        m.red = 0.3;
-        m.green = 1.0;
-        m.blue = 0.15;
+        m.red = 0.10;
+        m.green = 0.82;
+        m.blue = 0.20;
         
         # pitch bars
         m.pitch_bars_deg_shown = 25;
@@ -48,7 +48,7 @@ var HUD_SCREEN = {
         m.avg_norm = (m.x_res_norm + m.y_res_norm) / 2;
 
         m.hud.addPlacement(placement);
-        m.hud.setColorBackground(m.red,m.green,m.blue,0);
+        m.hud.setColorBackground(m.red,m.green,m.blue,0.02);
         
         ###############################
         ## view stuff
@@ -311,6 +311,64 @@ var HUD_SCREEN = {
         ###############################
         ## vertical speed indicator
         ###############################
+
+        m.vsi = m.hud.createGroup().setTranslation(700,m.hud_height_px / 2 + 24);
+
+        m.vsi_line = m.vsi.createChild("path")
+                                    .move(0,-63)
+                                    .line(4,0)
+                                    .move(-4,21)
+                                    .line(4,0)
+                                    .move(-4,21)
+                                    .line(4,0)
+                                    .move(-4,21)
+                                    .line(4,0)
+                                    .move(-4,21)
+                                    .line(4,0)
+                                    .move(-4,21)
+                                    .line(4,0)
+                                    .move(-4,21)
+                                    .line(4,0)
+                                    .setStrokeLineWidth(m.line_width)
+                                    .setColor(m.red,m.green,m.blue);
+        m.vsi_indicator = m.vsi.createChild("path")
+                                    .line(10,5)
+                                    .move(0,-10)
+                                    .line(-10,5)
+                                    .setStrokeLineWidth(m.line_width)
+                                    .setColor(m.red,m.green,m.blue);
+        m.vsi_text_offset = -10;
+        m.vsi_2p = m.vsi.createChild("text")
+                            .setAlignment("center-center")
+                            .setFontSize(m.font_size)
+                            .setFont(m.font)
+                            .setColor(m.red,m.green,m.blue,1)
+                            .setTranslation(m.vsi_text_offset,-63)
+                            .setText("2");
+        m.vsi_1p = m.vsi.createChild("text")
+                            .setAlignment("center-center")
+                            .setFontSize(m.font_size)
+                            .setFont(m.font)
+                            .setColor(m.red,m.green,m.blue,1)
+                            .setTranslation(m.vsi_text_offset,-42)
+                            .setText("1");
+        m.vsi_1n = m.vsi.createChild("text")
+                            .setAlignment("center-center")
+                            .setFontSize(m.font_size)
+                            .setFont(m.font)
+                            .setColor(m.red,m.green,m.blue,1)
+                            .setTranslation(m.vsi_text_offset,42)
+                            .setText("1");
+        m.vsi_2n = m.vsi.createChild("text")
+                            .setAlignment("center-center")
+                            .setFontSize(m.font_size)
+                            .setFont(m.font)
+                            .setColor(m.red,m.green,m.blue,1)
+                            .setTranslation(m.vsi_text_offset,63)
+                            .setText("2");
+        m.vsi_x = 2;
+        m.vsi_rotation = 0;
+        m.vsi_last = 0;
         
         ###############################
         ## text
@@ -360,6 +418,7 @@ var HUD_SCREEN = {
         me.ias_text.hide();
         me.gs_m_display.hide();
         me.gmeter_group.hide();
+        me.vsi.hide();
     },
     off_mode_update: func() {
         # the hud is off, we do nothing
@@ -374,7 +433,8 @@ var HUD_SCREEN = {
         me.ias_text.show();
         me.gs_m_display.show();
         me.pitch_bars_shown = [-90, -80, -70, -60, -50, -40, -30, -25, -20, -15, -10, -5, 0,
-                                5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90]
+                                5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90];
+        me.vsi.show();
     },
     
     dev_mode_update: func() {
@@ -383,6 +443,7 @@ var HUD_SCREEN = {
         me.pitch_bars_display();
         me.compass_display();
         me.altitude_display();
+        me.vsi_display();
     },
 
     pitch_bars_display: func() {
@@ -404,54 +465,55 @@ var HUD_SCREEN = {
             me.symbol_location = math.clamp(me.get_pitch_location(prop_io.pitch), -me.hud_height_px  / 2, me.hud_height_px  / 2);
             me.attitude_symbol.setTranslation(0, me.symbol_location);
             me.attitude_symbol.setRotation(prop_io.roll * D2R);
-            me.pitch_bars_canvas_group.setCenter(0, me.symbol_location);
-            me.flight_dir_indicators.setCenter(0, me.symbol_location);
+            #me.pitch_bars_canvas_group.setCenter(0, me.symbol_location);
+            #me.flight_dir_indicators.setCenter(0, me.symbol_location);
         } elsif (me.climbdive_mode == 1) {
-            me.cd_out = math.clamp(prop_io.pitch - math.clamp(prop_io.alpha,-5,15),-90,90);
+            me.cd_out = math.clamp(prop_io.pitch - (math.clamp(prop_io.alpha,-5,15) * math.cos(prop_io.roll_rad)),-90,90);
             me.symbol_location = math.clamp(me.get_pitch_location(me.cd_out), -me.hud_height_px  / 2, me.hud_height_px  / 2);
             me.climbdive_symbol.setTranslation(0, me.symbol_location);
             me.climbdive_symbol.setRotation(prop_io.roll * D2R);
-            me.pitch_bars_canvas_group.setCenter(0, me.symbol_location);
-            me.flight_dir_indicators.setCenter(0, me.symbol_location);
+            #me.pitch_bars_canvas_group.setCenter(0, me.symbol_location);
+            #me.flight_dir_indicators.setCenter(0, me.symbol_location);
         }
 
         me.flight_dir_indicators.setRotation(-prop_io.roll * D2R);
         me.pitch_bars_canvas_group.setRotation(-prop_io.roll * D2R);
-        me.c = me.c < 25 ? me.c + 1 : 0;
-        if (me.c == 0) {
-            print(me.center_hud_pitch);
-        }
+        #me.c = me.c < 25 ? me.c + 1 : 0;
+        #if (me.c == 0) {
+        #    print(me.center_hud_pitch);
+        #}
         for (var i = 0; i < size(me.pitch_bars_shown); i = i + 1){
-            me.px_location = me.get_pitch_location(me.pitch_bars_shown[i]);
-            if (int(me.pitch_bars_shown[i]) == 90 and me.px_location > -me.hud_height_px / 2){
-                me.pitch_bars_down[i].hide();
-                me.pitch_bars_up[i].hide();
-                me.pitch_bars_text[i].hide();
-                me.zenith.setTranslation(0,me.px_location).show();
-            }elsif (int(me.pitch_bars_shown[i]) == -90 and me.px_location < me.hud_height_px / 2) {
-                me.pitch_bars_down[i].hide();
-                me.pitch_bars_up[i].hide();
-                me.pitch_bars_text[i].hide();
-                me.nadir.setTranslation(0,me.px_location).show();
-            }elsif (me.pitch_bars_shown[i] < 0 and me.px_location < me.hud_height_px / 2) {
-                me.pitch_bars_down[i].setTranslation(0,me.px_location).show();
-                me.pitch_bars_up[i].hide();
-                me.pitch_bars_text[i].setText(int(me.pitch_bars_shown[i])).setTranslation(-115 * me.x_res_norm,me.px_location - 25).show();
-            } elsif (me.pitch_bars_shown[i] == 0) {
-                #print(me.b_pitch ~ " " ~ me.px_location);
-                me.pitch_bars_down[i].hide();
-                me.pitch_bars_up[i].hide();
-                me.pitch_bars_text[i].hide();
-                me.pitch_bar_center.setTranslation(0,me.px_location).show();
-            } elsif (me.pitch_bars_shown[i] > 0 and me.px_location > -me.hud_height_px / 2) {
-                me.pitch_bars_up[i].setTranslation(0,me.px_location).show();
-                me.pitch_bars_down[i].hide();
-                me.pitch_bars_text[i].setText(int(me.pitch_bars_shown[i])).setTranslation(-115 * me.x_res_norm,me.px_location + 25).show();
-            } else {
-                me.pitch_bars_down[i].hide();
-                me.pitch_bars_up[i].hide();
-                me.pitch_bars_text[i].hide();
-            }
+            me.get_pitch_location(me.pitch_bars_shown[i]);
+                if (int(me.pitch_bars_shown[i]) == 90 and me.y_px > -me.hud_height_px / 2){
+                    me.pitch_bars_down[i].hide();
+                    me.pitch_bars_up[i].hide();
+                    me.pitch_bars_text[i].hide();
+                    me.zenith.setTranslation(0,me.y_px).show();
+                }elsif (int(me.pitch_bars_shown[i]) == -90 and me.y_px < me.hud_height_px / 2) {
+                    me.pitch_bars_down[i].hide();
+                    me.pitch_bars_up[i].hide();
+                    me.pitch_bars_text[i].hide();
+                    me.nadir.setTranslation(0,me.y_px).show();
+                }elsif (me.pitch_bars_shown[i] < 0 and me.y_px < me.hud_height_px / 2) {
+                    me.pitch_bars_down[i].setTranslation(0,me.y_px).show();
+                    me.pitch_bars_up[i].hide();
+                    me.pitch_bars_text[i].setText(int(me.pitch_bars_shown[i])).setTranslation(-115 * me.x_res_norm,me.y_px - 25).show();
+                } elsif (me.pitch_bars_shown[i] == 0) {
+                    #print(me.b_pitch ~ " " ~ me.y_px);
+                    me.pitch_bars_down[i].hide();
+                    me.pitch_bars_up[i].hide();
+                    me.pitch_bars_text[i].hide();
+                    me.pitch_bar_center.setTranslation(0,me.y_px).show();
+                } elsif (me.pitch_bars_shown[i] > 0 and me.y_px > -me.hud_height_px / 2) {
+                    me.pitch_bars_up[i].setTranslation(0,me.y_px).show();
+                    me.pitch_bars_down[i].hide();
+                    me.pitch_bars_text[i].setText(int(me.pitch_bars_shown[i])).setTranslation(-115 * me.x_res_norm,me.y_px + 25).show();
+                } else {
+                    me.pitch_bars_down[i].hide();
+                    me.pitch_bars_up[i].hide();
+                    me.pitch_bars_text[i].hide();
+                }
+
         }
         for (var j = i; j < size(me.pitch_bars_down); j = j + 1) {
                 me.pitch_bars_down[j].hide();
@@ -465,10 +527,9 @@ var HUD_SCREEN = {
         
         me.y_px = (me.center_px_offset - me.get_pitch_pixel(p))  * -1;
         
-        me.x_px = 0 - y_px * sin(prop_io.roll_rad);
-        me.y_px = y_px * cos(prop_io.roll_rad);
-        
-        return me.x_px, me.y_px;
+        me.x_px = 0 - me.y_px * math.sin(prop_io.roll_rad);
+
+        return me.y_px;
     },
     get_pitch_pixel: func(p) {
         me.absp = math.abs(p);
@@ -533,6 +594,28 @@ var HUD_SCREEN = {
         } else {
             me.alt_text.setText(prop_io.altitude - math.mod(prop_io.altitude,50));
         }
+    },
+
+    vsi_display: func() {
+        me.vsi_rotation = 0;
+        me.vsi_last;
+        if (prop_io.vspeed > 33.33) {
+            me.vsi_indicator.setTranslation(me.vsi_x + 5,-73);
+            me.vsi_rotation = 90;
+        } elsif (prop_io.vspeed < -33.33) {
+            me.vsi_indicator.setTranslation(me.vsi_x + 5,73);
+            me.vsi_rotation = -90;
+        } elsif (prop_io.vspeed > 16.66) {
+            me.vsi_indicator.setTranslation(me.vsi_x,interp(prop_io.vspeed,16.66,33.33,-42,-63));
+        } elsif (prop_io.vspeed < -16.66) {
+            me.vsi_indicator.setTranslation(me.vsi_x,interp(prop_io.vspeed,-16.66,-33.33,42,63));
+        } else {
+            me.vsi_indicator.setTranslation(me.vsi_x,interp(prop_io.vspeed,-16.66,16.66,42,-42));
+        }
+        if (me.vsi_rotation != me.vsi_last) {
+            me.vsi_indicator.setRotation(me.vsi_rotation * D2R);
+        }
+        me.vsi_last = me.vsi_rotation;
     },
     
     ias_text_update: func() {
@@ -614,6 +697,10 @@ var state_arch = {
         end_func:  nil,
         temp:        0,
 };
+
+var interp = func(x,x0,x1,y0,y1) {
+    return y0 + (x - x0) * ((y1 - y0) / (x1 - x0));
+}
 
 # main modes
 # run the init once, loop the main, and then before the mode gets switched again it will run the end function
