@@ -6,6 +6,10 @@ var update_idx = 0;
 var main_loop = func() {
     prop_io.update();
     hud.hud_ref.main_loop();
+
+	mfd.mfd_left.main_loop();
+	mfd.mfd_center.main_loop();
+	mfd.mfd_right.main_loop();
 }
 
 

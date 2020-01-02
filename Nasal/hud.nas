@@ -653,24 +653,24 @@ var HUD_SCREEN = {
             me.cur_state = state;
             if (me.cur_end_func != nil) {
                 #print('calling the end func');
-                call(me.cur_end_func, nil, hud_ref);
+                call(me.cur_end_func, nil, me);
             }
             me.cur_main_func = state.main_func;
             me.cur_init_func = state.init_func;
             me.cur_end_func = state.end_func;
             if (me.cur_init_func != nil) {
                 #print('calling the init func');
-                call(me.cur_init_func, nil, hud_ref);
+                call(me.cur_init_func, nil, me);
             }
         } else if (state.temp == 1) {
             if (state.init_func != nil) {
-                call(state.init_func, nil, hud_ref);
+                call(state.init_func, nil, me);
             }
             if (state.main_func != nil) {
-                call(state.main_func, nil, hud_ref);
+                call(state.main_func, nil, me);
             }
             if (state.end_func != nil) {
-                call(state.end_func, nil, hud_ref);
+                call(state.end_func, nil, me);
             }
         }
     },
@@ -704,11 +704,11 @@ var interp = func(x,x0,x1,y0,y1) {
 
 # main modes
 # run the init once, loop the main, and then before the mode gets switched again it will run the end function
-var hud_state_off = {parents: [state_arch], main_func: hud_ref.off_mode_update, init_func: hud_ref.off_mode_init};
-var hud_dev_mode  = {parents: [state_arch], main_func: hud_ref.dev_mode_update, init_func: hud_ref.dev_mode_init};
+var hud_state_off = {parents: [state_arch], main_func: HUD_SCREEN.off_mode_update, init_func: HUD_SCREEN.off_mode_init};
+var hud_dev_mode  = {parents: [state_arch], main_func: HUD_SCREEN.dev_mode_update, init_func: HUD_SCREEN.dev_mode_init};
 
 # temps
 # if temp == 1, it will only fire the init, main, and end functions once.
-var hud_switch_gs_m = {parents: [state_arch], main_func: hud_ref.groundspeed_mach_switch, temp: 1};
+var hud_switch_gs_m = {parents: [state_arch], main_func: HUD_SCREEN.groundspeed_mach_switch, temp: 1};
 
 hud_ref.change_state(hud_dev_mode);

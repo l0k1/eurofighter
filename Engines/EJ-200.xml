@@ -31,10 +31,10 @@
   <bleed>           0.03</bleed>
   <idlen1>         30.0 </idlen1>
   <idlen2>         60.0 </idlen2>
-  <maxn1>         100.0 </maxn1>
-  <maxn2>         100.0 </maxn2>
+  <maxn1>         101.5 </maxn1>
+  <maxn2>         105.0 </maxn2>
   <augmented>         1 </augmented>
-<augmethod>         1 </augmethod>
+  <augmethod>         1 </augmethod>
   <injected>          0 </injected>
 
   <function name="IdleThrust">

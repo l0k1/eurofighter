@@ -25,4 +25,77 @@ direct tie ins between native fg properties and the instruments themselves
 
     </channel>
 
+    <channel name="velocities">
+        <fcs_function name="trash/systems/flightcomputer/velocities/vertical_speed_fps">
+            <function>
+                <product>
+                    <property>/velocities/vertical-speed-fps</property>
+                    <value>1</value>
+                </product>
+            </function>
+            <output>systems/flightcomputer/velocities/vertical_speed_fps</output>
+        </fcs_function>
+    </channel>
+
+    <channel name="engines">
+        <fcs_function name="trash/systems/flightcomputer/engine[0]/n1">
+            <function>
+                <product>
+                    <property>propulsion/engine/n1</property>
+                    <value>1</value>
+                </product>
+            </function>
+            <output>systems/flightcomputer/engine[0]/n1</output>
+        </fcs_function>
+        <fcs_function name="trash/systems/flightcomputer/engine[0]/n2">
+            <function>
+                <product>
+                    <property>propulsion/engine/n2</property>
+                    <value>1</value>
+                </product>
+            </function>
+            <output>systems/flightcomputer/engine[0]/n2</output>
+        </fcs_function>
+
+        <fcs_function name="trash/systems/flightcomputer/engine[1]/n1">
+            <function>
+                <product>
+                    <property>propulsion/engine/n1</property>
+                    <value>1</value>
+                </product>
+            </function>
+            <output>systems/flightcomputer/engine[1]/n1</output>
+        </fcs_function>
+        <fcs_function name="trash/systems/flightcomputer/engine[1]/n2">
+            <function>
+                <product>
+                    <property>propulsion/engine/n2</property>
+                    <value>1</value>
+                </product>
+            </function>
+            <output>systems/flightcomputer/engine[1]/n2</output>
+        </fcs_function>
+
+        <!-- DEFINITELY redo these -->
+
+        <fcs_function name="trash/systems/flightcomputer/engine[0]/tat">
+            <function>
+                <product>
+                    <property>/engines/engine[0]/egt-degf</property>
+                    <value>1</value>
+                </product>
+            </function>
+            <output>systems/flightcomputer/engine[0]/tat</output>
+        </fcs_function>
+        <fcs_function name="trash/systems/flightcomputer/engine[1]/tat">
+            <function>
+                <product>
+                    <property>/engines/engine[1]/egt-degf</property>
+                    <value>1</value>
+                </product>
+            </function>
+            <output>systems/flightcomputer/engine[1]/tat</output>
+        </fcs_function>
+    </channel>
+
 </system>
