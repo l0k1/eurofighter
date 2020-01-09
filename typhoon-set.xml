@@ -208,6 +208,10 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
 				<selected-deg type="double">0.0</selected-deg>
 			</radials>
 		</nav>
+        <radar>
+           <range type="int" archive="y">100</range>
+           <minimized type="bool" archive="y">false</minimized>
+        </radar>
 	</instrumentation>
 
 <!-- Nasal files/scripts -->
