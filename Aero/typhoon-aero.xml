@@ -195,7 +195,7 @@
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<value>0.0268</value>
+				<value>0.018</value>
 				<property>tune/drag/minimum</property>
 			</product>
 		</function>
@@ -210,8 +210,8 @@
 					<tableData>
 						-1.57  0.190
 						-0.26  0.027
-						 0.00  0.011
-						 0.26  0.057
+						 0.00  0.006
+						 0.26  0.037
 						 1.57  0.120
 					</tableData>
 				</table>
@@ -226,7 +226,7 @@
 				<property>metrics/Sw-sqft</property>
 				<property>aero/function/kCDge</property>
 				<property>aero/cl-squared</property>
-				<value>0.063461</value>
+				<value>0.057</value>
 				<property>tune/drag/induced</property>
 			</product>
 		</function>
@@ -241,8 +241,12 @@
 					<tableData>
 						0.00  0.000
 						0.81  0.000
-						1.10  0.023
-						1.80  0.015
+						0.90  0.008
+						1.10  0.020
+						1.20  0.007
+						1.50  0.001
+						1.80  0.009
+						2.50  0.014
 					</tableData>
 				</table>
 				<property>tune/drag/mach</property>

@@ -1117,4 +1117,33 @@
     
     </channel>
 
+    <channel name="Throttle">
+        <fcs_function name="trash/fcs/throttle-pos-norm[0]">
+            <function>
+                <table>
+                    <independentVar lookup="row">fcs/throttle-cmd-norm[0]</independentVar>
+                    <tableData>
+                        0.00    0.00
+                        0.75    1.00
+                        1.00    2.00
+                    </tableData>
+                </table>
+            </function>
+            <output>fcs/throttle-pos-norm[0]</output>
+        </fcs_function>
+        <fcs_function name="trash/fcs/throttle-pos-norm[1]">
+            <function>
+                <table>
+                    <independentVar lookup="row">fcs/throttle-cmd-norm[1]</independentVar>
+                    <tableData>
+                        0.00    0.00
+                        0.75    1.00
+                        1.00    2.00
+                    </tableData>
+                </table>
+            </function>
+            <output>fcs/throttle-pos-norm[1]</output>
+        </fcs_function>
+    </channel>
+
 </system>

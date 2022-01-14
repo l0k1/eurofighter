@@ -23,21 +23,23 @@ var MFD_SCREEN = {
         m.cur_end_func = nil;
         m.cur_state = nil;
         m.pos = position;
+
+        # button numbers go from 0 to 16, starting in the upper left and going counter clockwise
         m.buttons = [];
-        for (var i = 0; i < 15; i = i + 1) {
+        for (var i = 0; i < 17; i = i + 1) {
             if (m.pos == LEFT) {
-                append(m.buttons,MFD_BUTTON.new({"node": "changeme"},"bleft" ~ i,LEFT));
+                append(m.buttons,MFD_BUTTON.new({"node": "MFDButtonL."~i},"bleft" ~ i,LEFT));
             } else if (m.pos == CENTER) {
-                append(m.buttons,MFD_BUTTON.new({"node": "changeme"},"bcenter" ~ i,CENTER));
+                append(m.buttons,MFD_BUTTON.new({"node": "MFDButtonC."~i},"bcenter" ~ i,CENTER));
             } else if (m.pos == RIGHT) {
-                append(m.buttons,MFD_BUTTON.new({"node": "changeme"},"bright" ~ i,RIGHT));
+                append(m.buttons,MFD_BUTTON.new({"node": "MFDButtonR."~i},"bright" ~ i,RIGHT));
             }
         }
         ###############################
         ###################### settings
         ###############################
         m.font_size = 30;
-        m.font = "arial_black.txf";
+        m.font = "LiberationFonts/LiberationMono-Regular.ttf";
         
         m.mfd.addPlacement(placement);
 
@@ -65,15 +67,15 @@ var MFD_SCREEN = {
                                 .moveTo(246 - m.ep_cwh, 200)
                                 .arcSmallCW(m.ep_cwh, m.ep_cwh, 0, m.ep_cw, 0)
                                 .arcSmallCW(m.ep_cwh, m.ep_cwh, 0,-m.ep_cw, 0)
-                                .moveTo(246 - m.ep_cwh, 846)
-                                .arcSmallCW(m.ep_cwh, m.ep_cwh, 0, m.ep_cw, 0)
-                                .arcSmallCW(m.ep_cwh, m.ep_cwh, 0,-m.ep_cw, 0)
+                                .moveTo(246, 846 - m.ep_cwh)
+                                .arcSmallCW(m.ep_cwh, m.ep_cwh, 0, 0, m.ep_cw)
+                                .arcSmallCW(m.ep_cwh, m.ep_cwh, 0,-m.ep_cwh, -m.ep_cwh)
                                 .moveTo(778 - m.ep_cwh, 200)
                                 .arcSmallCW(m.ep_cwh, m.ep_cwh, 0, m.ep_cw, 0)
                                 .arcSmallCW(m.ep_cwh, m.ep_cwh, 0,-m.ep_cw, 0)
-                                .moveTo(778 - m.ep_cwh, 846)
-                                .arcSmallCW(m.ep_cwh, m.ep_cwh, 0, m.ep_cw, 0)
-                                .arcSmallCW(m.ep_cwh, m.ep_cwh, 0,-m.ep_cw, 0)
+                                .moveTo(778, 846- m.ep_cwh)
+                                .arcSmallCW(m.ep_cwh, m.ep_cwh, 0, 0, m.ep_cw)
+                                .arcSmallCW(m.ep_cwh, m.ep_cwh, 0,-m.ep_cwh, -m.ep_cwh)
                                 .setStrokeLineWidth(m.blue_width)
                                 .setColor(m.blue);
 
@@ -134,6 +136,22 @@ var MFD_SCREEN = {
                                 .setColor(m.white)
                                 .setTranslation(768,184);
 
+        m.engine_page.createChild("text")
+                                .setAlignment("left-bottom")
+                                .setFontSize(m.font_size)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(106,788)
+                                .setText("TBT");
+
+        m.engine_page.createChild("text")
+                                .setAlignment("left-bottom")
+                                .setFontSize(m.font_size)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(640,788)
+                                .setText("TBT");
+
         m.temp_readout_left = m.engine_page.createChild("text")
                                 .setAlignment("left-bottom")
                                 .setFontSize(m.font_size)
@@ -182,6 +200,7 @@ var MFD_SCREEN = {
     dev_mode_init: func() {
         me.engine_page.show();
         me.clear_buttons();
+        print('initing');
         me.buttons[0].page = mfd_engine;
         me.update_buttons();
     },
@@ -211,21 +230,50 @@ var MFD_SCREEN = {
             me.n1_gauge_right.reset()
                             .arcSmallCW(me.ep_cwh, me.ep_cwh, 0, me.x, me.y);
         }
+
+        #we dont have tbt, so substituting it with egt for now
+        me.angle = interp(prop_io.engine0_tat,600,1500,-90,180);
+        me.x = me.ep_cwh * math.cos(me.angle * D2R);
+        me.y = me.ep_cwh * math.sin(me.angle * D2R) + me.ep_cwh;
+        if (me.angle > 90) {
+            me.tbt_gauge_left.reset()
+                            .arcLargeCW(me.ep_cwh, me.ep_cwh, 0, me.x, me.y);
+        } else {
+            me.tbt_gauge_left.reset()
+                            .arcSmallCW(me.ep_cwh, me.ep_cwh, 0, me.x, me.y);
+        }
+        me.angle = interp(prop_io.engine1_tat,600,1500,-90,180);
+        me.x = me.ep_cwh * math.cos(me.angle * D2R);
+        me.y = me.ep_cwh * math.sin(me.angle * D2R) + me.ep_cwh;
+        if (me.angle > 90) {
+            me.tbt_gauge_right.reset()
+                            .arcLargeCW(me.ep_cwh, me.ep_cwh, 0, me.x, me.y);
+        } else {
+            me.tbt_gauge_right.reset()
+                            .arcSmallCW(me.ep_cwh, me.ep_cwh, 0, me.x, me.y);
+        }
+
+
+
         me.n1_readout_left.setText(sprintf("%.1f",prop_io.engine0_n1));
         me.n1_readout_right.setText(sprintf("%.1f",prop_io.engine1_n1));
         me.aj_readout_left.setText(int(100 * prop_io.engine0_nz));
         me.aj_readout_right.setText(int(100 * prop_io.engine1_nz));
+        me.temp_readout_left.setText(sprintf("%i",prop_io.engine0_tat));
+        me.temp_readout_right.setText(sprintf("%i",prop_io.engine1_tat));
         return;
     },
 
     clear_buttons: func() {
-        for (me.i = 0; me.i < 15; me.i = me.i + 1) {
+        for (me.i = 0; me.i < 17; me.i = me.i + 1) {
             me.buttons[me.i].page = mfd_null;
         }
     },
 
     update_buttons: func() {
-        for (me.i = 0; me.i < 15; me.i = me.i + 1) {
+        print("in update_buttons");
+        for (me.i = 0; me.i < 17; me.i = me.i + 1) {
+            print("calling func");
             me.buttons[me.i].update();
         }
     },
@@ -285,6 +333,7 @@ var MFD_BUTTON = {
                             "mipmapping": 1
                         });
         m.bt = m.button.createGroup();
+        m._name = name;
         ###############################
         # settings
         ###############################
@@ -292,8 +341,8 @@ var MFD_BUTTON = {
         
         m.pos = position; # left = 0, center = 1, right = 2;
         
-        m.font_size = 30;
-        m.font = "arial_black.txf";
+        m.font_size = 40;
+        m.font = "LiberationFonts/LiberationMono-Regular.ttf";
         
         m.button.addPlacement(placement);
 
@@ -340,6 +389,7 @@ var MFD_BUTTON = {
                                 .setFont(m.font)
                                 .setColor(m.yellow)
                                 .setTranslation(14,m.height/3*2);
+        return m;
     },
     press: func() {
         if (me.pos == LEFT) {
@@ -356,11 +406,15 @@ var MFD_BUTTON = {
         me.page = mfd_null;
     },
     update: func(state = nil) {
+        print("yeee");
         if (state != nil) {
             me.page = state;
         }
-        me.top_text.setText(me.page.top_label);
-        me.bottom_text.setText(me.page.bottom_label);
+        print("updating");
+        print(me._name);
+        print(me.page.label_top);
+        me.top_text.setText(me.page.label_top);
+        me.bottom_text.setText(me.page.label_bottom);
         me.top_line.setVisible(me.page.top_line);
         me.mid_line.setVisible(me.page.center_line);
         me.bottom_line.setVisible(me.page.bottom_line);

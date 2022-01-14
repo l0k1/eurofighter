@@ -280,26 +280,6 @@
 			<pitch-deg>0.0</pitch-deg>
 		</offsets>
 	</model>
-	<model>
-		<name>HUD2</name>
-		<path>Aircraft/eurofighter/Models/Instruments/HUD2/hud2.xml</path>
-		<offsets>
-			<x-m>-4.69417</x-m>
-			<y-m>0</y-m>
-			<z-m>1.265</z-m>
-			<pitch-deg>0.0</pitch-deg>
-		</offsets>
-	</model>
-	<model>
-		<name>HUDSymb</name>
-		<path>Aircraft/eurofighter/Models/Instruments/HUD/hud-symbols.xml</path>
-		<offsets>
-			<x-m>-4.43417</x-m>
-			<y-m>0</y-m>
-			<z-m>1.18756</z-m>
-			<pitch-deg>0.0</pitch-deg>
-		</offsets>
-	</model>	
 
 	<model>
 		<path>Aircraft/eurofighter/Models/Instruments/MIDS/midsAll.xml</path>
