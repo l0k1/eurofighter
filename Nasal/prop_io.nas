@@ -35,6 +35,8 @@ var engine0_tat_prop = props.globals.getNode("fdm/jsbsim/systems/flightcomputer/
 var engine0_tat = 0;
 var engine0_nz_prop = props.globals.getNode("engines/engine[0]/nozzle-pos-norm", 1);
 var engine0_nz = 0;
+var engine0_ff_prop = props.globals.getNode("fdm/jsbsim/systems/flightcomputer/engine[0]/ff");
+var engine0_ff = 0;
 
 var engine1_n1_prop = props.globals.getNode("fdm/jsbsim/systems/flightcomputer/engine[1]/n1");
 var engine1_n1 = 0;
@@ -44,6 +46,8 @@ var engine1_tat_prop = props.globals.getNode("fdm/jsbsim/systems/flightcomputer/
 var engine1_tat = 0;
 var engine1_nz_prop = props.globals.getNode("engines/engine[1]/nozzle-pos-norm", 1);
 var engine1_nz = 0;
+var engine1_ff_prop = props.globals.getNode("fdm/jsbsim/systems/flightcomputer/engine[1]/ff");
+var engine1_ff = 0;
 
 
 #################################### landing gear props
@@ -79,10 +83,12 @@ var update = func() {
     engine0_n2 = engine0_n2_prop.getValue();
     engine0_tat = engine0_tat_prop.getValue();
     engine0_nz = engine0_nz_prop.getValue();
+    engine0_ff = engine0_ff_prop.getValue();
     engine1_n1 = engine1_n1_prop.getValue();
     engine1_n2 = engine1_n2_prop.getValue();
     engine1_tat = engine1_tat_prop.getValue();
     engine1_nz = engine1_nz_prop.getValue();
+    engine1_ff = engine1_ff_prop.getValue();
     
     #################################### electric output props
     hud_power = hud_power_prop.getValue();

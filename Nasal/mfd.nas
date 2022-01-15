@@ -56,7 +56,7 @@ var MFD_SCREEN = {
         m.engine_page = m.mfd.createGroup();
 
         # settings
-        m.ep_cw = 228;
+        m.ep_cw = 240;
         m.ep_cwh = m.ep_cw / 2;
         m.blue_width = 8;
         m.white_width = 18;
@@ -107,6 +107,13 @@ var MFD_SCREEN = {
                                 .setColor(m.offwhite)
                                 .setText("NL")
                                 .setTranslation(758,292);
+        m.engine_page.createChild("text")
+                                .setAlignment("center-top")
+                                .setFontSize(m.font_size)
+                                .setFont(m.font)
+                                .setColor(m.offwhite)
+                                .setText("-FF-")
+                                .setTranslation(512,20);
 
         m.n1_readout_left = m.engine_page.createChild("text")
                                 .setAlignment("left-bottom")
@@ -166,6 +173,19 @@ var MFD_SCREEN = {
                                 .setColor(m.white)
                                 .setTranslation(640,837);
 
+        m.ff_readout_left = m.engine_page.createChild("text")
+                                .setAlignment("center-top")
+                                .setFontSize(m.font_size)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(452,20);
+        m.ff_readout_right = m.engine_page.createChild("text")
+                                .setAlignment("center-top")
+                                .setFontSize(m.font_size)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(572,20);
+
         m.n1_gauge_left = m.engine_page.createChild("path")
                                 .setTranslation(246,200 - m.ep_cwh)
                                 .setStrokeLineWidth(m.white_width)
@@ -202,6 +222,7 @@ var MFD_SCREEN = {
         me.clear_buttons();
         print('initing');
         me.buttons[0].page = mfd_engine;
+        me.buttons[1].page = mfd_buttontest;
         me.update_buttons();
     },
     
@@ -261,6 +282,8 @@ var MFD_SCREEN = {
         me.aj_readout_right.setText(int(100 * prop_io.engine1_nz));
         me.temp_readout_left.setText(sprintf("%i",prop_io.engine0_tat));
         me.temp_readout_right.setText(sprintf("%i",prop_io.engine1_tat));
+        me.ff_readout_left.setText(sprintf("%i",(prop_io.engine0_ff/10)));
+        me.ff_readout_right.setText(sprintf("%i",(prop_io.engine1_ff/10)));
         return;
     },
 
@@ -271,11 +294,13 @@ var MFD_SCREEN = {
     },
 
     update_buttons: func() {
-        print("in update_buttons");
         for (me.i = 0; me.i < 17; me.i = me.i + 1) {
-            print("calling func");
             me.buttons[me.i].update();
         }
+    },
+
+    buttontest: func() {
+        screen.log.write("hi :)");
     },
 
     change_state: func(state) {
@@ -406,13 +431,9 @@ var MFD_BUTTON = {
         me.page = mfd_null;
     },
     update: func(state = nil) {
-        print("yeee");
         if (state != nil) {
             me.page = state;
         }
-        print("updating");
-        print(me._name);
-        print(me.page.label_top);
         me.top_text.setText(me.page.label_top);
         me.bottom_text.setText(me.page.label_bottom);
         me.top_line.setVisible(me.page.top_line);
@@ -468,6 +489,7 @@ var mfd_null        = {parents: [state_arch]};
 var mfd_off         = {parents: [state_arch],                    main_func: MFD_SCREEN.off_mode_update,    init_func: MFD_SCREEN.off_mode_init};
 var mfd_dev_mode    = {parents: [state_arch],                    main_func: MFD_SCREEN.dev_mode_update,    init_func: MFD_SCREEN.dev_mode_init};
 var mfd_engine      = {parents: [state_arch], label_top: "ENGI", main_func: MFD_SCREEN.dev_mode_update,    init_func: MFD_SCREEN.dev_mode_init};
+var mfd_buttontest  = {parents: [state_arch], label_top: "TEST", main_func: MFD_SCREEN.buttontest, temp: 1};
 
 # temps
 # if temp == 1, it will only fire the init, main, and end functions once.

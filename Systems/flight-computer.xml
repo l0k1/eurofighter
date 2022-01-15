@@ -96,6 +96,27 @@ direct tie ins between native fg properties and the instruments themselves
             </function>
             <output>systems/flightcomputer/engine[1]/tat</output>
         </fcs_function>
+
+        <!-- fuel flow -->
+        <fcs_function name="trash/systems/flightcomputer/engine[0]/ff">
+            <function>
+                <product>
+                    <property>propulsion/engine[0]/fuel-flow-rate-gph</property>
+                    <value>1</value>
+                </product>
+            </function>
+            <output>systems/flightcomputer/engine[0]/ff</output>
+        </fcs_function>
+        <fcs_function name="trash/systems/flightcomputer/engine[1]/ff">
+            <function>
+                <product>
+                    <property>propulsion/engine[1]/fuel-flow-rate-gph</property>
+                    <value>1</value>
+                </product>
+            </function>
+            <output>systems/flightcomputer/engine[1]/ff</output>
+        </fcs_function>
+
     </channel>
 
 </system>
