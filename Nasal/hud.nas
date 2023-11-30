@@ -31,7 +31,7 @@ var HUD_SCREEN = {
         m.font = "led-5-7.txf";
         
         m.red = 0.10;
-        m.green = 0.82;
+        m.green = 1.0;
         m.blue = 0.20;
         
         # pitch bars
@@ -48,7 +48,7 @@ var HUD_SCREEN = {
         m.avg_norm = (m.x_res_norm + m.y_res_norm) / 2;
 
         m.hud.addPlacement(placement);
-        m.hud.setColorBackground(m.red,m.green,m.blue,0.02);
+        m.hud.setColorBackground(m.red,m.green,m.blue,0.04);
         
         ###############################
         ## view stuff
