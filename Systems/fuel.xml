@@ -2,8 +2,7 @@
 
 <!--
 
-other than fuel tank amounts, most of this info is a best guess.
-fuel tank amounts have been closely estimated based upon the mfd screen
+fuel system notes have been taken from the DA7 flight manual
 
 props needed:
 systems/fuel/cg-ratio (0 is fore, 0.5 is centered, 1.0 is aft) use me to balance tanks on the fly
@@ -22,13 +21,13 @@ systems/fuel/xfeed (bool, 0 is off)
 
 <!-- 
 tank list:
-0 - fore tank - 2028
-1 - mid tank - 2095
+0 - forward transfer - 2094
+1 - forward tank - 2094
 2 - aft tank - 1962
-3 - foreleft wing tank - 1080
-4 - aftleft wing tank - 1080
-5 - foreright wing tank - 1080
-6 - aftright wing tank - 1080
+3 - foreleft wing tank - 1089
+4 - aftleft wing tank - 1089
+5 - foreright wing tank - 1089
+6 - aftright wing tank - 1089
 7 - center drop tank
 8 - left drop tank
 9 - right drop tank

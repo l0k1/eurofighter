@@ -61,8 +61,8 @@
 
 <!-- 
 tank list:
-0 - fore tank - 2028
-1 - mid tank - 2095
+0 - forward transfer tank - 2028
+1 - forward tank - 2095
 2 - aft tank - 1962
 3 - foreleft wing tank - 1080
 4 - aftleft wing tank - 1080
@@ -75,25 +75,25 @@ tank list:
 11 - right accumulator - 2
 -->
 
-  <!-- fore -->
+  <!-- forward transfer -->
   <tank type="FUEL" number="0"> <!--  Tanks are at CG so they do not interfere with Aero tuning -->
      <location unit="M">
 		<x> 0.90603 </x>
 		<y> 0.0 </y>
 		<z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 2028.00 </capacity>
-     <contents unit="LBS"> 2028.00 </contents>
+     <capacity unit="LBS"> 2094.00 </capacity>
+     <contents unit="LBS"> 2094.00 </contents>
   </tank>
-  <!-- mid -->
+  <!-- forward -->
   <tank type="FUEL" number="1">
      <location unit="M">
 		<x> 0.90603 </x>
 		<y> 0.0 </y>
 		<z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 2095.00 </capacity>
-     <contents unit="LBS"> 2095.00 </contents>
+     <capacity unit="LBS"> 2094.00 </capacity>
+     <contents unit="LBS"> 2094.00 </contents>
   </tank>
   <!-- aft -->
   <tank type="FUEL" number="2">
@@ -112,8 +112,8 @@ tank list:
     <y> 0.0 </y>
     <z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 1080.00 </capacity>
-     <contents unit="LBS"> 1080.00 </contents>
+     <capacity unit="LBS"> 1089.00 </capacity>
+     <contents unit="LBS"> 1089.00 </contents>
   </tank>
   <!-- aftleft -->
   <tank type="FUEL" number="2">
@@ -122,8 +122,8 @@ tank list:
     <y> 0.0 </y>
     <z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 1080.00 </capacity>
-     <contents unit="LBS"> 1080.00 </contents>
+     <capacity unit="LBS"> 1089.00 </capacity>
+     <contents unit="LBS"> 1089.00 </contents>
   </tank>
   <!-- foreright -->
   <tank type="FUEL" number="2">
@@ -132,8 +132,8 @@ tank list:
     <y> 0.0 </y>
     <z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 1080.00 </capacity>
-     <contents unit="LBS"> 1080.00 </contents>
+     <capacity unit="LBS"> 1089.00 </capacity>
+     <contents unit="LBS"> 1089.00 </contents>
   </tank>
   <!-- aftright -->
   <tank type="FUEL" number="2">
@@ -142,8 +142,8 @@ tank list:
     <y> 0.0 </y>
     <z> -0.140554 </z>
      </location>
-     <capacity unit="LBS"> 1080.00 </capacity>
-     <contents unit="LBS"> 1080.00 </contents>
+     <capacity unit="LBS"> 1089.00 </capacity>
+     <contents unit="LBS"> 1089.00 </contents>
   </tank>
   <!-- center drop tank -->
   <tank type="FUEL" number="2">
