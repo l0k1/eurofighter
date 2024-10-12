@@ -280,6 +280,24 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
     <velocities n="0">
         <groundspeed-kt>0</groundspeed-kt>
     </velocities>
+    
+    <instrumentation>
+      <radar>
+       <range type="int" archive="y">100</range>
+       <minimized type="bool" archive="y">false</minimized>
+      </radar>
+    </instrumentation>
+    
+    <systems>
+      <refuel>
+       <type>probe</type>
+       <serviceable type="bool">true</serviceable>
+       <max-fuel-transfer-lbs-min>6000</max-fuel-transfer-lbs-min>
+       <offset-x-m>0</offset-x-m>
+       <offset-y-m>0</offset-y-m>
+       <offset-z-m>0</offset-z-m>
+      </refuel>
+     </systems>
 
 <!-- Nasal files/scripts -->
     <nasal>
@@ -289,6 +307,7 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
         <dialog>     <file>Aircraft/eurofighter/Nasal/dialogs.nas</file>        </dialog>
         <libraries>  <file>Aircraft/eurofighter/Nasal/zoom-views.nas</file>     </libraries>
         <main>       <file>Aircraft/eurofighter/Nasal/main.nas</file>           </main>
+        <aar>  <file>Aircraft/Generic/aar.nas</file> </aar>
     </nasal>
     
 </PropertyList>
