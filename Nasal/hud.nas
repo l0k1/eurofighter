@@ -448,6 +448,11 @@ var HUD_SCREEN = {
 
     pitch_bars_display: func() {
         me.center_hud_pitch = prop_io.pitch - (me.angle_to_hud * math.cos(prop_io.roll * D2R) * R2D);
+        if (me.center_hud_pitch > 90) {
+            me.center_hud_pitch = 90 - (me.center_hud_pitch - 90);
+        } elsif (me.center_hud_pitch < -90) {
+            me.center_hud_pitch = -90 - (me.center_hud_pitch + 90);
+        }
         me.pitch_bar_center.hide();
         me.zenith.hide();
         me.nadir.hide();
@@ -533,6 +538,9 @@ var HUD_SCREEN = {
     },
     get_pitch_pixel: func(p) {
         me.absp = math.abs(p);
+        if (me.absp > 90) {
+            me.absp = 90 - (me.absp - 90);
+        }
         me.res_1 = me.pitch_lookup_array[int(me.absp)];
         me.res_2 = me.pitch_lookup_array[int(me.absp) + 1];
         me.fraction = me.absp - int(me.absp);
