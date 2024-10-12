@@ -58,9 +58,9 @@ var MFD_SCREEN = {
         # settings
         m.ep_cw = 240;
         m.ep_cwh = m.ep_cw / 2;
-        m.blue_width = 8;
-        m.white_width = 18;
-        m.gauge_width = 5;
+        m.engine_page_blue_width = 8;
+        m.engine_page_white_width = 18;
+        m.engine_page_gauge_width = 5;
 
         # blue circles
         m.engine_page.createChild("path")
@@ -76,7 +76,7 @@ var MFD_SCREEN = {
                                 .moveTo(778, 846- m.ep_cwh)
                                 .arcSmallCW(m.ep_cwh, m.ep_cwh, 0, 0, m.ep_cw)
                                 .arcSmallCW(m.ep_cwh, m.ep_cwh, 0,-m.ep_cwh, -m.ep_cwh)
-                                .setStrokeLineWidth(m.blue_width)
+                                .setStrokeLineWidth(m.engine_page_blue_width)
                                 .setColor(m.blue);
 
         m.engine_page.createChild("text")
@@ -188,22 +188,321 @@ var MFD_SCREEN = {
 
         m.n1_gauge_left = m.engine_page.createChild("path")
                                 .setTranslation(246,200 - m.ep_cwh)
-                                .setStrokeLineWidth(m.white_width)
+                                .setStrokeLineWidth(m.engine_page_white_width)
                                 .setColor(m.white);
         m.n1_gauge_right = m.engine_page.createChild("path")
                                 .setTranslation(778,200 - m.ep_cwh)
-                                .setStrokeLineWidth(m.white_width)
+                                .setStrokeLineWidth(m.engine_page_white_width)
                                 .setColor(m.white);
         m.tbt_gauge_left = m.engine_page.createChild("path")
                                 .setTranslation(246,846 - m.ep_cwh)
-                                .setStrokeLineWidth(m.white_width)
+                                .setStrokeLineWidth(m.engine_page_white_width)
                                 .setColor(m.white);
         m.tbt_gauge_right = m.engine_page.createChild("path")
                                 .setTranslation(778,846 - m.ep_cwh)
-                                .setStrokeLineWidth(m.white_width)
+                                .setStrokeLineWidth(m.engine_page_white_width)
                                 .setColor(m.white);
 
-        m.engine_page.show();
+        m.engine_page.createChild("text")
+                                .setAlignment("center-top")
+                                .setFontSize(m.font_size)
+                                .setFont(m.font)
+                                .setColor(m.offwhite)
+                                .setText("-NH-")
+                                .setTranslation(512,370);
+
+        m.n2_readout_left = m.engine_page.createChild("text")
+                                .setAlignment("center-top")
+                                .setFontSize(m.font_size)
+                                .setFont(m.font)
+                                .setColor(m.offwhite)
+                                .setTranslation(412,370);
+
+        m.n2_readout_right = m.engine_page.createChild("text")
+                                .setAlignment("center-top")
+                                .setFontSize(m.font_size)
+                                .setFont(m.font)
+                                .setColor(m.offwhite)
+                                .setTranslation(612,370);
+
+        ##################################################
+        # FUEL PAGE
+        ##################################################
+
+        m.fuel_page = m.mfd.createGroup();
+
+        # settings
+        m.fuel_page_white_width = 8;
+        m.fuel_page_fontsize = 40;
+
+        # blue quantity boxes
+        m.tank_0_gfx_x0 = 432;
+        m.tank_0_gfx_x1 = 592;
+        m.tank_0_gfx_y0 = 30;
+        m.tank_0_gfx_y1 = 170;
+        m.tank_0_gfx_h = m.tank_0_gfx_y1 - m.tank_0_gfx_y0;
+
+        m.tank_0_gfx = m.fuel_page.createChild("path")
+                                #top box
+                                .moveTo(m.tank_0_gfx_x0,m.tank_0_gfx_y0)
+                                .lineTo(m.tank_0_gfx_x0,m.tank_0_gfx_y1)
+                                .lineTo(m.tank_0_gfx_x1,m.tank_0_gfx_y1)
+                                .lineTo(m.tank_0_gfx_x1,m.tank_0_gfx_y0)
+                                .close()
+                                .setColorFill(m.blue);
+
+        m.tank_1_gfx_x0 = 420;
+        m.tank_1_gfx_x1 = 604;
+        m.tank_1_gfx_y0 = 192;
+        m.tank_1_gfx_y1 = 347;
+        m.tank_1_gfx_h = m.tank_1_gfx_y1 - m.tank_1_gfx_y0;
+
+        m.tank_1_gfx = m.fuel_page.createChild("path")
+                                #top box
+                                .moveTo(m.tank_1_gfx_x0,m.tank_1_gfx_y0)
+                                .lineTo(m.tank_1_gfx_x0,m.tank_1_gfx_y1)
+                                .lineTo(m.tank_1_gfx_x1,m.tank_1_gfx_y1)
+                                .lineTo(m.tank_1_gfx_x1,m.tank_1_gfx_y0)
+                                .close()
+                                .setColorFill(m.blue);
+
+        m.tank_1_sub_gfx_x0 = 386;
+        m.tank_1_sub_gfx_x1 = 446;
+        m.tank_1_sub_gfx_y0 = 246;
+        m.tank_1_sub_gfx_y1 = 347;
+        m.tank_1_sub_gfx_h = m.tank_1_sub_gfx_y1 - m.tank_1_sub_gfx_y0;
+        m.tank_1_sub_gfx = m.fuel_page.createChild("path")
+                                #top box
+                                .moveTo(m.tank_1_sub_gfx_x0,m.tank_1_sub_gfx_y0)
+                                .lineTo(m.tank_1_sub_gfx_x0,m.tank_1_sub_gfx_y1)
+                                .lineTo(m.tank_1_sub_gfx_x1,m.tank_1_sub_gfx_y1)
+                                .lineTo(m.tank_1_sub_gfx_x1,m.tank_1_sub_gfx_y0)
+                                .close()
+                                .setColorFill(m.blue);
+
+        m.tank_2_gfx_x0 = 606;
+        m.tank_2_gfx_x1 = 418;
+        m.tank_2_gfx_y0 = 675;
+        m.tank_2_gfx_y1 = 830;
+        m.tank_2_gfx_h = m.tank_2_gfx_y1 - m.tank_2_gfx_y0;
+        m.tank_2_gfx = m.fuel_page.createChild("path")
+                                #top box
+                                .moveTo(m.tank_2_gfx_x0,m.tank_2_gfx_y0)
+                                .lineTo(m.tank_2_gfx_x0,m.tank_2_gfx_y1)
+                                .lineTo(m.tank_2_gfx_x1,m.tank_2_gfx_y1)
+                                .lineTo(m.tank_2_gfx_x1,m.tank_2_gfx_y0)
+                                .close()
+                                .setColorFill(m.blue);
+
+        m.tank_2_sub_gfx_x0 = 640;
+        m.tank_2_sub_gfx_x1 = 578;
+        m.tank_2_sub_gfx_y0 = 728;
+        m.tank_2_sub_gfx_y1 = 830;
+        m.tank_2_sub_gfx_h = m.tank_2_sub_gfx_y1 - m.tank_2_sub_gfx_y0;
+        m.tank_2_sub_gfx = m.fuel_page.createChild("path")
+                                .moveTo(m.tank_2_sub_gfx_x0,m.tank_2_sub_gfx_y0)
+                                .lineTo(m.tank_2_sub_gfx_x0,m.tank_2_sub_gfx_y1)
+                                .lineTo(m.tank_2_sub_gfx_x1,m.tank_2_sub_gfx_y1)
+                                .lineTo(m.tank_2_sub_gfx_x1,m.tank_2_sub_gfx_y0)
+                                .close()
+                                .setColorFill(m.blue);
+
+        m.tank_3_gfx_x0 = 334;
+        m.tank_3_gfx_x1 = 200;
+        m.tank_3_gfx_y0 = 400;
+        m.tank_3_gfx_y1 = 580;
+        m.tank_3_gfx_h = m.tank_3_gfx_y1 - m.tank_3_gfx_y0;
+        m.tank_3_gfx_w = m.tank_3_gfx_x0 - m.tank_3_gfx_x1;
+        m.tank_3_gfx = m.fuel_page.createChild("path")
+                                .moveTo(m.tank_3_gfx_x0,m.tank_3_gfx_y0)
+                                .lineTo(m.tank_3_gfx_x0,m.tank_3_gfx_y1)
+                                .lineTo(m.tank_3_gfx_x1,m.tank_3_gfx_y1)
+                                .close()
+                                .setColorFill(m.blue);
+
+        m.tank_4_gfx_x0 = 334;
+        m.tank_4_gfx_x1 = 80;
+        m.tank_4_gfx_x2 = 150;
+        m.tank_4_gfx_y0 = 650;
+        m.tank_4_gfx_y1 = 750;
+        m.tank_4_gfx_h = m.tank_4_gfx_y1 - m.tank_4_gfx_y0;
+        m.tank_4_gfx_w = m.tank_4_gfx_x2 - m.tank_4_gfx_x1;
+        m.tank_4_gfx = m.fuel_page.createChild("path")
+                                .moveTo(m.tank_4_gfx_x0,m.tank_4_gfx_y0)
+                                .lineTo(m.tank_4_gfx_x0,m.tank_4_gfx_y1)
+                                .lineTo(m.tank_4_gfx_x1,m.tank_4_gfx_y1)
+                                .lineTo(m.tank_4_gfx_x2,m.tank_4_gfx_y0)
+                                .close()
+                                .setColorFill(m.blue);
+
+        m.tank_5_gfx_x0 = 690;
+        m.tank_5_gfx_x1 = 824;
+        m.tank_5_gfx_y0 = 400;
+        m.tank_5_gfx_y1 = 580;
+        m.tank_5_gfx_h = m.tank_5_gfx_y1 - m.tank_5_gfx_y0;
+        m.tank_5_gfx_w = m.tank_5_gfx_x1 - m.tank_5_gfx_x0;
+        m.tank_5_gfx = m.fuel_page.createChild("path")
+                                .moveTo(m.tank_5_gfx_x0,m.tank_5_gfx_y0)
+                                .lineTo(m.tank_5_gfx_x0,m.tank_5_gfx_y1)
+                                .lineTo(m.tank_5_gfx_x1,m.tank_5_gfx_y1)
+                                .close()
+                                .setColorFill(m.blue);
+
+        m.tank_6_gfx_x0 = 690;
+        m.tank_6_gfx_x1 = 944;
+        m.tank_6_gfx_x2 = 874;
+        m.tank_6_gfx_y0 = 650;
+        m.tank_6_gfx_y1 = 750;
+        m.tank_6_gfx_h = m.tank_6_gfx_y1 - m.tank_6_gfx_y0;
+        m.tank_6_gfx_w = m.tank_6_gfx_x1 - m.tank_6_gfx_x2;
+        m.tank_6_gfx = m.fuel_page.createChild("path")
+                                .moveTo(m.tank_6_gfx_x0,m.tank_6_gfx_y0)
+                                .lineTo(m.tank_6_gfx_x0,m.tank_6_gfx_y1)
+                                .lineTo(m.tank_6_gfx_x1,m.tank_6_gfx_y1)
+                                .lineTo(m.tank_6_gfx_x2,m.tank_6_gfx_y0)
+                                .close()
+                                .setColorFill(m.blue);
+
+        # fuel gauge outlines
+        m.fuel_page.createChild("path")
+                                #top box
+                                .moveTo(m.tank_0_gfx_x0,m.tank_0_gfx_y0)
+                                .lineTo(m.tank_0_gfx_x0,m.tank_0_gfx_y1)
+                                .lineTo(m.tank_0_gfx_x1,m.tank_0_gfx_y1)
+                                .lineTo(m.tank_0_gfx_x1,m.tank_0_gfx_y0)
+                                .lineTo(m.tank_0_gfx_x0,m.tank_0_gfx_y0)
+                                #mid top boxes
+                                .moveTo(420,246)
+                                .lineTo(420,192)
+                                .lineTo(604,192)
+                                .lineTo(604,347)
+                                .lineTo(386,347)
+                                .lineTo(386,246)
+                                .lineTo(446,246)
+                                .lineTo(446,347)
+                                #left mid triangle
+                                .moveTo(334,400)
+                                .lineTo(334,580)
+                                .lineTo(200,580)
+                                .lineTo(334,400)
+                                #right mid triangle
+                                .moveTo(690,400)
+                                .lineTo(690,580)
+                                .lineTo(824,580)
+                                .lineTo(690,400)
+                                #left bottom polygon
+                                .moveTo(334,650)
+                                .lineTo(334,750)
+                                .lineTo(80,750)
+                                .lineTo(150,650)
+                                .lineTo(334,650)
+                                #right bottom polygon
+                                .moveTo(690,650)
+                                .lineTo(690,750)
+                                .lineTo(944,750)
+                                .lineTo(874,650)
+                                .lineTo(690,650)
+                                #bottom boxes
+                                .moveTo(606,728)
+                                .lineTo(606,675)
+                                .lineTo(418,675)
+                                .lineTo(418,830)
+                                .lineTo(640,830)
+                                .lineTo(640,728)
+                                .lineTo(578,728)
+                                .lineTo(578,830)
+                                #center drop tank
+                                .moveTo(482,453)
+                                .lineTo(482,420) #blaze it
+                                .arcSmallCWTo(30,30,0,542,420)
+                                .lineTo(542,453)
+                                .moveTo(482,515)
+                                .lineTo(482,548)
+                                .arcSmallCCWTo(30,30,0,542,548)
+                                .lineTo(542,515)
+                                #left drop tank
+                                .moveTo(37,470)
+                                .lineTo(37,390)
+                                .arcSmallCWTo(30,30,0,97,390)
+                                .lineTo(97,470)
+                                .moveTo(37,533)
+                                .lineTo(37,613)
+                                .arcSmallCCWTo(30,30,0,97,613)
+                                .lineTo(97,533)
+                                #right drop tank
+                                .moveTo(927,470)
+                                .lineTo(927,390)
+                                .arcSmallCWTo(30,30,0,987,390)
+                                .lineTo(987,470)
+                                .moveTo(927,533)
+                                .lineTo(927,613)
+                                .arcSmallCCWTo(30,30,0,987,613)
+                                .lineTo(987,533)
+                                .setStrokeLineWidth(m.fuel_page_white_width)
+                                .setColor(m.white);
+
+        m.fueltank_0_txt = m.fuel_page.createChild("text")
+                                .setAlignment("right-top")
+                                .setFontSize(m.fuel_page_fontsize)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(560,97);
+        m.fueltank_1_txt = m.fuel_page.createChild("text")
+                                .setAlignment("right-top")
+                                .setFontSize(m.fuel_page_fontsize)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(570,243);
+        m.fueltank_2_txt = m.fuel_page.createChild("text")
+                                .setAlignment("right-top")
+                                .setFontSize(m.fuel_page_fontsize)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(580,730);
+        m.fueltank_3_txt = m.fuel_page.createChild("text")
+                                .setAlignment("right-top")
+                                .setFontSize(m.fuel_page_fontsize)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(326,514);
+        m.fueltank_4_txt = m.fuel_page.createChild("text")
+                                .setAlignment("right-top")
+                                .setFontSize(m.fuel_page_fontsize)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(326,678);
+        m.fueltank_5_txt = m.fuel_page.createChild("text")
+                                .setAlignment("right-top")
+                                .setFontSize(m.fuel_page_fontsize)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(770,514);
+        m.fueltank_6_txt = m.fuel_page.createChild("text")
+                                .setAlignment("right-top")
+                                .setFontSize(m.fuel_page_fontsize)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(770,678);
+        m.fueltank_7_txt = m.fuel_page.createChild("text")
+                                .setAlignment("center-top")
+                                .setFontSize(m.fuel_page_fontsize)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(512,470);
+        m.fueltank_8_txt = m.fuel_page.createChild("text")
+                                .setAlignment("center-top")
+                                .setFontSize(m.fuel_page_fontsize)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(68,485);
+        m.fueltank_9_txt = m.fuel_page.createChild("text")
+                                .setAlignment("center-top")
+                                .setFontSize(m.fuel_page_fontsize)
+                                .setFont(m.font)
+                                .setColor(m.white)
+                                .setTranslation(958,485);
+        m.fuel_page.hide();
+
         return m;
     },
 
@@ -223,11 +522,163 @@ var MFD_SCREEN = {
         print('initing');
         me.buttons[0].page = mfd_engine;
         me.buttons[1].page = mfd_buttontest;
+        me.buttons[2].page = mfd_fuel;
         me.update_buttons();
     },
     
     dev_mode_update: func() {
         me.engine_screen();
+    },
+
+    fuel_page_init: func() {
+        me.fuel_page.show();
+        me.clear_buttons();
+        print('mfd set to fuel page');
+        me.buttons[7].page = mfd_fuel;
+        me.buttons[8].page = mfd_engine;
+        me.buttons[1].page = mfd_buttontest;
+        me.update_buttons();
+    },
+
+    fuel_page_end: func() {
+        me.fuel_page.hide();
+    },
+
+    fuel_page_update: func() {
+
+        t0pct = getprop("fdm/jsbsim/propulsion/tank[0]/pct-full")/100;
+        t1pct = getprop("fdm/jsbsim/propulsion/tank[1]/pct-full")/100;
+        t2pct = getprop("fdm/jsbsim/propulsion/tank[2]/pct-full")/100;
+        t3pct = getprop("fdm/jsbsim/propulsion/tank[3]/pct-full")/100;
+        t4pct = getprop("fdm/jsbsim/propulsion/tank[4]/pct-full")/100;
+        t5pct = getprop("fdm/jsbsim/propulsion/tank[5]/pct-full")/100;
+        t6pct = getprop("fdm/jsbsim/propulsion/tank[6]/pct-full")/100;
+        t7pct = getprop("fdm/jsbsim/propulsion/tank[7]/pct-full")/100;
+        t8pct = getprop("fdm/jsbsim/propulsion/tank[8]/pct-full")/100;
+        t9pct = getprop("fdm/jsbsim/propulsion/tank[9]/pct-full")/100;
+
+        me.tank_0_gfx.reset()
+                    .moveTo(me.tank_0_gfx_x0,me.tank_0_gfx_y1)
+                    .lineTo(me.tank_0_gfx_x1,me.tank_0_gfx_y1)
+                    .lineTo(me.tank_0_gfx_x1,me.tank_0_gfx_y1 - me.tank_0_gfx_h * t0pct)
+                    .lineTo(me.tank_0_gfx_x0,me.tank_0_gfx_y1 - me.tank_0_gfx_h * t0pct)
+                    .close()
+                    .setColorFill(me.blue);
+
+        me.tank_1_gfx.reset()
+                    .moveTo(me.tank_1_gfx_x0,me.tank_1_gfx_y1)
+                    .lineTo(me.tank_1_gfx_x1,me.tank_1_gfx_y1)
+                    .lineTo(me.tank_1_gfx_x1,me.tank_1_gfx_y1 - me.tank_1_gfx_h * t1pct)
+                    .lineTo(me.tank_1_gfx_x0,me.tank_1_gfx_y1 - me.tank_1_gfx_h * t1pct)
+                    .close()
+                    .setColorFill(me.blue);
+        if (me.tank_1_gfx_h * t1pct < me.tank_1_sub_gfx_h) {
+            me.t1subh = me.tank_1_gfx_h * t1pct;
+        } else {
+            me.t1subh = me.tank_1_sub_gfx_h;
+        }
+        me.tank_1_sub_gfx.reset()
+                    .moveTo(me.tank_1_sub_gfx_x0,me.tank_1_sub_gfx_y1)
+                    .lineTo(me.tank_1_sub_gfx_x1,me.tank_1_sub_gfx_y1)
+                    .lineTo(me.tank_1_sub_gfx_x1,me.tank_1_sub_gfx_y1 - me.t1subh)
+                    .lineTo(me.tank_1_sub_gfx_x0,me.tank_1_sub_gfx_y1 - me.t1subh)
+                    .close()
+                    .setColorFill(me.blue);
+
+        me.tank_2_gfx.reset()
+                    .moveTo(me.tank_2_gfx_x0,me.tank_2_gfx_y1)
+                    .lineTo(me.tank_2_gfx_x1,me.tank_2_gfx_y1)
+                    .lineTo(me.tank_2_gfx_x1,me.tank_2_gfx_y1 - me.tank_2_gfx_h * t2pct)
+                    .lineTo(me.tank_2_gfx_x0,me.tank_2_gfx_y1 - me.tank_2_gfx_h * t2pct)
+                    .close()
+                    .setColorFill(me.blue);
+
+        if (me.tank_2_gfx_h * t2pct < me.tank_2_sub_gfx_h) {
+            me.t2subh = me.tank_2_gfx_h * t2pct;
+        } else {
+            me.t2subh = me.tank_2_sub_gfx_h;
+        }
+        me.tank_2_sub_gfx.reset()
+                    .moveTo(me.tank_2_sub_gfx_x0,me.tank_2_sub_gfx_y1)
+                    .lineTo(me.tank_2_sub_gfx_x1,me.tank_2_sub_gfx_y1)
+                    .lineTo(me.tank_2_sub_gfx_x1,me.tank_2_sub_gfx_y1 - me.t2subh)
+                    .lineTo(me.tank_2_sub_gfx_x0,me.tank_2_sub_gfx_y1 - me.t2subh)
+                    .close()
+                    .setColorFill(me.blue);
+
+        tgx = me.tank_3_gfx_x1 + me.tank_3_gfx_w * t3pct;
+        tgy = me.tank_3_gfx_y1 - me.tank_3_gfx_h * t3pct;
+        me.tank_3_gfx.reset()
+                    .moveTo(me.tank_3_gfx_x0,me.tank_3_gfx_y1)
+                    .lineTo(me.tank_3_gfx_x1,me.tank_3_gfx_y1)
+                    .lineTo(tgx,tgy)
+                    .lineTo(me.tank_3_gfx_x0,tgy)
+                    .close()
+                    .setColorFill(me.blue);
+
+        tgx = me.tank_4_gfx_x1 + me.tank_4_gfx_w * t4pct;
+        tgy = me.tank_4_gfx_y1 - me.tank_4_gfx_h * t4pct;
+        me.tank_4_gfx.reset()
+                    .moveTo(me.tank_4_gfx_x0,me.tank_4_gfx_y1)
+                    .lineTo(me.tank_4_gfx_x1,me.tank_4_gfx_y1)
+                    .lineTo(tgx,tgy)
+                    .lineTo(me.tank_4_gfx_x0,tgy)
+                    .close()
+                    .setColorFill(me.blue);
+
+        tgx = me.tank_5_gfx_x1 - me.tank_5_gfx_w * t5pct;
+        tgy = me.tank_5_gfx_y1 - me.tank_5_gfx_h * t5pct;
+        me.tank_5_gfx.reset()
+                    .moveTo(me.tank_5_gfx_x0,me.tank_5_gfx_y1)
+                    .lineTo(me.tank_5_gfx_x1,me.tank_5_gfx_y1)
+                    .lineTo(tgx,tgy)
+                    .lineTo(me.tank_5_gfx_x0,tgy)
+                    .close()
+                    .setColorFill(me.blue);
+
+        tgx = me.tank_6_gfx_x1 - me.tank_6_gfx_w * t6pct;
+        tgy = me.tank_6_gfx_y1 - me.tank_6_gfx_h * t6pct;
+        me.tank_6_gfx.reset()
+                    .moveTo(me.tank_6_gfx_x0,me.tank_6_gfx_y1)
+                    .lineTo(me.tank_6_gfx_x1,me.tank_6_gfx_y1)
+                    .lineTo(tgx,tgy)
+                    .lineTo(me.tank_6_gfx_x0,tgy)
+                    .close()
+                    .setColorFill(me.blue);
+
+
+
+
+
+
+
+
+        # convert to kg, divide by 10, take the floor, multiply by 10
+        me.fueltank_0_txt.setText(math.floor(prop_io.tank_0_contents_lb*LB2KG/10)*10);
+        me.fueltank_1_txt.setText(math.floor(prop_io.tank_1_contents_lb*LB2KG/10)*10);
+        me.fueltank_2_txt.setText(math.floor(prop_io.tank_2_contents_lb*LB2KG/10)*10);
+        me.fueltank_3_txt.setText(math.floor(prop_io.tank_3_contents_lb*LB2KG/10)*10);
+        me.fueltank_4_txt.setText(math.floor(prop_io.tank_4_contents_lb*LB2KG/10)*10);
+        me.fueltank_5_txt.setText(math.floor(prop_io.tank_5_contents_lb*LB2KG/10)*10);
+        me.fueltank_6_txt.setText(math.floor(prop_io.tank_6_contents_lb*LB2KG/10)*10);
+        me.fueltank_7_txt.setText(math.floor(prop_io.tank_7_contents_lb*LB2KG/10)*10);
+        me.fueltank_8_txt.setText(math.floor(prop_io.tank_8_contents_lb*LB2KG/10)*10);
+        me.fueltank_9_txt.setText(math.floor(prop_io.tank_9_contents_lb*LB2KG/10)*10);
+        return;
+    },
+
+    engine_mode_init: func() {
+        me.engine_page.show();
+        me.clear_buttons();
+        print('mfd set to engine page');
+        me.buttons[7].page = mfd_fuel;
+        me.buttons[8].page = mfd_engine;
+        me.buttons[1].page = mfd_buttontest;
+        me.update_buttons();
+    },
+
+    engine_mode_end: func() {
+        me.engine_page.hide();
     },
 
     engine_screen: func() {
@@ -278,6 +729,8 @@ var MFD_SCREEN = {
 
         me.n1_readout_left.setText(sprintf("%.1f",prop_io.engine0_n1));
         me.n1_readout_right.setText(sprintf("%.1f",prop_io.engine1_n1));
+        me.n2_readout_left.setText(sprintf("%.1f",prop_io.engine0_n2));
+        me.n2_readout_right.setText(sprintf("%.1f",prop_io.engine1_n2));
         me.aj_readout_left.setText(int(100 * prop_io.engine0_nz));
         me.aj_readout_right.setText(int(100 * prop_io.engine1_nz));
         me.temp_readout_left.setText(sprintf("%i",prop_io.engine0_tat));
@@ -488,13 +941,14 @@ var state_arch = {
 var mfd_null        = {parents: [state_arch]};
 var mfd_off         = {parents: [state_arch],                    main_func: MFD_SCREEN.off_mode_update,    init_func: MFD_SCREEN.off_mode_init};
 var mfd_dev_mode    = {parents: [state_arch],                    main_func: MFD_SCREEN.dev_mode_update,    init_func: MFD_SCREEN.dev_mode_init};
-var mfd_engine      = {parents: [state_arch], label_top: "ENGI", main_func: MFD_SCREEN.dev_mode_update,    init_func: MFD_SCREEN.dev_mode_init};
+var mfd_engine      = {parents: [state_arch], label_top: "ENGI", main_func: MFD_SCREEN.engine_screen,      init_func: MFD_SCREEN.engine_mode_init, end_func: MFD_SCREEN.engine_mode_end};
+var mfd_fuel        = {parents: [state_arch], label_top: "FUEL", main_func: MFD_SCREEN.fuel_page_update,   init_func: MFD_SCREEN.fuel_page_init,     end_func: MFD_SCREEN.fuel_page_end};
 var mfd_buttontest  = {parents: [state_arch], label_top: "TEST", main_func: MFD_SCREEN.buttontest, temp: 1};
 
 # temps
 # if temp == 1, it will only fire the init, main, and end functions once.
 #var hud_switch_gs_m = {parents: [state_arch], main_func: hud_ref.groundspeed_mach_switch, temp: 1};
 
-mfd_left.change_state(mfd_dev_mode);
-mfd_center.change_state(mfd_dev_mode);
-mfd_right.change_state(mfd_dev_mode);
+mfd_left.change_state(mfd_engine);
+mfd_center.change_state(mfd_engine);
+mfd_right.change_state(mfd_engine);

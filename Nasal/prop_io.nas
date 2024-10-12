@@ -64,6 +64,32 @@ var gear2wow = 0;
 var hud_power_prop = props.globals.getNode("fdm/jsbsim/systems/electric/xp2/hud");
 var hud_power = 0;
 
+#################################### fuel props
+var tank_0_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[0]/contents-lbs");
+var tank_0_contents_lb = 0;
+var tank_1_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[1]/contents-lbs");
+var tank_1_contents_lb = 0;
+var tank_2_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[2]/contents-lbs");
+var tank_2_contents_lb = 0;
+var tank_3_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[3]/contents-lbs");
+var tank_3_contents_lb = 0;
+var tank_4_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[4]/contents-lbs");
+var tank_4_contents_lb = 0;
+var tank_5_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[5]/contents-lbs");
+var tank_5_contents_lb = 0;
+var tank_6_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[6]/contents-lbs");
+var tank_6_contents_lb = 0;
+var tank_7_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[7]/contents-lbs");
+var tank_7_contents_lb = 0;
+var tank_8_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[8]/contents-lbs");
+var tank_8_contents_lb = 0;
+var tank_9_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[9]/contents-lbs");
+var tank_9_contents_lb = 0;
+var tank_10_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[10]/contents-lbs");
+var tank_10_contents_lb = 0;
+var tank_11_contents_lb_prop = props.globals.getNode("fdm/jsbsim/propulsion/tank[11]/contents-lbs");
+var tank_11_contents_lb = 0;
+
 var update = func() {
     #################################### non-instrumentation orientation props
     pitch = pitch_prop.getValue();
@@ -92,6 +118,20 @@ var update = func() {
     
     #################################### electric output props
     hud_power = hud_power_prop.getValue();
+
+    #################################### fuel props
+    tank_0_contents_lb  = tank_0_contents_lb_prop.getValue();
+    tank_1_contents_lb  = tank_1_contents_lb_prop.getValue();
+    tank_2_contents_lb  = tank_2_contents_lb_prop.getValue();
+    tank_3_contents_lb  = tank_3_contents_lb_prop.getValue();
+    tank_4_contents_lb  = tank_4_contents_lb_prop.getValue();
+    tank_5_contents_lb  = tank_5_contents_lb_prop.getValue();
+    tank_6_contents_lb  = tank_6_contents_lb_prop.getValue();
+    tank_7_contents_lb  = tank_7_contents_lb_prop.getValue();
+    tank_8_contents_lb  = tank_8_contents_lb_prop.getValue();
+    tank_9_contents_lb  = tank_9_contents_lb_prop.getValue();
+    tank_10_contents_lb = tank_10_contents_lb_prop.getValue();
+    tank_11_contents_lb = tank_11_contents_lb_prop.getValue();
 }
 
 # functions for listeners
