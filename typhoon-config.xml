@@ -43,7 +43,7 @@
 			<float n="17" alias="engines/engine[1]/thrust-lbs" /> <!-- Thrust for Multiplayer Sound -->
 			<float n="18" alias="controls/rotary/formation-lights" />
 			<float n="19" alias="systems/electrical/outputs/external-lights/taxi-lights"/>
-			<float n="20" alias="systems/electrical/outputs/external-lights/taxi-lights"/> <!-- refuel probe -->
+			<float n="20"/> <!-- refuel probe -->
 			<!-- int n="6" = radar2.radarStandbyMP -->
 			<string alias="sim/multiplay/callsign"/>
 		</generic>

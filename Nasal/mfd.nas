@@ -363,6 +363,139 @@ var MFD_SCREEN = {
                                 .close()
                                 .setColorFill(m.blue);
 
+        #tank interconnect lines
+
+        m.fuelLineWidth = 10;
+        m.lightblue = [0.35,0.7,1,1];
+
+        m.fuel_rightacc_line = m.fuel_page.createChild("path")
+                                .moveTo(404,350)
+                                .lineTo(404,955)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_rightacc_tri = m.fuel_page.createChild("path")
+                                .moveTo(390,955)
+                                .lineTo(418,955)
+                                .lineTo(404,970)
+                                .close()
+                                .setColor(m.lightblue)
+                                .setColorFill(m.lightblue)
+                                .setStrokeLineWidth(2);
+        m.fuel_leftacc_line = m.fuel_page.createChild("path")
+                                .moveTo(621,831)
+                                .lineTo(621,955)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_leftacc_tri = m.fuel_page.createChild("path")
+                                .moveTo(607,955)
+                                .lineTo(635,955)
+                                .lineTo(621,970)
+                                .close()
+                                .setColor(m.lightblue)
+                                .setColorFill(m.lightblue)
+                                .setStrokeLineWidth(2);
+        m.fuel_xfeed_line = m.fuel_page.createChild("path")
+                                .moveTo(412,884)
+                                .lineTo(612,884)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_wing_line = m.fuel_page.createChild("path")
+                                .moveTo(230,619)
+                                .lineTo(391,619)
+                                .moveTo(417,619)
+                                .lineTo(798,619)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_aftwing_line = m.fuel_page.createChild("path")
+                                .moveTo(234,619)
+                                .lineTo(234,650)
+                                .moveTo(795,619)
+                                .lineTo(795,650)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_forewing_line = m.fuel_page.createChild("path")
+                                .moveTo(234,619)
+                                .lineTo(234,582)
+                                .moveTo(795,619)
+                                .lineTo(795,582)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_interconnect_line = m.fuel_page.createChild("path")
+                                .moveTo(454,350)
+                                .lineTo(454,610)
+                                .moveTo(454,630)
+                                .lineTo(454,672)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_ftransfer_line = m.fuel_page.createChild("path")
+                                .moveTo(594,148)
+                                .lineTo(662,148)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_ftrefuel_line = m.fuel_page.createChild("path")
+                                .moveTo(662,148)
+                                .lineTo(662,380)
+                                .lineTo(568,380)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_leftdrop_line = m.fuel_page.createChild("path")
+                                .moveTo(94,380)
+                                .lineTo(391,380)
+                                .moveTo(417,380)
+                                .lineTo(568,380)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_rightdrop_line = m.fuel_page.createChild("path")
+                                .moveTo(798,619)
+                                .lineTo(928,619)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_centerdrop_line = m.fuel_page.createChild("path")
+                                .moveTo(512,581)
+                                .lineTo(512,619)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_foreaft_line = m.fuel_page.createChild("path")
+                                .moveTo(568,380)
+                                .lineTo(568,619)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_aft_line = m.fuel_page.createChild("path")
+                                .moveTo(568,619)
+                                .lineTo(568,652)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_aft_triangle = m.fuel_page.createChild("path")
+                                .moveTo(557,652)
+                                .lineTo(579,652)
+                                .lineTo(568,672)
+                                .close()
+                                .setColor(m.lightblue)
+                                .setColorFill(m.lightblue)
+                                .setStrokeLineWidth(2);
+        m.fuel_fore_line = m.fuel_page.createChild("path")
+                                .moveTo(568,380)
+                                .lineTo(568,370)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+        m.fuel_fore_triangle = m.fuel_page.createChild("path")
+                                .moveTo(557,370)
+                                .lineTo(579,370)
+                                .lineTo(568,350)
+                                .close()
+                                .setColor(m.lightblue)
+                                .setColorFill(m.lightblue)
+                                .setStrokeLineWidth(2);
+        m.fuel_refuel_line = m.fuel_page.createChild("path")
+                                .moveTo(662,148)
+                                .lineTo(714,93)
+                                .lineTo(714,79)
+                                .moveTo(700,79)
+                                .arcSmallCWTo(14,14,0,728,79)
+                                .setColor(m.lightblue)
+                                .setStrokeLineWidth(m.fuelLineWidth);
+
+
         # fuel gauge outlines
         m.fuel_page.createChild("path")
                                 #top box
@@ -440,6 +573,7 @@ var MFD_SCREEN = {
                                 .lineTo(987,533)
                                 .setStrokeLineWidth(m.fuel_page_white_width)
                                 .setColor(m.white);
+
 
         m.fueltank_0_txt = m.fuel_page.createChild("text")
                                 .setAlignment("right-top")
