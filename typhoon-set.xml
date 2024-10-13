@@ -307,7 +307,7 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
         <dialog>     <file>Aircraft/eurofighter/Nasal/dialogs.nas</file>        </dialog>
         <libraries>  <file>Aircraft/eurofighter/Nasal/zoom-views.nas</file>     </libraries>
         <main>       <file>Aircraft/eurofighter/Nasal/main.nas</file>           </main>
-        <aar>  <file>Aircraft/Generic/aar.nas</file> </aar>
+        <aar>        <file>Aircraft/eurofighter/Nasal/aar.nas</file> </aar>
     </nasal>
     
 </PropertyList>
