@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<system name="cockpit">
+    <property value="0">/controls/switches/fuel-probe-cover</property>
+    <property value="0">/controls/switches/fuel-probe-cover-anim</property>
+    <channel name="animations">
+        <kinematic>
+            <input>/controls/switches/fuel-probe-cover</input>
+            <traverse>
+            <setting>
+            <position> 0 </position>
+            <time>     0 </time>
+            </setting>
+            <setting>
+            <position> 1 </position>
+            <time>     0.2 </time>
+            </setting>
+            </traverse>
+            <output>/controls/switches/fuel-probe-cover-anim</output>
+        </kinematic>
+    </channel>
+</system>

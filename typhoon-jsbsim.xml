@@ -67,6 +67,7 @@
 	<system file="dragchute"/>
 	<system file="apu"/>
 	<system file="fuel"/>
+	<system file="cockpit"/>
 	
 	<flight_control name="none"/>
 	<aerodynamics file="Aero/typhoon-aero.xml"/>

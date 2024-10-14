@@ -812,7 +812,10 @@
         <switch>
             <default value="0"/>
             <test logic="OR" value="1">
-                systems/fuel/refuel-contact eq 1
+                <test logic="AND">
+                    /sim/multiplay/generic/float[20] eq 1
+                    systems/fuel/refuel-contact eq 1
+                </test>
                 systems/fuel/refuel-test eq 1
             </test>
             <output>systems/fuel/refuel-active</output>
@@ -995,7 +998,6 @@
     SUMMERS
 -->
 
-            <input></input>
         <summer>
             <input>-propulsion/tank[0]/transfer-to-fore</input>
             <input>-propulsion/tank[0]/transfer-to-aft</input>
@@ -1099,5 +1101,21 @@
             <input></input>
             <output>propulsion/tank[11]/external-flow-rate-pps</output>
         </summer>
+    </channel>
+    <channel name="refuelprobe">
+        <kinematic>
+            <input>/controls/switches/fuel-probe</input>
+            <traverse>
+            <setting>
+            <position> 0 </position>
+            <time>     0 </time>
+            </setting>
+            <setting>
+            <position> 1 </position>
+            <time>     3 </time>
+            </setting>
+            </traverse>
+            <output>/sim/multiplay/generic/float[20]</output>
+        </kinematic>
     </channel>
 </system>

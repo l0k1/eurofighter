@@ -996,7 +996,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Cover.fuel-probe</object-name>
-		<property>/controls/switches/fuel-probe-cover</property>
+		<property>/controls/switches/fuel-probe-cover-anim</property>
 		<factor>80</factor>
 		<axis>
 			<y>-1</y>
@@ -1013,8 +1013,8 @@
 		<action>
 			<button>0</button>
 			<binding>
-				<command>nasal</command>
-				<script>avionics.controls.fuelProbeCover();</script>
+				<command>property-toggle</command>
+				<property>/controls/switches/fuel-probe-cover</property>
 			</binding>
 		</action>
 	</animation>
