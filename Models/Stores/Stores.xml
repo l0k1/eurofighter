@@ -1,28 +1,185 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 
 <PropertyList>
 
-  <!-- pylon options                     
-      _________________|_________|_________________
-      \                |         |                /
-       \               |         |               /
-        \4.R           |         |           4.L/
-         (12)          |RR    RL |          (11)
-          \  3.R       |(10)  (8)|       3.L  /
-           \ (5)       |         |       (2) /   
-            \          |         |          /    
-             \         |         |         /
-       2fuel.R\  2.R   |RF    LF |   2.L  /2fuel.L
-          (15) \ (4)   |(9)   (7)|   (1) / (13)
-                \      |         |      /
-                 \     |         |     /
-                  \ 1.R|    C2   |1.L /
-                   \(3)|   (14)  |(0)/
-                    \  |    C    |  /
-                     \ |   (6)   | /
-                      \|_________|/
-  -->
+<!--
+	<model>
+		<name>Left Middle Drop Tank</name>
+		<path>Aircraft/AV-8B/Models/Stores/300GalTank/300GalTankLeft.xml</path>
+		<offsets>
+		<x-m> 0.79884</x-m>
+		<y-m>-3.26907</y-m>
+		<z-m>-0.19803</z-m>
+		<pitch-deg>0.00</pitch-deg>
+		</offsets>
+	</model>
 
+	<animation>
+		<object-name>Left Middle Drop Tank</object-name>
+		<type>select</type>
+		<condition>
+			<equals>
+				<property>/sim/multiplay/generic/short[1]</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<model>
+		<name>Left Inside Drop Tank</name>
+		<path>Aircraft/AV-8B/Models/Stores/300GalTank/300GalTankLeft.xml</path>
+		<offsets>
+		<x-m> 0.25856</x-m>
+		<y-m>-1.92386</y-m>
+		<z-m>-0.10093</z-m>
+		<pitch-deg>0.00</pitch-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<object-name>Left Inside Drop Tank</object-name>
+		<type>select</type>
+		<condition>
+			<equals>
+				<property>/sim/multiplay/generic/short[2]</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<model>
+		<name>Right Inside Drop Tank</name>
+		<path>Aircraft/AV-8B/Models/Stores/300GalTank/300GalTankRight.xml</path>
+		<offsets>
+		<x-m> 0.25856</x-m>
+		<y-m> 1.92386</y-m>
+		<z-m>-0.10093</z-m>
+		<pitch-deg>0.00</pitch-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<object-name>Right Inside Drop Tank</object-name>
+		<type>select</type>
+		<condition>
+			<equals>
+				<property>/sim/multiplay/generic/short[4]</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>	
+
+	<model>
+		<name>Right Middle Drop Tank</name>
+		<path>Aircraft/AV-8B/Models/Stores/300GalTank/300GalTankRight.xml</path>
+		<offsets>
+		<x-m> 0.79884</x-m>
+		<y-m> 3.26907</y-m>
+		<z-m>-0.19803</z-m>
+		<pitch-deg>0.00</pitch-deg>
+		</offsets>
+	</model>
+
+  <animation>
+    <object-name>Right Middle Drop Tank</object-name>
+    <type>select</type>
+    <condition>
+      <equals>
+        <property>/sim/multiplay/generic/short[5]</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+-->
+<!-- drop tanks -->
+  <model>
+    <name>1000L Center Drop Tank</name>
+    <path>Aircraft/eurofighter/Models/Stores/tank1000l/tank1000l.xml</path>
+    <offsets>
+      <x-m>1.449</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-1.014</z-m>
+      <pitch-deg>-1.74</pitch-deg>
+    </offsets>
+  </model>
+
+  <animation>
+    <object-name>1000L Center Drop Tank</object-name>
+    <type>select</type>
+    <condition>
+      <equals>
+        <property>/sim/multiplay/generic/short[0]</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <model>
+    <name>1500L Center Drop Tank</name>
+    <path>Aircraft/eurofighter/Models/Stores/tank1500l/tank1500l.xml</path>
+    <offsets>
+      <x-m>1.449</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-1.014</z-m>
+      <pitch-deg>-1.74</pitch-deg>
+    </offsets>
+  </model>
+
+  <animation>
+    <object-name>1500L Center Drop Tank</object-name>
+    <type>select</type>
+    <condition>
+      <equals>
+        <property>/sim/multiplay/generic/short[0]</property>
+        <value>2</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <model>
+    <name>1000L Left Drop Tank</name>
+    <path>Aircraft/eurofighter/Models/Stores/tank1000l/tank1000l.xml</path>
+    <offsets>
+      <x-m>0.727</x-m>
+      <y-m>-2.824</y-m>
+      <z-m>-0.8</z-m>
+      <pitch-deg>-1.74</pitch-deg>
+    </offsets>
+  </model>
+
+  <animation>
+    <object-name>1000L Left Drop Tank</object-name>
+    <type>select</type>
+    <condition>
+      <equals>
+        <property>/sim/multiplay/generic/short[7]</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <model>
+    <name>1000L Right Drop Tank</name>
+    <path>Aircraft/eurofighter/Models/Stores/tank1000l/tank1000l.xml</path>
+    <offsets>
+      <x-m>0.727</x-m>
+      <y-m>2.824</y-m>
+      <z-m>-0.8</z-m>
+      <pitch-deg>-1.74</pitch-deg>
+    </offsets>
+  </model>
+
+  <animation>
+    <object-name>1000L Right Drop Tank</object-name>
+    <type>select</type>
+    <condition>
+      <equals>
+        <property>/sim/multiplay/generic/short[8]</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+<!-- saving for locations
   <model>
     <name>left-STORM-pos-1</name>
     <path>Aircraft/eurofighter/Stores/StormShadow/StormShadow.xml</path>
@@ -44,8 +201,6 @@
       <pitch-deg>-0.865</pitch-deg>
     </offsets>
   </model>
-
-  <!-- station left 1 (Index 0) -->
 
   <model>
     <name>left-AIM-9-pos-1</name>
@@ -103,7 +258,6 @@
     </offsets>
   </model>
   
-  <!-- station left 2 (Index 1) -->
   <model>
     <name>left-AIM-9-pos-2</name>
     <path>Aircraft/eurofighter/Stores/aim-9/aim-9.xml</path>
@@ -171,7 +325,6 @@
     </offsets>
   </model>
 
-  <!-- station left 2fuel (Index 13) -->
   <model>
     <name>left-large-tank</name>
     <path>Aircraft/eurofighter/Models/External-objects/tank1500l/tank1500l.xml</path>
@@ -194,7 +347,6 @@
     </offsets>
   </model>
 
-  <!-- station left 3 (Index 2) -->
   <model>
     <name>left-AIM-9-pos-3</name>
     <path>Aircraft/eurofighter/Stores/aim-9/aim-9.xml</path>
@@ -250,7 +402,6 @@
     </offsets>
   </model>
 
-  <!-- station left 4 (Index 11) -->
   <model>
     <name>left-AIM-9-pos-4</name>
     <path>Aircraft/eurofighter/Stores/aim-9/aim-9.xml</path>
@@ -284,7 +435,6 @@
     </offsets>
   </model>
 
-  <!-- center station (Index 6) -->
   <model>
     <name>center-brimstone</name>
     <path>Aircraft/eurofighter/Stores/brimstone/brimstone.xml</path>
@@ -318,7 +468,6 @@
     </offsets>
   </model>
 
-  <!-- center station fuel (Index 14) -->
   <model>
     <name>center-tank</name>
     <path>Aircraft/eurofighter/Models/External-objects/tank1000l/tank1000l.xml</path>
@@ -330,7 +479,6 @@
     </offsets>
   </model>
 
-  <!-- station right 1 (Index 3) -->
   <model>
     <name>right-AIM-9-pos-1</name>
     <path>Aircraft/eurofighter/Stores/aim-9/aim-9.xml</path>
@@ -387,7 +535,6 @@
     </offsets>
   </model>
   
-  <!-- station right 2 (Index 4) -->
   <model>
     <name>right-AIM-9-pos-2</name>
     <path>Aircraft/eurofighter/Stores/aim-9/aim-9.xml</path>
@@ -455,7 +602,6 @@
     </offsets>
   </model>
 
-  <!-- station right 2fuel (Index 15)-->
   <model>
     <name>right-large-tank</name>
     <path>Aircraft/eurofighter/Models/External-objects/tank1500l/tank1500l.xml</path>
@@ -478,7 +624,6 @@
     </offsets>
   </model>
 
-  <!-- station right 3 (Index 5)-->
   <model>
     <name>right-AIM-9-pos-3</name>
     <path>Aircraft/eurofighter/Stores/aim-9/aim-9.xml</path>
@@ -534,7 +679,6 @@
     </offsets>
   </model>
 
-  <!-- station right 4 (Index 12)-->
   <model>
     <name>right-AIM-9-pos-4</name>
     <path>Aircraft/eurofighter/Stores/aim-9/aim-9.xml</path>
@@ -568,7 +712,6 @@
     </offsets>
   </model>
 
-  <!-- station fuselage fwd left (Index 7) -->
   <model>
     <name>fuselageFL-AMRAAM</name>
     <path>Aircraft/eurofighter/Stores/AIM-120/AIM-120.xml</path>
@@ -582,7 +725,6 @@
     </offsets>
   </model>
   
-  <!-- station fuselage rear left (Index 8) -->
   <model>
     <name>fuselageRL-AMRAAM</name>
     <path>Aircraft/eurofighter/Stores/AIM-120/AIM-120.xml</path>
@@ -596,7 +738,6 @@
     </offsets>
   </model>
   
-  <!-- station fuselage fwd right (Index 9) -->
   <model>
     <name>fuselageFR-AMRAAM</name>
     <path>Aircraft/eurofighter/Stores/AIM-120/AIM-120.xml</path>
@@ -610,7 +751,6 @@
     </offsets>
   </model>
 
-  <!-- station fuselage rear right (Index 10) -->
   <model>
     <name>fuselageRR-AMRAAM</name>
     <path>Aircraft/eurofighter/Stores/AIM-120/AIM-120.xml</path>
@@ -624,4 +764,6 @@
     </offsets>
   </model>
 
+</PropertyList>
+-->
 </PropertyList>

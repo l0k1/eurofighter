@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+
+<!-- Eurofighter Typhoon massbalance -->
+<!-- Justin Nicholson (pinto)-->
+
+	
+<mass_balance>
+	<ixx unit="SLUG*FT2"> 11265.32 </ixx>
+	<iyy unit="SLUG*FT2"> 59659.78 </iyy>
+	<izz unit="SLUG*FT2"> 61658.53 </izz>
+	
+	<ixy unit="SLUG*FT2">        0 </ixy>
+	<ixz unit="SLUG*FT2">        0 </ixz>
+	<iyz unit="SLUG*FT2">        0 </iyz>
+	<emptywt unit="LBS" > 24243.97 </emptywt>
+	
+	<location name="CG" unit="M">
+		<x> 0.90603 </x>
+		<y> 0.0 </y>
+		<z> -0.140554 </z>
+	</location>
+
+	<pointmass name="station1">
+		<description> 1 | Center </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>1.449</x>
+			<y>0.0</y>
+			<z>-1.014</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 2 | Left Fuse Aft </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>-2.793</x>
+			<y>-0.882</y>
+			<z>-0.777</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 2 | Right Fuse Aft </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>-2.793</x>
+			<y>0.882</y>
+			<z>-0.777</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 3 | Left Fuse Fore </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>3.627</x>
+			<y>-0.979</y>
+			<z>-0.696</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 3 | Right Fuse Fore </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>-3.627</x>
+			<y>-0.979</y>
+			<z>-0.696</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 4 | Left Inboard </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>-1.376</x>
+			<y>-1.739</y>
+			<z>-0.641</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 4 | Right Inboard </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>-1.376</x>
+			<y>1.739</y>
+			<z>-0.641</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 5 | Left Center </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>0.571</x>
+			<y>-2.824</y>
+			<z>-0.641</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 5 | Right Center </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>0.571</x>
+			<y>2.824</y>
+			<z>-0.641</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 6 | Left Outboard </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>1.536</x>
+			<y>-3.802</y>
+			<z>-0.641</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 6 | Right Outboard </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>1.536</x>
+			<y>3.802</y>
+			<z>-0.641</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 7 | Left Tip </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>2.362</x>
+			<y>-4.661</y>
+			<z>-0.641</z>
+		</location>
+	</pointmass>
+	<pointmass name="station2">
+		<description> 8 | Right Tip </description>
+		<weight unit="LBS"> 0.0 </weight>
+		<location name="POINTMASS" unit="M">
+			<x>2.362</x>
+			<y>4.661</y>
+			<z>-0.641</z>
+		</location>
+	</pointmass>
+
+</mass_balance>
+

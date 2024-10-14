@@ -298,7 +298,7 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
        <offset-z-m>0</offset-z-m>
       </refuel>
      </systems>
-
+     
 <!-- Nasal files/scripts -->
     <nasal>
         <prop_io>    <file>Aircraft/eurofighter/nasal/prop_io.nas</file>            </prop_io>
@@ -306,12 +306,12 @@ By MaverickAlex, D. Faber, AlMurSi & Algernon
         <mfd>        <file>Aircraft/eurofighter/nasal/mfd.nas</file>                </mfd>
         <dialog>     <file>Aircraft/eurofighter/Nasal/dialogs.nas</file>            </dialog>
         <libraries>  <file>Aircraft/eurofighter/Nasal/zoom-views.nas</file>         </libraries>
-        <main>       <file>Aircraft/eurofighter/Nasal/main.nas</file>               </main>
         <aar>        <file>Aircraft/eurofighter/Nasal/aar.nas</file>                </aar>
         <armament>   <file>Aircraft/eurofighter/Nasal/missile-code.nas</file>       </armament>
         <stations>   <file>Aircraft/eurofighter/Nasal/station-manager.nas</file>    </stations>
         <fc>         <file>Aircraft/eurofighter/Nasal/fire-control.nas</file>       </fc>
         <pylons>     <file>Aircraft/eurofighter/Nasal/pylons.nas</file>             </pylons>
+        <main>       <file>Aircraft/eurofighter/Nasal/main.nas</file>               </main>
     </nasal>
     
 </PropertyList>

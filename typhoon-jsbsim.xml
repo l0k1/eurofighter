@@ -38,23 +38,7 @@
 		</location>
 	</metrics>
 	
-	<mass_balance>
-		<ixx unit="SLUG*FT2"> 11265.32 </ixx>
-		<iyy unit="SLUG*FT2"> 59659.78 </iyy>
-		<izz unit="SLUG*FT2"> 61658.53 </izz>
-		
-		<ixy unit="SLUG*FT2">        0 </ixy>
-		<ixz unit="SLUG*FT2">        0 </ixz>
-		<iyz unit="SLUG*FT2">        0 </iyz>
-		<emptywt unit="LBS" > 24243.97 </emptywt>
-		
-		<location name="CG" unit="M">
-			<x> 0.90603 </x>
-			<y> 0.0 </y>
-			<z> -0.140554 </z>
-		</location>
-	</mass_balance>
-	
+	<mass_balance file="Aero/typhoon-massbalance.xml"/>
 	<ground_reactions file="Aero/typhoon-ground-reactions.xml"/>
 	<propulsion file="Aero/typhoon-propulsion.xml"/>
 	

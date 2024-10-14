@@ -44,6 +44,20 @@
 			<float n="18" alias="controls/rotary/formation-lights" />
 			<float n="19" alias="systems/electrical/outputs/external-lights/taxi-lights"/>
 			<float n="20"/> <!-- refuel probe -->
+			<!-- mp pylons -->
+			<short n="0"/>
+			<short n="1"/>
+			<short n="2"/>
+			<short n="3"/>
+			<short n="4"/>
+			<short n="5"/>
+			<short n="6"/>
+			<short n="7"/>
+			<short n="8"/>
+			<short n="9"/>
+			<short n="10"/>
+			<short n="11"/>
+			<short n="12"/>
 			<!-- int n="6" = radar2.radarStandbyMP -->
 			<string alias="sim/multiplay/callsign"/>
 		</generic>
@@ -181,6 +195,163 @@
 	</current-view>
 
 	<weight n="0">
+		<name>station1.center</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="1">
+		<name>station2.left.fuselage.rear</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="2">
+		<name>station2.right.fuselage.rear</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="3">
+		<name>station3.left.fuselage.front</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="4">
+		<name>station3.right.fuselage.rear</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="5">
+		<name>station4.left.inboard.wing</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="6">
+		<name>station4.right.inboard.wing</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="7">
+		<name>station5.left.center.wing</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="8">
+		<name>station5.right.center.wing</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="9">
+		<name>station6.left.outboard.wing</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="10">
+		<name>station6.right.outboard.wing</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="11">
+		<name>station7.left.tip.wing</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+	<weight n="12">
+		<name>station7.right.tip.wing</name>
+		<weight-lb>0</weight-lb>
+		<selected>none</selected>
+		<label-nbr type="int">0</label-nbr>
+		<offsets><x-m type="double">7.376</x-m><y-m type="double">-1.739</y-m><z-m type="double">-0.641</z-m></offsets>
+		<opt><name>none</name><lbs>0</lbs></opt>
+		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
+		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
+		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
+		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
+	</weight>
+<!--
+	<weight n="0">
 		<name>pylon1.L</name>
 		<weight-lb>0</weight-lb>
 		<selected>none</selected>
@@ -201,14 +372,6 @@
 		<opt><name>ALARM</name><lbs>585.0</lbs></opt>
 		<opt><name>STORMSHADOW</name><lbs>2350.0</lbs></opt>
 		<opt><name>GBU16</name><lbs>1094.0</lbs></opt>
-	</weight>
-	<weight n="13">
-		<name>pylon2fuel.L</name>
-		<tank>6</tank>
-		<weight-lb>0</weight-lb>
-		<selected>none</selected>
-		<offsets><x-m type="double">8.727</x-m><y-m type="double">-2.824</y-m><z-m type="double">-0.78</z-m></offsets>
-		<opt><name>none</name><lbs>0</lbs></opt>
 		<opt><name>1500 l Droptank</name><lbs>2645.0</lbs><gals>396</gals></opt>
 		<opt><name>1000 l Droptank</name><lbs>2204.0</lbs><gals>211</gals></opt>
 	</weight>
@@ -335,5 +498,5 @@
 		<offsets><x-m type="double">11.627</x-m><y-m type="double">0.979</y-m><z-m type="double">-0.616</z-m></offsets>
 		<opt><name>none</name><lbs>0</lbs></opt>
 		<opt><name>AIM120</name><lbs>330.0</lbs></opt>
-	</weight>
+	</weight>-->
 </PropertyList>

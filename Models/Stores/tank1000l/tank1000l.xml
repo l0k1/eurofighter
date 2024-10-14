@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<PropertyList>
+	<path>Aircraft/eurofighter/Models/Stores/tank1000l/tank1000.ac</path>
+
+	<animation>
+    <!-- Objets opaques -->
+		<object-name>tank</object-name>
+    <!-- Objets transparents -->
+	</animation>
+
+</PropertyList>
+

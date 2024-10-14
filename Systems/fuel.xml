@@ -168,7 +168,7 @@
                                 <property>propulsion/tank[8]/contents-lbs</property>
                                 <property>propulsion/tank[9]/contents-lbs</property>
                             </sum>
-                            <value>10</value>
+                            <value>22</value>
                         </gt>
                         <lt>
                             <property>systems/fuel/manual-mode-selection</property>

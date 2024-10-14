@@ -37,7 +37,7 @@
   
 <!-- External loas and transparent (for livery marks) -->
 	<model>
-		<path>Aircraft/eurofighter/Models/External-objects/loads.xml</path>
+		<path>Aircraft/eurofighter/Models/Stores/Stores.xml</path>
 	</model>
 	<model>
 		<path>Aircraft/eurofighter/Models/External-objects/Pylons/pylons.xml</path>
