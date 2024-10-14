@@ -108,7 +108,7 @@
     <type>select</type>
     <condition>
       <equals>
-        <property>/sim/multiplay/generic/short[0]</property>
+        <property>sim/multiplay/generic/short[0]</property>
         <value>1</value>
       </equals>
     </condition>
@@ -130,7 +130,7 @@
     <type>select</type>
     <condition>
       <equals>
-        <property>/sim/multiplay/generic/short[0]</property>
+        <property>sim/multiplay/generic/short[0]</property>
         <value>2</value>
       </equals>
     </condition>
@@ -152,7 +152,7 @@
     <type>select</type>
     <condition>
       <equals>
-        <property>/sim/multiplay/generic/short[7]</property>
+        <property>sim/multiplay/generic/short[7]</property>
         <value>1</value>
       </equals>
     </condition>
@@ -174,7 +174,7 @@
     <type>select</type>
     <condition>
       <equals>
-        <property>/sim/multiplay/generic/short[8]</property>
+        <property>sim/multiplay/generic/short[8]</property>
         <value>1</value>
       </equals>
     </condition>

@@ -46,7 +46,7 @@
 		<object-name>pylon1.L</object-name>
 		<condition>
 			<not-equals>
-				<property>sim/weight[0]/selected</property>
+				<property>sim/multiplay/generic/short[5]</property>
 				<value>none</value>
 			</not-equals>
 		</condition>
@@ -56,17 +56,7 @@
 		<object-name>pylon2.L</object-name>
 		<condition>
 			<not-equals>
-				<property>sim/weight[1]/selected</property>
-				<value>none</value>
-			</not-equals>
-		</condition>
-	</animation>
-	<animation>
-		<type>select</type>
-		<object-name>pylon2fuel.L</object-name>
-		<condition>
-			<not-equals>
-				<property>sim/weight[13]/selected</property>
+				<property>sim/multiplay/generic/short[7]</property>
 				<value>none</value>
 			</not-equals>
 		</condition>
@@ -76,7 +66,7 @@
 		<object-name>pylon3.L</object-name>
 		<condition>
 			<not-equals>
-				<property>sim/weight[2]/selected</property>
+				<property>sim/multiplay/generic/short[9]</property>
 				<value>none</value>
 			</not-equals>
 		</condition>
@@ -86,7 +76,7 @@
 		<object-name>pylon4.L</object-name>
 		<condition>
 			<not-equals>
-				<property>sim/weight[11]/selected</property>
+				<property>sim/multiplay/generic/short[11]</property>
 				<value>none</value>
 			</not-equals>
 		</condition>
@@ -96,18 +86,8 @@
 		<object-name>pylon.C</object-name>
 		<condition>
 			<not-equals>
-				<property>sim/weight[6]/selected</property>
-				<value>none</value>
-			</not-equals>
-		</condition>
-	</animation>
-	<animation>
-		<type>select</type>
-		<object-name>pylon.C2</object-name>
-		<condition>
-			<not-equals>
-				<property>sim/weight[14]/selected</property>
-				<value>none</value>
+				<property>sim/multiplay/generic/short[0]</property>
+				<value>0</value>
 			</not-equals>
 		</condition>
 	</animation>
@@ -116,7 +96,7 @@
 		<object-name>pylon1.R</object-name>
 		<condition>
 			<not-equals>
-				<property>sim/weight[3]/selected</property>
+				<property>sim/multiplay/generic/short[6]</property>
 				<value>none</value>
 			</not-equals>
 		</condition>
@@ -126,17 +106,7 @@
 		<object-name>pylon2.R</object-name>
 		<condition>
 			<not-equals>
-				<property>sim/weight[4]/selected</property>
-				<value>none</value>
-			</not-equals>
-		</condition>
-	</animation>
-	<animation>
-		<type>select</type>
-		<object-name>pylon2fuel.R</object-name>
-		<condition>
-			<not-equals>
-				<property>sim/weight[15]/selected</property>
+				<property>sim/multiplay/generic/short[8]</property>
 				<value>none</value>
 			</not-equals>
 		</condition>
@@ -146,7 +116,7 @@
 		<object-name>pylon3.R</object-name>
 		<condition>
 			<not-equals>
-				<property>sim/weight[5]/selected</property>
+				<property>sim/multiplay/generic/short[10]</property>
 				<value>none</value>
 			</not-equals>
 		</condition>
@@ -156,7 +126,7 @@
 		<object-name>pylon4.R</object-name>
 		<condition>
 			<not-equals>
-				<property>sim/weight[12]/selected</property>
+				<property>sim/multiplay/generic/short[12]</property>
 				<value>none</value>
 			</not-equals>
 		</condition>
